@@ -16,8 +16,40 @@
 ## דמות-מורה (5 pose-ים)
 *ייווצרו דרך Claude Design — Brief #2*
 
-## לוגו + פאוויקון
-*ייווצרו דרך Claude Design — Brief #1*
+## לוגו + פאוויקון — ✅ נוצרו 2026-05-17
+
+### Version A — "פרופ' חכמוני (ינשוף מסוגנן)"
+- **קבצים:**
+  - `assets/logo/version-a/logo-hero-300x80.svg`
+  - `assets/logo/version-a/logo-medium-180x56.svg`
+  - `assets/logo/version-a/favicon-48.svg` (רקע cream)
+  - `assets/logo/version-a/favicon-48-alt-lavender.svg` (רקע לבנדר)
+- **מאפיינים:** דמות־מקור גיאומטרית עגולה. ינשוף עם משקפיים.
+- **מילים-מתאימות:** חברותי · משחקי · חם
+- **פלטה:** lavender + sun + coral + ink
+- **מקור:** Claude Design (claude.ai) דרך Brief #1
+- **רישיון:** Project-generated (יוצר על-ידינו דרך Claude)
+
+### Version B — "סמל אבסטרקטי (ספר + כוכב)"
+- **קבצים:**
+  - `assets/logo/version-b/logo-hero-300x80.svg`
+  - `assets/logo/version-b/logo-medium-180x56.svg`
+  - `assets/logo/version-b/favicon-48.svg` (רקע sky)
+  - `assets/logo/version-b/favicon-48-alt-yellow.svg` (רקע sun)
+- **מאפיינים:** ספר פתוח עם כוכב בולט. צורה גיאומטרית נקייה.
+- **מילים-מתאימות:** נקי · ידע · סקרני
+- **פלטה:** sky + sun + coral + ink
+- **מקור:** Claude Design (claude.ai) דרך Brief #1
+- **רישיון:** Project-generated
+
+### 📋 בחירה סופית
+**ממתין להחלטת ההורה** — שתי הגרסאות שמורות עד שתבחר. אחרי הבחירה:
+- הגרסה הנבחרת תועתק ל-`assets/logo/active/` (current logo)
+- `favicon.ico` יווצר מ-favicon-48.svg של הגרסה הנבחרת
+- ה-loosing version תישאר ב-archive
+
+### תצוגה מקדימה
+פתח `design-mocks/01-logo-options.html` בכרום לראות שתי הגרסאות זה-לצד-זה.
 
 ## צלילים
 *יוטענו מ-Mixkit / Freesound (CC0)*
