@@ -42,14 +42,18 @@
 - **מקור:** Claude Design (claude.ai) דרך Brief #1
 - **רישיון:** Project-generated
 
-### 📋 בחירה סופית
-**ממתין להחלטת ההורה** — שתי הגרסאות שמורות עד שתבחר. אחרי הבחירה:
-- הגרסה הנבחרת תועתק ל-`assets/logo/active/` (current logo)
-- `favicon.ico` יווצר מ-favicon-48.svg של הגרסה הנבחרת
-- ה-loosing version תישאר ב-archive
+### ✅ בחירה סופית — Version A (2026-05-17)
+ההורה בחר **Version A — פרופ' חכמוני (ינשוף)**. הקבצים הפעילים:
+- `assets/logo/active/logo-hero.svg` (300×80)
+- `assets/logo/active/logo-medium.svg` (180×56)
+- `assets/logo/active/favicon.svg` (48×48)
+- `assets/icons/favicon.svg` (כפול לנוחות)
+
+**Version B נשאר בארכיון** ב-`assets/logo/version-b/` למקרה שנרצה לבדוק/לחזור.
 
 ### תצוגה מקדימה
 פתח `design-mocks/01-logo-options.html` בכרום לראות שתי הגרסאות זה-לצד-זה.
+פתח `index.html` בכרום (דרך PowerShell Launcher) לראות את הלוגו הפעיל.
 
 ## צלילים
 *יוטענו מ-Mixkit / Freesound (CC0)*
