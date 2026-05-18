@@ -9,6 +9,411 @@
 
 ## תכנון
 
+## 🏛️ Council Round 3 — CHG-005 Review (2026-05-17)
+
+5 sub-agents סקרו את CHG-005. **תוצאות:**
+
+| Agent | Status | Critical |
+|-------|--------|----------|
+| 👶 UX-Kid | 🔴 **FAIL** | First-Run 3-5 דק' = נצח לבן-4. נדרש Fast-Path |
+| 🇮🇱 Hebrew | 🟡 WARNING | חסר `gender` field, 2sec הקלטה קצר מדי, Niqud Picker טכני |
+| 🛡️ Security | 🟡 WARNING | Voice unencrypted, recovery lockout חסר |
+| 🔍 Code-Review | 🟡 WARNING | `parents.js` מיותר (כפילות), naming inconsistency |
+| 🔗 Integration | 🟡 WARNING | IndexedDB schema לא-מתועד, orphan blobs, cleanup חסר |
+
+### 🔧 12 Patches Round 3 — יושמו
+
+#### Critical Architecture
+1. **Fast-Path Mode** (UX-Kid) — הילד יכול לשחק תוך 30 שניות (Skip-To-Play). פרופיל-הורה דחוי ל-Progressive Onboarding אחרי 5 משימות.
+2. **`parents.js` הוסר** (Code-Review) — אוחד ב-`profiles.js` עם `createChild()`, `createParent()`, `getRandomParent()`. מודול-אחד, חוזה-אחד.
+3. **`src/db.js` חדש** (Integration) — מרכז את כל ה-IndexedDB stores: `photos`, `voices`, `migrations-backup`. version-bump אחד, `onupgradeneeded` יחיד.
+
+#### Schema Enhancements
+4. **`gender: 'boy' | 'girl' | 'neutral'`** ל-profile schema (Hebrew) — קריטי לדקדוק עברי ("גיבור/גיבורה"). אופציה ל-"לא להגיד".
+5. **`voiceRecordings: { nameKey, cameoKey }`** מאוחד (Code-Review) — במקום `nameVoiceKey` + `voiceRecordingKey` (כפילות).
+6. **`ttsOverride` במקום `nameTTS` + `textTTS`** — naming אחיד.
+
+#### Hebrew Pronunciation
+7. **A/B Niqud Preview** במקום Niqud Picker (Hebrew) — "אוֹרִי? [▶] או אוּרִי? [▶]" — בחירה במקום ניקוד.
+8. **הקלטת-שם: 4 שניות + waveform + auto-trim** (Hebrew) — היה 2 שניות, קצר מדי.
+9. **Toggle "שם בלועזית?"** + translit אוטומטי (Hebrew) — Ethan/Sophie/Liam.
+10. **30 שמות-מוכנים** עם ניקוד+הקלטה מוכנים (Hebrew) — היה 20.
+
+#### Security
+11. **AES-GCM encryption ל-voice/photo בpolymorphic IndexedDB** — key נגזר מ-PIN (PBKDF2). Recovery lockout: 5 ניסיונות → 30s→5min→1h→24h backoff.
+12. **Profile deletion cascade** — `deleteProfile()` מוחק גם blobs ב-IndexedDB + מסיר parentIds מילדים מקושרים.
+
+#### Cleanup Contracts
+13. **`voice-recorder.js` cleanup** — `stream.getTracks().forEach(t => t.stop())` + mount/cleanup contract תיעוד.
+14. **`celebration.js` pre-fetch** — קול-ההורה נטען לפני החגיגה, לא במהלכה (Race fix).
+
+### החלטות שאומצו
+
+- **Drive Sync של voice-recordings:** רק מקומי ב-MVP (Phase 2 — אופציה).
+- **Parent Cameo probability:** 50% (לא 30% — UX-Kid אמר שזה נדיר מדי).
+- **age-picker / color-picker:** **לא** מודולים נפרדים. variants ב-`button.js`.
+
+### לא-יושם (Phase 2)
+
+- וידאו-קמיו של הורה (וידאו במקום אודיו)
+- PIN פר-הורה (PIN משותף ב-MVP)
+- 8 רעיוני-הרחבת-הורה (`docs/IDEAS.md`)
+
+---
+
+## 🆕 CHG-005 | First-Run Flow + Parent Profiles (2026-05-17, אחרי Phase 0.5)
+
+**טריגר:** משתמש: "אני רוצה שהמשחק יפתח ללא משתמשים קבועים, הצעד הראשון יהיה הוספת ילד עם שם, גיל, צבע, אווטאר/תמונה. אחר-כך הגדרת ההורה: PIN, שם, אווטאר/תמונה — שהילד ירגיש שאמא ואבא חלק מהמשחק."
+
+**שינוי:** הרחבה משמעותית של First-Run Experience + הוספת **Parent Profile** כישות-ראשונה-במשחק (לא רק PIN).
+
+### חלוקה: 2 סוגי-פרופילים
+
+המערכת תמכה ב-N "פרופילים" — עכשיו כל פרופיל יש לו `kind`:
+- **`kind: 'child'`** — פרופיל-ילד. יש לו: שם, גיל, צבע-מועדף, אווטאר/תמונה, התקדמות.
+- **`kind: 'parent'`** — פרופיל-הורה. יש לו: שם, אווטאר/תמונה, הקלטת-קול, קשור ל-PIN. אין התקדמות-משחקית.
+
+**עד 2 הורים** (אבא + אמא) + **N ילדים**. כל פרופיל-הורה מקושר ל-PIN משלו (או PIN משותף).
+
+### Schema מעודכן
+
+```js
+// localStorage key: 'chachmoni:profiles'
+{
+  profiles: [
+    // ─── ילדים ───
+    {
+      id: 'p-1738249100',
+      kind: 'child',
+      name: 'יואב',
+      age: 5,                          // 🆕 chips 4/5/6/7/8
+      favoriteColor: '#FF6B6B',        // 🆕 מ-palette של 8 צבעים-ילדיים
+      avatarType: 'preset',
+      avatarValue: 'rabbit',
+      schemaVersion: 2,
+      progress: { ... },
+      settings: { ... },
+      // 🆕 קישור להורים — שהילד ידע "מי המשפחה"
+      parentIds: ['p-parent-1', 'p-parent-2']
+    },
+    // ─── הורים ───
+    {
+      id: 'p-parent-1',
+      kind: 'parent',
+      name: 'אבא',                    // או "מוטי", או כל שם
+      avatarType: 'photo',            // עדיף תמונה אמיתית (אינטימי יותר)
+      photoStoreKey: 'photo-parent-1',
+      voiceRecordingKey: 'voice-parent-1',  // 🆕 IndexedDB
+      pinHashRef: 'pin-1',            // PIN משלו (או shared)
+      schemaVersion: 2,
+      role: 'mother' | 'father' | 'guardian'
+    }
+  ],
+  lastActiveProfileId: 'p-1738249100'
+}
+```
+
+### 8 צבעים ראשיים — בורר-צבע-מועדף לילד
+
+הילד יבחר עיגול-צבעוני אחד מתוך 8. **הכפתורים גדולים פיזית** (120×120px) כדי שיהיה קל לבחור. **אותה רשימה זהה לכל הילדים** — בני 4, 5, 6, 7 או 8, בנים ובנות — כולם רואים את אותה פלטה של 8 צבעים-ראשיים-בולטים:
+
+| צבע | hex | מתאים לרקע-פרופיל |
+|------|-----|---------------------|
+| 🔴 אדום | `#FF6B6B` (אלמוגי) | ✓ |
+| 🟠 כתום | `#FFA552` | ✓ |
+| 🟡 צהוב | `#FFD93D` (שמש) | ✓ |
+| 🟢 ירוק | `#6BCB77` (נענע) | ✓ |
+| 🔵 כחול | `#6FC3DF` (שמיים) | ✓ |
+| 🟣 סגול | `#C9A0DC` (לבנדר) | ✓ |
+| 🤎 חום | `#A0826D` | ✓ |
+| 🩷 ורוד | `#FFB6C1` | ✓ |
+
+**Patch:** עדכון `tokens.css` להוסיף 2 צבעים חדשים (`--color-orange`, `--color-brown`, `--color-pink`) שעדיין לא קיימים.
+
+### חוויית פעם-ראשונה — Flow חדש (Round 3: Fast-Path)
+
+זמן-משך: **~30 שניות** עד שהילד משחק (Fast-Path) + Progressive Onboarding של ההורה לאחר 5 משימות.
+
+> **Patch Round 3 (UX-Kid FAIL):** הילד-בן-4 שמתלהב לשחק לא יחכה 3-5 דקות. ה-Flow פוצל ל-2 חלקים: ילד מהיר → משחק → הורה אחר-כך.
+
+#### חלק 1: Fast-Path (~30 שניות)
+מסך 1 — ברוכים-הבאים-מיני (5ש'):
+- חכמוני מנופף + "שלום! מה השם שלך?"
+- 2 כפתורים: **"בוא נשחק עכשיו"** (Primary CTA) / **"הגדרה מלאה"** (אם הורה כבר שם)
+
+מסך 2 — שם בלבד (15ש'):
+- שדה-שם + Pronunciation Preview
+- ברירת-מחדל: גיל=5, צבע=שמש (אקראי), אווטאר=ארנב
+- "המשך לשחק!"
+
+מסך 3 — מיני תרגול (10ש'):
+- "תלחץ על הכוכב הזה!" → לחיצה → "מצוין!"
+- מעבר ישיר ל-משחק (משימה 1)
+
+**אחרי 5 משימות מוצלחות** → Progressive Onboarding:
+
+#### חלק 2: Progressive Onboarding (~2 דקות, מופיע אחרי 5 משימות)
+חכמוני מופיע: "כל הכבוד! עכשיו בוא נכיר אותך טוב יותר ונזמין את אבא/אמא."
+
+- **שלב 2a — עריכת הילד:** גיל (chips 4-8), צבע-מועדף (4 צבעים ראשיים + "עוד"), אווטאר מותאם או תמונה
+- **שלב 2b — הזמנת הורה:** "📲 קרא לאמא או אבא"
+  - PIN, שם, אווטאר/תמונה, הקלטת-קול (4ש' + waveform + auto-trim)
+- אם הילד מדלג: מצב-אורח נשאר עד שהורה ייכנס
+
+#### פיצול-בעלות (Patch UX-Kid)
+- מסך-שם: **ילד-לבד** מצליח (Pronunciation Preview עוזר)
+- שלב "תמונה": **תווית-הורה** (📷 אייקון של הורה)
+- שלב "חיה": **תווית-ילד** (🐰 אייקון של ילד)
+- הקלטת-הורה (15ש'): **אנימציית-חכמוני** מתעסקת עם הילד בזמן ההקלטה
+
+```
+מסך 1: ברוכים-הבאים-קצר (15ש')
+  - "שלום! אני פרופ' חכמוני."
+  - "בוא נכיר אותך. ואת אמא/אבא."
+  - כפתור: "בואו נתחיל"
+
+מסך 2: יצירת פרופיל-ילד (60ש')
+  שלב 2a: שם
+    - Chips של 20 שמות-עבריים נפוצים + "אחר (להקליד)"
+    - כפתור "🔊 שמע את השם" → Pronunciation Preview
+  שלב 2b: גיל
+    - Chips: 4 / 5 / 6 / 7 / 8 (5 כפתורי-גדולים)
+    - הקריינות: "כמה אתה בן?"
+  שלב 2c: צבע-מועדף
+    - Grid 4×2 של 8 צבעים-עיגוליים-ענקיים
+    - הקריינות: "איזה צבע אתה הכי אוהב?"
+    - הילד נוגע → הצבע מתרחב + שם-הצבע מוקרא
+  שלב 2d: אווטאר או תמונה
+    - 2 כפתורים-ענקיים: "🐰 חיה" / "📷 התמונה שלי"
+    - "חיה": grid 4×3 של 12 אווטארים → בוחר
+    - "התמונה": file-picker + crop dialog (300×300)
+    - Preview של הפרופיל-המלא בסוף
+
+מסך 3: יצירת פרופיל-הורה (60-90ש')
+  - הקריינות: "עכשיו תור של אמא או אבא. הם חלק מהמשחק שלך!"
+  - כפתור: "📲 קרא לאמא או אבא" (מומלץ — צליל מובחן)
+  - אופציה: "אני אעשה לבד" (ילד מהיר)
+  
+  שלב 3a: שם-הורה ("אבא" / "אמא" / שם-פרטי)
+  שלב 3b: PIN של 4 ספרות
+    - "תקליד 4 ספרות שתזכור — כל פעם שתרצה לראות הגדרות"
+    - PBKDF2 + salt + 100K iterations
+  שלב 3c: שאלת-recovery
+    - "אם תשכח: מה תאריך-הלידה שלך? (DD/MM)"
+  שלב 3d: אווטאר או תמונה (עדיף תמונה — אינטימי)
+    - אותו flow כמו של הילד
+  שלב 3e: הקלטת-קול 🎤
+    - "תרצה להקליט משפט-עידוד שיופיע בחגיגות?"
+    - דוגמה: "אני אוהבת אותך, יואב! כל הכבוד!"
+    - 15 שניות מקסימום, MediaRecorder API → Blob → IndexedDB
+    - אופציונלי — אפשר לדלג
+  שלב 3f: "להוסיף הורה נוסף?" (אבא + אמא)
+
+מסך 4: סיור-קצר עם פרופ' חכמוני (30ש')
+  - "תכיר את העכבר!" (איור עכבר)
+  - "תלחץ על הכוכב הזה" — תרגול ראשון
+  
+מסך 5: כניסה למשחק
+  - "בוא נשחק!" → מסך-פתיחה עם הפרופיל החדש
+  - האווטאר של ההורה מופיע בפינה למעלה ב-30% אטימות
+```
+
+### 4 ערוצי-נוכחות-הורה (כל ה-4 אושרו)
+
+| איפה | מה רואים | מה שומעים |
+|------|----------|------------|
+| **1. מסך-פרופיל-הילד** | אווטאר/תמונת-הורה בפינה (קטן, אטימות 60%) | hover → "אבא/אמא" |
+| **2. חגיגת-משימה (אקראית, פעם ב-3-5 משימות)** | פופ-אפ אווטאר-ההורה לרגע ("3 שניות") | "וואו! אבא/אמא גאה בך!" — TTS דינמי |
+| **3. הקלטת-קול (אם הוקלטה)** | אווטאר-ההורה במרכז | הקלטה אמיתית של ההורה: "אני אוהבת אותך, יואב!" — מתנגנת מ-IndexedDB |
+| **4. Parent Dashboard** | תמונות-ההורים בצד-הראש של הדשבורד | — (זה מסך-הורה, לא ילד) |
+
+### תזמון Cameo בחגיגות (כדי לא להגזים)
+
+- חגיגה רגילה (משימה 1-2): רק mascot
+- חגיגה משופרת (כל 3-5 משימות אקראית): mascot + parent-cameo + voice
+- סיום-עולם (כל 18 משימות): mascot + שני ההורים יחד + voice ארוך
+
+### תוספות לקבצי-המקור
+
+**`src/parents.js`** (חדש):
+- CRUD לפרופיל-הורה
+- `getRandomParent()` לחגיגה
+- linkChildToParents()
+
+**`src/voice-recorder.js`** (חדש):
+- MediaRecorder API
+- שמירת blob ב-IndexedDB עם key `voice-{parent-id}`
+- חזרה: 15ש' max, MP3 encoding
+
+**`src/ui/age-picker.js`** (חדש):
+- 5 chips: 4 / 5 / 6 / 7 / 8
+- selected state ב-`--color-sun`
+
+**`src/ui/color-picker.js`** (חדש):
+- 8 עיגולים-ענקיים (120×120px)
+- hover על עיגול → "שמע את שם-הצבע"
+- selected state עם border-thick
+
+**`src/celebration.js`** (עדכון):
+- בכל חגיגה 3-5 — הוסף parent-cameo עם 30% probability
+- אם voiceRecording קיים — נגן אותו
+
+**`design-mocks/`** קבצים חדשים:
+- `03b-profile-create-child-wizard.html` (4 שלבים)
+- `03c-profile-create-parent-wizard.html` (5-6 שלבים)
+- `12b-celebration-with-parent.html`
+
+### תוספות לקבצי-MD
+
+- **`docs/ARCHITECTURE.md`** — הוסף section "Parent Profiles" עם diagram של relationship
+- **`docs/CONTENT.md`** — הוסף NARRATION לטקסטי first-run
+- **`docs/STYLE-GUIDE.md`** — הנחיות לטקסטי-מעורבות-הורה ("אבא/אמא גאה בך")
+- **`docs/PROCESSES.md`** — תהליך First-Run + תהליך parent-cameo
+- **`docs/SECURITY.md`** — שמירת קול-הורה (לא נשלח לDrive? או כן? להחליט)
+- **`docs/PLAN-CONTROL.md`** — CHG-005 entry
+
+### 🇮🇱 טיפול בשמות-עבריים-עמומים (CHG-005 enhancement)
+
+**הבעיה אמיתית:** TTS עברי (Asaf, Hila) לא תמיד מבטא נכון שמות עם **כתיב-חסר** או **דו-משמעות**. דוגמאות:
+
+| שם | קריאה אפשרית #1 | קריאה אפשרית #2 | מה ה-TTS עלול לבחור |
+|----|------------------|------------------|----------------------|
+| **אורי** | אוֹרִי (Ori) | אוּרִי (Uri) | אקראי |
+| **הילי** | הִילִי (Hili) | הֵילִי (Hailee) | לעיתים שגוי |
+| **שיר** | שִׁיר (Shir, שם) | שִׁיר (song, אותו דבר) | OK |
+| **רן** | רָן (Ran) | רֹן (Ron) | משתנה |
+| **עמרי** | עָמְרִי (Omri) | עַמְרִי (Amri) | משתנה |
+| **רותם** | רוֹתֵם (Rotem) | רֹתֶם (Rotem variants) | OK |
+| **מאי** | מַאי (May) | מָאִי (Ma'i) | OK |
+| **תאיר** | תָּאִיר (Ta'ir) | TYR | משתנה |
+
+### פתרון 3-שכבתי
+
+#### שכבה 1: Pronunciation Preview (חובה — כבר ב-plan)
+
+במסך-יצירת-פרופיל, ליד שדה-השם:
+```
+[שדה השם] [🔊 שמע את השם]
+```
+ההורה לוחץ → מאזין → אם נכון, ממשיך. אם לא נכון, עובר לשכבה 2.
+
+#### שכבה 2: Niqud Override (חדש)
+
+אם ההורה שמע ולא בסדר — מופיעה אופציה:
+```
+לא נשמע נכון?
+[ הוסף ניקוד ]
+```
+לחיצה → modal עם השם + 6 כפתורים-ניקוד (תפתח אותיות בודדות, ההורה לוחץ "א" → בחירת ניקוד מתפריט: ַ ָ ֵ ֶ ִ ֹ ֻ ).
+שומר ב-`profile.nameNiqud` ומעביר ל-TTS.
+
+לדוגמה: השם "אורי" → ההורה מנקד "אוֹרִי" או "אוּרִי" → TTS מבטא נכון.
+
+#### שכבה 3: הקלטת-קול-של-ההורה (Fallback אחרון — כבר ב-plan)
+
+אם גם הניקוד לא עוזר (TTS מתעקש לבטא רע), ההורה לוחץ:
+```
+[ 🎤 הקלט את השם בקול שלך ]
+```
+המודול `voice-recorder.js` (CHG-005) פתוח — ההורה אומר "יואב" → 2 שניות → שמירה ב-IndexedDB עם key `name-voice-{profileId}`.
+
+מאז: בכל פעם שהמשחק "מקריא את שם הילד" — הוא משתמש בהקלטה במקום TTS.
+
+### Schema מורחב לטיפול-שמות
+
+```js
+{
+  id: 'p-1738249100',
+  kind: 'child',
+  name: 'אורי',                       // הטקסט המוצג
+  nameNiqud: 'אוֹרִי',                  // 🆕 ניקוד-מלא לקריינות
+  nameTTS: 'אורי',                     // 🆕 fallback ידני (אם TTS לא קולט ניקוד)
+  nameVoiceKey: 'name-voice-p1738',    // 🆕 מפתח להקלטה ב-IndexedDB (אם הוקלטה)
+  ...
+}
+```
+
+### Flow ב-`audio.js` (Patch ל-CHG-005)
+
+```js
+async function speakName(profile) {
+  // עדיפות 1: הקלטה אמיתית של ההורה
+  if (profile.nameVoiceKey) {
+    const blob = await indexedDB.get('voice-store', profile.nameVoiceKey);
+    return playBlob(blob);
+  }
+  // עדיפות 2: ניקוד מ-niqud field (TTS יבטא נכון יותר)
+  if (profile.nameNiqud) {
+    return speak(profile.nameNiqud);
+  }
+  // עדיפות 3: nameTTS override ידני (אם יש)
+  if (profile.nameTTS) {
+    return speak(profile.nameTTS);
+  }
+  // ברירת-מחדל: השם כפי שהוא
+  return speak(profile.name);
+}
+```
+
+זהה לפרופיל-הורה (שם-הורה יכול להיות "אבא" / "אמא" / "מוטי" / "ליאת" — כולם דורשים אותו טיפול).
+
+### השכבות בפועל — חוויית-משתמש
+
+**95% מהשמות** יעבדו ב-TTS ברירת-מחדל (שכבה 1 — פשוט מאשרים).
+**4% (כמו אורי/עמרי/רן)** ידרשו ניקוד-ידני (שכבה 2 — 30 שניות עבודה להורה).
+**1% (שמות-זרים, יחודיים מאוד)** ידרשו הקלטה (שכבה 3 — 10 שניות).
+
+### ✅ החלטות-משנה — הוחלטו ע"י ההורה (2026-05-17)
+
+1. **קול-הורה — Drive sync?** ✅ **כן — מסונכרן ל-Drive (מוצפן AES-GCM)**.
+   - הקלטה ב-IndexedDB מוצפנת + עותק מוצפן ב-Drive.
+   - העלאה לאחר OAuth + הצפנה עם key נגזר מ-PIN.
+   - גודל-Drive: ~150KB × 2 הורים = ~300KB. שולי.
+   - **תועלת:** במחשבי-סבא/סבתא — הילדים שומעים את אבא/אמא שלהם בחגיגות.
+
+2. **PIN משותף או פר-הורה?** ✅ **משותף לשני ההורים + ⚙ flow לאיפוס**.
+   - 2 ההורים יודעים את אותו PIN.
+   - **תוספת חדשה (Round 3 fix):** מסלול-איפוס מורחב:
+     - **רמה 1:** שאלת-recovery (תאריך-לידת-הורה DD/MM) — בילד תיק.
+     - **רמה 2:** "שלחו לי email-איפוס" — דרך Drive OAuth (גוגל שולחת מייל-אימות).
+     - **רמה 3:** איפוס-מלא של PIN דרך מסך-הגדרות-מיוחד שמופיע ב-`?reset-pin=family-emergency` (URL ידני).
+
+3. **איזה הורה מקבל Cameo?** ✅ **אקראי 50-50** (במקרה של 2 הורים).
+   - בכל חגיגה: `Math.random() < 0.5 ? parent1 : parent2`.
+   - לא מבוסס "מי הקליט יותר" — שיוויון מוחלט.
+
+4. **אם רק הורה אחד הוקם?** ✅ **כן, Cameo של ההורה היחיד**.
+   - לא מרגיש "חסר" — הילד חווה עידוד מההורה היחיד שלו.
+   - אם אין הורים בכלל — Guard ב-`celebration.js` יבטל cameo (mascot-only).
+
+### תוספות-קוד הנדרשות (Round 3 final)
+
+**PIN Recovery Flow (חדש)** — `src/parent-recovery.js`:
+- `tryRecoveryQuestion(answer)` → אם נכון: מאפשר reset PIN.
+- `tryEmailReset()` → דרך Drive OAuth — שולח מייל מ-Google עם קוד-אימות.
+- `manualReset()` → URL-only `?reset-pin=family-emergency` (לא מקושר ב-UI הילד).
+
+**Drive Encryption** — `src/sync/drive-encrypt.js`:
+- Key derivation: PBKDF2 על PIN + project-salt → AES-GCM key.
+- כל קובץ-voice/photo ב-Drive מוצפן לפני העלאה.
+- בעת טעינה — פענוח עם אותו key (דורש PIN פעיל).
+- **חשוב:** אם ההורה מאפס PIN, הקבצים-הישנים לא ניתנים לפענוח (הסיכון הטבעי). הילדים יקבלו TTS גנרי במקום הקלטה.
+
+### לא בתכנון (Phase 2 — רעיונות-הרחבה למעורבות-הורה)
+
+1. **וידאו-מסר במקום קול** — הורה מקליט וידאו 10ש' של עידוד שמופיע בחגיגות-מיוחדות.
+2. **מסר-טקסטואלי שההורה כותב** — מסך-הגדרות → "כתוב הודעה ליואב" → ההודעה מוקראת ע"י TTS בקול-המורה למחרת בכניסה למשחק.
+3. **עדכוני-הורה ב-WhatsApp/Email** — כשהילד מסיים עולם, ההורה מקבל push: "יואב סיים את עולם-העכבר! יש לו 18 כוכבים."
+4. **"סלון-משפחה"** — מסך-מיוחד שכל המשפחה רואה התקדמות-כולם (גם של אחיינים מרוחקים, אם הם משתמשים גם הם בחכמוני).
+5. **"משימה משותפת אבא+ילד"** — משימות-מיוחדות שהילד וההורה צריכים לעשות יחד (לדוגמה: הורה אומר אות → ילד לוחץ עליה. מקרב משפחה).
+6. **תמונה-קבוצתית בסיום-עולם** — הילד והורה מצטלמים יחד דרך מצלמת-המחשב, התמונה נשמרת בדף-הישגים.
+7. **"יומן-יואב"** — הילד יכול ללחוץ ☆ אחרי משימה ולסמן "אהבתי את זה" — ההורה רואה ב-dashboard מה מצא חן בעיני הילד.
+8. **"לחץ פה לעודד"** — לפני שינה, ההורה לוחץ כפתור והודעת-לילה-טוב מהמורה תופיע מחר בבוקר ("אבא ביקש שאגיד לך — לילה טוב, יואב!").
+
+כל אלו ל-Phase 2/3 בעתיד — לא לפני MVP.
+
+---
+
 ## 🏛️ Council Pre-Build Review — 2026-05-17
 
 **הופעלה מועצה מלאה של 8 סוכנים, בשני סבבים.** תוצאות:
@@ -138,8 +543,10 @@
 המבנה: סדרת **משימות** לינארית — 50 משימות "מקוריות" + **ווריאציות רנדומיות בתוכן** של כל משימה (פעם בלונים, פעם דגים, פעם פירות) + **גנרטור AI אופציונלי** ליצירת משימות חדשות לחלוטין. סה"כ: תוכן בלתי-מוגבל בפועל. **כל המשחק נשען על קריינות איטית, ידידותית-לילד, בעברית.** עמידה (hover) על כל כפתור משמיעה מחדש את ההוראה — אין מצב שהילד נשאר בלי שמיעה של מה לעשות.
 
 **דרישות מערכת נוספות שאושרו:**
-- **פרופילים מקומיים עם אווטאר ושם** לכל ילד (ללא PIN/login).
-- **תמיכה בתמונה אמיתית של הילד** כאווטאר (העלאה דרך file picker), בנוסף לאווטארים המאוירים.
+- **פרופילים מקומיים — 2 סוגים** (CHG-005): פרופיל-**ילד** (עם שם, גיל, צבע-מועדף, אווטאר/תמונה, התקדמות) + פרופיל-**הורה** (עד 2 הורים — שם, אווטאר/תמונה, הקלטת-קול, PIN).
+- **תמיכה בתמונה אמיתית** של הילד וההורים (העלאה דרך file picker + canvas crop).
+- **First-Run משופר** (CHG-005): פרופיל-ילד → פרופיל-הורה → mascot intro. ההורה הוא חלק-מהמשחק.
+- **4 ערוצי-נוכחות-הורה במשחק** (CHG-005): אווטאר בפרופיל-ילד, parent-cameo בחגיגה, הקלטת-קול-עידוד, תמונות ב-parent-dashboard.
 - **Hover על שם הילד = הקראת השם בקול**.
 - **סנכרון אוטומטי ל-Google Drive** כגיבוי (דורש הגדרת OAuth client חד-פעמית).
 - **סנכרון דו-כיווני אוטומטי ל-GitHub** (Task Scheduler כל שעה + Hook של Claude Code על תחילה/סוף סשן): `https://github.com/Moti316/Interactive-educational-game`.
@@ -211,9 +618,12 @@ Interactive-educational-game/
     app.js                   — בקר ראשי: בחירת פרופיל, ניתוב משימות
     audio.js                 — עטיפת TTS עברי איטי + טעינה עצלה של קול
     storage.js               — קריאה/כתיבה ל-localStorage (מולטי-פרופיל)
-    profiles.js              — ניהול פרופילים: יצירה, מחיקה, החלפה
-    photo-store.js           — IndexedDB wrapper לתמונות פרופיל
+    profiles.js              — 🔄 Round 3: CRUD מאוחד לchild+parent. כולל createChild, createParent, getRandomParent, linkChildToParents, deleteProfile (cascade!)
+    db.js                    — 🆕 Round 3: IndexedDB-יחיד עם stores: photos, voices, migrations-backup, rate-limit
+    photo-store.js           — wrapper סביב db.js, שומר תמונות מוצפנות (Patch מ-Security)
+    voice-recorder.js        — MediaRecorder API + AES-GCM encryption. 4ש' + waveform + auto-trim
     backup.js                — Export/Import של כל הנתונים כ-JSON (MVP)
+    celebration.js           — חגיגות + parent-cameo (50% prob, pre-fetch של voice לפני החגיגה)
     sync/                    — Drive sync (MVP — גיבוי פר-ילד)
       drive-auth.js          — Google OAuth (Implicit Flow) דרך localhost:8080
       drive-sync.js          — upload/download פר-פרופיל (meta.json + progress-{id}.json)
@@ -226,7 +636,12 @@ Interactive-educational-game/
       progress.js            — מד התקדמות, כוכבים
       home-button.js         — כפתור בית קבוע בפינה
       avatar-picker.js       — בחירת אווטאר ליצירת פרופיל
-      photo-uploader.js      — העלאת תמונה + crop ל-300x300
+      photo-uploader.js      — העלאת תמונה + magic-bytes + canvas re-encode + crop 300x300
+      parent-cameo.js        — pop-up של הורה בחגיגה (50% prob)
+      niqud-preview.js       — 🆕 Round 3: A/B Niqud Preview ("אוֹרִי?" vs "אוּרִי?")
+      gender-picker.js       — 🆕 Round 3: 3 chips (בן / בת / לא חשוב)
+      ──────────────────
+      Note: age-picker / color-picker מאוחדים ל-button.js עם variants `chip` ו-`circle-color`
     templates/               — ~8 תבניות-משחק (קוד)
       hover-target.js
       click-targets.js
@@ -274,6 +689,7 @@ Interactive-educational-game/
     PLAN-CONTROL.md          — **Plan Change Control** — תיעוד שינויי-תכנון וסנכרון-עקביות
     COUNCIL.md               — **High Council Reports** — דוחות-אישור אחרי כל שלב
     RECOVERY.md              — **Disaster Recovery** — runbook לתרחישי-משבר
+    IDEAS.md                 — 🆕 **Future Ideas Backlog** — רעיונות ל-Phase 2/3 מסודרים לפי-נושא
   design-mocks/              — HTML mockups לתצוגה מקדימה (לא חלק מהמשחק)
     index.html               — אינדקס לכל המוקאפים
     01-welcome.html
@@ -288,7 +704,11 @@ Interactive-educational-game/
     10-world-map.html
     11-task-click-balloons.html
     12-success-celebration.html
+    12b-celebration-with-parent.html      — 🆕 CHG-005: חגיגה עם parent-cameo
     13-photo-uploader.html
+    14-profile-create-child-wizard.html   — 🆕 CHG-005: 4 שלבים (שם/גיל/צבע/אווטאר)
+    15-profile-create-parent-wizard.html  — 🆕 CHG-005: 5-6 שלבים (PIN/שם/אווטאר/קול)
+    16-voice-recorder.html                — 🆕 CHG-005: הקלטת-קול-הורה
     shared/
       tokens.css             — design tokens (צבעים, פונטים, spacing, motion)
       base.css               — RTL, body defaults
@@ -339,33 +759,60 @@ Interactive-educational-game/
 
 ---
 
-## פרופילים מקומיים עם אווטאר ושם
+## פרופילים מקומיים — Multi-Profile עם 2 סוגים (CHG-005)
+
+המערכת תומכת ב-2 סוגי-פרופילים: **`child`** (ילדים) ו-**`parent`** (הורים, עד 2).
 
 מבנה פרופיל ב-localStorage:
 
 ```js
 // localStorage key: 'chachmoni:profiles'  (Patch #6 — היה 'mouse-school:profiles')
 {
+  schemaVersion: 2,                          // 🆕 CHG-005
   profiles: [
+    // ─── ילד (Round 3 schema) ───
     {
-      id: 'p-1738249100',           // uuid-ish
+      id: 'p-1738249100',
+      kind: 'child',
       name: 'יואב',
-      avatarType: 'photo',           // 'preset' | 'photo'
-      avatarValue: 'rabbit',         // אם preset: מזהה SVG; אם photo: מפתח ב-photoStore
-      photoStoreKey: 'photo-p1738', // (רק אם photo) מפתח שמצביע על base64 ב-IndexedDB
-      color: '#FFD93D',
-      createdAt: '2026-05-17',
-      progress: {
-        completedTaskIds: ['hover-rabbit', 'click-balloons'],
-        currentTaskId: 'click-stars',
-        stars: 17,
-        lastPlayed: '2026-05-17T18:43:00Z'
+      nameNiqud: 'יוֹאָב',                     // אופציונלי, לדיוק TTS
+      ttsOverride: null,                       // 🆕 Round 3: אחיד (היה nameTTS)
+      gender: 'boy',                           // 🆕 Round 3: 'boy' | 'girl' | 'neutral'
+      age: 5,                                  // 4-8
+      favoriteColor: '#FF6B6B',                // מ-palette של 8
+      avatarType: 'photo',                     // 'preset' | 'photo'
+      avatarValue: 'rabbit',
+      photoStoreKey: 'photo-p1738',
+      voiceRecordings: {                       // 🆕 Round 3: מאוחד (היה 2 שמות)
+        nameKey: 'voice-name-p1738',           // הקלטת השם (אופציונלי)
+        cameoKey: null                         // לא רלוונטי לילד
       },
+      createdAt: '2026-05-17',
+      parentIds: ['p-parent-1'],
+      progress: { ... },
       settings: {
-        ttsRate: 0.75,
+        ttsRate: 0.85,
         soundEnabled: true,
         backgroundMusic: false
       }
+    },
+    // ─── הורה (Round 3 schema) ───
+    {
+      id: 'p-parent-1',                        // crypto.randomUUID() — Round 3 patch
+      kind: 'parent',
+      name: 'אבא',
+      nameNiqud: null,
+      ttsOverride: null,
+      gender: 'boy',                           // 🆕 לדקדוק "אבא גאה"
+      role: 'father',                          // 'mother' | 'father' | 'guardian'
+      avatarType: 'photo',
+      photoStoreKey: 'photo-parent-1',
+      voiceRecordings: {                       // 🆕 Round 3: מאוחד
+        nameKey: null,                         // אופציונלי לשם-הורה
+        cameoKey: 'voice-cameo-parent-1'       // הקלטת-עידוד 4ש' (encrypted!)
+      },
+      pinHashRef: 'pin-shared',                // משותף ב-MVP, פר-הורה ב-Phase 2
+      createdAt: '2026-05-17'
     }
   ],
   lastActiveProfileId: 'p-1738249100',
@@ -834,6 +1281,7 @@ cd Interactive-educational-game
 | `docs/DEPLOY.md` | runbook: יצירת קיצור-דרך, עדכוני git, Export/Import, חזרה לגרסה קודמת, איבחון בעיות | בכל שינוי תהליך הדפלוי |
 | `docs/ASSETS.md` | רשימת כל נכס (אווטאר, צליל, mp3) + מקור + רישיון + קרדיט | בכל הוספת נכס |
 | `docs/PROGRESS.md` | **Master Status Dashboard** — סטטוס-בזמן-אמת של כל שלב, מה הושלם, מה בעבודה, מה תקוע, גרסה נוכחית, סשן-עבודה אחרון | בכל סוף-סשן-עבודה |
+| `docs/IDEAS.md` | **Future Ideas Backlog** — רעיונות-עתידיים מסווגים לפי-נושא (parent-engagement, gameplay, social, monetization), עם effort/value rating | בכל פעם שצץ רעיון חדש שלא נכנס ל-MVP |
 | `docs/PLAN-CONTROL.md` | **Plan Change Control** — כל שינוי שבוצע בתכנון, מתי, למה, אילו סעיפים הושפעו, וידוא-עקביות | בכל שינוי-תכנון משמעותי |
 | `docs/COUNCIL.md` | **High Council Reports** — דוחות-אישור של מועצה-גבוהה אחרי כל שלב | בסיום כל שלב-בנייה |
 | `docs/RECOVERY.md` | **Disaster Recovery Runbook** — תרחישי-חירום ומשבר (Patch מ-QA) | בכל זיהוי של תרחיש-חירום חדש |
@@ -850,7 +1298,7 @@ cd Interactive-educational-game
 | `docs/TESTING.md` | פרוטוקול בדיקות עם הילדים: כמה זמן סשן, איך לא להשפיע, מה לרשום, אילו אינדיקטורים-מצוקה לזהות | בדיקות-משתמש עם בני 4–6 דורשות מתודולוגיה. בלי זה — הבדיקות יהיו לא-עקביות |
 | `docs/STYLE-GUIDE.md` | מדריך-סגנון לכתיבת הקריינות (7 כללי-כתיבה, בנק-משפטים סטנדרטיים) — סקציה מ-PLAN.md מובאת כקובץ-נפרד | תוך כדי עבודה אני אצטרך לכתוב טקסטים חדשים. עדיף קובץ זמין בקליק אחד |
 
-**סה"כ מעודכן: 24 קבצי MD** (הוספת PERFORMANCE.md, PROGRESS.md, PLAN-CONTROL.md, COUNCIL.md, RECOVERY.md).
+**סה"כ מעודכן: 25 קבצי MD** (הוספת PERFORMANCE.md, PROGRESS.md, PLAN-CONTROL.md, COUNCIL.md, RECOVERY.md, **IDEAS.md** — CHG-005).
 
 ### `docs/PROGRESS.md` — Master Dashboard (פירוט)
 
@@ -1154,37 +1602,64 @@ Skill שאני אצור עבור הפרויקט. תוכן:
 
 ---
 
-## חוויית פעם-ראשונה (First-Run Experience)
+## חוויית פעם-ראשונה (First-Run Experience) — מעודכן ע"פ CHG-005
 
-**טריגר:** אין פרופילים ב-localStorage.
+**טריגר:** אין פרופילים ב-localStorage (לא child ולא parent).
 
-**זרימה (כל המסכים voice-first עם קריינות אוטומטית):**
+**זמן-משך:** ~3–5 דקות. ההורה והילד יחד.
 
-1. **מסך 1 — ברוכים הבאים:**
+**זרימה החדשה (5 מסכים, כל המסכים voice-first):**
+
+1. **מסך 1 — ברוכים-הבאים-קצר (~15ש'):**
    - דמות "פרופ' חכמוני" (ינשוף) מופיעה במרכז.
-   - קריינות: "שלום! אני פרופ' חכמוני. אני הולך ללמד אתכם איך להפעיל את המחשב. בוא נתחיל!"
-   - כפתור גדול: "המשך".
+   - קריינות: "שלום! אני פרופ' חכמוני. בוא נכיר אותך. ואת אמא או אבא."
+   - כפתור גדול: "בואו נתחיל".
 
-2. **מסך 2 — מה זה עכבר?:**
-   - איור של עכבר ענק במרכז, חצים מצביעים על שני הכפתורים.
-   - קריינות: "זה העכבר. כשמזיזים אותו, החץ על המסך זז. ולחיצה — מפעילה דברים. ננסה!"
+2. **מסך 2 — יצירת פרופיל-ילד (~60ש'):**
+   - **שלב 2a — שם:** Chips של 20 שמות-עבריים + "אחר (להקליד)" + "🔊 שמע את השם" (Pronunciation Preview).
+   - **שלב 2b — גיל:** Chips 4 / 5 / 6 / 7 / 8 — קריינות: "כמה אתה בן?"
+   - **שלב 2c — צבע-מועדף:** Grid 4×2 של 8 עיגולים-ענקיים (אדום, כתום, צהוב, ירוק, כחול, סגול, חום, ורוד).
+   - **שלב 2d — אווטאר או תמונה:** "🐰 חיה" או "📷 התמונה שלי".
 
-3. **מסך 3 — תרגול ראשון:**
-   - כוכב ענק זוהר במרכז.
-   - קריינות: "תלחץ על הכוכב הזה."
-   - לחיצה → אנימציית-זיקוקים → קריינות: "מצוין! אתה מוכן."
+3. **מסך 3 — יצירת פרופיל-הורה (~60-90ש'):**
+   - קריינות: "עכשיו תור של אמא או אבא. הם חלק מהמשחק שלך!"
+   - 2 כפתורים: **"📲 קרא לאמא או אבא"** (מומלץ, צליל מובחן) / "אני אעשה לבד".
+   - שלבים: שם → PIN של 4 ספרות → שאלת-recovery (תאריך-לידה DD/MM) → אווטאר/תמונה → 🎤 הקלטת-קול-עידוד (אופציונלית, 15ש' max) → "להוסיף הורה נוסף? (עד 2)".
 
-4. **מסך 4 — הגדרת הורה (עם Guest Mode — Patch מ-UX-Kid):**
-   - "עכשיו צריך עזרה מאמא או אבא."
-   - **2 כפתורים** (לא רק אחד):
-     - **"קרא לאמא/אבא"** (Primary CTA) — לחיצה משמיעה צליל-קריאה רם וברור ("דין-דון, צריכים אותך!") + מציג שעון-המתנה.
-     - **"שחק במצב-אורח"** (Secondary) — מאפשר 5 משימות-דמו בלי PIN, בלי לשמור התקדמות. ככה ילד שהגיע לבד לא יוותר על המשחק.
-   - מסך הורה: יצירת PIN של 4 ספרות + יצירת פרופילי הילדים.
+4. **מסך 4 — סיור-קצר עם פרופ' חכמוני (~30ש'):**
+   - איור-עכבר + תרגול-לחיצה ראשון (כוכב).
+   - "מצוין! אתה מוכן."
 
-5. **מסך 5 — בחירת פרופיל ראשונה ומשחק:**
-   - מסך הבית הרגיל מוצג; הילד בוחר את הפרופיל שלו ומתחיל את משימה 1.
+5. **מסך 5 — כניסה למשחק:**
+   - מסך הבית; הילד בוחר את הפרופיל שלו; **האווטאר של ההורה בפינה למעלה ב-60% אטימות** (Patch מ-CHG-005, ערוץ #1).
 
-הוויזרד הזה רץ פעם אחת בלבד. אחרי שהוקם PIN — גישה למסך-הוויזרד חוזרת רק דרך מסך-ההגדרות (בכפוף ל-PIN).
+הוויזרד הזה רץ פעם אחת בלבד. אחרי שהוקם — כל יצירת-פרופיל נוספת דרך מסך-ההורה (PIN required).
+
+### Guest Mode (לילד-לבד)
+
+במסך 3 (יצירת פרופיל-הורה), אם הילד לבד בלי הורה:
+- כפתור-secondary: **"שחק במצב-אורח"** — 5 משימות-דמו בלי לשמור התקדמות.
+- אחרי 3 הפעלות-אורח רצופות: קריינות "בוא נקרא לאמא או אבא כדי לשמור את הכוכבים!".
+
+### עזרי-תמיכה ל-Inactivity (Patches מ-UX-Kid)
+
+- **30ש':** דמות-המורה מנופפת מהפינה.
+- **60ש':** קריינות: "אתה עוד כאן? נמשיך כשתרצה."
+- **90ש' + 3 ניסיונות-שגויים:** מסך-עזרה "🆘 קרא לאמא או אבא" + צליל-קריאה אופציונלי.
+- **120ש':** Pause מלא — חזרה למסך-הפתיחה.
+
+### Confetti Ratchet-Down (Patch מ-UX-Kid)
+
+ב-3 משימות-ברצף — חגיגה מלאה. **מהמשימה ה-4 ברצף ואילך** — חגיגה מצומצמת. מונע overstimulation.
+
+### Parent Cameo בחגיגות (Patch מ-CHG-005, ערוץ #2+#3)
+
+בכל חגיגה (אקראית, **50% probability** — Round 3 patch, היה 30%), אחרי mascot — מתווסף **parent cameo**:
+- אווטאר/תמונה של הורה אקראי (מתוך שהוגדרו) מופיעה במרכז ל-3 שניות.
+- אם יש `voiceRecordings.cameoKey` → מתנגנת ההקלטה (pre-fetched בתחילת החגיגה — Round 3 patch).
+- אם אין → TTS דינמי עם gender-aware: "וואו! אבא גאה בך, גיבור!" / "אמא גאה בך, גיבורה!".
+- בסיום-עולם — שני ההורים יחד.
+- **Guard:** אם אין הורים — דילוג ל-mascot-only (Round 3 patch).
 
 ### עזרי-תמיכה ל-Inactivity (Patches מ-UX-Kid)
 
