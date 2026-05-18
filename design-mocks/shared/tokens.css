@@ -17,7 +17,9 @@
   /* ─── פלטה ראשית ─── */
   --color-sky: #6FC3DF;           /* רקע ראשי, מסך פתיחה */
   --color-sun: #FFD93D;           /* כפתור CTA, תגמולים */
-  --color-coral: #FF6B6B;         /* רקע/accent — אסור לטקסט-לבן עליו (1.7:1) */
+  --color-coral: #FF6B6B;         /* רקע/accent בלבד — אסור טקסט-לבן (1.7:1), אסור טקסט-כהה < 18px (3.8:1) */
+  /* Usage rule (R3.5): --color-coral רק כרקע-decoration או כcoral בלי טקסט עליו.
+     לטקסט/border — תמיד --color-coral-dark. אכיפה: AccessibilityInspector ב-R-N. */
   --color-coral-dark: #B91C1C;    /* טקסט/border לSecondary (5.5:1 על cream, עומד WCAG AA) */
   --color-mint: #6BCB77;          /* סיום משימה, התקדמות */
   --color-lavender: #C9A0DC;      /* רקעי משימות, גוון משני */
@@ -116,7 +118,7 @@
   --text-scale: 1.5;
 }
 
-/* ─── High-Contrast Mode ─── */
+/* ─── High-Contrast Mode (תוקן ב-R3.5: tertiary + tertiary-hover) ─── */
 [data-high-contrast="true"] {
   --color-sky: var(--hc-bg);
   --color-cream: var(--hc-bg);
@@ -125,6 +127,9 @@
   --btn-primary-text: #FFFFFF;
   --btn-secondary-text: var(--hc-text);
   --btn-secondary-border: 3px solid var(--hc-text);
+  --btn-tertiary-text: var(--hc-text);                       /* R3.5: היה #8E44AD שעלול להיכשל ב-HC */
+  --btn-tertiary-hover-bg: rgba(0, 0, 0, 0.08);              /* R3.5: rgba על HC במקום purple */
+  --btn-icon-bg: var(--hc-bg);                                /* R3.5: רקע-איקון עובר ל-HC bg */
 }
 
 /* ─── Reduced Motion (WCAG 2.2.2) ─── */

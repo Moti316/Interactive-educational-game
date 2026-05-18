@@ -41,6 +41,15 @@
 **נימוק:** דוחות-מועצה היו אנונימיים ("agent-security WARNING"). שמות תפקידיים = קריאות + דיון נעשה לבר-ביצוע ("בקש מ-SecurityAuditor לסקור"). פרופיל-עומק = כל סוכן יודע מה דומיין-הבלעדיות שלו והשראתו.
 **אלטרנטיבות שנשללו:** שמות אישיים בעברית (פחות מתארים את התפקוד); שמות גנריים ("Agent-1"...).
 
+## ADR-010 | 2026-05-19 | Universal Constraints ב-Briefs
+**החלטה:** כל brief ב-`docs/CLAUDE-DESIGN-BRIEFS.md` חייב לכלול סעיף "Universal Constraints" לפני ה-TASK. הסעיף מגדיר חוקים שמועצה אכפה: Security (SVG XSS prevention), Accessibility (ARIA, contrast pairs), Performance (size budgets), Integration (viewBox, naming), Hebrew (forbidden words).
+
+**נימוק:** בלי החוקים הללו, claude.ai יצור artifacts שייכשלו בבקרת-המועצה האחורית — בזבוז iteration. הוספת constraints לpre-flight מקצרת לoop "design → review → fix" ל-"review → design ראשון תקין".
+
+**מסמך נלווה:** `docs/COUNCIL.md` Round 3.5 (הסבב שזיהה את הצורך).
+
+**אכיפה:** PhaseGatekeeper בודק שכל artifact שמתקבל ב-Phase 0.5 עומד ב-constraints. אם לא — חזרה ל-claude.ai עם הdelta המסומן.
+
 ## ADR-009 | 2026-05-18 | פרוטוקול אישור-סיום-משימה
 **החלטה:** אימוץ `docs/TASK-COMPLETION-PROTOCOL.md` שמגדיר:
 - 5 סוגי משימות (Phase, Brief, Patch, Sub-task, Setup)

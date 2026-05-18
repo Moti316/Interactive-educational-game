@@ -2,6 +2,45 @@
 
 כל השינויים-המשמעותיים בפרויקט.
 
+## [0.4.0] - 2026-05-19 — R3.5 Plan-Wide Re-Review
+
+### Council Round 3.5 (Lens-based Synthesized Review)
+- 17 רבדי-עיצוב-ו-UX נסקרו דרך 11-agent system המעודכן (post-`23b2aa3`)
+- Synthesis ע"י CouncilChair → 8 P0 + 9 P1 patches = 17 patches יושמו
+- 6 P2 → backlog ב-`ISSUES.md`
+- תוצאה: 🟢 GO לשליחת Brief #2 המעודכן
+
+### Added — Briefs Universal Constraints
+- `docs/CLAUDE-DESIGN-BRIEFS.md` — סעיף חדש "Universal Constraints" שחובה לכל brief:
+  - Security (SecurityAuditor): אסור `<script>`/`<foreignObject>`/event handlers/external xlink:href ב-SVG
+  - A11y (AccessibilityInspector): `role="img"` + `aria-label`, contrast pairs table
+  - Performance (PerfBudgetEnforcer): SVG ≤8KB, אסור raster ב-SVG, אסור filters כבדים
+  - Integration (IntegrationVerifier): viewBox חובה, naming convention kebab-case
+  - Hebrew (HebrewLinguist): forbidden words רגשיים+טכניים
+- Color contrast pairs table — 6 זוגות מאומתים + 1 אסור (white על coral 1.7:1)
+- File naming convention — נתיבי-יעד מפורשים לכל brief
+
+### Added — Brief Enhancements
+- Brief #2 (Mascot): 5 → 6 poses (נוסף "encouraging")
+- Brief #2: viewBox + aria-label + file size budget
+- Brief #6 (Sound Design Spec) — stub חדש ל-Phase 8 ליטוש
+- Brief #7 (World Map Mockup) — stub חדש ל-Phase 3
+
+### Changed — Design Tokens
+- `tokens.css`: `--color-coral` קיבל usage rule (רקע-בלבד, אסור טקסט עליו)
+- `tokens.css`: High-Contrast mode עכשיו override גם `--btn-tertiary-text`, `--btn-tertiary-hover-bg`, `--btn-icon-bg`
+
+### Changed — Skills
+- `hebrew-narration.md`: מילון-אסור הורחב לרגשי-שלילי ("כשלת", "טעית", "לא נכון" וכו') + חלופות-מותרות
+- `hebrew-narration.md`: gender field עבר מ-"אופציה" ל-"חובה" (תואם CHG-005). 3 ערכים: boy/girl/neutral
+- `animation-choreography.md`: `prefers-reduced-motion` הורחב — Mascot bounce מבוטל לחלוטין, Hint pulse → outline סטטי, Drive-sync rotation → opacity-pulse
+
+### Documentation
+- `docs/COUNCIL.md`: Round 3.5 entry מלא (17 patches מתועדים)
+- `docs/DECISIONS.md`: ADR-010 (Universal Constraints כפרוטוקול)
+- `docs/ROADMAP.md`: 2 drift log entries (R3.5 + DoD update)
+- `docs/PROGRESS.md`: Last Council + Last DoD-verified עודכנו
+
 ## [0.3.0] - 2026-05-18 — Identities Formalized
 
 ### Added — צוות "מצפן" (Compass)

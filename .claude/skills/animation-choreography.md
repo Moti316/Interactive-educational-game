@@ -67,15 +67,25 @@ description: Animation choreography skill for Chachmoni. Activates for any CSS a
 - כפתור-Stop (🛑) — WCAG 2.2.2.
 - ב-reduced-motion: לא מופיע.
 
-## `prefers-reduced-motion`
+## `prefers-reduced-motion` (מורחב ב-R3.5)
 
 ```css
 @media (prefers-reduced-motion: reduce) {
   /* Transforms (slide, scale, spin) → opacity-only fades */
   /* Celebrations מתקצרות ל-300ms סה"כ */
   /* Confetti לא מופיע */
+  /* Mascot scale-in bounce — מבוטל לחלוטין (R3.5):
+     - אסור ease-bounce
+     - אסור scale-in
+     - דמות-המורה מופיעה ב-fade-in 200ms בלבד
+  */
+  /* Star particles אנימציה (כוכבים עפים מעלה) → סטטיים, opacity 1 */
+  /* Hint pulse (👆 פולס על המטרה) → לא מופיע. במקום: outline 3px מבליט */
+  /* Drive-sync indicator rotation → סטטי, opacity-pulse בלבד */
 }
 ```
+
+**עיקרון:** ב-reduced-motion, האנימציה החליפה את משמעותה — לא מעוצב יפה, אלא **נטרלי לחלוטין**. המשתמש קיבל את האותות (משוב על clicks, חגיגה אחרי הצלחה) בלי תנועה.
 
 ## טריגרים
 

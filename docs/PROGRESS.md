@@ -9,8 +9,9 @@
 |------|------|
 | **Phase נוכחי** | 0.5 (30%) |
 | **Next Gate** | R4 (Pre-Phase-1, אחרי השלמת Briefs #2–5) |
-| **Last DoD-verified** | 2026-05-17 (Phase 0, manual) |
-| **Active blockers** | Briefs #2–5 (תלות-הורה) |
+| **Last DoD-verified** | 2026-05-19 (Phase 0.5 re-verified post-R3.5 — DoD מעודכן) |
+| **Last Council** | R3.5 (2026-05-19, 🟢 GO with 17 patches) |
+| **Active blockers** | Briefs #2–5 (תלות-הורה — עכשיו בגרסה משופרת) |
 
 ## 🚦 סטטוס שלבים
 

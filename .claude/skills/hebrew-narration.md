@@ -35,14 +35,26 @@ description: Hebrew narration writing guide for Chachmoni. Activates for narrati
 
 מילים שלא נכתוב בקריינות (אבל מותרות בטקסט-להורה):
 
-❌ **אסור:** PIN, Drive, GitHub, OAuth, sync, Anthropic, AI, API, modal, dashboard, log, password, login, logout
+### ❌ אסור: טכני
+PIN, Drive, GitHub, OAuth, sync, Anthropic, AI, API, modal, dashboard, log, password, login, logout, browser, link, click, hover, profile, avatar (כשם-עצם — מותר "תמונה" / "דמות")
 
-✅ **תרגומים-מותרים:**
+### ❌ אסור: רגשי-שלילי (R3.5 — חיוני לprinciple "אין מסכי-כישלון")
+"כשלת", "טעית", "לא נכון", "לא נכון!", "אסור", "אסור לך", "שגית", "פספסת", "לא הצלחת", "החמצת", "פשלה", "אופס" (חוץ מ"אופ!" שמותר)
+
+### ✅ תרגומים-מותרים (לטכני):
 - PIN → "קוד-סודי" / "סיסמה"
 - Drive → "מקום-השמירה" / "ענן"
 - sync → "שמירה"
 - logout → "להתראות"
 - modal → "חלון קטן"
+- profile → "מי משחק?"
+- avatar → "תמונה" / "החיה שלך"
+
+### ✅ חלופות-מותרות (לרגשי-שלילי):
+- כשלת → "כמעט!" / "ננסה שוב" / "בוא ננסה שוב יחד"
+- לא נכון → "חכה רגע" / "ננסה אחרת"
+- אסור → "בוא ננסה את [המטרה הנכונה]"
+- אופס → "אופ!" (אישית, חיובי) — בלבד
 
 ## TTS Pronunciation — מילים-קריטיות
 
@@ -73,7 +85,11 @@ description: Hebrew narration writing guide for Chachmoni. Activates for narrati
 
 - מצב חד-משתמש (פרופיל פעיל) — **גוף יחיד**: "תלחץ", "בוא ננסה"
 - מסך-פתיחה לכלל-המשפחה — זוגי: "בואו"
-- אופציה: זיהוי-מגדר בפרופיל (m/f) — משפיע על "תלחץ"/"תלחצי"
+- **חובה** (R3.5 — לפי CHG-005): זיהוי-מגדר בפרופיל דרך `profile.gender ∈ {'boy', 'girl', 'neutral'}`
+  - `boy` → גוף-שני זכר: "תלחץ", "בוא ננסה"
+  - `girl` → גוף-שני נקבה: "תלחצי", "בואי ננסה"
+  - `neutral` → גוף-רבים נייטרלי: "לחצו", "בואו ננסה"
+- **אסור** ברירת-מחדל גנרית — תמיד לבדוק `profile.gender` לפני המשפט-המוקרא
 
 ## טריגרים
 

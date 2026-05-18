@@ -13,10 +13,10 @@
 | **Phase נוכחי** | 0.5 (30%) |
 | **Next Gate** | R4 (אחרי השלמת Briefs #2–5) |
 | **ETA ל-MVP** | 14–21 ימי-עבודה מהיום (תלוי בקצב Briefs) |
-| **Last DoD-verified** | 2026-05-17 (Phase 0) |
-| **Last RoadmapKeeper refresh** | 2026-05-18 (יצירת ROADMAP) |
-| **Active blockers** | Briefs #2–5 (תלות-הורה) |
-| **Recent council** | R3 (CHG-005, 🟢 GO with 14 patches) |
+| **Last DoD-verified** | 2026-05-19 (Phase 0.5 re-verified post-R3.5: עדיין 1/5, אבל DoD מעודכן) |
+| **Last RoadmapKeeper refresh** | 2026-05-19 (אחרי R3.5) |
+| **Active blockers** | Briefs #2–5 (תלות-הורה — עכשיו בגרסה משופרת) |
+| **Recent council** | R3.5 (Plan-Wide Re-Review, 🟢 GO with 17 patches מוטמעים) |
 
 ---
 
@@ -266,6 +266,8 @@
 | Date | Phase | Change | Reason | Re-baseline? |
 |------|-------|--------|---------|---------------|
 | 2026-05-18 | (init) | יצירת ROADMAP.md | אין SSoT תפעולי. PLAN.md גדול מדי לשימוש-יום-יום | לא |
+| 2026-05-19 | (R3.5) | 17 patches יושמו (8 P0 + 9 P1) | סבב-מועצה רוחבי על כל הרבדים אחרי שדרוג הצוות | לא — ETA לא השתנה |
+| 2026-05-19 | 0.5 | DoD איכות הbriefs הועלה (Universal Constraints) | R3.5 הוסיף security/a11y/perf constraints. Brief #2 הורחב ל-6 poses | לא |
 
 ---
 

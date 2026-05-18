@@ -1,5 +1,7 @@
 # Claude Design Briefs — חכמוני
 
+> **עדכן ב-R3.5 (2026-05-19):** הוספת "Universal Constraints" — כל brief חייב לציית להם.
+
 ## איך זה עובד (בלי לחשוב)
 
 1. **בחר brief** מהרשימה למטה
@@ -11,6 +13,71 @@
 זה זהה לכל brief. אין צעד חמישי-חצי. רק העתק-הדבק.
 
 **הסדר המומלץ:** 1 → 2 → 3 → 4 → 5 (בונה את ה-design system מהבסיס למעלה).
+
+---
+
+## 🛡️ Universal Constraints — חובה לכל Brief (R3.5)
+
+כל brief שנשלח ל-claude.ai חייב לכלול את הסעיף הבא לפני ה-TASK. **אסור לדלג.** הסעיף הוגדר ע"י Council R3.5 (SecurityAuditor + AccessibilityInspector + PerfBudgetEnforcer + IntegrationVerifier).
+
+```
+═══════════════════════════════════════════════
+UNIVERSAL CONSTRAINTS (חובה — אסור לדלג)
+═══════════════════════════════════════════════
+
+### Security (SecurityAuditor)
+- אסור `<script>` בתוך SVG
+- אסור `<foreignObject>` (יכול לטעון HTML זדוני)
+- אסור event handlers: `onclick`, `onload`, `onerror`, `onmouseover` וכו'
+- אסור `xlink:href` או `href` ל-URL חיצוני (data:, http:, https:)
+- אסור `<use href="...">` חוץ מאותו קובץ
+- אסור inline JavaScript בכלל
+
+### Accessibility (AccessibilityInspector)
+- `<svg>` חייב `role="img"` + `aria-label="תיאור בעברית"`
+- אם דקורטיבי: `role="presentation"` + `aria-hidden="true"`
+- ניגודיות צבעים: ≥4.5:1 לטקסט רגיל, ≥3:1 לטקסט-גדול ול-UI
+- בדוק כל זוג foreground/background מ-פלטה (8 צבעים)
+- כל אנימציה — נא ספק fallback ל-`prefers-reduced-motion: reduce`
+- אל תסתמך על צבע בלבד למסור מידע (תמיד צורה/אייקון/טקסט בנוסף)
+
+### Performance (PerfBudgetEnforcer)
+- כל SVG ≤ 8KB (גודל פיזי, אחרי minify)
+- אסור `<image>` עם base64 raster ב-SVG (PNG/JPG embedded)
+- אסור filter effects כבדים (`feGaussianBlur` עם stdDeviation > 5, drop-shadow מורכב)
+- מקס 200 path points פר-SVG
+- viewBox קומפקטי (לא 1000x1000 אם אפשר 100x100)
+
+### Integration (IntegrationVerifier)
+- חובה `viewBox="0 0 W H"` בכל `<svg>` (לא רק `width`/`height` קבועים)
+- חובה `xmlns="http://www.w3.org/2000/svg"`
+- שמות-קבצים: kebab-case בלבד (`professor-chachmoni-greeting.svg`)
+- SVG חייב לעבוד ב-3 הקשרים: `<img src="...">`, inline `<svg>`, ו-`background-image: url(data:...)`
+
+### Hebrew (HebrewLinguist)
+- כל טקסט גלוי בעברית RTL, פונט Heebo או Varela Round
+- אם השם מגדרי (יואב/מיה) — לציין מגדר
+- אסור ב-copy: "כשלת", "טעית", "לא נכון", "אסור", "PIN", "OAuth", "API"
+- מותר בקריינות (ראה `hebrew-narration.md`): "כמעט!", "ננסה שוב", "וואו"
+
+### Color Contrast (לזוגות מהפלטה — בדוק לפני אישור)
+- text #2D2A26 על #FFFCF2 (cream) — ✅ 13.5:1
+- text #2D2A26 על #6FC3DF (sky) — ✅ 7.2:1
+- text #2D2A26 על #FFD93D (sun) — ✅ 10.5:1
+- text #B91C1C (coral-dark) על #FFFCF2 — ✅ 6.8:1
+- text white על #FF6B6B (coral light) — ❌ 1.7:1 — אל תשתמש בצירוף הזה
+- text white על #B91C1C — ✅ 6.4:1
+
+### Naming convention לקבצי-יעד
+- Mascot: `assets/mascot/professor-chachmoni-{pose}.svg`
+- Avatars: `assets/avatars/avatar-{01..12}-{kind}.svg` (לדוגמה `avatar-01-rabbit.svg`)
+- Welcome mock: `design-mocks/02-welcome.html`
+- Task mock: `design-mocks/11-task-click-balloons.html`
+- Celebration mock: `design-mocks/12-success-celebration.html`
+═══════════════════════════════════════════════
+```
+
+**זה הסעיף הקבוע.** העתק אותו לכל brief בנפרד (חוץ מ-Brief #1 שכבר הושלם).
 
 ---
 
@@ -77,12 +144,14 @@ NOTES: [אופציונלי]
 
 ---
 
-## ═══ Brief #2 — Mascot "פרופ' חכמוני" — 5 Poses ═══
+## ═══ Brief #2 — Mascot "פרופ' חכמוני" — 6 Poses (עודכן R3.5) ═══
 
 ```
 שלום Claude.
 
-זה brief מפרויקט עם Claude Code. תפקידך: לייצר 5 pose-ים של דמות-המורה ולהחזיר בפורמט מובנה.
+זה brief מפרויקט עם Claude Code. תפקידך: לייצר 6 pose-ים של דמות-המורה ולהחזיר בפורמט מובנה.
+
+[הדבק כאן את Universal Constraints מ-CLAUDE-DESIGN-BRIEFS.md]
 
 ═══════════════════════════════════════════════
 PROJECT CONTEXT
@@ -91,35 +160,45 @@ PROJECT CONTEXT
 שם המשחק: חכמוני
 דמות מרכזית: ינשוף-מורה ידידותי בשם "פרופ' חכמוני"
 קהל יעד: ילדים בני 4-6 שעדיין לא קוראים
-פלטה: שמיים #6FC3DF, שמש #FFD93D, נענע #6BCB77, לבנדר #C9A0DC, כתום חם #FFA552, לבן-רך #FFFCF2
+פלטה רשמית: שמיים #6FC3DF, שמש #FFD93D, אלמוגי בהיר #FF6B6B (אסור עם טקסט-לבן), אלמוגי כהה #B91C1C, נענע #6BCB77, לבנדר #C9A0DC, לבן-רך #FFFCF2, טקסט #2D2A26
 
 ═══════════════════════════════════════════════
 TASK
 ═══════════════════════════════════════════════
 
-צור 5 pose-ים של ינשוף-המורה. הוא צריך להיראות כמשפחה אחת — אותו עיצוב, אותם צבעים, רק תנוחות שונות.
+צור 6 pose-ים של ינשוף-המורה. הוא צריך להיראות כמשפחה אחת — אותו עיצוב, אותם צבעים, רק תנוחות שונות.
 
-ה-5 pose-ים:
+ה-6 pose-ים:
 1. standing-wave — עומד, מנופף שלום בכנף אחת. למסך פתיחה.
 2. pointing — מצביע עם כנף על משהו. למסכי-הסבר.
 3. celebrating — קופץ עם כנפיים פתוחות, כוכבים מסביב. לחגיגת-הצלחה.
 4. thinking — כנף על המקור, חושב. למסך-טעינה/רמז.
-5. sleeping — עיניים סגורות, "ZZZ" קטן מעליו. למסך-inactivity.
+5. encouraging — מחייך, כנף אחת מורמת לעידוד "ננסה שוב". אחרי טעות עדינה. (חדש — R3.5)
+6. sleeping — עיניים סגורות, "ZZZ" קטן מעליו. למסך-inactivity.
 
 מאפיינים אחידים:
-- ינשוף עם גוף עגול, שמיים-כחול עם בטן-כתום
+- ינשוף עם גוף עגול, שמיים-כחול עם בטן-כתום (גוון בטוח: #FFA552)
 - עיניים גדולות עגולות עם בבואה לבנה
 - מקור כתום-קטן-משולש
 - חובש כובע-מורה מרובע (אקדמי) קטן עם פונפון נענע
 - ידידותי, חמוד, **לא** מאיים — לא חוטם חד, לא ציפורניים, לא צל-כהה
 - סגנון flat-illustration, vector-friendly
-- רקעי-שקיפות
+- רקעי-שקיפות (transparent backgrounds)
+- כל SVG: viewBox="0 0 240 240" (ריבועי, מקסימום 240×240px native, אבל ניתן לscale)
+- file size: ≤ 8KB אחרי minify
 
 ═══════════════════════════════════════════════
 HOW TO RESPOND
 ═══════════════════════════════════════════════
 
-צור artifact HTML עם 5 ה-pose-ים כ-SVG inline, ב-grid 3×2 (השישי ריק). תחת כל אחד — תווית בעברית.
+צור artifact HTML עם 6 ה-pose-ים כ-SVG inline, ב-grid 3×2. תחת כל אחד — תווית בעברית + alt-text באנגלית.
+
+כל SVG חייב:
+- viewBox="0 0 240 240"
+- xmlns="http://www.w3.org/2000/svg"
+- role="img"
+- aria-label בעברית (לדוגמה "פרופ' חכמוני מנופף שלום")
+- אסור script/foreignObject/event handlers/external xlink:href
 
 אחרי ה-artifact, בטקסט-הצ'אט, הוסף:
 
@@ -133,10 +212,14 @@ INDIVIDUAL_SVGS:
 - pointing: [SVG inline]
 - celebrating: [SVG inline]
 - thinking: [SVG inline]
+- encouraging: [SVG inline]
 - sleeping: [SVG inline]
+FILE_SIZES_KB: [pose: KB, pose: KB, ...]
 NOTES: [אופציונלי]
 ═══ END PASTE ═══
 ```
+
+**נתיב יעד אחרי הקבלה:** `assets/mascot/professor-chachmoni-{standing-wave,pointing,celebrating,thinking,encouraging,sleeping}.svg`
 
 ---
 
@@ -331,3 +414,89 @@ DESIGN_DECISIONS: [בעברית]
 SUGGESTIONS_FOR_OTHER_TEMPLATES: [אופציונלי]
 ═══ END PASTE ═══
 ```
+
+---
+
+## ═══ Brief #6 — Sound Design Spec (חדש R3.5 — Stub) ═══
+
+```
+שלום Claude.
+
+זה brief מפרויקט עם Claude Code. תפקידך: לתכנן את 11+ צלילי-העידוד/UI של חכמוני (לא להפיק אודיו — רק spec).
+
+[הדבק כאן את Universal Constraints]
+
+═══════════════════════════════════════════════
+TASK
+═══════════════════════════════════════════════
+
+צור spec של 11+ sound files (MP3) למשחק:
+
+UI sounds:
+- ui-click.mp3 (לחיצה על כפתור — קצר, רך, ~150ms)
+- ui-hover.mp3 (hover — שריקה עדינה, ~100ms)
+- ui-back.mp3 (חזרה למסך קודם — נע למטה)
+
+Game feedback:
+- success-small.mp3 (יופי! — חצי שנייה)
+- success-medium.mp3 (כל הכבוד! — שנייה)
+- success-world.mp3 (סיום עולם — 2 שניות, מרשים)
+- almost.mp3 (כמעט! — עדין, לא מאיים)
+- balloon-pop.mp3 (פיצוץ בלון — קצר וקופצני)
+- star-collect.mp3 (איסוף כוכב — צלצול קצר)
+
+Atmosphere (לולאות אופציונליות, ניתנים לכיבוי):
+- ambient-classroom.mp3 (רקע-כיתה רך, 60 שניות לולאה)
+- celebration-loop.mp3 (לולאת חגיגה אופציונלית)
+
+לכל קובץ: שם, אורך-מטרה, תיאור-רגשי, רמת-עוצמה מומלצת (db), הקשר-שימוש.
+
+═══ START PASTE ═══
+BRIEF: 6
+SUBJECT: Sound Design Spec
+ARTIFACT_HTML: [טבלת spec ב-HTML]
+SOUND_FILES:
+- ui-click: {duration, db, description}
+- ...
+NOTES: [המלצות להפקה — מי / כמה זמן / רישוי]
+═══ END PASTE ═══
+```
+
+**מטרת ה-stub:** ההפקה תהיה ב-Phase 8 (ליטוש). זה רק spec — לא אודיו אמיתי.
+
+---
+
+## ═══ Brief #7 — World Map Mockup (חדש R3.5 — Stub) ═══
+
+```
+שלום Claude.
+
+זה brief מפרויקט עם Claude Code. תפקידך: mockup ל-world-map screen.
+
+[הדבק כאן את Universal Constraints]
+
+═══════════════════════════════════════════════
+TASK
+═══════════════════════════════════════════════
+
+מסך-העולמות הראשי. הילד בוחר עולם, ובתוכו משימה.
+
+תכולה:
+- header: ⭐ count + 🏠 home + 🔊 narrate
+- 4 כרטיסי-עולם גדולים (220×280 כל אחד), grid 2×2:
+  - עולם העכבר (🖱) — פעיל מההתחלה
+  - עולם המקלדת (⌨️) — נעול (PIN פעולה אחרי 10 משימות עכבר)
+  - עולם החלון (🪟) — נעול
+  - עולם הדפדפן (🌐) — נעול
+- לכל כרטיס: מד-התקדמות חזותי (לדוגמה: 3/12 משימות הושלמו)
+- נעולים: גוון מעומעם + 🔒 קטן
+
+═══ START PASTE ═══
+BRIEF: 7
+SUBJECT: World Map Mockup
+ARTIFACT_HTML: [HTML mockup]
+DESIGN_DECISIONS: [בעברית]
+═══ END PASTE ═══
+```
+
+**נתיב יעד:** `design-mocks/10-world-map.html`
