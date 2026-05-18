@@ -1,0 +1,140 @@
+/* ============================================================
+   חכמוני — Design Tokens (Single Source of Truth)
+   ============================================================
+   זהו ה-source-of-truth של העיצוב. הקובץ הזה משותף בין:
+   - design-mocks/* (HTML mockups)
+   - styles/global.css (קוד המשחק האמיתי — יבא מכאן)
+
+   כל ערך כאן חייב לעמוד בבדיקות:
+   - Color Contrast: WCAG AA (≥4.5:1 לטקסט רגיל, ≥3:1 לטקסט גדול)
+   - Touch Target: מינ' 80×80px (גודל-יד של בן 4)
+   - Motion: עדין, איטי, predictable
+
+   עודכן ע"פ Patches מהמועצה (Round 2 final).
+============================================================ */
+
+:root {
+  /* ─── פלטה ראשית ─── */
+  --color-sky: #6FC3DF;           /* רקע ראשי, מסך פתיחה */
+  --color-sun: #FFD93D;           /* כפתור CTA, תגמולים */
+  --color-coral: #FF6B6B;         /* רקע/accent — אסור לטקסט-לבן עליו (1.7:1) */
+  --color-coral-dark: #B91C1C;    /* טקסט/border לSecondary (5.5:1 על cream, עומד WCAG AA) */
+  --color-mint: #6BCB77;          /* סיום משימה, התקדמות */
+  --color-lavender: #C9A0DC;      /* רקעי משימות, גוון משני */
+  --color-cream: #FFFCF2;         /* רקע פנימי של כרטיסים */
+  --color-text: #2D2A26;          /* טקסט — לא שחור, רך יותר */
+
+  /* ─── High-Contrast Mode (toggle ידני בהגדרות-הורה) ─── */
+  --hc-bg: #FFFFFF;
+  --hc-text: #000000;
+  --hc-primary: #0000AA;
+  --hc-highlight: #FFFF00;
+
+  /* ─── טיפוגרפיה ─── */
+  --font-heading: 'Varela Round', 'Heebo', sans-serif;
+  --font-body: 'Heebo', 'Assistant', sans-serif;
+  --font-size-h1: 72px;
+  --font-size-h2: 48px;
+  --font-size-body: 24px;
+  --font-size-large: 32px;
+  --font-size-button: 28px;
+  --line-height-base: 1.6;
+  --text-scale: 1;  /* Larger-text mode: x1, x1.25, x1.5 */
+
+  /* ─── Spacing ─── */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 32px;
+  --space-lg: 64px;
+  --space-xl: 96px;
+
+  /* ─── Radius ─── */
+  --radius-sm: 16px;
+  --radius-md: 24px;
+  --radius-lg: 32px;
+  --radius-pill: 9999px;
+
+  /* ─── Shadows (רכים, לא קווי-מתאר) ─── */
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.12);
+  --shadow-cta: 0 8px 24px rgba(255, 217, 61, 0.4);
+
+  /* ─── Motion (Easing & Durations) ─── */
+  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-instant: 100ms;
+  --duration-quick: 200ms;
+  --duration-base: 400ms;
+  --duration-celebration: 800ms;
+
+  /* ─── Buttons — Primary CTA ─── */
+  --btn-primary-bg: var(--color-sun);
+  --btn-primary-text: var(--color-text);
+  --btn-primary-shadow: var(--shadow-cta);
+  --btn-primary-hover-bg: #FFCE10;
+  --btn-primary-min-height: 96px;
+  --btn-primary-padding: 24px 48px;
+  --btn-primary-font: 700 var(--font-size-button)/1.2 var(--font-body);
+
+  /* ─── Buttons — Secondary (תוקן ב-Round 2) ─── */
+  --btn-secondary-bg: var(--color-cream);
+  --btn-secondary-text: var(--color-coral-dark);    /* #D14545 — היה #FF6B6B שנכשל ניגודיות */
+  --btn-secondary-border: 3px solid var(--color-coral-dark);
+
+  /* ─── Buttons — Tertiary / Ghost ─── */
+  --btn-tertiary-bg: transparent;
+  --btn-tertiary-text: #8E44AD;
+  --btn-tertiary-hover-bg: rgba(142, 68, 173, 0.08);
+
+  /* ─── Buttons — Icon-only ─── */
+  --btn-icon-bg: rgba(255, 255, 255, 0.85);
+  --btn-icon-size: 64px;
+
+  /* ─── States ─── */
+  --btn-pulse-scale: 1.02;
+  --btn-hover-scale: 1.05;
+  --btn-press-scale: 0.95;
+  --btn-disabled-opacity: 0.5;
+  --btn-focus-ring: 4px solid #0066CC;  /* תוקן ב-Round 2 — היה #4DA8FF שכמעט נכשל */
+
+  /* ─── Audio (TTS) ─── */
+  --tts-rate: 0.85;     /* תוקן ב-Round 2 — היה 0.75, מחקר הראה ש-0.85 טוב יותר */
+  --tts-pitch: 1.1;
+  --tts-lang: 'he-IL';
+
+  /* ─── Layout ─── */
+  --min-window-width: 1024px;
+  --min-window-height: 600px;
+}
+
+/* ─── Larger-text Mode ─── */
+[data-text-size="large"] {
+  --text-scale: 1.25;
+}
+[data-text-size="xlarge"] {
+  --text-scale: 1.5;
+}
+
+/* ─── High-Contrast Mode ─── */
+[data-high-contrast="true"] {
+  --color-sky: var(--hc-bg);
+  --color-cream: var(--hc-bg);
+  --color-text: var(--hc-text);
+  --btn-primary-bg: var(--hc-primary);
+  --btn-primary-text: #FFFFFF;
+  --btn-secondary-text: var(--hc-text);
+  --btn-secondary-border: 3px solid var(--hc-text);
+}
+
+/* ─── Reduced Motion (WCAG 2.2.2) ─── */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-quick: 50ms;
+    --duration-base: 50ms;
+    --duration-celebration: 100ms;
+    --btn-hover-scale: 1;
+    --btn-press-scale: 1;
+    --btn-pulse-scale: 1;
+  }
+}

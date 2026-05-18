@@ -1,0 +1,48 @@
+# ============================================================
+# חכמוני — .gitignore (מורחב ע"פ Patch מ-Security)
+# ============================================================
+
+# Per-machine / Local
+.env
+.env.local
+.vercel/
+node_modules/
+.DS_Store
+Thumbs.db
+*.log
+.claude/local-secrets.*
+profiles-backup-*.json
+
+# Secrets — חובה ביטחונית
+*.key
+*.pem
+*.p12
+*.pfx
+secrets.*
+config.local.*
+oauth-client*.json
+client-secret*.json
+credentials*.json
+api-keys*
+anthropic-key*
+gcp-credentials*
+
+# Development / Test
+.idea/
+.vscode/settings.json
+*.swp
+*.swo
+.tmp/
+coverage/
+playwright-report/
+lighthouse-report-*.json
+
+# Backups / temp files
+*.bak
+*.tmp
+~$*
+
+# Git sync
+.git/sync.lock
+.git/SYNC_CONFLICT
+.git/COMMIT_MSG.txt
