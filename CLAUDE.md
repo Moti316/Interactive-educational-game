@@ -6,10 +6,13 @@
 
 ## איפה מתחילים בכל סשן
 
-1. **קרא את `docs/PROGRESS.md`** — סטטוס בזמן-אמת של כל שלב (מתעדכן בסוף כל סשן).
-2. **קרא את `docs/TASKS.md`** — מה הושלם, מה בעבודה, מה נשאר.
-3. **קרא את `docs/ISSUES.md`** — באגים פתוחים.
-4. אם צריך הקשר עמוק יותר — `PLAN.md` (התכנון המלא, ~230KB).
+1. **קרא את `docs/ROADMAP.md`** — תוכנית-עבודה חיה: Phase נוכחי, Next Gate, ETA.
+2. **קרא את `docs/PROGRESS.md`** — סטטוס בזמן-אמת של כל שלב.
+3. **קרא את `docs/TASKS.md`** — מה הושלם, מה בעבודה, מה נשאר.
+4. **קרא את `docs/ISSUES.md`** — באגים פתוחים.
+5. אם צריך הקשר על הצוותים — `docs/TEAM-COMPASS.md` + `docs/TEAM-COUNCIL.md`.
+6. אם צריך הקשר על תהליך אישור-סיום — `docs/TASK-COMPLETION-PROTOCOL.md`.
+7. אם צריך הקשר עמוק יותר — `PLAN.md` (התכנון המלא, ~230KB).
 
 ## עקרונות קוד פר-פרויקט (קריטיים — לא לעבור!)
 
@@ -43,10 +46,32 @@
 - `claude-api` — Phase 2 (AI generator)
 - `fewer-permission-prompts`, `update-config`
 
-### High Council Sub-Agents (`.claude/agents/`)
-9 sub-agents: `agent-qa`, `agent-security`, `agent-ux-kid`, `agent-a11y`, `agent-hebrew`, `agent-performance`, `agent-code-review`, `agent-integration`, `agent-council-chair`.
+### הצוותים שלנו — 11 Sub-Agents
 
-מופעלים בסיום כל שלב-בנייה (Full Council תחת מנוי Max — חינמי).
+#### ⚖️ המועצה הגבוהה (High Council) — 9 חברים
+פוסקת **איכות** בסיום כל שלב-בנייה. ראה [`docs/TEAM-COUNCIL.md`](./docs/TEAM-COUNCIL.md).
+
+| 🎭 | שם תפקיד | קוד |
+|----|-----------|------|
+| 🛡️ | **SecurityAuditor** | `agent-security` |
+| 👶 | **ChildUXAdvocate** | `agent-ux-kid` |
+| ♿ | **AccessibilityInspector** | `agent-a11y` |
+| 🇮🇱 | **HebrewLinguist** | `agent-hebrew` |
+| ⚡ | **PerfBudgetEnforcer** | `agent-performance` |
+| 🔍 | **CodeReviewer** | `agent-code-review` |
+| 🔗 | **IntegrationVerifier** | `agent-integration` |
+| 🧪 | **QualityAssurance** | `agent-qa` |
+| ⚖️ | **CouncilChair** | `agent-council-chair` (יו"ר) |
+
+#### 🧭 מצפן (Compass) — 2 חברים
+מורה **כיוון** — מוודא שאנחנו במסלול. ראה [`docs/TEAM-COMPASS.md`](./docs/TEAM-COMPASS.md).
+
+| 🎭 | שם תפקיד | קוד |
+|----|-----------|------|
+| 🗺️ | **RoadmapKeeper** | `agent-roadmap-keeper` (PM) |
+| 🛡️ | **PhaseGatekeeper** | `agent-phase-gatekeeper` (DoD verifier) |
+
+**הפעלה:** מועצה — בסיום כל Phase (Full Council תחת מנוי Max). מצפן — אוטומטית אחרי כל סבב + סיום-Phase, או on-demand.
 
 ## עדכון תיעוד תוך כדי עבודה
 

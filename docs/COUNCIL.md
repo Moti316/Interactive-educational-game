@@ -1,20 +1,30 @@
 # COUNCIL Reports — High Council Sub-Agent Reviews
 
+> **מסמך הזהות של המועצה:** [`TEAM-COUNCIL.md`](./TEAM-COUNCIL.md) — 9 חברים בשמות תפקידיים.
+> **Roadmap impact:** כל סבב מסתיים ב-RoadmapKeeper שמוסיף שורת drift impact ל-[`ROADMAP.md`](./ROADMAP.md).
+
 ## Pre-Build Reviews (תכנון)
 
 ### Round 1 — 2026-05-17 (Pre-Build Initial)
-**8/8 WARNING.** 40+ patches זוהו, יושמו ב-PLAN.md.
+**Members:** SecurityAuditor, ChildUXAdvocate, AccessibilityInspector, HebrewLinguist, PerfBudgetEnforcer, CodeReviewer, IntegrationVerifier, QualityAssurance, CouncilChair
+**Result:** 8/8 WARNING. 40+ patches זוהו, יושמו ב-PLAN.md.
+**Roadmap impact:** baseline נקבע.
 
 ### Round 2 — 2026-05-17 (Verification)
-**3 PASS (Security, Performance, Code-Review), 5 WARNING.** 5 Round-2-final fixes יושמו.
+**Members:** Same as R1.
+**Result:** 3 PASS (SecurityAuditor, PerfBudgetEnforcer, CodeReviewer), 5 WARNING. 5 Round-2-final fixes יושמו.
+**Roadmap impact:** ללא drift.
 
 ### Round 3 — 2026-05-17 (CHG-005 — Parent Profiles)
-**5/5 reviewed:**
-- 👶 UX-Kid: 🔴 **FAIL** (First-Run 3-5 דק' = נצח לבן-4)
-- 🇮🇱 Hebrew: 🟡 WARNING (gender field, 2sec recording, Niqud Picker)
-- 🛡️ Security: 🟡 WARNING (voice unencrypted, recovery lockout)
-- 🔍 Code-Review: 🟡 WARNING (parents.js duplication, naming)
-- 🔗 Integration: 🟡 WARNING (IndexedDB schema, orphan blobs)
+**Members (5/9):** ChildUXAdvocate, HebrewLinguist, SecurityAuditor, CodeReviewer, IntegrationVerifier
+**Chair:** CouncilChair
+**Results:**
+- 👶 ChildUXAdvocate: 🔴 **FAIL** (First-Run 3-5 דק' = נצח לבן-4)
+- 🇮🇱 HebrewLinguist: 🟡 WARNING (gender field, 2sec recording, Niqud Picker)
+- 🛡️ SecurityAuditor: 🟡 WARNING (voice unencrypted, recovery lockout)
+- 🔍 CodeReviewer: 🟡 WARNING (parents.js duplication, naming)
+- 🔗 IntegrationVerifier: 🟡 WARNING (IndexedDB schema, orphan blobs)
+**Roadmap impact:** CHG-005 התקבל לתכנון Phase 1.
 
 **14 patches יושמו:**
 1. Fast-Path Mode (UX-Kid critical)

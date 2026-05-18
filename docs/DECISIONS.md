@@ -24,3 +24,31 @@
 ## ADR-006 | 2026-05-17 | AI generator — Phase 2 בלבד
 **החלטה:** 50 משימות מובנות-מראש ב-MVP, אין שימוש API.  
 **נימוק:** מספיק לחודש-חודשיים. עלות 0. אם נצטרך — Phase 2.
+
+## ADR-007 | 2026-05-18 | אימוץ `ROADMAP.md` + צוות "מצפן"
+**החלטה:** יצירת `docs/ROADMAP.md` כתוכנית-עבודה חיה (view של PLAN.md), ומקימים צוות "מצפן" (Compass) עם 2 סוכנים חדשים:
+- 🗺️ **RoadmapKeeper** (`agent-roadmap-keeper`) — PM, custodian של ROADMAP
+- 🛡️ **PhaseGatekeeper** (`agent-phase-gatekeeper`) — DoD verifier לפני Council
+
+**נימוק:** PLAN.md (237KB) גדול מדי לשימוש-יום-יום. אין role ייעודי לאיתור drift planned-vs-actual. אין שער-DoD פורמלי לפני Council. ROADMAP + Compass פותרים את שלושת הפערים.
+**מסמכים נלווים:** `TEAM-COMPASS.md`, `ROADMAP-CONTROL.md`.
+**אלטרנטיבות שנשללו:** רק עדכון PROGRESS.md (לא מספיק structured), automation מבוסס cron (פרגיל, לא מאומת).
+
+## ADR-008 | 2026-05-18 | פורמליזציה של "המועצה הגבוהה"
+**החלטה:** מתן זהות פורמלית ל-9 חברי-המועצה — שמות תפקידיים באנגלית + משפט-תפקיד + פרופיל-עומק (השראה, אחריות, skills, קווים-אדומים).
+**שמות:** SecurityAuditor, ChildUXAdvocate, AccessibilityInspector, HebrewLinguist, PerfBudgetEnforcer, CodeReviewer, IntegrationVerifier, QualityAssurance, CouncilChair.
+**מסמך נלווה:** `docs/TEAM-COUNCIL.md`.
+**נימוק:** דוחות-מועצה היו אנונימיים ("agent-security WARNING"). שמות תפקידיים = קריאות + דיון נעשה לבר-ביצוע ("בקש מ-SecurityAuditor לסקור"). פרופיל-עומק = כל סוכן יודע מה דומיין-הבלעדיות שלו והשראתו.
+**אלטרנטיבות שנשללו:** שמות אישיים בעברית (פחות מתארים את התפקוד); שמות גנריים ("Agent-1"...).
+
+## ADR-009 | 2026-05-18 | פרוטוקול אישור-סיום-משימה
+**החלטה:** אימוץ `docs/TASK-COMPLETION-PROTOCOL.md` שמגדיר:
+- 5 סוגי משימות (Phase, Brief, Patch, Sub-task, Setup)
+- מטריצת DoD פר-סוג
+- שרשרת אימות (Verification Chain)
+- 8 סוגי-מקרים שדורשים אישור-הורה (✋) vs. 5 שאוטומטיים (⚙️)
+- פורמט-דיווח אחיד אליך
+- שרשרת-תיעוד אוטומטית
+- 22 תרחישי-קצה מקוטלגים
+
+**נימוק:** "done" לא היה מוגדר באופן יחיד. הפרוטוקול מסיר אי-בהירות ומאפשר automation בטוח של דיווחים.

@@ -1,6 +1,16 @@
 # חכמוני — Master Progress Dashboard
 
-> **עדכון אחרון:** 2026-05-17 (סוף-סשן) | **מחשב:** WORK-PC | **גרסה:** v0.2.0 (Phase 0.5 + CHG-005)
+> **עדכון אחרון:** 2026-05-18 (Compass setup) | **מחשב:** HOME-PC | **גרסה:** v0.3.0 (Compass + ROADMAP)
+> **תוכנית חיה:** [`docs/ROADMAP.md`](./ROADMAP.md) (מתוחזק ע"י [RoadmapKeeper](../.claude/agents/agent-roadmap-keeper.md))
+
+## 📍 שדות-מהירים
+
+| שדה | ערך |
+|------|------|
+| **Phase נוכחי** | 0.5 (30%) |
+| **Next Gate** | R4 (Pre-Phase-1, אחרי השלמת Briefs #2–5) |
+| **Last DoD-verified** | 2026-05-17 (Phase 0, manual) |
+| **Active blockers** | Briefs #2–5 (תלות-הורה) |
 
 ## 🚦 סטטוס שלבים
 
