@@ -13,8 +13,27 @@
 ## אווטארים (12)
 *ייווצרו דרך Claude Design — Brief #4*
 
-## דמות-מורה (5 pose-ים)
-*ייווצרו דרך Claude Design — Brief #2*
+## דמות-מורה (6 pose-ים) — ✅ נוצרו 2026-05-19
+
+### Professor Chachmoni — 6 SVG poses (claude.ai/design via Bridge Protocol)
+
+| Pose | קובץ | aria-label | גודל | שימוש |
+|------|------|------------|------|--------|
+| standing-wave | `assets/mascot/professor-chachmoni-standing-wave.svg` | פרופ' חכמוני עומד ומנופף שלום | 1.54 KB | מסך פתיחה |
+| pointing | `assets/mascot/professor-chachmoni-pointing.svg` | פרופ' חכמוני מצביע עם הכנף | 1.26 KB | מסכי-הסבר |
+| celebrating | `assets/mascot/professor-chachmoni-celebrating.svg` | פרופ' חכמוני חוגג בקפיצה עם כוכבים | 1.93 KB | חגיגת-הצלחה |
+| thinking | `assets/mascot/professor-chachmoni-thinking.svg` | פרופ' חכמוני חושב, כנף על המקור | 1.77 KB | טעינה/רמז |
+| encouraging | `assets/mascot/professor-chachmoni-encouraging.svg` | פרופ' חכמוני מעודד עם כנף מורמת | 1.56 KB | אחרי טעות עדינה |
+| sleeping | `assets/mascot/professor-chachmoni-sleeping.svg` | פרופ' חכמוני ישן, אותיות Z מעליו | 1.88 KB | inactivity |
+
+- **מאפיינים:** ינשוף עגול, גוף #6FC3DF, בטן #FFA552 + #5BA8C4/#E8851A כ-shade variants לעומק, כובע אקדמי mortarboard עם tassel לבנדר ופונפון מנטה. צל-קרקע, כובע מוטה ב-celebrating/sleeping, סומק-לחיים ב-encouraging.
+- **viewBox:** 0 0 240 240 (כולם)
+- **מקור:** claude.ai/design (Anthropic Labs Research Preview) דרך Bridge Protocol (PLAN.md §1788)
+- **רישיון:** Project-generated
+- **Universal Constraints (R3.5):** ✅ PASS (security · a11y · perf · hebrew · integration*)
+- ***Integration caveat:** sleeping.svg משתמש ב-`<text>` עם font-family Heebo+fallback ל-sans-serif. ב-Windows ללא Heebo system-installed — ה-Z's ירונדרו ב-sans-serif. fallback robust, לא breaks.
+- **R3.6 Council:** Option B נבחר כקנוני אחרי השוואה ויזואלית (Child-UX וויזואל איכותי משמעותית). Option A (Local-First) מארכב ב-`assets/mascot/_archive-option-a/`.
+- **תצוגה מקדימה:** `design-mocks/01-mascot-preview.html`
 
 ## לוגו + פאוויקון — ✅ נוצרו 2026-05-17
 

@@ -1,18 +1,45 @@
 # Claude Design Briefs — חכמוני
 
 > **עדכן ב-R3.5 (2026-05-19):** הוספת "Universal Constraints" — כל brief חייב לציית להם.
+> **עדכן ב-ADR-011 (2026-05-19):** Local-First Path הוא ברירת-המחדל ל-SVG/HTML טהור. Bridge Protocol ל-claude.ai נשמר כ-fallback.
 
-## איך זה עובד (בלי לחשוב)
+## שני מסלולי-עבודה
+
+### 🟢 מסלול A — Local-First (ברירת-מחדל ל-Mascot, Avatars, HTML mocks)
+
+Claude Code כותב את ה-SVG/HTML ישירות מתוך הסשן.
+
+1. ההורה מבקש מ-Claude Code "ייצר את Brief #N"
+2. Claude Code כותב את הקבצים ל-`assets/` או `design-mocks/`
+3. Claude Code יוצר HTML preview ב-`design-mocks/0N-{name}-preview.html`
+4. ההורה פותח את ה-preview בכרום ומאשר/מבקש שינויים
+5. PhaseGatekeeper מאמת Universal Constraints
+
+**זמן:** 5–10 דקות פר-brief. בלי העתקה, בלי צ'אטים חיצוניים.
+
+### 🟡 מסלול B — Bridge ל-claude.ai (fallback ל-image generation עשיר)
+
+לתוצרים שדורשים image generation אמיתי (לוגו עם רקע מצויר, photo-realistic).
 
 1. **בחר brief** מהרשימה למטה
 2. **העתק את כל הקטע** (בין סימני `═══`)
-3. **פתח claude.ai**, צ'אט חדש, **הדבק**
+3. **פתח claude.ai** (לא /design — צ'אט רגיל), **הדבק**
 4. **תקבל artifact** + טקסט בין `═══ START PASTE ═══` ו-`═══ END PASTE ═══`
 5. **העתק את הטקסט הזה** והחזר אלי (Claude Code) בצ'אט
 
-זה זהה לכל brief. אין צעד חמישי-חצי. רק העתק-הדבק.
-
 **הסדר המומלץ:** 1 → 2 → 3 → 4 → 5 (בונה את ה-design system מהבסיס למעלה).
+
+**מתי להשתמש באיזה מסלול:**
+
+| Brief | מסלול | סיבה |
+|-------|--------|------|
+| #1 Logo | B (Bridge) | בוצע ב-2026-05-17 — הסתיים |
+| #2 Mascot (6 poses) | **A (Local)** | ✅ בוצע 2026-05-19 — SVG paths פשוטים, עקביות בין-poses קריטית |
+| #3 Welcome A/B | A (Local) | HTML mockup, עדיף שליטה מלאה |
+| #4 Avatars (12) | A (Local) | SVG paths פשוטים, צריך עקביות בין-12 |
+| #5 Task + Celebration | A (Local) | HTML mockup, עדיף שליטה מלאה |
+| #6 Sound Spec | A (Local) | טבלת-מפרט HTML, לא תמונות |
+| #7 World Map | A (Local) | HTML mockup |
 
 ---
 
@@ -59,6 +86,7 @@ UNIVERSAL CONSTRAINTS (חובה — אסור לדלג)
 - אם השם מגדרי (יואב/מיה) — לציין מגדר
 - אסור ב-copy: "כשלת", "טעית", "לא נכון", "אסור", "PIN", "OAuth", "API"
 - מותר בקריינות (ראה `hebrew-narration.md`): "כמעט!", "ננסה שוב", "וואו"
+- **SVG `<text>` עברי חייב `direction="rtl"`** (BUG-001, 2026-05-19): בלי זה, `text-anchor` פועל לפי כיוון-ברירת-מחדל LTR והטקסט "זולג" לכיוון ההפוך מהמצופה. בשימוש עם `text-anchor`, השתמש ב-`"start"` כדי לעגן את התו הראשון לוגית (וויזואלית הימני בעברית)
 
 ### Color Contrast (לזוגות מהפלטה — בדוק לפני אישור)
 - text #2D2A26 על #FFFCF2 (cream) — ✅ 13.5:1

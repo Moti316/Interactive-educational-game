@@ -1787,6 +1787,8 @@ Skill שאני אצור עבור הפרויקט. תוכן:
 
 ## עבודה עם Claude Design דרך גשר-המשתמש (Bridge Protocol)
 
+> **עדכן ADR-011 (2026-05-19):** Bridge Protocol הוא כעת **fallback path** ולא ה-primary. ראה `docs/CLAUDE-DESIGN-BRIEFS.md` סעיף "שני מסלולי-עבודה". מסלול-A (Local-First) הוא ברירת-המחדל ל-SVG/HTML טהור — Claude Code כותב ישירות. Bridge Protocol משמש רק כשנדרשת יצירת-תמונה עשירה (photo-realistic, רקע מצויר).
+
 המשתמש משמש כגשר בין Claude Code (שמכיר את הפרויקט לעומק) ל-Claude Design (claude.ai במצב artifacts, שמייצר עיצובים ויזואליים עשירים). חלוקת-עבודה:
 
 | תפקיד | מי | מה הוא עושה |

@@ -10,13 +10,14 @@
 
 | שדה | ערך |
 |------|------|
-| **Phase נוכחי** | 0.5 (30%) |
-| **Next Gate** | R4 (אחרי השלמת Briefs #2–5) |
-| **ETA ל-MVP** | 14–21 ימי-עבודה מהיום (תלוי בקצב Briefs) |
-| **Last DoD-verified** | 2026-05-19 (Phase 0.5 re-verified post-R3.5: עדיין 1/5, אבל DoD מעודכן) |
-| **Last RoadmapKeeper refresh** | 2026-05-19 (אחרי R3.5) |
-| **Active blockers** | Briefs #2–5 (תלות-הורה — עכשיו בגרסה משופרת) |
+| **Phase נוכחי** | 0.5 (40%) |
+| **Next Gate** | R4 (אחרי השלמת Briefs #3–5) |
+| **ETA ל-MVP** | 13–20 ימי-עבודה מהיום (Local-First מאיץ Briefs ב-~1 יום) |
+| **Last DoD-verified** | 2026-05-19 (Brief #2 — 6 mascot SVGs, 1.6–2.2 KB, Universal Constraints PASS) |
+| **Last RoadmapKeeper refresh** | 2026-05-19 (אחרי Brief #2 + ADR-011) |
+| **Active blockers** | אישור-ויזואלי על Brief #2 (preview ב-`design-mocks/01-mascot-preview.html`) |
 | **Recent council** | R3.5 (Plan-Wide Re-Review, 🟢 GO with 17 patches מוטמעים) |
+| **Latest ADR** | ADR-011 (Local-First Design Path) |
 
 ---
 
@@ -72,21 +73,22 @@
 ---
 
 ### Phase 0.5 — מוקאפים עיצוביים
-- **סטטוס:** 🟢 30%
-- **Inputs:** `docs/CLAUDE-DESIGN-BRIEFS.md` (5 Briefs)
+- **סטטוס:** 🟢 40%
+- **Inputs:** `docs/CLAUDE-DESIGN-BRIEFS.md` (5 Briefs + 2 stubs)
 - **Deliverables:**
-  - ✅ Brief #1 — לוגו (Version A נבחר)
-  - ⏳ Brief #2 — Mascot 5 poses → `assets/mascot/professor-chachmoni-{greeting,thinking,celebrating,encouraging,idle}.svg`
-  - ⏳ Brief #4 — 12 אווטארים → `assets/avatars/avatar-01.svg`..`avatar-12.svg`
+  - ✅ Brief #1 — לוגו (Version A נבחר, Bridge ל-claude.ai)
+  - ✅ Brief #2 — Mascot 6 poses (Local-First, ADR-011) → `assets/mascot/professor-chachmoni-{standing-wave,pointing,celebrating,thinking,encouraging,sleeping}.svg`
+  - ⏳ Brief #4 — 12 אווטארים → `assets/avatars/avatar-{01..12}-{kind}.svg`
   - ⏳ Brief #3 — Welcome A/B → `design-mocks/02-welcome.html`
   - ⏳ Brief #5 — Task + Celebration → `design-mocks/11-task-click-balloons.html`, `12-success-celebration.html`
 - **DoD:**
-  - 4 mascot SVG ב-`assets/mascot/`
+  - 6 mascot SVG ב-`assets/mascot/` (עודכן R3.5)
   - 12 avatars ב-`assets/avatars/`
-  - 9 mock HTMLs ב-`design-mocks/`
-  - כל הקבצים עוברים `check-contrast.ps1`
-- **Owner:** ההורה (claude.ai web)
-- **Estimated:** 4 sessions × ~30 דק' = ~2 שעות
+  - 9 mock HTMLs ב-`design-mocks/` (כולל previews)
+  - כל הקבצים עומדים ב-Universal Constraints (ADR-010)
+  - אישור-ויזואלי-של-הורה פר-brief (פתיחת preview HTML בכרום)
+- **Owner:** Claude Code (Local-First) + ההורה (אישור-ויזואלי)
+- **Estimated:** 3 sessions × ~15 דק' = ~45 דק' (חיסכון של ~1:15 לעומת Bridge)
 - **Gate:** R4
 
 ---
@@ -268,6 +270,7 @@
 | 2026-05-18 | (init) | יצירת ROADMAP.md | אין SSoT תפעולי. PLAN.md גדול מדי לשימוש-יום-יום | לא |
 | 2026-05-19 | (R3.5) | 17 patches יושמו (8 P0 + 9 P1) | סבב-מועצה רוחבי על כל הרבדים אחרי שדרוג הצוות | לא — ETA לא השתנה |
 | 2026-05-19 | 0.5 | DoD איכות הbriefs הועלה (Universal Constraints) | R3.5 הוסיף security/a11y/perf constraints. Brief #2 הורחב ל-6 poses | לא |
+| 2026-05-19 | 0.5 | Brief #2 הושלם (6 mascot SVGs, Local-First) + ADR-011 | Local-First Path אומץ כברירת-מחדל; Bridge הפך fallback | קל — חיסכון ~1 יום ב-MVP ETA |
 
 ---
 

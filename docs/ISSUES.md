@@ -6,7 +6,16 @@
 
 ## תוקנו
 
-(ריק — יתעדכן עם תיקוני-באגים אמיתיים בעתיד)
+### BUG-001 | 2026-05-19 | ✅ תוקן
+**תיאור:** טקסט "חכמוני" בלוגו זולג מעבר ל-x-anchor ועובר על איור-הינשוף.
+**איפה:** 6 קבצי SVG (`assets/logo/active/*.svg`, `assets/logo/version-a/*.svg`, `assets/logo/version-b/*.svg`) + `design-mocks/01-logo-options.html`.
+**איך לשחזר:** פותחים `01-logo-options.html` בכרום. רואים את הטקסט עולה על הינשוף ב-hero (300×80) ו-medium (180×56).
+**Severity:** High (פוגע ב-visual identity של המוצר).
+**מתעד:** ההורה (visual inspection ב-2026-05-19).
+**סיבה-שורש:** `<text>` השתמש ב-`text-anchor="end"` בלי `direction="rtl"`. דפדפן רינדר את העברית bidi-reversed (וויזואלית RTL), אבל text-anchor פעל לפי כיוון-ברירת-מחדל LTR — כך נקודת-העיגון יושבת על התו ה"אחרון" לוגית (י), שהוא וויזואלית השמאלי-ביותר, וכל הטקסט נמתח ממנו ימינה במקום שמאלה.
+**תיקון:** `text-anchor="end"` → `text-anchor="start" direction="rtl"`. עכשיו נקודת-העיגון יושבת על "ח" (התו הראשון לוגית, וויזואלית הימני) והטקסט נמתח שמאלה — בדיוק מתחת לפס-האדום ובלי לעבור על הינשוף.
+**Commit:** (ידני, באותה סשן)
+**Learning:** Universal Constraints ב-`CLAUDE-DESIGN-BRIEFS.md` צריך לכלול חוק: "כל `<text>` עברי ב-SVG חייב `direction='rtl'`". פתיחת patch ל-Brief-template הבא.
 
 ## פורמט-רישום (לכל באג חדש)
 

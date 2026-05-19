@@ -61,3 +61,65 @@
 - 22 תרחישי-קצה מקוטלגים
 
 **נימוק:** "done" לא היה מוגדר באופן יחיד. הפרוטוקול מסיר אי-בהירות ומאפשר automation בטוח של דיווחים.
+
+## ADR-011 | 2026-05-19 | Local-First Design Path — Claude Code כותב SVG ישירות
+**החלטה:** עבור briefs שתוצאתם SVG/HTML טהור (Mascot, Avatars, mockups), Claude Code יכתוב את ה-SVG ישירות במקום להעביר דרך claude.ai. הגשר ל-claude.ai (Bridge Protocol ב-PLAN.md §1788) נשמר כ-fallback לתוצרי image generation שדורשים מודל-תמונה אמיתי (לוגו עם רקע מצויר, photo-realistic).
+
+**טריגר:** Brief #2 (Mascot 6 poses). הגשר ל-claude.ai הצריך 4 פעולות-ידניות מההורה פר-brief (העתקה, הדבקה, המתנה, החזרה). 4 briefs × 4 פעולות = 16 פעולות + סיכון לאי-עקביות בין-poses (claude.ai לא רואה את ה-poses הקודמים).
+
+**נימוק:**
+1. **Universal Constraints (ADR-010) קל יותר לאכוף ב-קוד-מקומי** — אין סיכון ש-claude.ai יוסיף `<script>` בטעות.
+2. **עקביות בין-poses** — Claude Code רואה את כל 6 ה-SVG ויכול לוודא שהם משתמשים באותם elements (אותו בסיס-ינשוף, אותם eye positions, אותו cap design).
+3. **בלי תלות ב-GEMINI_API_KEY** — שזה לא מוגדר אצל ההורה ודורש setup נוסף.
+4. **זמן-iteration קצר** — תיקון = עריכת קובץ, לא העתקה-הדבקה-הדבקה.
+5. **גודל-קבצים מבוקר** — 1.6–2.2 KB פר-SVG בפועל (יעד היה ≤8 KB).
+
+**מתי בכל זאת להשתמש בגשר claude.ai:**
+- Briefs שדורשים image generation אמיתי (לדוגמה: תמונת-רקע עם מרקם, אילוסטרציה מורכבת מאוד שלא ניתן לבטא ב-paths פשוטים).
+- Briefs שמועילים מ-A/B exploration ויזואלי שונה (claude.ai יכול לתת variations במהירות).
+
+**מסמכים מושפעים:**
+- `docs/CLAUDE-DESIGN-BRIEFS.md` — הוספת "Local-First Path" כברירת-מחדל ל-Mascot/Avatars/HTML mocks.
+- `PLAN.md §1788 (Bridge Protocol)` — סימון כ-fallback path במקום primary.
+- `docs/TASK-COMPLETION-PROTOCOL.md` — Brief מסוג "local-svg" מקבל DoD שונה (אין START PASTE/END PASTE).
+
+**אלטרנטיבות שנשללו:**
+- **design skill עם Gemini API** — דורש GEMINI_API_KEY שלא מוגדר; Pro-image-preview היה ייתן raster לא SVG.
+- **רק claude.ai (כמו במקור)** — ראה נימוק 1–5 לעיל.
+- **claude.ai/design (Research Preview)** — מיועד ל-prototypes/slides, לא לאיורי-וקטור. פורמט-החזרה שונה מהמתועד.
+
+**אכיפה:** PhaseGatekeeper בודק את הקבצים שב-`assets/mascot/` כמו תמיד — Universal Constraints חלים זהה. אין הקלה בבדיקה.
+
+## ADR-013 | 2026-05-19 | Design Studio Formalization
+**החלטה:** הקמת צוות-אחות שלישי לפרויקט — **סטודיו-העיצוב (Design Studio)** — מקביל ל-High Council ול-Compass. 7 חברים (6 + chair) עם זהות-עומק לכל אחד.
+
+**טריגר:** ההורה זיהה (אחרי השלמת Brief #2 ו-bug-fix של הלוגו ב-BUG-001) שהלוגו (לבנדר, עיניים-סגורות) והמסקוט (תכלת, עיניים-פתוחות, כובע אקדמי) נראים כשתי דמויות נפרדות — לא כ"פרופ' חכמוני אחד". הצוותים הקיימים (High Council, Compass) פוסקים איכות וכיוון — אבל אין role שאחראי על **אסתטיקה, מותג, יופי**. ChildUXAdvocate הכי קרוב, אבל הוא ממוקד ב-UX (אינטראקציה), לא ב-Visual Design.
+
+**נימוק:**
+1. **קוהרנטיות-מותגית קריטית לקהל-יעד 4–6** — ילדים מזהים מותג דרך **דמות**, לא דרך לוגו מופשט. אם הלוגו והמסקוט שונים — הם רואים "אפליקציות שונות".
+2. **Pre-Council gate חסר** — Studio מאשר את הנכס לפני שהוא עובר ל-Council. בלי זה, Council מקבל artifacts לא-קוהרנטיים ונאלץ לשלוח אחורה (פחות יעיל).
+3. **Documentation-as-code** — לכל חבר יש system prompt עם זהות, השראה, תחומי-בלעדיות, קווים-אדומים. זה לא רק טקסט — זה ניתן להפעלה דרך Agent tool.
+4. **השראה מתועדת** — כל חבר מצטט מי מהמורים שלו (Saul Bass, Mary Blair, Albers, Spiekermann, Brad Frost, Disney 12 principles, Vignelli). החלטות אינן ad-hoc.
+
+**חברים (7):**
+- 🎭 BrandIdentityArchitect (`agent-brand-identity`) — coherence
+- 🖼️ CharacterIllustrator (`agent-character-design`) — character DNA
+- 🎨 ColorPaletteEngineer (`agent-color-palette`) — palette + contrast
+- 🔤 TypographyMaster (`agent-typography`) — RTL Hebrew + type
+- 🧬 DesignSystemArchitect (`agent-design-system-arch`) — tokens.css
+- 🎬 MotionStoryteller (`agent-motion-story`) — animation choreography
+- ⚖️ DesignChair (`agent-design-chair`) — synthesis + ADRs
+
+**מסמכים נלווים:**
+- `docs/TEAM-DESIGN.md` (חדש — מסמך-מכונן)
+- 7 קבצי `.claude/agents/agent-*.md` (system prompts חדשים)
+- `CLAUDE.md` (עודכן — סעיף Sub-Agents)
+
+**אלטרנטיבות שנשללו:**
+- הרחבת ChildUXAdvocate ל-UX+Design — שני תחומים שונים מדי, סוכן אחד יסתבך
+- שילוב הסוכנים החדשים ב-Council — מבזבז זמן בסבבים שלא קשורים לעיצוב
+- ללא צוות-design רשמי, רק ad-hoc — מסביר איך הגענו ל-לוגו≠מסקוט מלכתחילה
+
+**אכיפה:** כל artifact חדש (לוגו, mascot, avatar, mock-HTML, CSS חדש) חייב לעבור R-Design-N לפני מעבר ל-Council. DesignChair כותב את הדוח ב-`docs/DESIGN-AUDIT-R-N.md`.
+
+**הסבב הבא:** R-Design-1 (Initial Audit) — אחרי אישור-הורה.

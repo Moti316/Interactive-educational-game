@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="פרופ' חכמוני ישן">
+  <title>פרופ' חכמוני ישן</title>
+  <path d="M 165 55 L 187 55 L 165 82 L 187 82" fill="none" stroke="#C9A0DC" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 195 35 L 212 35 L 195 55 L 212 55" fill="none" stroke="#C9A0DC" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 218 18 L 230 18 L 218 32 L 230 32" fill="none" stroke="#C9A0DC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="120" cy="130" rx="78" ry="88" fill="#6FC3DF" stroke="#2D2A26" stroke-width="4"/>
+  <ellipse cx="120" cy="165" rx="48" ry="50" fill="#FFA552"/>
+  <path d="M 50 138 Q 42 170 60 195 Q 72 185 73 165 Q 68 145 50 138 Z" fill="#6FC3DF" stroke="#2D2A26" stroke-width="3"/>
+  <path d="M 190 138 Q 198 170 180 195 Q 168 185 167 165 Q 172 145 190 138 Z" fill="#6FC3DF" stroke="#2D2A26" stroke-width="3"/>
+  <ellipse cx="120" cy="55" rx="46" ry="13" fill="#2D2A26"/>
+  <polygon points="65,48 120,32 175,48 120,62" fill="#2D2A26"/>
+  <circle cx="120" cy="32" r="7" fill="#6BCB77" stroke="#2D2A26" stroke-width="2"/>
+  <path d="M 76 110 Q 95 122 114 110" fill="none" stroke="#2D2A26" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M 126 110 Q 145 122 164 110" fill="none" stroke="#2D2A26" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M 120 128 L 109 142 L 130 140 Z" fill="#FFA552" stroke="#2D2A26" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M 113 160 L 127 160" stroke="#2D2A26" stroke-width="3" stroke-linecap="round"/>
+  <ellipse cx="100" cy="220" rx="10" ry="5" fill="#FFA552" stroke="#2D2A26" stroke-width="2"/>
+  <ellipse cx="140" cy="220" rx="10" ry="5" fill="#FFA552" stroke="#2D2A26" stroke-width="2"/>
+</svg>

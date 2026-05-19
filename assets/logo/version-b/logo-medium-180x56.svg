@@ -7,7 +7,7 @@
     <line x1=" 1.5" y1="-5" x2=" 1.5" y2="8" stroke="#2D2A26" stroke-width="1"/>
     <path d="M 0,-15 L 1.8,-10.5 L 6.6,-10.2 L 2.9,-7.4 L 4.2,-2.8 L 0,-5.4 L -4.2,-2.8 L -2.9,-7.4 L -6.6,-10.2 L -1.8,-10.5 Z" fill="#FFD93D" stroke="#2D2A26" stroke-width="1" stroke-linejoin="round"/>
   </g>
-  <text x="128" y="38" text-anchor="end" font-family="'Varela Round', sans-serif" font-size="30" fill="#2D2A26" letter-spacing="-0.5">חכמוני</text>
+  <text x="128" y="38" text-anchor="start" direction="rtl" font-family="'Varela Round', sans-serif" font-size="30" fill="#2D2A26" letter-spacing="-0.5">חכמוני</text>
   <circle cx="46" cy="44" r="2.2" fill="#6BCB77"/>
   <circle cx="56" cy="44" r="2.2" fill="#FFD93D"/>
   <circle cx="66" cy="44" r="2.2" fill="#FF6B6B"/>

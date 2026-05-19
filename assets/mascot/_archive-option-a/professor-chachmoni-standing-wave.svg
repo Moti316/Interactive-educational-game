@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="פרופ' חכמוני מנופף שלום">
+  <title>פרופ' חכמוני מנופף שלום</title>
+  <ellipse cx="120" cy="130" rx="78" ry="88" fill="#6FC3DF" stroke="#2D2A26" stroke-width="4"/>
+  <ellipse cx="120" cy="165" rx="48" ry="50" fill="#FFA552"/>
+  <path d="M 50 135 Q 38 175 55 205 Q 70 195 75 170 Q 70 145 50 135 Z" fill="#6FC3DF" stroke="#2D2A26" stroke-width="3"/>
+  <path d="M 190 125 Q 215 85 220 55 Q 222 45 212 50 Q 198 65 188 100 Q 180 120 190 125 Z" fill="#6FC3DF" stroke="#2D2A26" stroke-width="3"/>
+  <ellipse cx="120" cy="55" rx="46" ry="13" fill="#2D2A26"/>
+  <polygon points="65,48 120,32 175,48 120,62" fill="#2D2A26"/>
+  <circle cx="120" cy="32" r="7" fill="#6BCB77" stroke="#2D2A26" stroke-width="2"/>
+  <circle cx="95" cy="108" r="22" fill="#FFFCF2" stroke="#2D2A26" stroke-width="3"/>
+  <circle cx="145" cy="108" r="22" fill="#FFFCF2" stroke="#2D2A26" stroke-width="3"/>
+  <circle cx="98" cy="110" r="10" fill="#2D2A26"/>
+  <circle cx="148" cy="110" r="10" fill="#2D2A26"/>
+  <circle cx="102" cy="106" r="3.5" fill="#FFFCF2"/>
+  <circle cx="152" cy="106" r="3.5" fill="#FFFCF2"/>
+  <path d="M 120 128 L 109 142 L 130 140 Z" fill="#FFA552" stroke="#2D2A26" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M 105 158 Q 120 168 135 158" fill="none" stroke="#2D2A26" stroke-width="3" stroke-linecap="round"/>
+  <ellipse cx="100" cy="220" rx="10" ry="5" fill="#FFA552" stroke="#2D2A26" stroke-width="2"/>
+  <ellipse cx="140" cy="220" rx="10" ry="5" fill="#FFA552" stroke="#2D2A26" stroke-width="2"/>
+</svg>

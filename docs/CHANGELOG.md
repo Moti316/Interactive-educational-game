@@ -2,6 +2,65 @@
 
 כל השינויים-המשמעותיים בפרויקט.
 
+## [0.5.0] - 2026-05-19 — Design Studio Formalization (3rd Team)
+
+### Added — Design Studio Team
+ההורה זיהה אי-עקביות בין הלוגו (לבנדר, אבסטרקטי) למסקוט (תכלת, illustrated עם כובע). זיהה צורך בצוות-עיצוב ייעודי. ADR-013 + CHG-008 בתיעוד.
+
+- **`docs/TEAM-DESIGN.md`** — מסמך-מכונן חדש (Charter, 7 חברים, Workflow, Escalation, Activation Protocol)
+- **7 קבצי agent חדשים ב-`.claude/agents/`:**
+  - `agent-brand-identity.md` 🎭 (BrandIdentityArchitect — Saul Bass, Paula Scher, Studio Eitan Bartal השראה)
+  - `agent-character-design.md` 🖼️ (CharacterIllustrator — Mary Blair, Mo Willems, Hervé Tullet)
+  - `agent-color-palette.md` 🎨 (ColorPaletteEngineer — Josef Albers, Refactoring UI, Maria Montessori)
+  - `agent-typography.md` 🔤 (TypographyMaster — Spiekermann, Yanek Iontef, Sara Soueidan)
+  - `agent-design-system-arch.md` 🧬 (DesignSystemArchitect — Brad Frost, Jina Anne, Nathan Curtis)
+  - `agent-motion-story.md` 🎬 (MotionStoryteller — Disney 12 principles, Val Head, Rachel Nabors)
+  - `agent-design-chair.md` ⚖️ (DesignChair — Massimo Vignelli, Milton Glaser, Bruno Munari)
+- **`CLAUDE.md`** — סעיף Sub-Agents עבר מ-11 ל-18 (3 צוותים: Council 9, Compass 2, Studio 7)
+- **סדר-הפעלה חדש:** Studio (אסתטיקה) → Compass (DoD) → Council (איכות)
+- **ADR-013** בDECISIONS.md — נימוק + אלטרנטיבות-שנשללו
+
+### Coming Next — Stage B
+- **R-Design-1 (Initial Audit)** — הסטודיו מתכנס לסבב-ראשון לסקור: לוגו, מסקוט, palette, tokens, fonts, mocks. דוח ב-`docs/DESIGN-AUDIT-R1.md`
+- בעקבות הדוח: Brief #1.5 (לוגו חדש שמשתמש בדמות-המסקוט)
+
+## [0.4.2] - 2026-05-19 — Logo RTL Bug Fix + Brief #2 → claude.ai/design canonical
+
+### Fixed
+- **BUG-001** — לוגו "חכמוני" עלה על איור-הינשוף בכל גדלי הלוגו (hero/medium). תוקן ב-7 קבצים: הוספת `direction="rtl"` ל-`<text>` + שינוי `text-anchor="end"` → `"start"`.
+- Universal Constraints (R3.5) קיבלו patch: כל SVG `<text>` עברי חייב `direction="rtl"` — מונע הישנות BUG-001.
+
+### Changed — Brief #2 Source
+- 6 קבצי mascot ב-`assets/mascot/` הוחלפו לגרסת **claude.ai/design** (Bridge Protocol, אחרי R3.6 A/B comparison).
+- 6 קבצי הגרסה המקומית של Claude Code (ADR-011) מארכבים ב-`assets/mascot/_archive-option-a/`.
+- ASSETS.md עודכן עם metadata חדש (mortarboard + tassel + cheek-blush + ground shadow).
+- ADR-011 (Local-First) **לא** שונה רשמית — נמתין ל-Brief #3 להחלטה.
+
+## [0.4.1] - 2026-05-19 — Brief #2 Delivered + Local-First Design Path
+
+### Delivered — Brief #2 (Mascot, 6 poses)
+- 6 SVG ב-`assets/mascot/professor-chachmoni-*.svg`:
+  - `standing-wave.svg` (1.63 KB) — מסך פתיחה
+  - `pointing.svg` (1.62 KB) — מסכי-הסבר
+  - `celebrating.svg` (2.19 KB) — חגיגת-הצלחה
+  - `thinking.svg` (1.84 KB) — טעינה/רמז
+  - `encouraging.svg` (1.85 KB) — אחרי טעות עדינה (R3.5)
+  - `sleeping.svg` (1.84 KB) — inactivity
+- כל הקבצים: viewBox 0 0 240 240, role="img", aria-label בעברית
+- כל הקבצים עוברים Universal Constraints (R3.5) — 0 violations
+- HTML preview: `design-mocks/01-mascot-preview.html`
+
+### Added — ADR-011: Local-First Design Path
+- Claude Code כותב SVG/HTML ישירות במקום הגשר ל-claude.ai
+- Bridge Protocol (PLAN.md §1788) הופך fallback path
+- CHG-007 ב-`docs/PLAN-CONTROL.md`
+- מסמכי-בקרה מעודכנים: DECISIONS.md, CLAUDE-DESIGN-BRIEFS.md, PLAN.md, ROADMAP.md, PROGRESS.md, ASSETS.md
+
+### Changed — Phase 0.5 Progress
+- 30% → 40% (Brief #2 הושלם)
+- ETA ל-MVP: 14–21 → 13–20 ימים (חיסכון של ~1 יום מ-Local-First)
+- Active blocker עבר מ-"Briefs #2–5 (תלות-הורה)" ל-"אישור-ויזואלי ל-Brief #2 בלבד"
+
 ## [0.4.0] - 2026-05-19 — R3.5 Plan-Wide Re-Review
 
 ### Council Round 3.5 (Lens-based Synthesized Review)

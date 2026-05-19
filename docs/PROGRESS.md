@@ -1,24 +1,27 @@
 # חכמוני — Master Progress Dashboard
 
-> **עדכון אחרון:** 2026-05-18 (Compass setup) | **מחשב:** HOME-PC | **גרסה:** v0.3.0 (Compass + ROADMAP)
+> **עדכון אחרון:** 2026-05-19 (Brief #2 הושלם, ADR-011) | **מחשב:** HOME-PC | **גרסה:** v0.4.0 (Local-First Design Path)
 > **תוכנית חיה:** [`docs/ROADMAP.md`](./ROADMAP.md) (מתוחזק ע"י [RoadmapKeeper](../.claude/agents/agent-roadmap-keeper.md))
 
 ## 📍 שדות-מהירים
 
 | שדה | ערך |
 |------|------|
-| **Phase נוכחי** | 0.5 (30%) |
-| **Next Gate** | R4 (Pre-Phase-1, אחרי השלמת Briefs #2–5) |
-| **Last DoD-verified** | 2026-05-19 (Phase 0.5 re-verified post-R3.5 — DoD מעודכן) |
+| **Phase נוכחי** | 0.5 (40%) |
+| **Next Gate** | R4 (Pre-Phase-1, אחרי השלמת Briefs #3–5) |
+| **Last DoD-verified** | 2026-05-19 (Brief #2 — Mascot 6 poses, Universal Constraints PASS) |
 | **Last Council** | R3.5 (2026-05-19, 🟢 GO with 17 patches) |
-| **Active blockers** | Briefs #2–5 (תלות-הורה — עכשיו בגרסה משופרת) |
+| **Last Design Review** | (טרם — R-Design-1 מתוכנן אחרי אישור-הורה על Design Studio) |
+| **Last ADR** | ADR-013 (Design Studio Formalization) |
+| **Teams active** | 3 (High Council 9, Compass 2, Design Studio 7 = **18 sub-agents**) |
+| **Active blockers** | Briefs #3–5 (Local-First — Claude Code יכתוב, אישור-הורה ויזואלי) |
 
 ## 🚦 סטטוס שלבים
 
 | שלב | סטטוס | יום | התקדמות | הערות |
 |-----|--------|-----|----------|--------|
 | **0 — תשתית** | ✅ הושלם | 1 | 100% | 49 קבצים ב-GitHub |
-| **0.5 — מוקאפים** | 🟢 בעבודה | 2 | 30% | Brief #1 ✅ Version A נבחר. הבא: Brief #2 |
+| **0.5 — מוקאפים** | 🟢 בעבודה | 2 | 40% | Briefs #1 ✅, #2 ✅ (6 poses, 1.6-2.2KB). הבא: #3 Welcome |
 | **CHG-005 (חדש)** | 📋 תוכנן | 2 | 0% | Parent Profiles + Fast-Path + 4 ערוצי-נוכחות |
 | 1 — שלד + פרופילים | ⏳ ממתין | — | 0% | יכלול CHG-005 לפי התכנון |
 | 2 — תבנית ראשונה | ⏳ ממתין | — | 0% | |
@@ -32,16 +35,18 @@
 
 ## 📍 מה הצעד הבא?
 
-**ההורה (בערב מהבית):**
-1. פתח [`docs/CLAUDE-DESIGN-BRIEFS.md`](./CLAUDE-DESIGN-BRIEFS.md)
-2. גלול ל-**Brief #2** (Mascot — 5 pose-ים)
-3. העתק → claude.ai (צ'אט חדש) → קבל artifact → החזר את ה-START PASTE/END PASTE
+**אישור-הורה ויזואלי על Brief #2:**
+1. פתח `design-mocks/01-mascot-preview.html` בכרום
+2. ודא שכל 6 ה-poses נראים כמשפחה אחת (אותו ינשוף, רק תנוחות שונות)
+3. אם מאשר → ממשיכים ל-Brief #3
+4. אם דורש שינויים → תגיד מה לתקן, Claude Code יערוך
 
-**אחרי Brief #2 (ינשוף-המורה):**
-- Brief #3 (Welcome Screen A/B)
-- Brief #4 (12 אווטארים)
-- Brief #5 (Task Screen + Celebration)
-- ואז: Phase 1 — שלד מערכת + פרופילים (יכלול CHG-005)
+**אחרי אישור Brief #2:**
+- Brief #3 (Welcome Screen A/B) — Local-First (HTML mockup)
+- Brief #4 (12 אווטארים) — Local-First (SVG)
+- Brief #5 (Task Screen + Celebration) — Local-First (HTML mockup)
+- R4 Council Gate (Pre-Phase-1)
+- Phase 1 — שלד מערכת + פרופילים (יכלול CHG-005)
 
 ## 🆕 CHG-005 — מה התווסף (תכנון בלבד, לא ביצוע)
 
@@ -58,7 +63,8 @@
 
 ## 🎯 מה תקוע / חוסם?
 
-- **לא חוסם:** Brief #2 עד #5 — ההורה צריך להעתיק 4 briefs מ-claude.ai.
+- **ממתין לאישור-ויזואלי:** Brief #2 — ההורה צריך לפתוח את ה-preview ולאשר.
+- **לא חוסם:** Briefs #3–5 — Local-First, Claude Code יכתוב, ההורה יאשר חזותית בכל אחד.
 - **לא חוסם:** OAuth Client ID של Drive — נדרש רק בשלב 4.
 
 ## 💰 שימוש-מודלים בסשן האחרון
@@ -81,6 +87,7 @@
 
 ## 📝 הערה-עצמית לסשן הבא
 
-- **המשך מהבית בערב:** `git pull --rebase` במחשב הביתי, פתח `docs/CLAUDE-DESIGN-BRIEFS.md`, התחל Brief #2.
-- אם רוצים — אפשר לבדוק את הלוגו ב-`design-mocks/01-logo-options.html` (פתח ב-Chrome).
+- **המשך:** ההורה פותח `design-mocks/01-mascot-preview.html` בכרום, מאשר/מבקש תיקונים.
+- אם מאשר — Claude Code מתחיל Brief #3 (Welcome A/B) באותה שיטה (Local-First).
+- ADR-011 שינה את ברירת-המחדל: Local-First במקום Bridge. תיעוד מלא ב-`docs/DECISIONS.md` + `docs/CLAUDE-DESIGN-BRIEFS.md`.
 - CHG-005 כולל הרבה — יש את כל הפרטים ב-PLAN.md סעיפים: "Council Round 3", "CHG-005", "חוויית פעם-ראשונה", "פרופילים מקומיים".

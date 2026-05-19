@@ -46,7 +46,7 @@
 - `claude-api` — Phase 2 (AI generator)
 - `fewer-permission-prompts`, `update-config`
 
-### הצוותים שלנו — 11 Sub-Agents
+### הצוותים שלנו — 18 Sub-Agents (3 צוותים)
 
 #### ⚖️ המועצה הגבוהה (High Council) — 9 חברים
 פוסקת **איכות** בסיום כל שלב-בנייה. ראה [`docs/TEAM-COUNCIL.md`](./docs/TEAM-COUNCIL.md).
@@ -71,7 +71,25 @@
 | 🗺️ | **RoadmapKeeper** | `agent-roadmap-keeper` (PM) |
 | 🛡️ | **PhaseGatekeeper** | `agent-phase-gatekeeper` (DoD verifier) |
 
-**הפעלה:** מועצה — בסיום כל Phase (Full Council תחת מנוי Max). מצפן — אוטומטית אחרי כל סבב + סיום-Phase, או on-demand.
+#### 🎨 סטודיו-העיצוב (Design Studio) — 7 חברים
+פוסק **אסתטיקה ומותג** — האם זה יפה ומגובש? ראה [`docs/TEAM-DESIGN.md`](./docs/TEAM-DESIGN.md).
+
+| 🎭 | שם תפקיד | קוד |
+|----|-----------|------|
+| 🎭 | **BrandIdentityArchitect** | `agent-brand-identity` |
+| 🖼️ | **CharacterIllustrator** | `agent-character-design` |
+| 🎨 | **ColorPaletteEngineer** | `agent-color-palette` |
+| 🔤 | **TypographyMaster** | `agent-typography` |
+| 🧬 | **DesignSystemArchitect** | `agent-design-system-arch` |
+| 🎬 | **MotionStoryteller** | `agent-motion-story` |
+| ⚖️ | **DesignChair** | `agent-design-chair` (יו"ר) |
+
+**הפעלה:**
+- **מועצה** — בסיום כל Phase (Full Council תחת מנוי Max)
+- **מצפן** — אוטומטית אחרי כל סבב + סיום-Phase, או on-demand
+- **סטודיו** — לפני שילוב נכס-עיצובי לפרויקט (R-Design-N); סבב R-Design-1 ראשון אחרי הקמת-הצוות
+
+**סדר-הפעלה:** Studio (אסתטיקה) → Compass (DoD) → Council (איכות).
 
 ## עדכון תיעוד תוך כדי עבודה
 

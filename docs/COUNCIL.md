@@ -15,7 +15,140 @@
 **Result:** 3 PASS (SecurityAuditor, PerfBudgetEnforcer, CodeReviewer), 5 WARNING. 5 Round-2-final fixes יושמו.
 **Roadmap impact:** ללא drift.
 
-### Round 3.5 — 2026-05-19 (Plan-Wide Re-Review with Upgraded Agents)
+### Round 3.6 — 2026-05-19 (Mascot A/B Artifact Comparison)
+
+**מטרה:** השוואת שתי גרסאות של Brief #2 (Mascot — 6 poses) — Option A (Claude Code Local-First, ADR-011) מול Option B (claude.ai/design Research Preview). זה הסבב-הראשון של "Post-Build Artifact Review" — לא תכנון, אלא בדיקת תוצרים בפועל זה מול זה.
+
+**שיטה:** Lens-based head-to-head — כל סוכן בודק את שתי הגרסאות בקריטריון שלו ומכריע "A better / B better / TIE".
+
+**Members (lenses applied):** SecurityAuditor, ChildUXAdvocate, AccessibilityInspector, HebrewLinguist, PerfBudgetEnforcer, CodeReviewer, IntegrationVerifier, QualityAssurance
+**Chair:** CouncilChair (synthesis)
+
+**קבצים שנסקרו:**
+- `assets/mascot/professor-chachmoni-*.svg` (6 קבצים — Option A)
+- `assets/mascot/_review-option-b/professor-chachmoni-*.svg` (6 קבצים — Option B)
+- `design-mocks/01-mascot-ab-comparison.html` (A/B preview)
+
+---
+
+#### 🛡️ SecurityAuditor — A better
+
+**Option A:** ✅ אין script/foreignObject/event handlers/external refs. משתמש רק בצבעים מאושרים.
+**Option B:** ✅ אין script/foreignObject/event handlers/external refs. **אבל** — מכניס 2 צבעים שלא ברשימה: `#5BA8C4` (גוון כהה של sky) ו-`#E8851A` (גוון כהה של orange). זו לא בעיית-אבטחה אלא הפרת-משמעת של "use ONLY these" מה-brief.
+
+**VERDICT:** A — שמירה קפדנית על palette discipline.
+
+#### 👶 ChildUXAdvocate — **B better**
+
+**Option A:** נקי, פשוט, ברור. אבל מרגיש "מרחף" (אין צל). תנוחות סטטיות. הכובע ישר תמיד.
+**Option B:** הרבה יותר חי. צל-קרקע נותן מקום במרחב. הכובע **מוטה** ב-celebrating (-6°) וב-sleeping (-12°) — מוסיף אישיות. סומק-לחיים ב-encouraging (`#FF6B6B opacity .4`) חמים מאוד. קווי-תנועה ב-standing-wave מסבירים את הפעולה לבן-4 שעוד לא קורא. הינשוף ב-B נראה כמו שילד מצייר אותו — חי, רגשי.
+
+**VERDICT:** B — קרוב לבחירת-לב של ילד. רק תזכורת: A יותר "בטוח" אם רוצים אסתטיקה מינימליסטית.
+
+#### ♿ AccessibilityInspector — A better (קל)
+
+**Option A:** stroke-width 3-4 על הגוף והעיניים = קו-קומפלמטרי לעיניים-חלשות. Z-ים כ-paths → תמיד רנדר באותו אופן.
+**Option B:** אין outline על הגוף — מסתמך על ניגודיות-צבע בלבד (sky-blue על קרם). זוג שעובד (4.5:1+) אבל לא מיטבי לעיניים-חלשות. Z-ים כ-`<text>` עם `font-family="Heebo,Varela Round,sans-serif"` — fallback ל-sans-serif אם Heebo לא מותקן (וזה המצב אצל ההורה — Heebo לא מותקן ב-Windows כברירת-מחדל).
+
+**VERDICT:** A — outlines + path-based Z's אמינים יותר בסביבות שונות.
+
+#### 🇮🇱 HebrewLinguist — TIE (עם slight edge ל-A)
+
+**Option A aria-labels:** "פרופ' חכמוני מנופף שלום / מצביע / חוגג בשמחה / חושב / מעודד / ישן" — תמציתי (3-4 מילים).
+**Option B aria-labels:** "פרופ' חכמוני עומד ומנופף שלום / מצביע עם הכנף / חוגג בקפיצה עם כוכבים / חושב, כנף על המקור / מעודד עם כנף מורמת / ישן, אותיות Z מעליו" — תיאורי (5-9 מילים).
+
+לקהל-יעד (4-6, מאזין דרך TTS): A קצר יותר וקריא יותר. B מועיל יותר ל-developer שמדבג. שניהם תקינים דקדוקית, ללא מילים-אסורות.
+
+**VERDICT:** TIE — אם הקול-העיקרי הוא ילד, A; אם נגישות-יסודית לקוראי-מסך מבוגרים, B.
+
+#### ⚡ PerfBudgetEnforcer — **B better**
+
+**Option A:** 1.62–2.19 KB (סה"כ 11.21 KB), pretty-printed עם whitespace.
+**Option B:** 1.27–1.93 KB (סה"כ 9.94 KB), minified, single-line. חיסכון של ~11%.
+שניהם רחוקים מהתקרה (≤8 KB/קובץ).
+
+**VERDICT:** B — מינוף יעיל יותר של bytes. A יכול לחסוך 30-40% עם minify.
+
+#### 🔍 CodeReviewer — A better
+
+**Option A:** Pretty-printed, ברור לקריאה ולעריכה. כולל `<title>` (טוב ל-tooltip). מבנה זהה בין 6 הקבצים.
+**Option B:** Minified, single-line — קשה לדבג ולערוך. משתמש ב-`<g transform>` חכם (סיבוב הכובע ב-celebrating/sleeping) ו-opacity layering — sophisticated, אבל less maintainable.
+
+תרחיש-עריכה: אם נצטרך לשנות צבע-בטן ב-6 קבצים, A מהיר ל-find/replace.
+
+**VERDICT:** A — קריאות וקלות-תחזוקה. B יותר חכם אבל מבחינת-תחזוקה: יקר.
+
+#### 🔗 IntegrationVerifier — **A better (משמעותי)**
+
+שתי הגרסאות עוברות viewBox/xmlns/role/aria-label/kebab-case. שתיהן עובדות ב-3 הקשרים: `<img>`, inline, `background-image: url(data:...)`.
+
+**אבל ב-Option B sleeping:** השימוש ב-`<text font-family="Heebo,Varela Round,sans-serif">` עבור ה-Z's יוצר תלות-פונט. כש-SVG נטען כ-`<img src=>` או כ-`background-image data:`, הוא **לא** רואה את `@font-face` של הדף הראשי. במחשב ההורה (Windows, אין Heebo system-installed), ה-Z's ירונדרו ב-Arial — לא ה-rounded look שתוכנן. רק במצב inline `<svg>` בתוך דף שטוען Heebo דרך Google Fonts זה יראה נכון.
+
+**Option A** משתמש ב-paths עבור ה-Z's → תמיד אותו רנדר, בכל מצב.
+
+**הפרת palette discipline (B):** הקבצים מציגים #5BA8C4 ו-#E8851A. אם הdesign system יעדכן את הפלטה, יהיו 12 references לעדכן ב-B מול 0 ב-A.
+
+**VERDICT:** A — אמינות-רנדור + palette discipline.
+
+#### 🧪 QualityAssurance — TIE (נטייה ל-A)
+
+תרחישי-בדיקה:
+
+| תרחיש | A | B |
+|--------|----|----|
+| `<img src>` באתר עם Heebo טעון | ✅ | ✅ |
+| `<img src>` באתר ללא Heebo | ✅ | 🟡 Z's כ-Arial |
+| `background-image: url(data:...)` | ✅ | 🟡 Z's כ-Arial |
+| `inline <svg>` עם Heebo בדף | ✅ | ✅ |
+| מסך-קטן (240px native) | ✅ | ✅ |
+| מסך-גדול (480px scaled) | ✅ | ✅ (stroke-width קצת דק יחסית) |
+| color-blind (deuteranopia) | ✅ outlines עוזרים | 🟡 פחות outline-recovery |
+
+**VERDICT:** A יציב יותר; B עובד ברוב התרחישים אבל פחות צפוי.
+
+---
+
+### Chair Synthesis
+
+| לנזה | מנצח | רמת-יתרון |
+|------|------|----------|
+| Security | A | קל |
+| Child-UX | **B** | **משמעותי** |
+| Accessibility | A | קל |
+| Hebrew | TIE | — |
+| Performance | B | קל |
+| Code | A | קל |
+| Integration | **A** | **משמעותי** |
+| QA | A | קל |
+
+**Total:** A=4, B=2, TIE=2 (עם 2 'משמעותיים' לכל צד)
+
+#### המלצת-יו"ר: 🟡 GO with hybrid patch
+
+**ההמלצה:** **A כבסיס + הטמעת 4 שיפורים מ-B**, בלי הפרות-משמעת:
+
+| # | שיפור מ-B | איך לקחת בלי הפרה |
+|---|------------|---------------------|
+| 1 | צל-קרקע (ground shadow) | להוסיף `<ellipse cx="120" cy="228" rx="60" ry="5" fill="#2D2A26" opacity=".1"/>` ל-6 הקבצים של A |
+| 2 | כובע מוטה ב-celebrating + sleeping | לעטוף את הכובע ב-`<g transform="rotate(-6 120 50)">` (celebrating) ו-`rotate(-12 120 50)` (sleeping) |
+| 3 | סומק-לחיים ב-encouraging | להוסיף 2 `<ellipse fill="#FF6B6B" opacity=".4">` (משתמש בצבע מאושר!) |
+| 4 | קווי-תנועה ב-standing-wave (אופציונלי) | להוסיף 2 paths ב-`#6FC3DF` (לא #5BA8C4) עם `opacity=".5"` |
+
+**מה לא לקחת מ-B:**
+- ❌ `#5BA8C4` / `#E8851A` — הפרות palette. אם רוצים shade variants — לבקש ADR מפורש מהמועצה לפתיחת הפלטה.
+- ❌ `<text>` עבור Z's — להישאר עם paths (Integration-safe).
+- ❌ Cap geometry של B (mortarboard + tassel + pompom-on-tassel) — אנטומית יותר נכון אבל מצריך שינוי-יסוד ב-6 הקבצים. בקש החלטה.
+
+**Roadmap impact:** Phase 0.5 נשאר ב-40%. Hybrid patch יוסיף ~5-10 דקות עבודה ל-Claude Code. ETA לא מושפע.
+
+**ADR צפוי:** אם נחליט לאמץ shade variants (#5BA8C4 וכו') כצבעים-לגיטימיים, נדרש **ADR-012 — Design System Shade Variants** עם עדכון `tokens.css`.
+
+**Roadmap impact line:**
+*2026-05-19 | 0.5 | R3.6 השוואת-מעצים A/B; ההמלצה היא hybrid (A base + 4 patches מ-B); ETA לא משתנה.*
+
+---
+
+
 **מטרה:** סקירה רוחבית של כל הרבדים — design, UX, content, code architecture — דרך 11-agent system המעודכן אחרי commit `23b2aa3` (Compass formalization + 9 named Council members + Skills mapping).
 
 **שיטה:** "Lens-based synthesized review" — Claude Code סקר את החומרים דרך עדשת כל סוכן (במקום 38 קריאות sub-agent נפרדות). חיסכון: 80% זמן, 0% איבוד דיוק (כל הסוכן-prompt-ים נטענו).
