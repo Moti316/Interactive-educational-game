@@ -91,17 +91,49 @@
 
 **סדר-הפעלה:** Studio (אסתטיקה) → Compass (DoD) → Council (איכות).
 
-## עדכון תיעוד תוך כדי עבודה
+## פרוטוקול ביצוע (Execution Protocol)
 
-אחרי כל שינוי משמעותי — עדכן את הקובץ הרלוונטי ב-`docs/`:
-- באג נמצא/תוקן → `docs/ISSUES.md`
-- החלטה משמעותית → `docs/DECISIONS.md`
-- שינוי-תכנון → `docs/PLAN-CONTROL.md` (עם בדיקת-עקביות)
-- משימה חדשה → `docs/CONTENT.md` + `docs/NARRATION.md` + `docs/TASKS.md`
-- ארכיטקטורה השתנתה → `docs/ARCHITECTURE.md`
-- בדיקה עם ילדים → `docs/KIDS-FEEDBACK.md`
-- דוח-מועצה בסיום-שלב → `docs/COUNCIL.md`
-- **סוף כל סשן** → `docs/PROGRESS.md` (חובה!)
+### חוק 1 — כל החלטה-מאושרת חובה לתעד
+
+לכל החלטה שההורה אישר במהלך סשן — תיעוד-חובה לפני המעבר למשימה הבאה:
+
+| סוג החלטה | יעד-תיעוד | פורמט |
+|------------|-----------|--------|
+| ארכיטקטורה / יסוד | `docs/DECISIONS.md` | ADR-NNN |
+| שינוי-תכולה / תהליך | `docs/PLAN-CONTROL.md` | CHG-NNN |
+| באג ותיקון | `docs/ISSUES.md` | BUG-NNN |
+| סבב-מועצה | `docs/COUNCIL.md` | R-N |
+| סבב-סטודיו | `docs/DESIGN-AUDIT-R*.md` | R-Design-N |
+| שינוי-נכס | `docs/ASSETS.md` | inline section |
+| Phase / drift | `docs/PROGRESS.md` + `ROADMAP.md` | header fields + drift log |
+| Version bump | `docs/CHANGELOG.md` | semver entry |
+| הוראת-ביצוע חוזרת | `CLAUDE.md` (כאן) + protocol doc ב-`docs/` | sub-section + standalone doc |
+| **סוף כל סשן** | `docs/PROGRESS.md` | חובה! |
+
+**הכלל:** אם הוצאת ADR/CHG/BUG בלי לעדכן את הקובץ — המשימה לא הושלמה.
+
+### חוק 2 — Auto-Push ל-GitHub בסיום כל משימה-לוגית
+
+בסיום כל **משימה-לוגית** (לא בסוף כל edit), מבוצע:
+1. `git status --short` — בדיקת-מצב
+2. `git add -A` — staging (או רשימה ממוקדת אם יש קבצים-לא-לדחוף)
+3. `git commit` עם תיאור מובנה (תבנית-זהב ב-[`docs/GIT-SYNC-PROTOCOL.md`](./docs/GIT-SYNC-PROTOCOL.md))
+4. `git push origin main`
+
+**משימה-לוגית = ?** ראה [`docs/GIT-SYNC-PROTOCOL.md`](./docs/GIT-SYNC-PROTOCOL.md) סעיף 1. תקציר:
+- ✅ Brief שהסתיים, BUG-fix, ADR/CHG מיושם, סבב-מועצה, סיום-Phase, פעולת-תשתית
+- ❌ עריכה-בודדת באמצע משימה, plan mode, exploration, work-in-progress
+
+**שפה:** הודעת-commit באנגלית (GitHub Search לא טוב עם עברית).
+
+**אם push נכשל:** `git pull --rebase` → resolve → push שוב. לא להיכנע ל-`--force` בלי אישור-הורה.
+
+### חוק 3 — סוף-סשן
+
+בסוף כל סשן (לפני שההורה סוגר את הטרמינל):
+1. `docs/PROGRESS.md` מעודכן (Phase, blocker, next-action)
+2. הכל-pushed לפי חוק 2
+3. אם חצינו Phase או הסכמנו על Brief חדש → מעדכן `docs/ROADMAP.md`
 
 ## פקודות נפוצות
 
