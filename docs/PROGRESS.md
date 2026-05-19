@@ -11,7 +11,7 @@
 | **Next Gate** | R4 (Pre-Phase-1, אחרי השלמת Briefs #3–5) |
 | **Last DoD-verified** | 2026-05-19 (Brief #2 — Mascot 6 poses, Universal Constraints PASS) |
 | **Last Council** | R3.5 (2026-05-19, 🟢 GO with 17 patches) |
-| **Last Design Review** | (טרם — R-Design-1 מתוכנן אחרי אישור-הורה על Design Studio) |
+| **Last Design Review** | **R-Design-1** (2026-05-19, 🔴 OFF-BRAND — 2 FAIL + 3 NEEDS-PATCH; Brief #1.5 חוסם Phase 1) |
 | **Last ADR** | ADR-013 (Design Studio Formalization) |
 | **Teams active** | 3 (High Council 9, Compass 2, Design Studio 7 = **18 sub-agents**) |
 | **Active blockers** | Briefs #3–5 (Local-First — Claude Code יכתוב, אישור-הורה ויזואלי) |
@@ -35,16 +35,21 @@
 
 ## 📍 מה הצעד הבא?
 
-**אישור-הורה ויזואלי על Brief #2:**
-1. פתח `design-mocks/01-mascot-preview.html` בכרום
-2. ודא שכל 6 ה-poses נראים כמשפחה אחת (אותו ינשוף, רק תנוחות שונות)
-3. אם מאשר → ממשיכים ל-Brief #3
-4. אם דורש שינויים → תגיד מה לתקן, Claude Code יערוך
+**אישור-הורה (בסשן הבא — ההורה עזב מחשב 2026-05-19):**
+1. קרא [`docs/DESIGN-AUDIT-R1.md`](./DESIGN-AUDIT-R1.md) — דוח-סטודיו המלא
+2. **החלט על Brief #1.5 — Logo Redux:**
+   - אופציה A: ראש-מסקוט-בלבד + טקסט (מומלץ)
+   - אופציה B: מסקוט-מלא + טקסט
+   - אופציה C: סמליל-אבסטרקטי + טקסט
+3. **אשר/דחה ADR-014** (Palette Extension + Semantic Layer)
+4. אם מאשר → Claude Code מתחיל ביצוע (CHG-009)
 
-**אחרי אישור Brief #2:**
-- Brief #3 (Welcome Screen A/B) — Local-First (HTML mockup)
-- Brief #4 (12 אווטארים) — Local-First (SVG)
-- Brief #5 (Task Screen + Celebration) — Local-First (HTML mockup)
+**רצף-עבודה אחרי החלטת-הורה:**
+- Brief #1.5 (Logo Redux) דרך claude.ai/design
+- ADR-014: עדכון `design-mocks/shared/tokens.css`
+- Brief #3 (Welcome A/B) דרך claude.ai/design
+- Brief #4 (12 Avatars) דרך claude.ai/design — DNA-aligned עם מסקוט
+- Brief #5 (Task + Celebration) דרך claude.ai/design + Motion-spec
 - R4 Council Gate (Pre-Phase-1)
 - Phase 1 — שלד מערכת + פרופילים (יכלול CHG-005)
 
@@ -63,8 +68,9 @@
 
 ## 🎯 מה תקוע / חוסם?
 
-- **ממתין לאישור-ויזואלי:** Brief #2 — ההורה צריך לפתוח את ה-preview ולאשר.
-- **לא חוסם:** Briefs #3–5 — Local-First, Claude Code יכתוב, ההורה יאשר חזותית בכל אחד.
+- **חוסם Phase 1:** Brief #1.5 (Logo Redux). R-Design-1 (2026-05-19) זיהה שהלוגו הנוכחי ≠ דמות-המסקוט. דורש החלטת-הורה.
+- **חוסם Phase 1:** ADR-014 (Palette Extension + Semantic Layer). דורש החלטת-הורה.
+- **לא חוסם:** Briefs #3–5 — יבוצעו דרך claude.ai/design אחרי Brief #1.5.
 - **לא חוסם:** OAuth Client ID של Drive — נדרש רק בשלב 4.
 
 ## 💰 שימוש-מודלים בסשן האחרון
