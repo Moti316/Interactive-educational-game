@@ -262,4 +262,20 @@ OVERALL: (משפט אחד)
 
 ---
 
+## 11. תיאום בין-סוכנים (Coordination Map)
+
+> נוסף ב-CHG-010 (P2-1, אומץ מ-wall). גרף-תלויות מפורש — מי מתאם עם מי.
+
+| סוכן | מתאם בעיקר עם |
+|------|----------------|
+| BrandIdentityArchitect | CharacterIllustrator, ColorPaletteEngineer, DesignChair |
+| CharacterIllustrator | BrandIdentityArchitect, ColorPaletteEngineer, MotionStoryteller, DesignChair |
+| ColorPaletteEngineer | DesignSystemArchitect, BrandIdentityArchitect, AccessibilityInspector (Council), DesignChair |
+| TypographyMaster | DesignSystemArchitect, HebrewLinguist·AccessibilityInspector (Council), DesignChair |
+| DesignSystemArchitect | ColorPaletteEngineer, TypographyMaster, IntegrationVerifier (Council), DesignChair |
+| MotionStoryteller | CharacterIllustrator, AccessibilityInspector·PerfBudgetEnforcer (Council), DesignChair |
+| DesignChair | כל 6 חברי-הסטודיו, CouncilChair (Council), RoadmapKeeper (Compass) |
+
+---
+
 **מסמך זה הוא פעיל וחי.** כשמתווסף חבר-צוות חדש, או משתנה הרכב — מתעדכן כאן ראשון.

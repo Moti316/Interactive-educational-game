@@ -245,4 +245,22 @@ OVERALL: (משפט אחד)
 
 ---
 
+## 9. תיאום בין-סוכנים (Coordination Map)
+
+> נוסף ב-CHG-010 (P2-1, אומץ מ-wall). גרף-תלויות מפורש — מי מתאם עם מי.
+
+| סוכן | מתאם בעיקר עם |
+|------|----------------|
+| SecurityAuditor | CodeReviewer, IntegrationVerifier, ChildUXAdvocate (PIN UX), CouncilChair |
+| ChildUXAdvocate | AccessibilityInspector, HebrewLinguist, MotionStoryteller·CharacterIllustrator (Studio), CouncilChair |
+| AccessibilityInspector | ChildUXAdvocate, ColorPaletteEngineer·TypographyMaster·MotionStoryteller (Studio), CouncilChair |
+| HebrewLinguist | ChildUXAdvocate, TypographyMaster (Studio), CouncilChair |
+| PerfBudgetEnforcer | CodeReviewer, IntegrationVerifier, MotionStoryteller (Studio), CouncilChair |
+| CodeReviewer | SecurityAuditor, PerfBudgetEnforcer, IntegrationVerifier, CouncilChair |
+| IntegrationVerifier | SecurityAuditor, CodeReviewer, DesignSystemArchitect (Studio), CouncilChair |
+| QualityAssurance | ChildUXAdvocate, IntegrationVerifier, CouncilChair |
+| CouncilChair | כל 8 חברי-המועצה, RoadmapKeeper (Compass), DesignChair (Studio) |
+
+---
+
 **מסמך זה הוא פעיל וחי.** כשמתווסף חבר-מועצה חדש, או משתנה הרכב — מתעדכן כאן ראשון.

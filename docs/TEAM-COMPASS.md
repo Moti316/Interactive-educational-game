@@ -179,4 +179,16 @@ NEXT ACTION:
 
 ---
 
+## תיאום בין-סוכנים (Coordination Map)
+
+> נוסף ב-CHG-010 (P2-1, אומץ מ-wall). גרף-תלויות מפורש — מי מתאם עם מי.
+
+| סוכן | מתאם בעיקר עם |
+|------|----------------|
+| RoadmapKeeper | PhaseGatekeeper, CrossTeamAuditor, CouncilChair, DesignChair |
+| PhaseGatekeeper | RoadmapKeeper, CrossTeamAuditor, CouncilChair |
+| CrossTeamAuditor | RoadmapKeeper, CouncilChair, DesignChair (תפרים בין 3 הצוותים) |
+
+---
+
 **מסמך זה הוא פעיל וחי.** כשמתווסף חבר-צוות חדש, או משתנה תפקיד — מתעדכן כאן ראשון.

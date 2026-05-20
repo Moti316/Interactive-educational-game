@@ -22,30 +22,57 @@
 
 ---
 
+> **הערה (CHG-010, P2-3):** ADR-001–006 עברו backfill לתבנית-העשירה ב-2026-05-20.
+> השדות הורחבו רק עם תוכן אמיתי-ניתן-לגזירה מהמקור — סעיפים שלא תועדו במקור
+> מסומנים מפורשות. ADR-007–009 נשארו כפי שהם (מובְנים דיים).
+
 ## ADR-001 | 2026-05-17 | Vanilla JS, ללא React/Vite
-**החלטה:** Vanilla HTML/CSS/JS + ES Modules.  
-**נימוק:** הילדים לא ייהנו יותר. הפיתוח מסתבך עם Node. ולא צריך build step.  
-**אלטרנטיבות שנשללו:** React (overkill), Vue (overkill), Svelte (מעניין אבל compile required).
+**סטטוס:** מאושר · **בעלים:** human (החלטת-יסוד)
+**הקשר:** משחק-דפדפן פשוט למשפחה אחת. הכוח-המנוגד: framework מודרני מאיץ פיתוח-UI מורכב, אך מוסיף build step, תלות-Node, ומורכבות שאינה מוצדקת לפרויקט בקנה-מידה כזה.
+**ההחלטה:** Vanilla HTML/CSS/JS + ES Modules. ללא build step.
+**אכיפה:** CLAUDE.md §"עקרונות קוד" אוסר npm/React/build. CodeReviewer בודק בכל סבב.
+**השלכות:** חיובי — אפס build, פשטות, קל-לתחזוקה למשפחה. שלילי — אין component-framework; דפוסי-UI נכתבים ידנית.
+**אלטרנטיבות שנדחו:** React/Vue (overkill לקנה-המידה); Svelte (מעניין, אך דורש compile).
 
 ## ADR-002 | 2026-05-17 | localStorage + IndexedDB, ללא backend
-**החלטה:** localStorage ל-state, IndexedDB ל-blob.  
-**נימוק:** משחק לבית-אחד. אין צורך ב-DB. פרטיות מירבית.
+**סטטוס:** מאושר · **בעלים:** human
+**הקשר:** המשחק רץ במחשב-בית אחד. נדרש אחסון-state מתמשך + אחסון blob (קול, תמונות). הכוח-המנוגד: DB אמיתי נותן שאילתות, אך מצריך backend ופוגע בפרטיות.
+**ההחלטה:** localStorage ל-state, IndexedDB ל-blobים.
+**אכיפה:** prefix `chachmoni:*` ל-localStorage (CLAUDE.md). IntegrationVerifier בודק schema.
+**השלכות:** חיובי — אפס backend, פרטיות מירבית, נתונים נשארים במכשיר. שלילי — אין שאילתות חוצות-מכשיר; sync דורש פתרון נפרד (ראה ADR-004).
+**אלטרנטיבות שנדחו:** backend DB (פוגע בפרטיות, מצריך תחזוקת-שרת).
 
 ## ADR-003 | 2026-05-17 | Local-only + PowerShell Launcher, ללא Vercel
-**החלטה:** PowerShell `HttpListener` על `localhost:8080`.  
-**נימוק:** משפחה אחת, מחשב אחד. אבטחה מירבית. file:// לא תומך ב-ES Modules + OAuth.
+**סטטוס:** מאושר · **בעלים:** human
+**הקשר:** המשחק צריך לרוץ מקומית. הכוח-המנוגד: `file://` פשוט אך לא תומך ב-ES Modules ו-OAuth; hosting (Vercel) מוסיף חשיפה-ציבורית מיותרת.
+**ההחלטה:** PowerShell `HttpListener` על `localhost:8080`.
+**אכיפה:** `scripts/start-chachmoni.ps1`. CLAUDE.md דורש הרצה דרך ה-launcher, לא `file://`.
+**השלכות:** חיובי — ES Modules + OAuth עובדים, אפס חשיפה-ציבורית, אבטחה מירבית. שלילי — תלות ב-PowerShell; ההורה מריץ סקריפט להפעלה.
+**אלטרנטיבות שנדחו:** `file://` (אין ES Modules/OAuth); Vercel/hosting (חשיפה-ציבורית מיותרת למשחק-משפחתי).
 
 ## ADR-004 | 2026-05-17 | Drive sync — קובץ פר-פרופיל (לא יחיד)
-**החלטה:** `progress-{profileId}.json` בנפרד לכל ילד.  
-**נימוק:** הורה יכול לשתף/לאפס פר-ילד. אין race-conditions בין-פרופילים.
+**סטטוס:** מאושר · **בעלים:** human
+**הקשר:** סנכרון התקדמות בין-מכשירים דרך Google Drive. הכוח-המנוגד: קובץ-יחיד פשוט יותר, אך יוצר race-conditions כששני ילדים משחקים במקביל.
+**ההחלטה:** `progress-{profileId}.json` נפרד לכל פרופיל.
+**אכיפה:** Drive schema ב-CLAUDE.md. IntegrationVerifier בודק ב-Phase 4.
+**השלכות:** חיובי — אין race בין-פרופילים, הורה יכול לאפס/לשתף פר-ילד. שלילי — N קבצים במקום אחד; cleanup פר-פרופיל נדרש.
+**אלטרנטיבות שנדחו:** קובץ-progress יחיד (race-conditions בין-פרופילים).
 
 ## ADR-005 | 2026-05-17 | PIN — PBKDF2 + salt + 100K iterations
-**החלטה:** לא SHA-256 פשוט (rainbow-table פותר).  
-**נימוק:** המלצת agent-security ב-Council Round 1.
+**סטטוס:** מאושר · **בעלים:** agent-security (Council Round 1)
+**הקשר:** מסך-הורה מוגן ב-PIN. הכוח-המנוגד: SHA-256 פשוט קל-למימוש, אך פגיע ל-rainbow-table.
+**ההחלטה:** PBKDF2 + salt + 100K iterations. לא SHA-256 פשוט.
+**אכיפה:** skill `security-kids`. SecurityAuditor בודק בכל סבב הנוגע ל-PIN.
+**השלכות:** חיובי — עמיד ל-rainbow-table ו-brute-force. שלילי — חישוב כבד מעט יותר (זניח לאימות-יחיד).
+**אלטרנטיבות שנדחו:** SHA-256 פשוט (rainbow-table פותר); plaintext PIN (אסור מוחלט).
 
 ## ADR-006 | 2026-05-17 | AI generator — Phase 2 בלבד
-**החלטה:** 50 משימות מובנות-מראש ב-MVP, אין שימוש API.  
-**נימוק:** מספיק לחודש-חודשיים. עלות 0. אם נצטרך — Phase 2.
+**סטטוס:** מאושר · **בעלים:** human
+**הקשר:** המשחק יכול לייצר משימות דינמית דרך Claude API. הכוח-המנוגד: generator דינמי עשיר, אך מוסיף עלות-API ותלות-רשת ל-MVP.
+**ההחלטה:** 50 משימות מובנות-מראש ב-MVP. AI generator נדחה ל-Phase 2.
+**אכיפה:** ROADMAP — generator לא ב-scope של MVP. PhaseGatekeeper.
+**השלכות:** חיובי — עלות $0, אפס תלות-רשת ב-MVP, תוכן צפוי. שלילי — תוכן סופי (50 משימות) עד Phase 2; חזרתיות לאחר זמן.
+**אלטרנטיבות שנדחו:** AI generator ב-MVP (עלות + תלות-רשת לא מוצדקות לחודשיים הראשונים).
 
 ## ADR-007 | 2026-05-18 | אימוץ `ROADMAP.md` + צוות "מצפן"
 **החלטה:** יצירת `docs/ROADMAP.md` כתוכנית-עבודה חיה (view של PLAN.md), ומקימים צוות "מצפן" (Compass) עם 2 סוכנים חדשים:
