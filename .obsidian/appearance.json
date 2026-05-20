@@ -1,4 +1,6 @@
 {
   "baseFontSize": 16,
-  "showViewHeader": true
+  "showViewHeader": true,
+  "theme": "obsidian",
+  "cssTheme": "Things"
 }

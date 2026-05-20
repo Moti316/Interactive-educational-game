@@ -1,37 +1,34 @@
 {
-  "nodes": [
-    {"id":"title","type":"text","text":"# 🦉 חכמוני — מפת-פרויקט\n\nמשחק לימוד-מחשב בעברית לבני 4–6","x":-760,"y":-560,"width":420,"height":110,"color":"6"},
-    {"id":"state","type":"text","text":"## 📍 מצב נוכחי\n\n**Phase 0.5** (מוקאפים) — 40%\n\n🚧 **חוסם:** Brief #1.5 + ADR-014","x":-280,"y":-560,"width":420,"height":140,"color":"1"},
-
-    {"id":"council","type":"text","text":"## ⚖️ High Council\n9 חברים — פוסק **איכות**","x":-760,"y":-360,"width":300,"height":110,"color":"4"},
-    {"id":"compass","type":"text","text":"## 🧭 Compass\n3 חברים — מורה **כיוון**","x":-420,"y":-360,"width":300,"height":110,"color":"5"},
-    {"id":"studio","type":"text","text":"## 🎨 Design Studio\n7 חברים — פוסק **אסתטיקה**","x":-80,"y":-360,"width":300,"height":110,"color":"6"},
-    {"id":"order","type":"text","text":"**סדר-הפעלה:**\nStudio → Compass → Council","x":260,"y":-360,"width":280,"height":110,"color":"3"},
-
-    {"id":"p0","type":"text","text":"**Phase 0**\nתשתית ✅","x":-760,"y":-150,"width":150,"height":90,"color":"4"},
-    {"id":"p05","type":"text","text":"**Phase 0.5**\nמוקאפים ⬅ עכשיו","x":-590,"y":-150,"width":150,"height":90,"color":"3"},
-    {"id":"p1","type":"text","text":"**Phase 1**\nשלד + פרופילים","x":-420,"y":-150,"width":150,"height":90},
-    {"id":"p2","type":"text","text":"**Phase 2**\nתבנית ראשונה","x":-250,"y":-150,"width":150,"height":90},
-    {"id":"p3","type":"text","text":"**Phase 3**\nתבניות עכבר","x":-80,"y":-150,"width":150,"height":90},
-    {"id":"p4","type":"text","text":"**Phase 4**\nPowerShell+Drive","x":90,"y":-150,"width":150,"height":90},
-    {"id":"p5","type":"text","text":"**Phase 5**\nתבניות מקלדת","x":260,"y":-150,"width":150,"height":90},
-    {"id":"p6","type":"text","text":"**Phase 6-9**\nליטוש → מסירה","x":430,"y":-150,"width":150,"height":90},
-
-    {"id":"f-claude","type":"file","file":"CLAUDE.md","x":-760,"y":60,"width":230,"height":120},
-    {"id":"f-roadmap","type":"file","file":"docs/ROADMAP.md","x":-500,"y":60,"width":230,"height":120},
-    {"id":"f-dash","type":"file","file":"docs/_DASHBOARD.md","x":-240,"y":60,"width":230,"height":120},
-    {"id":"f-index","type":"file","file":"docs/_INDEX.md","x":20,"y":60,"width":230,"height":120}
-  ],
-  "edges": [
-    {"id":"e-state-p05","fromNode":"state","fromSide":"bottom","toNode":"p05","toSide":"top","color":"1"},
-    {"id":"e-p0","fromNode":"p0","fromSide":"right","toNode":"p05","toSide":"left"},
-    {"id":"e-p05","fromNode":"p05","fromSide":"right","toNode":"p1","toSide":"left"},
-    {"id":"e-p1","fromNode":"p1","fromSide":"right","toNode":"p2","toSide":"left"},
-    {"id":"e-p2","fromNode":"p2","fromSide":"right","toNode":"p3","toSide":"left"},
-    {"id":"e-p3","fromNode":"p3","fromSide":"right","toNode":"p4","toSide":"left"},
-    {"id":"e-p4","fromNode":"p4","fromSide":"right","toNode":"p5","toSide":"left"},
-    {"id":"e-p5","fromNode":"p5","fromSide":"right","toNode":"p6","toSide":"left"},
-    {"id":"e-studio-compass","fromNode":"studio","fromSide":"left","toNode":"compass","toSide":"right","label":"→"},
-    {"id":"e-compass-council","fromNode":"compass","fromSide":"left","toNode":"council","toSide":"right","label":"→"}
-  ]
+	"nodes":[
+		{"id":"title","type":"text","text":"# 🦉 חכמוני — מפת-פרויקט\n\nמשחק לימוד-מחשב בעברית לבני 4–6","x":-760,"y":-560,"width":420,"height":110,"color":"6"},
+		{"id":"state","type":"text","text":"## 📍 מצב נוכחי\n\n**Phase 0.5** (מוקאפים) — 40%\n\n🚧 **חוסם:** Brief #1.5 + ADR-014","x":-280,"y":-560,"width":420,"height":140,"color":"1"},
+		{"id":"council","type":"text","text":"## ⚖️ High Council\n9 חברים — פוסק **איכות**","x":-760,"y":-360,"width":300,"height":110,"color":"4"},
+		{"id":"compass","type":"text","text":"## 🧭 Compass\n3 חברים — מורה **כיוון**","x":-420,"y":-360,"width":300,"height":110,"color":"5"},
+		{"id":"studio","type":"text","text":"## 🎨 Design Studio\n7 חברים — פוסק **אסתטיקה**","x":-80,"y":-360,"width":300,"height":110,"color":"6"},
+		{"id":"order","type":"text","text":"**סדר-הפעלה:**\nStudio → Compass → Council","x":260,"y":-360,"width":280,"height":110,"color":"3"},
+		{"id":"p0","type":"text","text":"**Phase 0**\nתשתית ✅","x":-760,"y":-150,"width":150,"height":90,"color":"4"},
+		{"id":"p05","type":"text","text":"**Phase 0.5**\nמוקאפים ⬅ עכשיו","x":-590,"y":-150,"width":150,"height":90,"color":"3"},
+		{"id":"p1","type":"text","text":"**Phase 1**\nשלד + פרופילים","x":-420,"y":-150,"width":150,"height":90},
+		{"id":"p2","type":"text","text":"**Phase 2**\nתבנית ראשונה","x":-250,"y":-150,"width":150,"height":90},
+		{"id":"p3","type":"text","text":"**Phase 3**\nתבניות עכבר","x":-80,"y":-150,"width":150,"height":90},
+		{"id":"p4","type":"text","text":"**Phase 4**\nPowerShell+Drive","x":90,"y":-150,"width":150,"height":90},
+		{"id":"p5","type":"text","text":"**Phase 5**\nתבניות מקלדת","x":260,"y":-150,"width":150,"height":90},
+		{"id":"p6","type":"text","text":"**Phase 6-9**\nליטוש → מסירה","x":430,"y":-150,"width":150,"height":90},
+		{"id":"f-claude","type":"file","file":"CLAUDE.md","x":-760,"y":60,"width":230,"height":120},
+		{"id":"f-roadmap","type":"file","file":"docs/ROADMAP.md","x":-500,"y":60,"width":230,"height":120},
+		{"id":"f-dash","type":"file","file":"docs/_DASHBOARD.md","x":-240,"y":60,"width":230,"height":120},
+		{"id":"f-index","type":"file","file":"docs/_INDEX.md","x":20,"y":60,"width":230,"height":120}
+	],
+	"edges":[
+		{"id":"e-state-p05","fromNode":"state","fromSide":"bottom","toNode":"p05","toSide":"top","color":"1"},
+		{"id":"e-p0","fromNode":"p0","fromSide":"right","toNode":"p05","toSide":"left"},
+		{"id":"e-p05","fromNode":"p05","fromSide":"right","toNode":"p1","toSide":"left"},
+		{"id":"e-p1","fromNode":"p1","fromSide":"right","toNode":"p2","toSide":"left"},
+		{"id":"e-p2","fromNode":"p2","fromSide":"right","toNode":"p3","toSide":"left"},
+		{"id":"e-p3","fromNode":"p3","fromSide":"right","toNode":"p4","toSide":"left"},
+		{"id":"e-p4","fromNode":"p4","fromSide":"right","toNode":"p5","toSide":"left"},
+		{"id":"e-p5","fromNode":"p5","fromSide":"right","toNode":"p6","toSide":"left"},
+		{"id":"e-studio-compass","fromNode":"studio","fromSide":"left","toNode":"compass","toSide":"right","label":"→"},
+		{"id":"e-compass-council","fromNode":"compass","fromSide":"left","toNode":"council","toSide":"right","label":"→"}
+	]
 }
