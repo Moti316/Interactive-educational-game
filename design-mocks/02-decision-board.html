@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>לוח-החלטות — R-Design-1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&family=Varela+Round&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sky: #6FC3DF; --sun: #FFD93D; --coral: #FF6B6B; --coral-dark: #B91C1C;
+    --mint: #6BCB77; --lavender: #C9A0DC; --cream: #FFFCF2; --ink: #2D2A26;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Heebo', sans-serif; background: var(--cream); color: var(--ink);
+    direction: rtl; line-height: 1.6; padding: 32px 24px 80px;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; }
+  h1 { font-family: 'Varela Round', sans-serif; font-size: 38px; color: var(--coral-dark); margin-bottom: 8px; }
+  h2 { font-family: 'Varela Round', sans-serif; font-size: 27px; margin-bottom: 16px; }
+  .intro { font-size: 18px; color: #555; margin-bottom: 8px; }
+  section {
+    background: #fff; border-radius: 20px; padding: 28px 32px; margin-top: 24px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.06);
+  }
+  .num-badge {
+    display: inline-block; background: var(--ink); color: var(--cream);
+    width: 36px; height: 36px; border-radius: 50%; text-align: center;
+    line-height: 36px; font-weight: 800; margin-left: 10px; font-family: 'Varela Round';
+  }
+  .problem-row { display: flex; gap: 24px; align-items: center; justify-content: center; flex-wrap: wrap; margin: 20px 0; }
+  .problem-card { text-align: center; }
+  .problem-card img { width: 200px; height: 130px; object-fit: contain; background: #F4F4F0; border-radius: 12px; padding: 8px; }
+  .problem-card .cap { display: block; margin-top: 8px; font-weight: 700; }
+  .vs { font-size: 32px; font-weight: 800; color: var(--coral-dark); }
+  table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+  th, td { border: 1px solid #E5E2D8; padding: 10px 14px; text-align: right; }
+  th { background: var(--ink); color: var(--cream); }
+  td.logo-col { background: #F3E8F8; }
+  td.mascot-col { background: #E8F4F8; }
+  .options-row { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px; }
+  .opt-card {
+    flex: 1; min-width: 280px; border: 3px solid var(--sky); border-radius: 16px;
+    padding: 20px; background: #FCFCFA;
+  }
+  .opt-card.recommended { border-color: var(--mint); }
+  .opt-title { font-family: 'Varela Round'; font-size: 22px; margin-bottom: 4px; }
+  .opt-badge {
+    display: inline-block; background: var(--mint); color: var(--ink);
+    font-size: 12px; font-weight: 800; padding: 3px 10px; border-radius: 999px; margin-right: 8px;
+  }
+  .sketch { background: #fff; border: 1px dashed #BBB; border-radius: 10px; padding: 16px; margin: 12px 0; text-align: center; }
+  .sketch svg { max-width: 100%; height: auto; }
+  .sketch-label { font-size: 12px; color: #999; margin-top: 6px; font-style: italic; }
+  .opt-desc { font-size: 15px; }
+  .opt-desc strong { color: var(--coral-dark); }
+  .swatch-row { display: flex; gap: 16px; margin: 16px 0; flex-wrap: wrap; }
+  .swatch { text-align: center; }
+  .swatch .chip { width: 80px; height: 80px; border-radius: 12px; border: 2px solid var(--ink); }
+  .swatch .code { font-family: monospace; font-size: 13px; margin-top: 6px; display: block; }
+  .swatch .role { font-size: 13px; color: #555; }
+  .choice-list { list-style: none; margin-top: 14px; }
+  .choice-list li {
+    background: var(--cream); border: 2px solid var(--ink); border-radius: 10px;
+    padding: 10px 16px; margin-bottom: 8px; font-weight: 500;
+  }
+  .summary-box {
+    background: var(--sun); border: 3px solid var(--ink); border-radius: 16px;
+    padding: 24px; margin-top: 20px; font-size: 18px;
+  }
+  .summary-box pre {
+    background: #fff; border-radius: 10px; padding: 16px; margin-top: 14px;
+    font-family: monospace; font-size: 16px; direction: rtl; white-space: pre-wrap;
+  }
+  .note { font-size: 14px; color: #777; margin-top: 12px; }
+  .flag { background: #FFF3CD; border-right: 4px solid var(--sun); padding: 10px 16px; border-radius: 8px; margin: 12px 0; font-size: 15px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>🎨 לוח-החלטות — R-Design-1</h1>
+  <p class="intro">סטודיו-העיצוב סיים סקירה ראשונה (פסיקה: 🔴 OFF-BRAND). 3 החלטות חוסמות את Phase 1.</p>
+  <p class="intro">עיין בקובץ הזה, החלט, וחזור אלי בצ'אט עם 3 התשובות (יש תיבת-סיכום בסוף).</p>
+
+  <!-- ═══ Section 1 — הבעיה ═══ -->
+  <section>
+    <h2>הבעיה — הלוגו והמסקוט הם שתי דמויות שונות</h2>
+    <p>ילד בן-4 שלא קורא מזהה מותג דרך <strong>דמות</strong>. אם הלוגו והמסקוט נראים שונה — הוא חושב שאלו שתי אפליקציות.</p>
+    <div class="problem-row">
+      <div class="problem-card">
+        <img src="../assets/logo/active/logo-hero.svg" alt="הלוגו הנוכחי">
+        <span class="cap">הלוגו הנוכחי (לבנדר)</span>
+      </div>
+      <div class="vs">≠</div>
+      <div class="problem-card">
+        <img src="../assets/mascot/professor-chachmoni-standing-wave.svg" alt="המסקוט">
+        <span class="cap">המסקוט (תכלת)</span>
+      </div>
+    </div>
+    <table>
+      <tr><th>מאפיין</th><th>הלוגו</th><th>המסקוט</th></tr>
+      <tr><td>צבע-גוף</td><td class="logo-col">לבנדר סגול</td><td class="mascot-col">תכלת כחול</td></tr>
+      <tr><td>עיניים</td><td class="logo-col">חצי-סגורות, אבסטרקטיות</td><td class="mascot-col">גדולות, פתוחות, עגולות</td></tr>
+      <tr><td>כובע</td><td class="logo-col">אין</td><td class="mascot-col">כובע אקדמי עם פונפון</td></tr>
+      <tr><td>ציצות-אוזניים</td><td class="logo-col">יש</td><td class="mascot-col">אין</td></tr>
+    </table>
+  </section>
+
+  <!-- ═══ Section 2 — החלטה 1 ═══ -->
+  <section>
+    <h2><span class="num-badge">1</span>החלטה 1 — סגנון הלוגו החדש (Brief #1.5)</h2>
+    <p>הלוגו ייעוצב מחדש דרך claude.ai/design כדי שישתמש בדמות-המסקוט. בחר סגנון:</p>
+
+    <div class="options-row">
+
+      <!-- Option A -->
+      <div class="opt-card recommended">
+        <div class="opt-title">אופציה A <span class="opt-badge">מומלץ</span></div>
+        <div class="sketch">
+          <svg viewBox="0 0 280 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="סקיצה A — ראש המסקוט וטקסט">
+            <!-- mascot head only -->
+            <g transform="translate(62,68)">
+              <ellipse cx="0" cy="0" rx="50" ry="48" fill="#6FC3DF" stroke="#2D2A26" stroke-width="3"/>
+              <ellipse cx="0" cy="18" rx="26" ry="24" fill="#FFA552"/>
+              <ellipse cx="-2" cy="-30" rx="30" ry="9" fill="#2D2A26"/>
+              <polygon points="-36,-34 0,-44 36,-34 0,-24" fill="#2D2A26"/>
+              <circle cx="0" cy="-46" r="5" fill="#6BCB77" stroke="#2D2A26" stroke-width="1.5"/>
+              <circle cx="-16" cy="-2" r="15" fill="#FFFCF2" stroke="#2D2A26" stroke-width="2.5"/>
+              <circle cx="16" cy="-2" r="15" fill="#FFFCF2" stroke="#2D2A26" stroke-width="2.5"/>
+              <circle cx="-14" cy="0" r="7" fill="#2D2A26"/>
+              <circle cx="18" cy="0" r="7" fill="#2D2A26"/>
+              <circle cx="-11" cy="-3" r="2.5" fill="#FFFCF2"/>
+              <circle cx="21" cy="-3" r="2.5" fill="#FFFCF2"/>
+              <path d="M -7,14 L 7,14 L 0,24 Z" fill="#E8851A"/>
+            </g>
+            <text x="210" y="80" text-anchor="start" direction="rtl" font-family="'Varela Round',sans-serif" font-size="40" fill="#2D2A26">חכמוני</text>
+          </svg>
+          <div class="sketch-label">סקיצת-קונספט — לא העיצוב הסופי</div>
+        </div>
+        <p class="opt-desc"><strong>ראש-המסקוט בלבד</strong> + השם "חכמוני". הדמות המוכרת, חתוכה לפורטרט. הכי קרוב למסקוט — הילד מזהה מיד.</p>
+      </div>
+
+      <!-- Option B -->
+      <div class="opt-card">
+        <div class="opt-title">אופציה B</div>
+        <div class="sketch">
+          <svg viewBox="0 0 280 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="סקיצה B — מסקוט מלא וטקסט">
+            <!-- full mascot, small -->
+            <g transform="translate(60,65) scale(0.42)">
+              <ellipse cx="0" cy="0" rx="78" ry="88" fill="#6FC3DF" stroke="#2D2A26" stroke-width="6"/>
+              <ellipse cx="0" cy="35" rx="48" ry="50" fill="#FFA552"/>
+              <ellipse cx="0" cy="-75" rx="46" ry="13" fill="#2D2A26"/>
+              <polygon points="-55,-82 0,-98 55,-82 0,-66" fill="#2D2A26"/>
+              <circle cx="0" cy="-98" r="9" fill="#6BCB77" stroke="#2D2A26" stroke-width="3"/>
+              <circle cx="-25" cy="-22" r="22" fill="#FFFCF2" stroke="#2D2A26" stroke-width="4"/>
+              <circle cx="25" cy="-22" r="22" fill="#FFFCF2" stroke="#2D2A26" stroke-width="4"/>
+              <circle cx="-22" cy="-20" r="10" fill="#2D2A26"/>
+              <circle cx="28" cy="-20" r="10" fill="#2D2A26"/>
+              <path d="M -11,-2 L 11,-2 L 0,14 Z" fill="#E8851A"/>
+              <ellipse cx="-20" cy="90" rx="14" ry="6" fill="#E8851A"/>
+              <ellipse cx="20" cy="90" rx="14" ry="6" fill="#E8851A"/>
+            </g>
+            <text x="210" y="80" text-anchor="start" direction="rtl" font-family="'Varela Round',sans-serif" font-size="40" fill="#2D2A26">חכמוני</text>
+          </svg>
+          <div class="sketch-label">סקיצת-קונספט — לא העיצוב הסופי</div>
+        </div>
+        <p class="opt-desc"><strong>מסקוט מלא קטן</strong> + השם "חכמוני". כל הדמות נראית — גוף, כובע, רגליים. עשיר יותר, אבל קטן בפאוויקון.</p>
+      </div>
+
+      <!-- Option C -->
+      <div class="opt-card">
+        <div class="opt-title">אופציה C</div>
+        <div class="sketch">
+          <svg viewBox="0 0 280 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="סקיצה C — סמליל אבסטרקטי וטקסט">
+            <!-- abstract owl+cap silhouette, single fill -->
+            <g transform="translate(62,68)">
+              <ellipse cx="0" cy="6" rx="44" ry="46" fill="#6FC3DF"/>
+              <polygon points="-40,-30 0,-44 40,-30 0,-18" fill="#2D2A26"/>
+              <ellipse cx="0" cy="-22" rx="26" ry="8" fill="#2D2A26"/>
+              <circle cx="0" cy="-46" r="5" fill="#6BCB77"/>
+              <circle cx="-15" cy="4" r="9" fill="#FFFCF2"/>
+              <circle cx="15" cy="4" r="9" fill="#FFFCF2"/>
+              <circle cx="-15" cy="4" r="4" fill="#2D2A26"/>
+              <circle cx="15" cy="4" r="4" fill="#2D2A26"/>
+            </g>
+            <text x="210" y="80" text-anchor="start" direction="rtl" font-family="'Varela Round',sans-serif" font-size="40" fill="#2D2A26">חכמוני</text>
+          </svg>
+          <div class="sketch-label">סקיצת-קונספט — לא העיצוב הסופי</div>
+        </div>
+        <p class="opt-desc"><strong>סמליל אבסטרקטי</strong> (צללית-ינשוף-עם-כובע, פשוט ושטוח) + השם "חכמוני". נקי, מודרני, מתכווץ יפה — אבל פחות "חברותי" מ-A.</p>
+      </div>
+
+    </div>
+    <div class="flag">📌 כל 3 הסקיצות הן <strong>קונספט גס בלבד</strong>. claude.ai/design יפיק את הגרסה המלוטשת אחרי שתבחר.</div>
+  </section>
+
+  <!-- ═══ Section 3 — החלטה 2 ═══ -->
+  <section>
+    <h2><span class="num-badge">2</span>החלטה 2 — ADR-014 (פלטת-צבעים)</h2>
+    <p><strong>הבעיה:</strong> המסקוט שאישרת משתמש ב-3 צבעים שלא רשומים ברשימת-הצבעים הרשמית של הפרויקט:</p>
+    <div class="swatch-row">
+      <div class="swatch"><div class="chip" style="background:#5BA8C4"></div><span class="code">#5BA8C4</span><span class="role">צל-כנף (תכלת כהה)</span></div>
+      <div class="swatch"><div class="chip" style="background:#FFA552"></div><span class="code">#FFA552</span><span class="role">בטן-המסקוט (כתום)</span></div>
+      <div class="swatch"><div class="chip" style="background:#E8851A"></div><span class="code">#E8851A</span><span class="role">צל-מקור (כתום כהה)</span></div>
+    </div>
+    <p><strong>מה ADR-014 עושה:</strong></p>
+    <ul style="margin-right:20px; font-size:15px;">
+      <li>רושם את 3 הצבעים רשמית ברשימת-הצבעים (`tokens.css`) — כדי שלא יהיו "צבעים יתומים".</li>
+      <li>מוסיף "שכבת-משמעות" — שמות ברורים לצבעים לפי תפקיד (לדוגמה `--color-character-body` במקום `--color-sky`). זה מקל על תחזוקה עתידית.</li>
+    </ul>
+    <div class="flag">💡 בשפה פשוטה: זה "סידור-בית" של רשימת-הצבעים. בלי זה — הקוד יהיה פחות מסודר, אבל זה לא דחוף-קריטי.</div>
+    <p style="margin-top:14px;"><strong>האפשרויות שלך:</strong></p>
+    <ul class="choice-list">
+      <li>✅ <strong>אשר</strong> — Claude Code יסדר את הצבעים לפי ADR-014</li>
+      <li>✏️ <strong>שנה</strong> — יש לך הערה לגבי הצבעים / השמות</li>
+      <li>❌ <strong>דחה</strong> — משאירים את רשימת-הצבעים כמו שהיא (לא מומלץ — יישארו "צבעים יתומים")</li>
+    </ul>
+  </section>
+
+  <!-- ═══ Section 4 — החלטה 3 ═══ -->
+  <section>
+    <h2><span class="num-badge">3</span>החלטה 3 — CHG-009 (להתחיל ביצוע?)</h2>
+    <p>אם תאשר — Claude Code יתחיל את רצף-הביצוע הבא:</p>
+    <ol style="margin-right:20px; font-size:15px;">
+      <li>Brief #1.5 (לוגו חדש) → אתה תגשר ל-claude.ai/design לפי הסגנון שבחרת בהחלטה 1</li>
+      <li>ADR-014 → Claude Code יעדכן את רשימת-הצבעים (אם אישרת בהחלטה 2)</li>
+      <li>רצף Briefs #3-5 (Welcome, Avatars, Task+Celebration) דרך claude.ai/design</li>
+      <li>R4 — שער-מועצה לפני Phase 1</li>
+    </ol>
+    <p style="margin-top:14px;"><strong>האפשרויות שלך:</strong></p>
+    <ul class="choice-list">
+      <li>🚀 <strong>מתחילים</strong> — Claude Code מתחיל מיד אחרי שתחזור עם ההחלטות</li>
+      <li>⏸️ <strong>עוד לא</strong> — רוצה לחשוב / לדון עוד לפני שמתחילים</li>
+    </ul>
+  </section>
+
+  <!-- ═══ Section 5 — סיכום ═══ -->
+  <section>
+    <h2>📋 סיכום — מה להגיד ל-Claude Code</h2>
+    <p>חזור לצ'אט והעתק את 3 השורות הבאות עם התשובות שלך:</p>
+    <div class="summary-box">
+      <strong>3 ההחלטות שלי:</strong>
+      <pre>החלטה 1 (סגנון לוגו):  אופציה ___   (A / B / C)
+החלטה 2 (ADR-014):     ___          (אשר / שנה / דחה)
+החלטה 3 (CHG-009):     ___          (מתחילים / עוד לא)</pre>
+    </div>
+    <p class="note">הקובץ הזה לעיון בלבד — אי-אפשר ללחוץ עליו. פשוט קרא, החלט, וכתוב לי את התשובות בצ'אט.</p>
+    <p class="note">הדוח המלא של סטודיו-העיצוב: <strong>docs/DESIGN-AUDIT-R1.md</strong></p>
+  </section>
+
+</div>
+</body>
+</html>
