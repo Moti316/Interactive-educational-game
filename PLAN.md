@@ -1097,7 +1097,7 @@ Claude Code תומך ב-hooks דרך `~/.claude/settings.json`. נגדיר:
 # scripts/git-sync.ps1 (Patch #13 מהמועצה — lock-file mechanism)
 param([string]$Action = 'sync', [string]$Message = "auto-sync from $env:COMPUTERNAME at $(Get-Date -Format 'yyyy-MM-dd HH:mm')")
 
-cd C:\Users\b0066820\Interactive-educational-game
+cd "C:\Users\b0066820\Desktop\Claude project\Interactive-educational-game"
 
 # Lock mechanism — מונע התנגשות בין Task Scheduler ל-Claude hooks
 $lockFile = '.git/sync.lock'
@@ -1141,7 +1141,7 @@ try {
 **הקמת ה-Task Scheduler:**
 ```powershell
 $action = New-ScheduledTaskAction -Execute 'powershell.exe' `
-  -Argument '-NoProfile -WindowStyle Hidden -File C:\Users\b0066820\Interactive-educational-game\scripts\git-sync.ps1'
+  -Argument '-NoProfile -WindowStyle Hidden -File "C:\Users\b0066820\Desktop\Claude project\Interactive-educational-game\scripts\git-sync.ps1"'
 $trigger = New-ScheduledTaskTrigger -Once -At (Get-Date) `
   -RepetitionInterval (New-TimeSpan -Hours 1)
 Register-ScheduledTask -TaskName 'EduGame Git Sync' -Action $action -Trigger $trigger
@@ -3333,7 +3333,7 @@ function selectVoice() {
 
 המשחק רץ Local-only, לכן אין "דפלוי" — רק יצירת קיצור-דרך נוח על שולחן-העבודה של המחשב המשפחתי:
 
-1. נווט אל תיקיית הפרויקט: `C:\Users\b0066820\Interactive-educational-game`
+1. נווט אל תיקיית הפרויקט: `C:\Users\b0066820\Desktop\Claude project\Interactive-educational-game`
 2. לחיצה-ימנית על `index.html` → "Send to" → "Desktop (create shortcut)"
 3. על שולחן-העבודה: לחיצה-ימנית על הקיצור החדש → "Properties" → שינוי-שם ל"חכמוני"
 4. (אופציונלי) "Change Icon" → `assets/icons/favicon.ico` כדי שהקיצור יראה את הלוגו של חכמוני

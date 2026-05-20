@@ -27,7 +27,7 @@
 
 ### אפשרות 1 — לראות את המצב הישן בלי לשנות כלום
 ```powershell
-cd C:\Users\b0066820\Interactive-educational-game
+cd "C:\Users\b0066820\Desktop\Claude project\Interactive-educational-game"
 git checkout backup/pre-infra-upgrade-2026-05-20
 ```
 זה מעביר אותך ל"צילום" הישן. כדי לחזור להווה:
@@ -38,7 +38,7 @@ git checkout main
 ### אפשרות 2 — לשחזר את main לגמרי למצב הישן (פעולה הרסנית!)
 ⚠️ זה **מוחק** את כל מה שנעשה אחרי הגיבוי. רק אם באמת צריך.
 ```powershell
-cd C:\Users\b0066820\Interactive-educational-game
+cd "C:\Users\b0066820\Desktop\Claude project\Interactive-educational-game"
 git checkout main
 git reset --hard backup-2026-05-20-pre-infra
 git push --force origin main
