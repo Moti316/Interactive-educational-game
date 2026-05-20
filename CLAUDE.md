@@ -57,7 +57,7 @@
 - `claude-api` — Phase 2 (AI generator)
 - `fewer-permission-prompts`, `update-config`
 
-### הצוותים שלנו — 18 Sub-Agents (3 צוותים)
+### הצוותים שלנו — 19 Sub-Agents (3 צוותים)
 
 #### ⚖️ המועצה הגבוהה (High Council) — 9 חברים
 פוסקת **איכות** בסיום כל שלב-בנייה. ראה [`docs/TEAM-COUNCIL.md`](./docs/TEAM-COUNCIL.md).
@@ -81,6 +81,7 @@
 |----|-----------|------|
 | 🗺️ | **RoadmapKeeper** | `agent-roadmap-keeper` (PM) |
 | 🛡️ | **PhaseGatekeeper** | `agent-phase-gatekeeper` (DoD verifier) |
+| 🔗 | **CrossTeamAuditor** | `agent-cross-team-auditor` (gap auditor) |
 
 #### 🎨 סטודיו-העיצוב (Design Studio) — 7 חברים
 פוסק **אסתטיקה ומותג** — האם זה יפה ומגובש? ראה [`docs/TEAM-DESIGN.md`](./docs/TEAM-DESIGN.md).
