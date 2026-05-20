@@ -2,6 +2,27 @@
 
 כל השינויים-המשמעותיים בפרויקט.
 
+## [0.6.0] - 2026-05-20 — Infrastructure Upgrade (CHG-010, wall comparison)
+
+### Context
+ניתוח-השוואתי מול פרויקט wall/TodoWall זיהה דפוסים לאימוץ. ההורה אישר P0+P1+P2.
+גם בוצע: גיבוי (ענף+תגית+`_backup/`) ועדכון ריפו `workspace-template` (wall+חכמוני).
+
+### Added / Changed — 8/10 items
+- **P0-2:** בלוק "מצב הפרויקט" חי בראש CLAUDE.md (מתעדכן סוף-סשן)
+- **P1-1:** `docs/RISKS.md` — מרשם-סיכונים (7 סיכונים, בעלים+מיטיגציה)
+- **P1-2:** `docs/AGENT-ACTIVITY-LOG.md` — יומן-הפעלות מרוכז
+- **P1-3:** תבנית-ADR עשירה ב-DECISIONS.md (חובה מ-ADR-014)
+- **P2-1:** מפות-תיאום בין-סוכנים ב-3 מסמכי-הצוות
+- **P2-2:** סוכן חדש `cross-team-auditor` (Compass — 2→3 חברים; 18→19 sub-agents)
+- **P2-3:** ADR-001–006 backfilled לתבנית-העשירה (תוכן אמיתי בלבד)
+- **P2-4:** `.claude/agents/_agent-template.md` — תבנית-שלד לסוכן
+
+### Deferred — 2/10 items (documented, not cancelled)
+- **P1-4** (קיבוץ docs/ לתתי-תיקיות) ו-**P0-1** (פיצול PLAN.md 230KB) — נדחו לסשן
+  ממוקד. סיבה: רפקטור-מבני גדול (274 הפניות-צולבות / קובץ 230KB) — סיכון לשבירה
+  שקטה אם מבוצע בחיפזון. מתועד ב-CHG-010.
+
 ## [0.5.0] - 2026-05-19 — Design Studio Formalization (3rd Team)
 
 ### Added — Design Studio Team
