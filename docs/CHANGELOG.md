@@ -2,6 +2,19 @@
 
 כל השינויים-המשמעותיים בפרויקט.
 
+## [0.6.1] - 2026-05-20 — Folder relocation + Obsidian vault
+
+### Changed — project relocated
+- הפרויקט הועבר ל-`C:\Users\b0066820\Desktop\Claude project\Interactive-educational-game`.
+- 5 נתיבים-קשיחים עודכנו (PLAN.md ×3, RESTORE-POINT.md ×2); נתיבים עם הרווח מצוטטים.
+- git/remote/היסטוריה/ענף-גיבוי/תגית — לא הושפעו.
+
+### Added — Obsidian vault
+- `.obsidian/` — קונפיג vault: app.json (RTL + alwaysUpdateLinks), core-plugins
+  (graph/backlink/canvas/...), appearance, graph, community-plugins.
+- `docs/_INDEX.md` — Map of Content עם קישורי `[[wikilink]]`.
+- `.gitignore` — סקציית Obsidian (מחריג רק UI-state תנודתי).
+
 ## [0.6.0] - 2026-05-20 — Infrastructure Upgrade (CHG-010, wall comparison)
 
 ### Context

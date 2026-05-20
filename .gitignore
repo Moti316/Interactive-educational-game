@@ -46,3 +46,9 @@ lighthouse-report-*.json
 .git/sync.lock
 .git/SYNC_CONFLICT
 .git/COMMIT_MSG.txt
+
+# Obsidian — UI-state תנודתי בלבד (קבצי-ההגדרות כן נכנסים ל-git)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache
+.obsidian/plugins/*/data.json
