@@ -5,7 +5,7 @@ tags:
 
 # חכמוני — Master Progress Dashboard
 
-> **עדכון אחרון:** 2026-05-19 (Brief #2 הושלם, ADR-011) | **מחשב:** HOME-PC | **גרסה:** v0.4.0 (Local-First Design Path)
+> **עדכון אחרון:** 2026-05-20 (Obsidian "חדר-בקרה" — dashboard, canvas, tags, guide) | **מחשב:** HOME-PC | **גרסה:** v0.4.0 (Local-First Design Path)
 > **תוכנית חיה:** [`docs/ROADMAP.md`](./ROADMAP.md) (מתוחזק ע"י [RoadmapKeeper](../.claude/agents/agent-roadmap-keeper.md))
 
 ## 📍 שדות-מהירים
@@ -40,7 +40,9 @@ tags:
 
 ## 📍 מה הצעד הבא?
 
-**אישור-הורה (בסשן הבא — ההורה עזב מחשב 2026-05-19):**
+> **תשתית שנדחתה (לפני Briefs):** P1-4 (קיבוץ `docs/`) + P0-1 (פיצול `PLAN.md`).
+
+**אישור-הורה (בסשן הבא — ההורה עזב מחשב 2026-05-20):**
 1. קרא [`docs/DESIGN-AUDIT-R1.md`](./DESIGN-AUDIT-R1.md) — דוח-סטודיו המלא
 2. **החלט על Brief #1.5 — Logo Redux:**
    - אופציה A: ראש-מסקוט-בלבד + טקסט (מומלץ)
@@ -98,6 +100,7 @@ tags:
 
 ## 📝 הערה-עצמית לסשן הבא
 
+- **תשתית 2026-05-20:** הוקם "חדר-בקרה" ב-Obsidian — `docs/_DASHBOARD.md`, `project-map.canvas`, `docs/OBSIDIAN-GUIDE.md`, ותגיות ל-34 מסמכים.
 - **המשך:** ההורה פותח `design-mocks/01-mascot-preview.html` בכרום, מאשר/מבקש תיקונים.
 - אם מאשר — Claude Code מתחיל Brief #3 (Welcome A/B) באותה שיטה (Local-First).
 - ADR-011 שינה את ברירת-המחדל: Local-First במקום Bridge. תיעוד מלא ב-`docs/DECISIONS.md` + `docs/CLAUDE-DESIGN-BRIEFS.md`.
