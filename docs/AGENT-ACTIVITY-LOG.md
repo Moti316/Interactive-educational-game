@@ -1,3 +1,8 @@
+---
+tags:
+  - log
+---
+
 # AGENT-ACTIVITY-LOG — חכמוני
 
 > **בעלים:** RoadmapKeeper (Compass) · **עודכן:** 2026-05-20

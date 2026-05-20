@@ -1,3 +1,8 @@
+---
+tags:
+  - status
+---
+
 # חכמוני — Master Progress Dashboard
 
 > **עדכון אחרון:** 2026-05-19 (Brief #2 הושלם, ADR-011) | **מחשב:** HOME-PC | **גרסה:** v0.4.0 (Local-First Design Path)

@@ -1,4 +1,9 @@
-﻿# RECOVERY — Disaster Recovery Runbook
+---
+tags:
+  - guide
+---
+
+# RECOVERY — Disaster Recovery Runbook
 
 ## תרחיש 1: ההורה שכח PIN
 1. במסך-בחירת-פרופיל לחץ על ⚙ → "שכחתי PIN"

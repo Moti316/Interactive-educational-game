@@ -1,3 +1,8 @@
+---
+tags:
+  - spec
+---
+
 # IDEAS — Future Ideas Backlog
 
 רעיונות-עתידיים שלא נכנסו ל-MVP אבל **שווה לזכור**. מסווגים לפי-נושא + effort/value rating.

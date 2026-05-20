@@ -1,3 +1,8 @@
+---
+tags:
+  - process
+---
+
 # TASK-COMPLETION-PROTOCOL
 
 > פרוטוקול אישור סיום-משימה ודיווח להורה.

@@ -1,3 +1,8 @@
+---
+tags:
+  - log
+---
+
 # COUNCIL Reports — High Council Sub-Agent Reviews
 
 > **מסמך הזהות של המועצה:** [`TEAM-COUNCIL.md`](./TEAM-COUNCIL.md) — 9 חברים בשמות תפקידיים.

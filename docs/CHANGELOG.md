@@ -1,6 +1,21 @@
-﻿# CHANGELOG
+---
+tags:
+  - log
+---
+
+# CHANGELOG
 
 כל השינויים-המשמעותיים בפרויקט.
+
+## [0.6.2] - 2026-05-20 — Obsidian "control room"
+
+### Added
+- `docs/_DASHBOARD.md` — לוח-בקרה: מצב-פרויקט חי + קישורים-חמים + צעד-הבא.
+- `project-map.canvas` — Obsidian Canvas: מפת-פרויקט חזותית (3 צוותים, Phases, מצב).
+- `docs/OBSIDIAN-GUIDE.md` — מדריך-שימוש בעברית להורה.
+- **תגיות:** frontmatter `tags` ל-34 מסמכי `docs/` — טקסונומיה בת 7 קטגוריות
+  (`#status #team #log #process #spec #quality #guide`) → מאפשר סינון ב-Obsidian.
+- `docs/_INDEX.md` — קישורים ל-Dashboard / Canvas / Guide.
 
 ## [0.6.1] - 2026-05-20 — Folder relocation + Obsidian vault
 

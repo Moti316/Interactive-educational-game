@@ -1,4 +1,9 @@
-﻿# SECURITY — הרשאות, פרטיות, secrets
+---
+tags:
+  - quality
+---
+
+# SECURITY — הרשאות, פרטיות, secrets
 
 ראה `.claude/skills/security-kids.md` למפרט-מלא.
 

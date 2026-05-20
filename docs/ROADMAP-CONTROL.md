@@ -1,3 +1,8 @@
+---
+tags:
+  - process
+---
+
 # ROADMAP-CONTROL — חוקי שינוי `docs/ROADMAP.md`
 
 > מסמך זה מגדיר מי, מתי, ואיך משנה את `docs/ROADMAP.md`.

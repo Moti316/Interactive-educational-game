@@ -1,8 +1,14 @@
+---
+tags:
+  - status
+---
+
 # 🗂️ אינדקס המסמכים — חכמוני (Map of Content)
 
 > נקודת-כניסה לכל מסמכי `docs/`. נוצר עבור Obsidian — קישורי `[[wikilink]]`
 > מזינים את ה-Graph View. פתח את התיקייה כ-vault ב-Obsidian לניווט ויזואלי.
 > **מקור-אמת:** [[CLAUDE]] (שורש) · [[PLAN]] (שורש, התכנון המלא).
+> **חדר-בקרה:** [[_DASHBOARD]] · **מפה חזותית:** [[project-map.canvas|🗺️ Canvas]] · **מדריך:** [[OBSIDIAN-GUIDE]]
 
 ## 🧭 ניווט וסטטוס
 
@@ -54,6 +60,7 @@
 
 ## 📖 מדריכים
 
+- [[OBSIDIAN-GUIDE]] — איך להשתמש ב-Obsidian לפרויקט הזה
 - [[PARENT-GUIDE]] — מדריך-הורה להפעלה
 - [[DEPLOY]] — אריזה + קיצור-דרך
 - [[RECOVERY]] — שחזור-מאסון

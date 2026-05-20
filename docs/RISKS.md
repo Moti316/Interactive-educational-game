@@ -1,3 +1,8 @@
+---
+tags:
+  - status
+---
+
 # RISKS — חכמוני
 
 > **בעלים:** RoadmapKeeper (Compass) · **עודכן:** 2026-05-20

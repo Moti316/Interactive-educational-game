@@ -1,3 +1,8 @@
+---
+tags:
+  - spec
+---
+
 # Claude Design Briefs — חכמוני
 
 > **עדכן ב-R3.5 (2026-05-19):** הוספת "Universal Constraints" — כל brief חייב לציית להם.

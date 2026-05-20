@@ -11,7 +11,7 @@
 
 - **Phase נוכחי:** 0.5 (מוקאפים) — 40%
 - **נתיב הפרויקט:** `C:\Users\b0066820\Desktop\Claude project\Interactive-educational-game` (הועבר 2026-05-20).
-- **משימה אחרונה שהושלמה:** העברת-תיקייה לנתיב חדש + הגדרת Obsidian vault (`.obsidian/`, RTL, graph, `docs/_INDEX.md`).
+- **משימה אחרונה שהושלמה:** Obsidian "חדר-בקרה" — `docs/_DASHBOARD.md`, `project-map.canvas`, `docs/OBSIDIAN-GUIDE.md`, ותגיות ל-34 מסמכים.
 - **המשימה הבאה:** 2 פריטי-תשתית שנדחו — P1-4 (קיבוץ docs/) ו-P0-1 (פיצול PLAN.md). ואז: Brief #1.5 + Briefs #3-5.
 - **חוסם:** Brief #1.5 + ADR-014 (ראה `docs/DESIGN-AUDIT-R1.md`).
 - **עדכון אחרון:** 2026-05-20.

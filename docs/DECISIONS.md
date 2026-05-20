@@ -1,4 +1,9 @@
-﻿# DECISIONS — ADR (Architecture Decision Records)
+---
+tags:
+  - log
+---
+
+# DECISIONS — ADR (Architecture Decision Records)
 
 ## תבנית-ADR (חובה מ-ADR-014 ואילך)
 

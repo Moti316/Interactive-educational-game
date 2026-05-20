@@ -1,3 +1,8 @@
+---
+tags:
+  - spec
+---
+
 # ARCHITECTURE — מבנה המערכת
 
 ## סקירה

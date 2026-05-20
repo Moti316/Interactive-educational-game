@@ -1,3 +1,8 @@
+---
+tags:
+  - process
+---
+
 # GIT-SYNC-PROTOCOL — פרוטוקול סנכרון ל-GitHub
 
 > **תוקף:** מ-2026-05-19 (אחרי commit `e89ba95`).

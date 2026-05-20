@@ -1,3 +1,8 @@
+---
+tags:
+  - status
+---
+
 # חכמוני — ROADMAP (תוכנית-עבודה חיה)
 
 > **Single source-of-truth** מהיום עד MVP. מתוחזק ע"י [`agent-roadmap-keeper`](../.claude/agents/agent-roadmap-keeper.md) (RoadmapKeeper).
