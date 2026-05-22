@@ -24,7 +24,7 @@ tags:
 
 ### 🗺️ RoadmapKeeper
 - **קוד הסוכן:** `agent-roadmap-keeper`
-- **תפקיד:** Lead PM | Custodian של `docs/ROADMAP.md`
+- **תפקיד:** Lead PM | Custodian של `docs/status/ROADMAP.md`
 - **משפט-תפקיד:** *"If it's not in ROADMAP, it isn't happening. If it's happening and not in ROADMAP — we've drifted."*
 - **דומיין:** Program Management, plan-vs-actual sync, drift detection, ETA forecasting
 - **השראה:** Frederick Brooks, Tom DeMarco, Steve McConnell, Atul Gawande, Patrick Lencioni
@@ -92,7 +92,7 @@ tags:
  HebrewLinguist   PerfBudgetEnforcer  CodeReviewer
  IntegrationVerifier  QualityAssurance → כל אחד מחזיר דוח
         ↓
-[⚖️ CouncilChair מסכם → docs/COUNCIL.md]
+[⚖️ CouncilChair מסכם → docs/log/COUNCIL.md]
         ↓
 [🗺️ RoadmapKeeper קולט תוצאה → ROADMAP refresh + drift impact]
         ↓
@@ -161,13 +161,13 @@ NEXT ACTION:
 
 ## 6. קשרים עם תיעוד אחר
 
-- **`docs/ROADMAP.md`** — התוצר המרכזי של RoadmapKeeper
-- **`docs/ROADMAP-CONTROL.md`** — חוקי שינוי ROADMAP
-- **`docs/TASK-COMPLETION-PROTOCOL.md`** — מתי הגיע הזמן להפעיל את הסוכנים
-- **`docs/TEAM-COUNCIL.md`** — הצוות-המקביל (המועצה)
-- **`docs/TEAM-DESIGN.md`** — הצוות-המקביל (סטודיו-עיצוב, חדש מ-ADR-013)
-- **`docs/COUNCIL.md`** — יומן סבבי-המועצה (RoadmapKeeper מוסיף שם שורות drift impact)
-- **`docs/PROGRESS.md`** — סטטוס שגרתי (RoadmapKeeper מסנכרן)
+- **`docs/status/ROADMAP.md`** — התוצר המרכזי של RoadmapKeeper
+- **`docs/process/ROADMAP-CONTROL.md`** — חוקי שינוי ROADMAP
+- **`docs/process/TASK-COMPLETION-PROTOCOL.md`** — מתי הגיע הזמן להפעיל את הסוכנים
+- **`docs/teams/TEAM-COUNCIL.md`** — הצוות-המקביל (המועצה)
+- **`docs/teams/TEAM-DESIGN.md`** — הצוות-המקביל (סטודיו-עיצוב, חדש מ-ADR-013)
+- **`docs/log/COUNCIL.md`** — יומן סבבי-המועצה (RoadmapKeeper מוסיף שם שורות drift impact)
+- **`docs/status/PROGRESS.md`** — סטטוס שגרתי (RoadmapKeeper מסנכרן)
 - **`.claude/agents/agent-roadmap-keeper.md`** — system prompt של הסוכן
 - **`.claude/agents/agent-phase-gatekeeper.md`** — system prompt של הסוכן
 - **`.claude/skills/roadmap-tracking.md`** — פרוטוקול-מעקב משותף

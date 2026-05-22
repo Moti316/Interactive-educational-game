@@ -27,12 +27,12 @@ tags:
 ### Phase (1–9)
 **done** ⇔ כל הבאים מתקיימים:
 - כל הקבצים מ-ROADMAP.md (סעיף "Deliverables") קיימים במיקום הנכון
-- כל ה-Sub-tasks ב-`docs/TASKS.md` סומנו `[x]`
-- כל הבדיקות מ-`docs/TESTING.md` עברו
+- כל ה-Sub-tasks ב-`docs/status/TASKS.md` סומנו `[x]`
+- כל הבדיקות מ-`docs/quality/TESTING.md` עברו
 - PhaseGatekeeper החזיר 🟢
 - Council Round (R-N) החזיר 🟢 GO או 🟡 GO with patches
-- `docs/PROGRESS.md` עודכן (% → 100, status → ✅)
-- `docs/CHANGELOG.md` כולל רשומה חדשה
+- `docs/status/PROGRESS.md` עודכן (% → 100, status → ✅)
+- `docs/log/CHANGELOG.md` כולל רשומה חדשה
 - ROADMAP.md משקף את הסטטוס החדש
 - commit + push עברו ל-`main`
 
@@ -40,20 +40,20 @@ tags:
 **done** ⇔:
 - כל קבצי-היעד קיימים בנתיב הנכון (לפי TASKS.md)
 - `scripts/check-contrast.ps1` עבר (אם רלוונטי לעיצוב)
-- `docs/CHANGELOG.md` כולל רשומה
+- `docs/log/CHANGELOG.md` כולל רשומה
 - commit + push עברו
 
 ### Patch
 **done** ⇔:
 - השינוי בקוד או בתיעוד בוצע
 - Council Round רלוונטית סימנה את ה-patch כ-✓
-- `docs/CHANGELOG.md` כולל רשומה
+- `docs/log/CHANGELOG.md` כולל רשומה
 - אם הוא תיקון-בקוד: CodeReviewer + (אם רלוונטי) SecurityAuditor אישרו
 
 ### Sub-task
 **done** ⇔:
 - השינוי בוצע + עבר self-check
-- `docs/TASKS.md` סומן `[x]`
+- `docs/status/TASKS.md` סומן `[x]`
 - commit (יכול להיות חלק מ-batch של Phase)
 
 ### Setup
@@ -211,7 +211,7 @@ Setup (like THIS one):
 
 ### ⚠️ סיטואציות-חירום
 - **דליפת-מידע פוטנציאלית** → SecurityAuditor + ההורה התראה אדומה מיידית. כל פיתוח עוצר. ADR-חירום + retrospective חובה.
-- **Git repo corrupted / לא ניתן ל-push** → Claude עוצר commits, הוראות-recovery (`docs/RECOVERY.md`).
+- **Git repo corrupted / לא ניתן ל-push** → Claude עוצר commits, הוראות-recovery (`docs/guides/RECOVERY.md`).
 - **Multi-parent disagreement** (CHG-005) → לפי PIN-holder admin. אם שניהם admin → דיון נדרש.
 
 ---

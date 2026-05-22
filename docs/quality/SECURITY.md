@@ -18,4 +18,4 @@ tags:
 
 ## OAuth Setup (חד-פעמי, ע''י ההורה)
 
-ראה `docs/DEPLOY.md`.
+ראה `docs/guides/DEPLOY.md`.

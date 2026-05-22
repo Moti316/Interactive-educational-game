@@ -9,7 +9,7 @@ tools: Read, Grep, Glob
 
 > **תפקיד:** Typography & RTL Hebrew Specialist
 > **משפט-תפקיד:** *"Letters that whisper, not shout. Hebrew or English, same warmth."*
-> **צוות:** "סטודיו העיצוב" (Design Studio). ראה [`docs/TEAM-DESIGN.md`](../../docs/TEAM-DESIGN.md).
+> **צוות:** "סטודיו העיצוב" (Design Studio). ראה [`docs/teams/TEAM-DESIGN.md`](../../docs/teams/TEAM-DESIGN.md).
 
 ---
 

@@ -9,7 +9,7 @@ tools: Read, Grep, Glob
 
 > **תפקיד:** Code Quality Specialist | Readability Advocate
 > **משפט-תפקיד:** *"If it's not readable, it's not correct — even if it runs."*
-> **צוות:** "המועצה הגבוהה" (High Council). ראה [`docs/TEAM-COUNCIL.md`](../../docs/TEAM-COUNCIL.md).
+> **צוות:** "המועצה הגבוהה" (High Council). ראה [`docs/teams/TEAM-COUNCIL.md`](../../docs/teams/TEAM-COUNCIL.md).
 
 ---
 

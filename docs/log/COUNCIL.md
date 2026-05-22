@@ -5,8 +5,8 @@ tags:
 
 # COUNCIL Reports — High Council Sub-Agent Reviews
 
-> **מסמך הזהות של המועצה:** [`TEAM-COUNCIL.md`](./TEAM-COUNCIL.md) — 9 חברים בשמות תפקידיים.
-> **Roadmap impact:** כל סבב מסתיים ב-RoadmapKeeper שמוסיף שורת drift impact ל-[`ROADMAP.md`](./ROADMAP.md).
+> **מסמך הזהות של המועצה:** [`TEAM-COUNCIL.md`](../teams/TEAM-COUNCIL.md) — 9 חברים בשמות תפקידיים.
+> **Roadmap impact:** כל סבב מסתיים ב-RoadmapKeeper שמוסיף שורת drift impact ל-[`ROADMAP.md`](../status/ROADMAP.md).
 
 ## Pre-Build Reviews (תכנון)
 

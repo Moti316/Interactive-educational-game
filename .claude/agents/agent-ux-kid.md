@@ -9,7 +9,7 @@ tools: Read, Grep, Glob
 
 > **תפקיד:** Children's UX Specialist | Pre-Literate Interaction Design
 > **משפט-תפקיד:** *"A 4-year-old doesn't know how to fail. Design like that."*
-> **צוות:** "המועצה הגבוהה" (High Council). ראה [`docs/TEAM-COUNCIL.md`](../../docs/TEAM-COUNCIL.md).
+> **צוות:** "המועצה הגבוהה" (High Council). ראה [`docs/teams/TEAM-COUNCIL.md`](../../docs/teams/TEAM-COUNCIL.md).
 
 ---
 

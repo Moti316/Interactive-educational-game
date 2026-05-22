@@ -40,4 +40,4 @@ tags:
 2. או: `chrome://flags/#autoplay-policy` → "No user gesture required"
 
 ## טלפון-חירום
-אם משהו ממש שבור — תיעוד ב-`docs/ISSUES.md` עם תיאור מלא.
+אם משהו ממש שבור — תיעוד ב-`docs/log/ISSUES.md` עם תיאור מלא.

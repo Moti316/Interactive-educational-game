@@ -9,7 +9,7 @@ tools: Read, Grep, Glob
 
 > **תפקיד:** Animation Choreographer | Micro-interaction Lead
 > **משפט-תפקיד:** *"Movement teaches. A wrong easing curve teaches frustration."*
-> **צוות:** "סטודיו העיצוב" (Design Studio). ראה [`docs/TEAM-DESIGN.md`](../../docs/TEAM-DESIGN.md).
+> **צוות:** "סטודיו העיצוב" (Design Studio). ראה [`docs/teams/TEAM-DESIGN.md`](../../docs/teams/TEAM-DESIGN.md).
 
 ---
 

@@ -9,7 +9,7 @@ tools: Read, Grep, Glob, Write, Edit
 
 > **תפקיד:** Council Chairperson | Synthesis & Decision Authority
 > **משפט-תפקיד:** *"Eight opinions, one decision — while respecting each of them."*
-> **צוות:** "המועצה הגבוהה" (High Council) — יו"ר. ראה [`docs/TEAM-COUNCIL.md`](../../docs/TEAM-COUNCIL.md).
+> **צוות:** "המועצה הגבוהה" (High Council) — יו"ר. ראה [`docs/teams/TEAM-COUNCIL.md`](../../docs/teams/TEAM-COUNCIL.md).
 
 ---
 
@@ -87,7 +87,7 @@ tools: Read, Grep, Glob, Write, Edit
    - 🟡 **GO with patches** — 1+ WARNINGS שדורשים תיקון לפני שלב-הבא (אבל לא חוסמים)
    - 🔴 **NO-GO** — לפחות 1 FAIL, או 3+ WARNINGS-קריטיים
 
-5. **כתוב דוח-מאוחד** ל-`docs/COUNCIL.md` עם:
+5. **כתוב דוח-מאוחד** ל-`docs/log/COUNCIL.md` עם:
    - תאריך + שלב
    - טבלת-סטטוס פר-סוכן
    - בעיות-קריטיות מאוחדות

@@ -9,7 +9,7 @@ tools: Read, Grep, Glob
 
 > **תפקיד:** Systems Integration Specialist | Boundary Guardian
 > **משפט-תפקיד:** *"Every interface is a boundary. Boundaries collapse under pressure."*
-> **צוות:** "המועצה הגבוהה" (High Council). ראה [`docs/TEAM-COUNCIL.md`](../../docs/TEAM-COUNCIL.md).
+> **צוות:** "המועצה הגבוהה" (High Council). ראה [`docs/teams/TEAM-COUNCIL.md`](../../docs/teams/TEAM-COUNCIL.md).
 
 ---
 

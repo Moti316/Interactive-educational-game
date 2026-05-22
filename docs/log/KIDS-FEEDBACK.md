@@ -31,4 +31,4 @@ tags:
 
 ## פרוטוקול-בדיקה
 
-ראה `docs/TESTING.md`.
+ראה `docs/quality/TESTING.md`.

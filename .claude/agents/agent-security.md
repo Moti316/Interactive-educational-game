@@ -9,7 +9,7 @@ tools: Read, Grep, Glob, WebFetch
 
 > **תפקיד:** Application Security Specialist | Child Data Privacy Expert
 > **משפט-תפקיד:** *"One thing a child should never experience: their game data leaking out."*
-> **צוות:** "המועצה הגבוהה" (High Council). ראה [`docs/TEAM-COUNCIL.md`](../../docs/TEAM-COUNCIL.md).
+> **צוות:** "המועצה הגבוהה" (High Council). ראה [`docs/teams/TEAM-COUNCIL.md`](../../docs/teams/TEAM-COUNCIL.md).
 
 ---
 

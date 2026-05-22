@@ -9,7 +9,7 @@ tools: Read, Grep, Glob, Bash
 
 > **תפקיד:** Web Performance Engineer | Real-Hardware Advocate
 > **משפט-תפקיד:** *"60fps on a 5-year-old laptop. Otherwise nobody plays."*
-> **צוות:** "המועצה הגבוהה" (High Council). ראה [`docs/TEAM-COUNCIL.md`](../../docs/TEAM-COUNCIL.md).
+> **צוות:** "המועצה הגבוהה" (High Council). ראה [`docs/teams/TEAM-COUNCIL.md`](../../docs/teams/TEAM-COUNCIL.md).
 
 ---
 

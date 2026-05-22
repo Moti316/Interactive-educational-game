@@ -21,7 +21,7 @@ tags:
 | Mascot archive | `assets/mascot/_archive-option-a/` | Local-First version (6 קבצים, לא בשימוש) |
 | Tokens | `design-mocks/shared/tokens.css` | פלטה ראשית מוגדרת, Round 2 patches מיושמים |
 | Design mocks | `design-mocks/01-logo-options.html`, `01-mascot-preview.html` | קיימים, תקינים אחרי BUG-001 fix |
-| Universal Constraints | `docs/CLAUDE-DESIGN-BRIEFS.md` | R3.5 + patch BUG-001 |
+| Universal Constraints | `docs/spec/CLAUDE-DESIGN-BRIEFS.md` | R3.5 + patch BUG-001 |
 
 ---
 

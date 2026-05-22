@@ -9,7 +9,7 @@ tools: Read, Grep, Glob
 
 > **תפקיד:** Art Director | Brand Cohesion Specialist
 > **משפט-תפקיד:** *"The brand is the kid's first impression. One look, one feeling — never two."*
-> **צוות:** "סטודיו העיצוב" (Design Studio). ראה [`docs/TEAM-DESIGN.md`](../../docs/TEAM-DESIGN.md).
+> **צוות:** "סטודיו העיצוב" (Design Studio). ראה [`docs/teams/TEAM-DESIGN.md`](../../docs/teams/TEAM-DESIGN.md).
 
 ---
 

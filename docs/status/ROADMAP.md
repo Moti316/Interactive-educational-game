@@ -5,9 +5,9 @@ tags:
 
 # חכמוני — ROADMAP (תוכנית-עבודה חיה)
 
-> **Single source-of-truth** מהיום עד MVP. מתוחזק ע"י [`agent-roadmap-keeper`](../.claude/agents/agent-roadmap-keeper.md) (RoadmapKeeper).
-> חוקי-שינוי: [`ROADMAP-CONTROL.md`](./ROADMAP-CONTROL.md).
-> המסמך הזה הוא **view** של [`PLAN.md`](../PLAN.md), לא תחליף.
+> **Single source-of-truth** מהיום עד MVP. מתוחזק ע"י [`agent-roadmap-keeper`](../../.claude/agents/agent-roadmap-keeper.md) (RoadmapKeeper).
+> חוקי-שינוי: [`ROADMAP-CONTROL.md`](../process/ROADMAP-CONTROL.md).
+> המסמך הזה הוא **view** של [`PLAN.md`](../../PLAN.md), לא תחליף.
 
 ---
 
@@ -80,7 +80,7 @@ tags:
 
 ### Phase 0.5 — מוקאפים עיצוביים
 - **סטטוס:** 🟢 40%
-- **Inputs:** `docs/CLAUDE-DESIGN-BRIEFS.md` (5 Briefs + 2 stubs)
+- **Inputs:** `docs/spec/CLAUDE-DESIGN-BRIEFS.md` (5 Briefs + 2 stubs)
 - **Deliverables:**
   - ✅ Brief #1 — לוגו (Version A נבחר, Bridge ל-claude.ai)
   - ✅ Brief #2 — Mascot 6 poses (Local-First, ADR-011) → `assets/mascot/professor-chachmoni-{standing-wave,pointing,celebrating,thinking,encouraging,sleeping}.svg`
@@ -135,7 +135,7 @@ tags:
 - **DoD:**
   - תבנית עובדת
   - 2 משימות נטענות
-  - **🧒 בדיקה עם הילדים** + תיעוד ב-`docs/KIDS-FEEDBACK.md`
+  - **🧒 בדיקה עם הילדים** + תיעוד ב-`docs/log/KIDS-FEEDBACK.md`
 - **Owner:** Claude Code + ההורה (לבדיקת-ילדים)
 - **Estimated:** ½ יום + session בדיקה
 - **Gate:** R6 (דגש ChildUXAdvocate + HebrewLinguist + QualityAssurance)
@@ -193,7 +193,7 @@ tags:
 
 ### Phase 7 — השלמת 50 משימות
 - **סטטוס:** ⏳
-- **Deliverables:** עבודת data — `docs/CONTENT.md` + `docs/NARRATION.md`
+- **Deliverables:** עבודת data — `docs/spec/CONTENT.md` + `docs/spec/NARRATION.md`
 - **Estimated:** 2 ימים
 - **Gate:** (פנים)
 
@@ -218,7 +218,7 @@ tags:
 - **Deliverables:**
   - כפתור "Export Data" + "Import Data" במסך-הגדרות
   - `scripts/install-shortcut.ps1` → קיצור "חכמוני" על שולחן-העבודה
-  - `docs/PARENT-GUIDE.md` עם הוראות-הפעלה
+  - `docs/guides/PARENT-GUIDE.md` עם הוראות-הפעלה
   - בדיקה end-to-end
 - **⚠️ פעולה מההורה:** הפעלת install-shortcut.ps1 (~5 דק')
 - **DoD:**

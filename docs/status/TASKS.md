@@ -5,8 +5,8 @@ tags:
 
 # TASKS — רשימת משימות-פיתוח
 
-> **מסונכרן עם** [`docs/ROADMAP.md`](./ROADMAP.md) — תוכנית-עבודה חיה.
-> **לפני סימון משימה כהושלמה:** ודא תאימות עם [`docs/TASK-COMPLETION-PROTOCOL.md`](./TASK-COMPLETION-PROTOCOL.md) (DoD per task type).
+> **מסונכרן עם** [`docs/status/ROADMAP.md`](./ROADMAP.md) — תוכנית-עבודה חיה.
+> **לפני סימון משימה כהושלמה:** ודא תאימות עם [`docs/process/TASK-COMPLETION-PROTOCOL.md`](../process/TASK-COMPLETION-PROTOCOL.md) (DoD per task type).
 > **אם משימה חדשה משנה תכולה:** עדכן ROADMAP דרך RoadmapKeeper, לא ידנית.
 
 ## ✅ הושלם

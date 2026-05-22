@@ -12,7 +12,7 @@ description: QA checklist for kid-game testing in Chachmoni. Activates for bug c
 - [ ] hover-to-replay על כל אלמנט-טקסט (600ms)
 - [ ] קריינות לא מוקלטת באמצע (cancel before speak)
 - [ ] rate: 0.85, lang: 'he-IL' מאומת
-- [ ] טקסט עומד בכללי-כתיבה (`docs/STYLE-GUIDE.md`)
+- [ ] טקסט עומד בכללי-כתיבה (`docs/spec/STYLE-GUIDE.md`)
 
 ### UX
 - [ ] כפתורים ≥ 80×80px
@@ -49,7 +49,7 @@ description: QA checklist for kid-game testing in Chachmoni. Activates for bug c
 
 ## Testing Protocol עם ילדים
 
-ראה `docs/TESTING.md` לפרוטוקול-מלא (15 דק', 3 משימות, 5 אינדיקטורי-מצוקה).
+ראה `docs/quality/TESTING.md` לפרוטוקול-מלא (15 דק', 3 משימות, 5 אינדיקטורי-מצוקה).
 
 ## טריגרים
 

@@ -7,23 +7,23 @@
 ## מצב הפרויקט
 
 > בלוק חי. **מתעדכן בסוף כל סשן** (חוק 3 ב"פרוטוקול ביצוע"). מאפשר לסשן הבא לדעת מאיפה להמשיך.
-> אומץ מפרויקט wall (CHG-010). פירוט מלא תמיד ב-`docs/PROGRESS.md`.
+> אומץ מפרויקט wall (CHG-010). פירוט מלא תמיד ב-`docs/status/PROGRESS.md`.
 
 - **Phase נוכחי:** 0.5 (מוקאפים) — 40%
 - **נתיב הפרויקט:** `C:\Users\b0066820\Desktop\Claude project\Interactive-educational-game` (הועבר 2026-05-20).
-- **משימה אחרונה שהושלמה:** Obsidian "חדר-בקרה" — `docs/_DASHBOARD.md`, `project-map.canvas`, `docs/OBSIDIAN-GUIDE.md`, ותגיות ל-34 מסמכים.
+- **משימה אחרונה שהושלמה:** Obsidian "חדר-בקרה" — `docs/_DASHBOARD.md`, `project-map.canvas`, `docs/guides/OBSIDIAN-GUIDE.md`, ותגיות ל-34 מסמכים.
 - **המשימה הבאה:** 2 פריטי-תשתית שנדחו — P1-4 (קיבוץ docs/) ו-P0-1 (פיצול PLAN.md). ואז: Brief #1.5 + Briefs #3-5.
-- **חוסם:** Brief #1.5 + ADR-014 (ראה `docs/DESIGN-AUDIT-R1.md`).
+- **חוסם:** Brief #1.5 + ADR-014 (ראה `docs/log/DESIGN-AUDIT-R1.md`).
 - **עדכון אחרון:** 2026-05-20.
 
 ## איפה מתחילים בכל סשן
 
-1. **קרא את `docs/ROADMAP.md`** — תוכנית-עבודה חיה: Phase נוכחי, Next Gate, ETA.
-2. **קרא את `docs/PROGRESS.md`** — סטטוס בזמן-אמת של כל שלב.
-3. **קרא את `docs/TASKS.md`** — מה הושלם, מה בעבודה, מה נשאר.
-4. **קרא את `docs/ISSUES.md`** — באגים פתוחים.
-5. אם צריך הקשר על הצוותים — `docs/TEAM-COMPASS.md` + `docs/TEAM-COUNCIL.md`.
-6. אם צריך הקשר על תהליך אישור-סיום — `docs/TASK-COMPLETION-PROTOCOL.md`.
+1. **קרא את `docs/status/ROADMAP.md`** — תוכנית-עבודה חיה: Phase נוכחי, Next Gate, ETA.
+2. **קרא את `docs/status/PROGRESS.md`** — סטטוס בזמן-אמת של כל שלב.
+3. **קרא את `docs/status/TASKS.md`** — מה הושלם, מה בעבודה, מה נשאר.
+4. **קרא את `docs/log/ISSUES.md`** — באגים פתוחים.
+5. אם צריך הקשר על הצוותים — `docs/teams/TEAM-COMPASS.md` + `docs/teams/TEAM-COUNCIL.md`.
+6. אם צריך הקשר על תהליך אישור-סיום — `docs/process/TASK-COMPLETION-PROTOCOL.md`.
 7. אם צריך הקשר עמוק יותר — `PLAN.md` (התכנון המלא, ~230KB).
 
 ## עקרונות קוד פר-פרויקט (קריטיים — לא לעבור!)
@@ -61,7 +61,7 @@
 ### הצוותים שלנו — 19 Sub-Agents (3 צוותים)
 
 #### ⚖️ המועצה הגבוהה (High Council) — 9 חברים
-פוסקת **איכות** בסיום כל שלב-בנייה. ראה [`docs/TEAM-COUNCIL.md`](./docs/TEAM-COUNCIL.md).
+פוסקת **איכות** בסיום כל שלב-בנייה. ראה [`docs/teams/TEAM-COUNCIL.md`](./docs/teams/TEAM-COUNCIL.md).
 
 | 🎭 | שם תפקיד | קוד |
 |----|-----------|------|
@@ -76,7 +76,7 @@
 | ⚖️ | **CouncilChair** | `agent-council-chair` (יו"ר) |
 
 #### 🧭 מצפן (Compass) — 2 חברים
-מורה **כיוון** — מוודא שאנחנו במסלול. ראה [`docs/TEAM-COMPASS.md`](./docs/TEAM-COMPASS.md).
+מורה **כיוון** — מוודא שאנחנו במסלול. ראה [`docs/teams/TEAM-COMPASS.md`](./docs/teams/TEAM-COMPASS.md).
 
 | 🎭 | שם תפקיד | קוד |
 |----|-----------|------|
@@ -85,7 +85,7 @@
 | 🔗 | **CrossTeamAuditor** | `agent-cross-team-auditor` (gap auditor) |
 
 #### 🎨 סטודיו-העיצוב (Design Studio) — 7 חברים
-פוסק **אסתטיקה ומותג** — האם זה יפה ומגובש? ראה [`docs/TEAM-DESIGN.md`](./docs/TEAM-DESIGN.md).
+פוסק **אסתטיקה ומותג** — האם זה יפה ומגובש? ראה [`docs/teams/TEAM-DESIGN.md`](./docs/teams/TEAM-DESIGN.md).
 
 | 🎭 | שם תפקיד | קוד |
 |----|-----------|------|
@@ -112,16 +112,16 @@
 
 | סוג החלטה | יעד-תיעוד | פורמט |
 |------------|-----------|--------|
-| ארכיטקטורה / יסוד | `docs/DECISIONS.md` | ADR-NNN |
-| שינוי-תכולה / תהליך | `docs/PLAN-CONTROL.md` | CHG-NNN |
-| באג ותיקון | `docs/ISSUES.md` | BUG-NNN |
-| סבב-מועצה | `docs/COUNCIL.md` | R-N |
+| ארכיטקטורה / יסוד | `docs/log/DECISIONS.md` | ADR-NNN |
+| שינוי-תכולה / תהליך | `docs/log/PLAN-CONTROL.md` | CHG-NNN |
+| באג ותיקון | `docs/log/ISSUES.md` | BUG-NNN |
+| סבב-מועצה | `docs/log/COUNCIL.md` | R-N |
 | סבב-סטודיו | `docs/DESIGN-AUDIT-R*.md` | R-Design-N |
-| שינוי-נכס | `docs/ASSETS.md` | inline section |
-| Phase / drift | `docs/PROGRESS.md` + `ROADMAP.md` | header fields + drift log |
-| Version bump | `docs/CHANGELOG.md` | semver entry |
+| שינוי-נכס | `docs/spec/ASSETS.md` | inline section |
+| Phase / drift | `docs/status/PROGRESS.md` + `ROADMAP.md` | header fields + drift log |
+| Version bump | `docs/log/CHANGELOG.md` | semver entry |
 | הוראת-ביצוע חוזרת | `CLAUDE.md` (כאן) + protocol doc ב-`docs/` | sub-section + standalone doc |
-| **סוף כל סשן** | `docs/PROGRESS.md` | חובה! |
+| **סוף כל סשן** | `docs/status/PROGRESS.md` | חובה! |
 
 **הכלל:** אם הוצאת ADR/CHG/BUG בלי לעדכן את הקובץ — המשימה לא הושלמה.
 
@@ -135,10 +135,10 @@
 בסיום כל **משימה-לוגית** (לא בסוף כל edit), מבוצע:
 1. `git status --short` — בדיקת-מצב
 2. `git add -A` — staging (או רשימה ממוקדת אם יש קבצים-לא-לדחוף)
-3. `git commit` עם תיאור מובנה (תבנית-זהב ב-[`docs/GIT-SYNC-PROTOCOL.md`](./docs/GIT-SYNC-PROTOCOL.md))
+3. `git commit` עם תיאור מובנה (תבנית-זהב ב-[`docs/process/GIT-SYNC-PROTOCOL.md`](./docs/process/GIT-SYNC-PROTOCOL.md))
 4. `git push origin main`
 
-**משימה-לוגית = ?** ראה [`docs/GIT-SYNC-PROTOCOL.md`](./docs/GIT-SYNC-PROTOCOL.md) סעיף 1. תקציר:
+**משימה-לוגית = ?** ראה [`docs/process/GIT-SYNC-PROTOCOL.md`](./docs/process/GIT-SYNC-PROTOCOL.md) סעיף 1. תקציר:
 - ✅ Brief שהסתיים, BUG-fix, ADR/CHG מיושם, סבב-מועצה, סיום-Phase, פעולת-תשתית
 - ❌ עריכה-בודדת באמצע משימה, plan mode, exploration, work-in-progress
 
@@ -149,9 +149,9 @@
 ### חוק 3 — סוף-סשן
 
 בסוף כל סשן (לפני שההורה סוגר את הטרמינל):
-1. `docs/PROGRESS.md` מעודכן (Phase, blocker, next-action)
+1. `docs/status/PROGRESS.md` מעודכן (Phase, blocker, next-action)
 2. הכל-pushed לפי חוק 2
-3. אם חצינו Phase או הסכמנו על Brief חדש → מעדכן `docs/ROADMAP.md`
+3. אם חצינו Phase או הסכמנו על Brief חדש → מעדכן `docs/status/ROADMAP.md`
 
 ## פקודות נפוצות
 
@@ -176,7 +176,7 @@ powershell -File scripts/audit.ps1
 - אל תפנה לילדים בטקסט אנגלי.
 - אל תוסיף טיימרים/שעוני-לחץ במשחקים.
 - אל תוסיף "מסכי כישלון" — רק "ננסה שוב" עם חיוך.
-- אל תכתוב טקסט קריינות בלי לבדוק נגד **מילון-אסור** (ראה `docs/STYLE-GUIDE.md`).
+- אל תכתוב טקסט קריינות בלי לבדוק נגד **מילון-אסור** (ראה `docs/spec/STYLE-GUIDE.md`).
 - אל תשתמש ב-`innerHTML` עם תוכן-משתמש או AI.
 - אל תשמור secrets בקוד (API keys, PINs בclear) — תמיד hash/env.
 

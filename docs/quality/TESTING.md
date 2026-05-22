@@ -27,7 +27,7 @@ tags:
 5. **פחד** — בורח מהמסך, מבקש לסגור
 
 ### אחרי הסשן
-תעד ב-`docs/KIDS-FEEDBACK.md` — מקס' 3 פסקאות.
+תעד ב-`docs/log/KIDS-FEEDBACK.md` — מקס' 3 פסקאות.
 
 ## Smoke Tests (Playwright)
 

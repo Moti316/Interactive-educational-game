@@ -57,7 +57,7 @@
 
 - וידאו-קמיו של הורה (וידאו במקום אודיו)
 - PIN פר-הורה (PIN משותף ב-MVP)
-- 8 רעיוני-הרחבת-הורה (`docs/IDEAS.md`)
+- 8 רעיוני-הרחבת-הורה (`docs/spec/IDEAS.md`)
 
 ---
 
@@ -265,12 +265,12 @@
 
 ### תוספות לקבצי-MD
 
-- **`docs/ARCHITECTURE.md`** — הוסף section "Parent Profiles" עם diagram של relationship
-- **`docs/CONTENT.md`** — הוסף NARRATION לטקסטי first-run
-- **`docs/STYLE-GUIDE.md`** — הנחיות לטקסטי-מעורבות-הורה ("אבא/אמא גאה בך")
-- **`docs/PROCESSES.md`** — תהליך First-Run + תהליך parent-cameo
-- **`docs/SECURITY.md`** — שמירת קול-הורה (לא נשלח לDrive? או כן? להחליט)
-- **`docs/PLAN-CONTROL.md`** — CHG-005 entry
+- **`docs/spec/ARCHITECTURE.md`** — הוסף section "Parent Profiles" עם diagram של relationship
+- **`docs/spec/CONTENT.md`** — הוסף NARRATION לטקסטי first-run
+- **`docs/spec/STYLE-GUIDE.md`** — הנחיות לטקסטי-מעורבות-הורה ("אבא/אמא גאה בך")
+- **`docs/process/PROCESSES.md`** — תהליך First-Run + תהליך parent-cameo
+- **`docs/quality/SECURITY.md`** — שמירת קול-הורה (לא נשלח לDrive? או כן? להחליט)
+- **`docs/log/PLAN-CONTROL.md`** — CHG-005 entry
 
 ### 🇮🇱 טיפול בשמות-עבריים-עמומים (CHG-005 enhancement)
 
@@ -496,7 +496,7 @@ async function speakName(profile) {
 | 24 | Playwright smoke-tests (1 פר template = 8 בדיקות) | QA |
 | 25 | Lighthouse CI ב-`scripts/audit.ps1` | Performance |
 
-**דוח מלא ב-`docs/COUNCIL.md` לאחר תחילת-בנייה.** עכשיו אוסיף את ה-14 ה-patches החובה לסעיפים-הרלוונטיים.
+**דוח מלא ב-`docs/log/COUNCIL.md` לאחר תחילת-בנייה.** עכשיו אוסיף את ה-14 ה-patches החובה לסעיפים-הרלוונטיים.
 
 ---
 
@@ -528,7 +528,7 @@ async function speakName(profile) {
 ### מה ההורה עושה ב-MVP
 
 1. ✅ **פעם אחת בהתחלה (5 דק'):** התקנת קיצור-הדרך בשולחן-העבודה.
-2. ✅ **פעם אחת לפני שלב Drive (30 דק'):** הקמת OAuth Client ב-Google Cloud Console — לפי הוראה מפורטת ב-`docs/DEPLOY.md`.
+2. ✅ **פעם אחת לפני שלב Drive (30 דק'):** הקמת OAuth Client ב-Google Cloud Console — לפי הוראה מפורטת ב-`docs/guides/DEPLOY.md`.
 3. ✅ **בערב, מהבית (30 דק'):** העתקת 5 briefs ל-Claude Design.
 4. ✅ **תוך כדי פיתוח (15 דק' לאחר כל שלב):** בדיקה עם הילדים.
 
@@ -598,7 +598,7 @@ async function speakName(profile) {
 
 **אין תלויות חיצוניות בעת ריצה** מלבד CDN-ים של גוגל, פונטים, ו-Anthropic (אופציונלי). בלי npm install, בלי build.
 
-**למה לא Vite/React:** הילדים לא ייהנו יותר, הפיתוח מסתבך, וצריך הסבר על Node. וניל פשוט עובד מהקובץ — ראה `docs/DECISIONS.md`.
+**למה לא Vite/React:** הילדים לא ייהנו יותר, הפיתוח מסתבך, וצריך הסבר על Node. וניל פשוט עובד מהקובץ — ראה `docs/log/DECISIONS.md`.
 
 ---
 
@@ -1044,7 +1044,7 @@ const response = await anthropic.messages.create({
 
 ### Drive API rate-limit
 - Drive API מתיר 1000 בקשות לדקה — לא ייתכן שנגיע לזה. אבל אם כן:
-- חזרה אקספוננציאלית (1s, 2s, 4s, 8s...) עד 5 ניסיונות, אז viewing ב-`docs/ISSUES.md`.
+- חזרה אקספוננציאלית (1s, 2s, 4s, 8s...) עד 5 ניסיונות, אז viewing ב-`docs/log/ISSUES.md`.
 
 ---
 
@@ -1084,9 +1084,9 @@ Claude Code תומך ב-hooks דרך `~/.claude/settings.json`. נגדיר:
 
 - **SessionStart**:
   - `git pull --rebase --autostash` — מבטיח שהסשן מתחיל עם הקוד העדכני.
-  - `show-progress.ps1` — מציג את התוכן של `docs/PROGRESS.md` בקונסול → Claude מודע מיד "איפה הפסקנו".
+  - `show-progress.ps1` — מציג את התוכן של `docs/status/PROGRESS.md` בקונסול → Claude מודע מיד "איפה הפסקנו".
 - **Stop**:
-  - `update-progress.ps1` — מעדכן את `docs/PROGRESS.md` עם timestamp, שם-מחשב, מה השתנה בסשן.
+  - `update-progress.ps1` — מעדכן את `docs/status/PROGRESS.md` עם timestamp, שם-מחשב, מה השתנה בסשן.
   - `git-sync.ps1 -Action push` — `git add -A`, `git commit -m "auto: ..."`, `git push`.
 
 ### שכבה 2: Windows Task Scheduler (כל שעה ברקע)
@@ -1198,7 +1198,7 @@ playwright-report/
 
 API keys (Anthropic, Google OAuth) **לעולם** לא נכנסים ל-git — נשמרים ב-localStorage של הדפדפן וב-Windows Credential Manager לסקריפטים.
 
-ראה `docs/PROCESSES.md` ל-flow המלא ו-`docs/SECURITY.md` לעניין מפתחות.
+ראה `docs/process/PROCESSES.md` ל-flow המלא ו-`docs/quality/SECURITY.md` לעניין מפתחות.
 
 ---
 
@@ -1242,7 +1242,7 @@ My Drive/חכמוני/
 
 **עלות:** $0. Google Drive חינמי עד 15GB; progress.json שוקל ~5KB.
 
-ראה `docs/SECURITY.md` לעניין הרשאות ופרטיות הילדים.
+ראה `docs/quality/SECURITY.md` לעניין הרשאות ופרטיות הילדים.
 
 ---
 
@@ -1256,7 +1256,7 @@ cd Interactive-educational-game
 # מתחילים לבנות... הסקריפט git-sync.ps1 יטפל בכל סנכרון מכאן ואילך
 ```
 
-**Local-Only deployment (MVP):** אין דפלוי באינטרנט. המשחק נטען מקובץ ב-Chrome מהמחשב המשפחתי. עדכונים מגיעים דרך git pull. ראה `docs/DEPLOY.md` ל-runbook מלא.
+**Local-Only deployment (MVP):** אין דפלוי באינטרנט. המשחק נטען מקובץ ב-Chrome מהמחשב המשפחתי. עדכונים מגיעים דרך git pull. ראה `docs/guides/DEPLOY.md` ל-runbook מלא.
 
 ---
 
@@ -1268,23 +1268,23 @@ cd Interactive-educational-game
 |------|--------|-------------|
 | `CLAUDE.md` (בשורש) | הוראות ל-Claude Code: איך הפרויקט בנוי, סגנון קוד, מה לקרוא, מה לעדכן | כשמשנים תהליך עבודה משמעותי |
 | `README.md` (בשורש) | סקירה, איך להריץ מקומית, איך לדפלוי, צילומי מסך | בשינוי משמעותי לחוויית המשתמש |
-| `docs/ARCHITECTURE.md` | מבנה התיקיות, חוזי-API בין מודולים, החלטות-עיצוב מרכזיות | כשמשנים ארכיטקטורה |
-| `docs/CONTENT.md` | רשימת כל 50+ המשימות + הטקסטים הסופיים לקריינות | לפני כל הוספת/שינוי משימה |
-| `docs/HOW-TO-ADD-TASK.md` | מדריך שלב-אחר-שלב להוסיף משימה חדשה (קריטי לעצמאות עתידית) | בשינוי חוזה התבניות |
-| `docs/ISSUES.md` | "יומן רופא": כל באג שנמצא + פתרון + תאריך. **מתעדכן בכל באג, גם קטן.** | בכל באג + תיקון |
-| `docs/SECURITY.md` | הרשאות, פרטיות, OAuth scopes, ניהול secrets | בכל שינוי שנוגע ל-auth/data |
-| `docs/PROCESSES.md` | תהליכי המערכת: זרימת התחלת משחק, סיום משימה, סנכרון, הוספת פרופיל | בשינוי flow |
-| `docs/TASKS.md` | רשימת משימות פיתוח: מה הושלם ✅, מה בעבודה ⏳, מה נשאר. עם תאריכים | בכל סיום/התחלת משימה |
-| `docs/DECISIONS.md` | ADR: למה Vanilla ולא React, למה localStorage ולא IndexedDB, למה OAuth-implicit ולא PKCE, וכו'. כל החלטה עם תאריך ונימוק | בכל החלטה משמעותית |
-| `docs/KIDS-FEEDBACK.md` | תובנות מבדיקות עם הילדים: ציטוטים, איפה נתקעו, מה ביקשו, גילם בזמן הבדיקה | אחרי כל סשן עם ילד |
-| `docs/NARRATION.md` | קטלוג כל הטקסטים הקריינות בעברית — קל לסקור ולעדכן, גם מאהסן הנקודות הדקדוקיות ל-TTS | בכל הוספת משימה/טקסט |
-| `docs/DEPLOY.md` | runbook: יצירת קיצור-דרך, עדכוני git, Export/Import, חזרה לגרסה קודמת, איבחון בעיות | בכל שינוי תהליך הדפלוי |
-| `docs/ASSETS.md` | רשימת כל נכס (אווטאר, צליל, mp3) + מקור + רישיון + קרדיט | בכל הוספת נכס |
-| `docs/PROGRESS.md` | **Master Status Dashboard** — סטטוס-בזמן-אמת של כל שלב, מה הושלם, מה בעבודה, מה תקוע, גרסה נוכחית, סשן-עבודה אחרון | בכל סוף-סשן-עבודה |
-| `docs/IDEAS.md` | **Future Ideas Backlog** — רעיונות-עתידיים מסווגים לפי-נושא (parent-engagement, gameplay, social, monetization), עם effort/value rating | בכל פעם שצץ רעיון חדש שלא נכנס ל-MVP |
-| `docs/PLAN-CONTROL.md` | **Plan Change Control** — כל שינוי שבוצע בתכנון, מתי, למה, אילו סעיפים הושפעו, וידוא-עקביות | בכל שינוי-תכנון משמעותי |
-| `docs/COUNCIL.md` | **High Council Reports** — דוחות-אישור של מועצה-גבוהה אחרי כל שלב | בסיום כל שלב-בנייה |
-| `docs/RECOVERY.md` | **Disaster Recovery Runbook** — תרחישי-חירום ומשבר (Patch מ-QA) | בכל זיהוי של תרחיש-חירום חדש |
+| `docs/spec/ARCHITECTURE.md` | מבנה התיקיות, חוזי-API בין מודולים, החלטות-עיצוב מרכזיות | כשמשנים ארכיטקטורה |
+| `docs/spec/CONTENT.md` | רשימת כל 50+ המשימות + הטקסטים הסופיים לקריינות | לפני כל הוספת/שינוי משימה |
+| `docs/process/HOW-TO-ADD-TASK.md` | מדריך שלב-אחר-שלב להוסיף משימה חדשה (קריטי לעצמאות עתידית) | בשינוי חוזה התבניות |
+| `docs/log/ISSUES.md` | "יומן רופא": כל באג שנמצא + פתרון + תאריך. **מתעדכן בכל באג, גם קטן.** | בכל באג + תיקון |
+| `docs/quality/SECURITY.md` | הרשאות, פרטיות, OAuth scopes, ניהול secrets | בכל שינוי שנוגע ל-auth/data |
+| `docs/process/PROCESSES.md` | תהליכי המערכת: זרימת התחלת משחק, סיום משימה, סנכרון, הוספת פרופיל | בשינוי flow |
+| `docs/status/TASKS.md` | רשימת משימות פיתוח: מה הושלם ✅, מה בעבודה ⏳, מה נשאר. עם תאריכים | בכל סיום/התחלת משימה |
+| `docs/log/DECISIONS.md` | ADR: למה Vanilla ולא React, למה localStorage ולא IndexedDB, למה OAuth-implicit ולא PKCE, וכו'. כל החלטה עם תאריך ונימוק | בכל החלטה משמעותית |
+| `docs/log/KIDS-FEEDBACK.md` | תובנות מבדיקות עם הילדים: ציטוטים, איפה נתקעו, מה ביקשו, גילם בזמן הבדיקה | אחרי כל סשן עם ילד |
+| `docs/spec/NARRATION.md` | קטלוג כל הטקסטים הקריינות בעברית — קל לסקור ולעדכן, גם מאהסן הנקודות הדקדוקיות ל-TTS | בכל הוספת משימה/טקסט |
+| `docs/guides/DEPLOY.md` | runbook: יצירת קיצור-דרך, עדכוני git, Export/Import, חזרה לגרסה קודמת, איבחון בעיות | בכל שינוי תהליך הדפלוי |
+| `docs/spec/ASSETS.md` | רשימת כל נכס (אווטאר, צליל, mp3) + מקור + רישיון + קרדיט | בכל הוספת נכס |
+| `docs/status/PROGRESS.md` | **Master Status Dashboard** — סטטוס-בזמן-אמת של כל שלב, מה הושלם, מה בעבודה, מה תקוע, גרסה נוכחית, סשן-עבודה אחרון | בכל סוף-סשן-עבודה |
+| `docs/spec/IDEAS.md` | **Future Ideas Backlog** — רעיונות-עתידיים מסווגים לפי-נושא (parent-engagement, gameplay, social, monetization), עם effort/value rating | בכל פעם שצץ רעיון חדש שלא נכנס ל-MVP |
+| `docs/log/PLAN-CONTROL.md` | **Plan Change Control** — כל שינוי שבוצע בתכנון, מתי, למה, אילו סעיפים הושפעו, וידוא-עקביות | בכל שינוי-תכנון משמעותי |
+| `docs/log/COUNCIL.md` | **High Council Reports** — דוחות-אישור של מועצה-גבוהה אחרי כל שלב | בסיום כל שלב-בנייה |
+| `docs/guides/RECOVERY.md` | **Disaster Recovery Runbook** — תרחישי-חירום ומשבר (Patch מ-QA) | בכל זיהוי של תרחיש-חירום חדש |
 
 ### תוספות מומלצות אחרי סקירה חוזרת — 5 קבצי MD נוספים
 
@@ -1292,15 +1292,15 @@ cd Interactive-educational-game
 
 | קובץ | מה בו | למה זה חשוב |
 |------|--------|-------------|
-| `docs/PARENT-GUIDE.md` | מדריך מלא להורה: איך להפעיל, איך ליצור פרופיל, איך לעדכן PIN, איך לדווח על באג, איך לסקור התקדמות. **בעברית, ידידותי**. | היום אין מסמך **להורה** — רק לClaude (CLAUDE.md). ההורה צריך מסמך משלו |
-| `docs/CHANGELOG.md` | רישום-גרסאות: "v0.1: שלד מערכת", "v0.2: 5 משימות עכבר ראשונות", וכו'. כל push משמעותי = שורה חדשה | חשוב בעבודה דו-מחשבית. כשמחר חוזרים אחרי שבועיים — רואים בקצרה מה השתנה |
-| `docs/CLAUDE-DESIGN-BRIEFS.md` | 5 הבריפים המוכנים-להעתקה ל-Claude Design (הסקציה שלמעלה ב-PLAN.md, אבל בקובץ-נפרד וקצר) | קל לפתוח, קל להעתיק. לא צריך לחפש בתוך 100KB של PLAN.md |
-| `docs/TESTING.md` | פרוטוקול בדיקות עם הילדים: כמה זמן סשן, איך לא להשפיע, מה לרשום, אילו אינדיקטורים-מצוקה לזהות | בדיקות-משתמש עם בני 4–6 דורשות מתודולוגיה. בלי זה — הבדיקות יהיו לא-עקביות |
-| `docs/STYLE-GUIDE.md` | מדריך-סגנון לכתיבת הקריינות (7 כללי-כתיבה, בנק-משפטים סטנדרטיים) — סקציה מ-PLAN.md מובאת כקובץ-נפרד | תוך כדי עבודה אני אצטרך לכתוב טקסטים חדשים. עדיף קובץ זמין בקליק אחד |
+| `docs/guides/PARENT-GUIDE.md` | מדריך מלא להורה: איך להפעיל, איך ליצור פרופיל, איך לעדכן PIN, איך לדווח על באג, איך לסקור התקדמות. **בעברית, ידידותי**. | היום אין מסמך **להורה** — רק לClaude (CLAUDE.md). ההורה צריך מסמך משלו |
+| `docs/log/CHANGELOG.md` | רישום-גרסאות: "v0.1: שלד מערכת", "v0.2: 5 משימות עכבר ראשונות", וכו'. כל push משמעותי = שורה חדשה | חשוב בעבודה דו-מחשבית. כשמחר חוזרים אחרי שבועיים — רואים בקצרה מה השתנה |
+| `docs/spec/CLAUDE-DESIGN-BRIEFS.md` | 5 הבריפים המוכנים-להעתקה ל-Claude Design (הסקציה שלמעלה ב-PLAN.md, אבל בקובץ-נפרד וקצר) | קל לפתוח, קל להעתיק. לא צריך לחפש בתוך 100KB של PLAN.md |
+| `docs/quality/TESTING.md` | פרוטוקול בדיקות עם הילדים: כמה זמן סשן, איך לא להשפיע, מה לרשום, אילו אינדיקטורים-מצוקה לזהות | בדיקות-משתמש עם בני 4–6 דורשות מתודולוגיה. בלי זה — הבדיקות יהיו לא-עקביות |
+| `docs/spec/STYLE-GUIDE.md` | מדריך-סגנון לכתיבת הקריינות (7 כללי-כתיבה, בנק-משפטים סטנדרטיים) — סקציה מ-PLAN.md מובאת כקובץ-נפרד | תוך כדי עבודה אני אצטרך לכתוב טקסטים חדשים. עדיף קובץ זמין בקליק אחד |
 
 **סה"כ מעודכן: 25 קבצי MD** (הוספת PERFORMANCE.md, PROGRESS.md, PLAN-CONTROL.md, COUNCIL.md, RECOVERY.md, **IDEAS.md** — CHG-005).
 
-### `docs/PROGRESS.md` — Master Dashboard (פירוט)
+### `docs/status/PROGRESS.md` — Master Dashboard (פירוט)
 
 זהו ה-**Single Source of Truth** של "איפה אנחנו עכשיו". בעבודה ממחשבים שונים, זה הקובץ הראשון שתפתח כדי להבין את המצב.
 
@@ -1337,11 +1337,11 @@ cd Interactive-educational-game
 - עלות-משוערת: ~$4.20
 
 ## 🐛 באגים פתוחים
-ראה `docs/ISSUES.md`. כרגע: 2 פתוחים, 1 חמור (קריינות לא עוצרת בעת מעבר-מסך).
+ראה `docs/log/ISSUES.md`. כרגע: 2 פתוחים, 1 חמור (קריינות לא עוצרת בעת מעבר-מסך).
 
 ## 📝 הערה-עצמית לסשן הבא
 - לבדוק עם הילד שה-hover על שם-פרופיל מקריא בזמן הנכון
-- לעדכן את `docs/KIDS-FEEDBACK.md` עם תובנות מסשן האתמול
+- לעדכן את `docs/log/KIDS-FEEDBACK.md` עם תובנות מסשן האתמול
 ```
 
 **מתי מתעדכן:**
@@ -1360,7 +1360,7 @@ cd Interactive-educational-game
 
 Claude Code קורא את הקובץ הזה אוטומטית בתחילת כל סשן. הוא יכיל:
 - סקירה קצרה של הפרויקט (1 פסקה)
-- היכן מתחילים (קרא קודם: `docs/TASKS.md` ו-`docs/ISSUES.md`)
+- היכן מתחילים (קרא קודם: `docs/status/TASKS.md` ו-`docs/log/ISSUES.md`)
 - כללי קוד פר-פרויקט: עברית בטקסטים, RTL, אסור שגיאות a11y, כפתורים תמיד דרך `ui/button.js`
 - הנחיות לתיעוד: "אחרי שינוי משמעותי — עדכן את הקובץ הרלוונטי ב-`docs/`"
 - פקודות נפוצות: הרצה מקומית, push, deploy
@@ -1403,7 +1403,7 @@ Skill שאני אצור עבור הפרויקט. תוכן:
 
 זוהי הבעיה שעלתה: בכל פעם שמשנים סעיף-תכנון אחד, **סעיפים אחרים עשויים להפוך לא-עקביים.** אנחנו צריכים מנגנון שאוכף עקביות.
 
-### הפתרון: `docs/PLAN-CONTROL.md`
+### הפתרון: `docs/log/PLAN-CONTROL.md`
 
 קובץ-תיעוד מובְנה של **כל שינוי לתכנון**, עם בדיקת-התאמה אוטומטית. דוגמה:
 
@@ -1480,7 +1480,7 @@ Skill שאני אצור עבור הפרויקט. תוכן:
    - בעיות-קריטיות שדורשות תיקון מיידי
    - בעיות-קלות שאפשר לדחות
    - המלצה: **GO** / **NO-GO** / **GO with patches**
-4. **דוח-המועצה נשמר** ב-`docs/COUNCIL.md` עם timestamp.
+4. **דוח-המועצה נשמר** ב-`docs/log/COUNCIL.md` עם timestamp.
 5. **המשתמש (ההורה)** רואה את הדוח, מאשר GO או מבקש תיקונים.
 
 ### דוגמה לדוח-מועצה
@@ -1708,7 +1708,7 @@ Skill שאני אצור עבור הפרויקט. תוכן:
 **אף אחד לא מקליט בעצמו. הכל אוטומטי דרך AI.**
 
 התהליך:
-1. כל טקסטי-הקריינות במשחק רשומים ב-`docs/NARRATION.md` (קובץ-טקסט פשוט).
+1. כל טקסטי-הקריינות במשחק רשומים ב-`docs/spec/NARRATION.md` (קובץ-טקסט פשוט).
 2. סקריפט-בנייה אחד (`scripts/generate-tts.js`) קורא את כל הטקסטים.
 3. הסקריפט קורא ל-API של **Gemini 2.5 TTS Hebrew** (או ElevenLabs) — שירות שמהפך טקסט-לדיבור באמצעות AI.
 4. כל טקסט הופך לקובץ-mp3 עם שם מתאים (לדוגמה `task-click-balloons-instruction.mp3`).
@@ -1767,7 +1767,7 @@ Skill שאני אצור עבור הפרויקט. תוכן:
 
 **מי יוצר את האווטארים והדמות?** Claude (אני) — דרך ה-skill `design` שיש לי גישה אליו. אצור פרומפט אחיד עם guidelines של סגנון (flat, rounded, cheerful, hebrew-children-illustration style) ואייצר את 12 האווטארים בבת אחת, אז את דמות המורה ב-5 pose-ים.
 
-**רישוי:** כל הצלילים והמוזיקה ב-CC0 או רישיון-חופשי. רישוי מתועד ב-`docs/ASSETS.md` (נוסיף את הקובץ הזה לרשימת ה-MD).
+**רישוי:** כל הצלילים והמוזיקה ב-CC0 או רישיון-חופשי. רישוי מתועד ב-`docs/spec/ASSETS.md` (נוסיף את הקובץ הזה לרשימת ה-MD).
 
 ---
 
@@ -1781,13 +1781,13 @@ Skill שאני אצור עבור הפרויקט. תוכן:
 
 **מינימום:** Chrome 100+ (תמיכת ES Modules, IndexedDB, Web Speech API מתקדם).
 
-ראה `docs/PROCESSES.md` ל-checklist בדיקה.
+ראה `docs/process/PROCESSES.md` ל-checklist בדיקה.
 
 ---
 
 ## עבודה עם Claude Design דרך גשר-המשתמש (Bridge Protocol)
 
-> **עדכן ADR-011 (2026-05-19):** Bridge Protocol הוא כעת **fallback path** ולא ה-primary. ראה `docs/CLAUDE-DESIGN-BRIEFS.md` סעיף "שני מסלולי-עבודה". מסלול-A (Local-First) הוא ברירת-המחדל ל-SVG/HTML טהור — Claude Code כותב ישירות. Bridge Protocol משמש רק כשנדרשת יצירת-תמונה עשירה (photo-realistic, רקע מצויר).
+> **עדכן ADR-011 (2026-05-19):** Bridge Protocol הוא כעת **fallback path** ולא ה-primary. ראה `docs/spec/CLAUDE-DESIGN-BRIEFS.md` סעיף "שני מסלולי-עבודה". מסלול-A (Local-First) הוא ברירת-המחדל ל-SVG/HTML טהור — Claude Code כותב ישירות. Bridge Protocol משמש רק כשנדרשת יצירת-תמונה עשירה (photo-realistic, רקע מצויר).
 
 המשתמש משמש כגשר בין Claude Code (שמכיר את הפרויקט לעומק) ל-Claude Design (claude.ai במצב artifacts, שמייצר עיצובים ויזואליים עשירים). חלוקת-עבודה:
 
@@ -1870,7 +1870,7 @@ Skill שאני אצור עבור הפרויקט. תוכן:
 
 ### איך זה עובד (בלי לחשוב)
 
-1. **בערב, כשתחזור הביתה:** תפתח את הקובץ `docs/CLAUDE-DESIGN-BRIEFS.md` בריפו (אצור אותו אחרי שאצא מ-Plan Mode).
+1. **בערב, כשתחזור הביתה:** תפתח את הקובץ `docs/spec/CLAUDE-DESIGN-BRIEFS.md` בריפו (אצור אותו אחרי שאצא מ-Plan Mode).
 2. **תבחר brief** (התחל מ-#1 — לוגו).
 3. **תעתיק את כל הקטע** של ה-brief (בין סימני `═══`) — **הכל**, גם את ה"הוראות החזרה" בסוף.
 4. **תפתח claude.ai**, צ'אט חדש, **תדביק**.
@@ -2219,7 +2219,7 @@ SUGGESTIONS_FOR_OTHER_TEMPLATES: [אופציונלי — איזה עיצובים
 
 ---
 
-**הערה חשובה לאחר ExitPlanMode:** אצור קובץ נפרד `docs/CLAUDE-DESIGN-BRIEFS.md` בריפו עם **רק** הבריפים האלה — קל לפתוח, קל להעתיק, בלי לחפש בתוך 100KB של PLAN.md.
+**הערה חשובה לאחר ExitPlanMode:** אצור קובץ נפרד `docs/spec/CLAUDE-DESIGN-BRIEFS.md` בריפו עם **רק** הבריפים האלה — קל לפתוח, קל להעתיק, בלי לחפש בתוך 100KB של PLAN.md.
 
 ---
 
@@ -2469,7 +2469,7 @@ design-mocks/
 - Ambient: -28dB (כמעט שקוף)
 
 ### מקור
-כל הצלילים נורדים מ-Mixkit / Freesound (CC0). הקלטות-קול ייוצרו ע"י Gemini TTS. רישוי מתועד ב-`docs/ASSETS.md`.
+כל הצלילים נורדים מ-Mixkit / Freesound (CC0). הקלטות-קול ייוצרו ע"י Gemini TTS. רישוי מתועד ב-`docs/spec/ASSETS.md`.
 
 ---
 
@@ -3265,7 +3265,7 @@ function selectVoice() {
 ### שלב 2 — תבנית ראשונה + ווריאציות (יום 2, אחה"צ)
 - `templates/click-targets.js` עם תמיכת ווריאציות (themes bank).
 - 2 משימות: אחת קבועה ("בלונים") ואחת רנדומית (סורקת מ-themes).
-- **בדיקה עם הילדים** — תיעוד התובנות ב-`docs/KIDS-FEEDBACK.md`.
+- **בדיקה עם הילדים** — תיעוד התובנות ב-`docs/log/KIDS-FEEDBACK.md`.
 - תיקון לפי משוב.
 
 ### שלב 3 — שאר תבניות העכבר (ימים 3–4)
@@ -3275,7 +3275,7 @@ function selectVoice() {
 - **`scripts/start-chachmoni.ps1`** — שרת-מקומי + פותח Chrome.
 - **`src/sync/drive-auth.js`** + **`src/sync/drive-sync.js`** — OAuth + upload/download של 2 קבצים פר-ילד.
 - **`src/sync/sync-status.js`** — אינדיקטור-סנכרון בפינה.
-- **ההורה: הקמת OAuth Client ב-Google Cloud Console** (~30 דקות) — הוראה מפורטת עם צילומי-מסך ב-`docs/DEPLOY.md`.
+- **ההורה: הקמת OAuth Client ב-Google Cloud Console** (~30 דקות) — הוראה מפורטת עם צילומי-מסך ב-`docs/guides/DEPLOY.md`.
 - **מבחן הצלחה:** התחברות ל-Drive, התקדמות של יואב נשמרת ב-`progress-yoav.json`, של מיה ב-`progress-mia.json`, רענון דפדפן → ייבוא אוטומטי.
 
 ### שלב 5 — תבניות מקלדת (ימים 6–7)
@@ -3285,7 +3285,7 @@ function selectVoice() {
 לעולמות 3+4 (חלון, דפדפן, מושגים).
 
 ### שלב 7 — השלמת התוכן ל-50 משימות (ימים 9–10)
-בעיקר עבודת data. כל משימה נכתבת ל-`docs/CONTENT.md` + `docs/NARRATION.md`.
+בעיקר עבודת data. כל משימה נכתבת ל-`docs/spec/CONTENT.md` + `docs/spec/NARRATION.md`.
 
 ### שלב 8 — ליטוש (יום 11)
 אנימציות, צלילים, מד התקדמות, נעילות, מסך הישגי-סיום, אופטימיזציה.
@@ -3294,7 +3294,7 @@ function selectVoice() {
 - ייצור **כפתור "Export Data"** במסך-הגדרות → מוריד `chachmoni-backup-YYYY-MM-DD.json` ל-Downloads.
 - ייצור **כפתור "Import Data"** → File input → מעלה JSON חזרה.
 - **הרצת `scripts/install-shortcut.ps1`** — מייצר קיצור-דרך "חכמוני" בשולחן-העבודה של המחשב המשפחתי. הקיצור מצביע ל-`start-chachmoni.ps1` עם אייקון favicon.
-- כתיבת `docs/PARENT-GUIDE.md` עם הוראות-הפעלה.
+- כתיבת `docs/guides/PARENT-GUIDE.md` עם הוראות-הפעלה.
 - בדיקה מקצה-לקצה: לחיצה על אייקון בשולחן-העבודה → המשחק נפתח → משחק → סנכרון Drive → Export ידני.
 - **🎉 MVP חי בבית! הילדים יכולים לשחק.**
 
@@ -3311,7 +3311,7 @@ function selectVoice() {
 - **שלב P2.3 (אופציונלי) — הקלטות-TTS מוקלטות-מראש:** רק אם מתברר שהילדים משתמשים בדפדפן בלי קול עברי. בנייה: ½ יום (סקריפט) + 1 יום (הקלטה).
 - **שלב P2.4 (אופציונלי) — Vercel hosting:** אם בעתיד נרצה לאפשר שחיקה ממחשבים אחרים (סבא-סבתא, טאבלט). דורש שינויי OAuth קל. בנייה: ½ יום.
 
-**עיקרון רוחבי:** הסנכרון האוטומטי דואג ש-`git push` קורה לבד. אחרי כל באג — עדכון `docs/ISSUES.md`. אחרי כל החלטה משמעותית — `docs/DECISIONS.md`. אחרי כל משימה גמורה — סימון ב-`docs/TASKS.md`.
+**עיקרון רוחבי:** הסנכרון האוטומטי דואג ש-`git push` קורה לבד. אחרי כל באג — עדכון `docs/log/ISSUES.md`. אחרי כל החלטה משמעותית — `docs/log/DECISIONS.md`. אחרי כל משימה גמורה — סימון ב-`docs/status/TASKS.md`.
 
 ---
 
@@ -3344,7 +3344,7 @@ function selectVoice() {
 ### 3. הגדרת Google Drive OAuth — **לפני שלב 4 ב-MVP**
 **מתי:** ביום 5 בפיתוח. ~30 דקות, חד-פעמית.
 
-זוהי הפעם היחידה ב-MVP שדורשת מההורה לעשות עבודה טכנית מסוימת. אני אדריך צעד-צעד עם צילומי-מסך ב-`docs/DEPLOY.md` ברגע שנגיע לשלב.
+זוהי הפעם היחידה ב-MVP שדורשת מההורה לעשות עבודה טכנית מסוימת. אני אדריך צעד-צעד עם צילומי-מסך ב-`docs/guides/DEPLOY.md` ברגע שנגיע לשלב.
 
 **הצעדים בכותרות (פירוט מלא ב-DEPLOY.md):**
 1. כניסה ל-`console.cloud.google.com`
@@ -3373,7 +3373,7 @@ function selectVoice() {
 5. "Create" → תקבל **Client ID** (מחרוזת ארוכה).
 6. תעתיק את ה-Client ID ותדביק במשחק (מסך-ההגדרות → "הגדרת גיבוי" → "הדבק Client ID").
 
-**אני אכתוב לך הוראות מפורטות עם צילומי-מסך ב-`docs/DEPLOY.md` כשנגיע לשלב הזה.** במידה ותחליט לדחות — אין שום השפעה על MVP, פשוט הכפתור "הגדרת גיבוי" יציג "Drive sync disabled — לחץ כדי להפעיל".
+**אני אכתוב לך הוראות מפורטות עם צילומי-מסך ב-`docs/guides/DEPLOY.md` כשנגיע לשלב הזה.** במידה ותחליט לדחות — אין שום השפעה על MVP, פשוט הכפתור "הגדרת גיבוי" יציג "Drive sync disabled — לחץ כדי להפעיל".
 
 ### 4. הגדרת Anthropic API — **לא חובה, רק ב-Phase 2 אם נרצה**
 **מתי:** רק אחרי שה-MVP חי וההורה רוצה תוכן AI נוסף. ~5 דקות, חד-פעמית.
@@ -3390,7 +3390,7 @@ function selectVoice() {
 
 - אני נותן לך ה"מסך-בדיקה" כקובץ HTML מקומי או דרך URL.
 - אתה מושיב את הילד מולו ו**לא מדבר** — רק צופה.
-- אתה רושם ב-`docs/KIDS-FEEDBACK.md`: מה הילד עשה, איפה נתקע, מה אמר.
+- אתה רושם ב-`docs/log/KIDS-FEEDBACK.md`: מה הילד עשה, איפה נתקע, מה אמר.
 - אני מעדכן את התכנון לפי המשוב.
 
 ---
@@ -3403,7 +3403,7 @@ function selectVoice() {
 | יצירת מבנה תיקיות | יצירת OAuth client *רק אם רוצים sync* |
 | כתיבת 50 משימות-data | בדיקה עם הילדים אחרי כל שלב |
 | design-mocks ב-HTML | העתקה של briefs ל-Claude Design (אופציונלי) |
-| הגדרת git auto-sync | תיעוד הערות-הילדים ב-`docs/KIDS-FEEDBACK.md` |
+| הגדרת git auto-sync | תיעוד הערות-הילדים ב-`docs/log/KIDS-FEEDBACK.md` |
 | כתיבת ה-MD documentation | בחירה בין A/B עיצובים |
 | אריזה (Export/Import + קיצור-דרך) | אישור-סופי לפני מסירה לילדים |
 
@@ -3474,7 +3474,7 @@ mount(container, onComplete) {
 **הפתרון:**
 - **תיוג גרסאות:** `git tag v1.0`, `v1.1` בכל שחרור משמעותי. CHANGELOG.md מתעד.
 - **Rollback בידי ההורה:** קובץ `scripts/rollback.ps1` שמאפשר `rollback.ps1 v1.0` → `git reset --hard v1.0`. דרך מסך-ההגדרות → "Restore Previous Version".
-- **בדיקה לפני שחרור:** אסור push ל-`main` בלי שעבר את ה-QA checklist (`docs/TESTING.md`).
+- **בדיקה לפני שחרור:** אסור push ל-`main` בלי שעבר את ה-QA checklist (`docs/quality/TESTING.md`).
 
 ### 7. תקצוב-ביצועים (Performance Budget)
 
@@ -3486,7 +3486,7 @@ mount(container, onComplete) {
 - **Bundle size (אם נצטרך):** < 500KB סך-הכל
 - **Memory after 30min play:** < 100MB
 
-נמדד ב-DevTools Performance + Lighthouse. רשום ב-`docs/PERFORMANCE.md` — קובץ MD חדש 20.
+נמדד ב-DevTools Performance + Lighthouse. רשום ב-`docs/quality/PERFORMANCE.md` — קובץ MD חדש 20.
 
 ### 8. מצב-דמו / טסט (Demo Mode)
 
@@ -3552,7 +3552,7 @@ mount(container, onComplete) {
 
 ## QA Patches מהמועצה — תוכן TESTING.md ו-RECOVERY.md
 
-### `docs/TESTING.md` — פרוטוקול בדיקות עם ילדים
+### `docs/quality/TESTING.md` — פרוטוקול בדיקות עם ילדים
 
 הקובץ הזה לא נשאר ריק. יקבל תוכן-מינימלי לפני שלב 1:
 
@@ -3581,7 +3581,7 @@ mount(container, onComplete) {
 5. **פחד** — בורח מהמסך, מבקש לסגור
 
 ### אחרי הסשן
-- פותח `docs/KIDS-FEEDBACK.md` ומתעד:
+- פותח `docs/log/KIDS-FEEDBACK.md` ומתעד:
   - תאריך + גיל הילד + שעת-יום
   - 3 משימות שנבדקו
   - זמן-עד-הבנה לכל אחת
@@ -3606,7 +3606,7 @@ mount(container, onComplete) {
 - ratio תהיה > 5:1 בשלבים 3+. אם פחות — לבדוק אם המועצה מועילה.
 ```
 
-### `docs/RECOVERY.md` — Runbook לתרחישי-משבר
+### `docs/guides/RECOVERY.md` — Runbook לתרחישי-משבר
 
 ```markdown
 # Recovery Runbook — חכמוני
@@ -3642,7 +3642,7 @@ mount(container, onComplete) {
 2. או: `chrome://flags/#autoplay-policy` → "No user gesture required"
 
 ## טלפון-חירום
-אם משהו ממש שבור — `docs/ISSUES.md` (פתח issue).
+אם משהו ממש שבור — `docs/log/ISSUES.md` (פתח issue).
 ```
 
 ### Lighthouse CI Script (Patch מ-Performance + QA)
@@ -4036,7 +4036,7 @@ $listener.BeginGetContext($asyncCallback, $listener)
 5. **בדיקת מולטי-פרופיל**: יצירת 3+ פרופילים, סיום משימה בכל אחד, וידוא שההתקדמות נפרדת ושכל פרופיל מקבל קובץ-Drive נפרד.
 6. **בדיקת Google Drive sync**: התחברות → סיום משימה → בדיקה ב-Drive ש-`progress.json` עודכן. רענון דפדפן → התקדמות נטענה. במחשב שני: התחברות → הצעת יבוא.
 7. **בדיקת GitHub flow**: שינוי קוד → push → pull במחשב אחר → אותו state.
-8. **בדיקה עם הילדים** (החשובה ביותר): לתת לכל ילד לשחק לבד, לתעד ב-`docs/KIDS-FEEDBACK.md`.
+8. **בדיקה עם הילדים** (החשובה ביותר): לתת לכל ילד לשחק לבד, לתעד ב-`docs/log/KIDS-FEEDBACK.md`.
 9. **בדיקת קיצור-הדרך**: לחיצה-כפולה על אייקון "חכמוני" בשולחן-העבודה → המשחק נפתח ב-Chrome → עובד מקצה-לקצה.
 
 ---
@@ -4047,7 +4047,7 @@ $listener.BeginGetContext($asyncCallback, $listener)
 - **אין backend / DB משלנו** — localStorage + Google Drive של ההורה.
 - **אין תמיכה במובייל/טאצ'** — נשמר למשחק עתידי, היום המטרה היא לימוד עכבר.
 - **אין אנגלית** — שפה אחת = פחות באגים, פחות מסכי הגדרות שיבלבלו ילד.
-- **אין עורך משימות גרפי** — להוסיף משימה = ליצור קובץ JS קטן ב-`src/tasks/`. ראה `docs/HOW-TO-ADD-TASK.md`.
+- **אין עורך משימות גרפי** — להוסיף משימה = ליצור קובץ JS קטן ב-`src/tasks/`. ראה `docs/process/HOW-TO-ADD-TASK.md`.
 - **אין end-to-end encryption לגיבוי** — Google Drive scope של `drive.file` כבר מספק בידוד מהקבצים האחרים של ההורה. הקובץ עצמו לא מוצפן (אין מידע רגיש מלבד שמות הילדים והתקדמות).
 - **אין CI tests אוטומטיים בשלב הראשון** — הפרויקט קטן ופשוט מספיק; בדיקות ידניות + בדיקה עם הילדים מספיקות לגרסה הראשונה. אם יגדל — נוסיף Playwright.
 
@@ -4080,7 +4080,7 @@ $listener.BeginGetContext($asyncCallback, $listener)
 - **CLAUDE.md** + **5 skills מותאמים-לפרויקט**: `kids-game.md` (כללי), `kids-qa.md` (QA), `security-kids.md` (אבטחה), `hebrew-narration.md` (קריינות), `animation-choreography.md` (אנימציות).
 - **Skills מובנים בעת-צורך**: `security-review`, `review`, `simplify`, `design`, `ui-ux-pro-max`, `design-system`, `claude-api`, `fewer-permission-prompts`, `update-config`.
 - **🏛️ High Council** — 8 sub-agents + יו"ר שמאשרים כל שלב לפני המעבר הבא (`agent-qa`, `agent-security`, `agent-ux-kid`, `agent-a11y`, `agent-hebrew`, `agent-performance`, `agent-code-review`, `agent-integration`).
-- **📋 Plan Control** — `docs/PLAN-CONTROL.md` מתעד כל שינוי-תכנון עם בדיקת-עקביות.
+- **📋 Plan Control** — `docs/log/PLAN-CONTROL.md` מתעד כל שינוי-תכנון עם בדיקת-עקביות.
 
 ### עיצוב
 - **HTML mockups ב-`design-mocks/`** — כל מסך מעוצב לפני שכותבים אותו "אמיתי".

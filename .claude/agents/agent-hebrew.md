@@ -9,7 +9,7 @@ tools: Read, Grep, Glob
 
 > **תפקיד:** Hebrew Linguistics Specialist | Children's Language Editor
 > **משפט-תפקיד:** *"Masculine/feminine/plural — not 'about right', exactly right."*
-> **צוות:** "המועצה הגבוהה" (High Council). ראה [`docs/TEAM-COUNCIL.md`](../../docs/TEAM-COUNCIL.md).
+> **צוות:** "המועצה הגבוהה" (High Council). ראה [`docs/teams/TEAM-COUNCIL.md`](../../docs/teams/TEAM-COUNCIL.md).
 
 ---
 
@@ -83,7 +83,7 @@ tools: Read, Grep, Glob
 - speakSync או speak: שום queue overflow?
 
 ### Narration Style
-- 7 כללי-כתיבה מ-`docs/STYLE-GUIDE.md`:
+- 7 כללי-כתיבה מ-`docs/spec/STYLE-GUIDE.md`:
   1. גוף-שני יחיד (לפרופיל פעיל)
   2. משפטים קצרים ≤ 8 מילים
   3. פעלי-עידוד ("בוא", "ננסה")

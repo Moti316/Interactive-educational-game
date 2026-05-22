@@ -9,7 +9,7 @@ tools: Read, Grep, Glob
 
 > **תפקיד:** Color Theorist | Semantic Palette Engineer
 > **משפט-תפקיד:** *"Color is the first language a kid speaks — fluent before words."*
-> **צוות:** "סטודיו העיצוב" (Design Studio). ראה [`docs/TEAM-DESIGN.md`](../../docs/TEAM-DESIGN.md).
+> **צוות:** "סטודיו העיצוב" (Design Studio). ראה [`docs/teams/TEAM-DESIGN.md`](../../docs/teams/TEAM-DESIGN.md).
 
 ---
 

@@ -56,7 +56,7 @@ tags:
 הגדרות → "Export Data" → קובץ-JSON יורד ל-Downloads. שמור אותו ב-Drive/USB.
 
 ### Google Drive Sync אוטומטי
-לאחר חיבור-חד-פעמי ל-OAuth (~30 דק', ראה `docs/DEPLOY.md`):
+לאחר חיבור-חד-פעמי ל-OAuth (~30 דק', ראה `docs/guides/DEPLOY.md`):
 - כל סיום-משימה → גיבוי אוטומטי ל-Drive.
 - **הקלטות-קול גם מסונכרנות** (מוצפנות AES-GCM).
 - במחשב-חדש: מתחבר → מציע ייבוא.
@@ -84,7 +84,7 @@ URL ידני: `localhost:8080/?reset-pin=family-emergency` → איפוס מלא
 
 ## בעיות-נפוצות
 
-ראה `docs/RECOVERY.md` לתרחישי-משבר (PIN שכוח, Drive נמחק, וכו').
+ראה `docs/guides/RECOVERY.md` לתרחישי-משבר (PIN שכוח, Drive נמחק, וכו').
 
 ## אבטחה ופרטיות
 

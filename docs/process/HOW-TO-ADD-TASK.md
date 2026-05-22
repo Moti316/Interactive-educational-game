@@ -8,7 +8,7 @@ tags:
 ## שלבי-הוספה
 
 ### 1. בחר תבנית מתאימה
-`src/templates/` כולל 8 תבניות. ראה `docs/ARCHITECTURE.md`.
+`src/templates/` כולל 8 תבניות. ראה `docs/spec/ARCHITECTURE.md`.
 
 ### 2. צור קובץ-data חדש
 ```js
@@ -34,8 +34,8 @@ export default {
 `src/taskRegistry.js` — שורה חדשה עם import.
 
 ### 4. תעד ב-CONTENT.md + NARRATION.md
-- `docs/CONTENT.md` — שורה חדשה
-- `docs/NARRATION.md` — text/textNiqud/textTTS/altText
+- `docs/spec/CONTENT.md` — שורה חדשה
+- `docs/spec/NARRATION.md` — text/textNiqud/textTTS/altText
 
 ### 5. הרץ Council 
 לפני commit — Council Light לפחות (security, ux-kid, hebrew).

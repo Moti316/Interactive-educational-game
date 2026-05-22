@@ -154,7 +154,7 @@ NEXT ACTION:
 
 ## קישורים
 
-- [`docs/ROADMAP.md`](../../docs/ROADMAP.md) — התוצר הראשי
-- [`docs/ROADMAP-CONTROL.md`](../../docs/ROADMAP-CONTROL.md) — חוקי-השינוי
-- [`docs/TEAM-COMPASS.md`](../../docs/TEAM-COMPASS.md) — זהות הצוות
-- [`docs/TASK-COMPLETION-PROTOCOL.md`](../../docs/TASK-COMPLETION-PROTOCOL.md) — מתי "done"
+- [`docs/status/ROADMAP.md`](../../docs/status/ROADMAP.md) — התוצר הראשי
+- [`docs/process/ROADMAP-CONTROL.md`](../../docs/process/ROADMAP-CONTROL.md) — חוקי-השינוי
+- [`docs/teams/TEAM-COMPASS.md`](../../docs/teams/TEAM-COMPASS.md) — זהות הצוות
+- [`docs/process/TASK-COMPLETION-PROTOCOL.md`](../../docs/process/TASK-COMPLETION-PROTOCOL.md) — מתי "done"

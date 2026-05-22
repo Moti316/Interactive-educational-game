@@ -200,7 +200,7 @@ Step 3: CouncilChair מסכם:
     subagent_type: "agent-council-chair",
     description: "R4 synthesis",
     prompt: "אסוף את 4 הדוחות הבאים: [...]. סנתז → דוח-מאוחד → המלצה GO/NO-GO.
-             כתוב את התוצאה ל-docs/COUNCIL.md."
+             כתוב את התוצאה ל-docs/log/COUNCIL.md."
   })
 
 Step 4: RoadmapKeeper מעדכן את ROADMAP + שורת drift impact ב-COUNCIL.md
@@ -229,7 +229,7 @@ OVERALL: (משפט אחד)
 ## 7. עקרונות-יסוד של המועצה
 
 1. **Bugs caught here saves bugs found by kids** — תפיסת באג כאן = הגנה על חוויית-הילד.
-2. **כל החלטה מתועדת** — `docs/COUNCIL.md` הוא יומן-הציבורי. החלטה לא-כתובה = החלטה שתחזור.
+2. **כל החלטה מתועדת** — `docs/log/COUNCIL.md` הוא יומן-הציבורי. החלטה לא-כתובה = החלטה שתחזור.
 3. **דעת-מיעוט שווה תיעוד** — chair מכריע, אבל המיעוט נכתב.
 4. **אין skip the gate** — לא ניתן לדלג על סבב "כי דחוף". אם דחוף, R-Mini עם 3 חברים.
 5. **Cross-round patterns** — אם אותו issue עולה ב-2+ סבבים → escalation, סימן שיש בעיה שיטתית.
@@ -239,13 +239,13 @@ OVERALL: (משפט אחד)
 
 ## 8. קשרים עם תיעוד אחר
 
-- **`docs/COUNCIL.md`** — יומן רשמי של סבבים (chair כותב שם)
-- **`docs/DECISIONS.md`** — ADRs שמועצה אישרה
-- **`docs/ISSUES.md`** — באגים שמועצה זיהתה (FAIL = פתיחת ISSUES entry)
-- **`docs/TEAM-COMPASS.md`** — הצוות-המקביל (מצפן)
-- **`docs/TEAM-DESIGN.md`** — הצוות-המקביל (סטודיו-עיצוב, חדש מ-ADR-013)
-- **`docs/TASK-COMPLETION-PROTOCOL.md`** — מתי מזמנים סבב
-- **`docs/PLAN-CONTROL.md`** — חוקי שינוי PLAN (מועצה כפופה אליהם)
+- **`docs/log/COUNCIL.md`** — יומן רשמי של סבבים (chair כותב שם)
+- **`docs/log/DECISIONS.md`** — ADRs שמועצה אישרה
+- **`docs/log/ISSUES.md`** — באגים שמועצה זיהתה (FAIL = פתיחת ISSUES entry)
+- **`docs/teams/TEAM-COMPASS.md`** — הצוות-המקביל (מצפן)
+- **`docs/teams/TEAM-DESIGN.md`** — הצוות-המקביל (סטודיו-עיצוב, חדש מ-ADR-013)
+- **`docs/process/TASK-COMPLETION-PROTOCOL.md`** — מתי מזמנים סבב
+- **`docs/log/PLAN-CONTROL.md`** — חוקי שינוי PLAN (מועצה כפופה אליהם)
 - **9 קבצי `.claude/agents/agent-*.md`** — system prompts של החברים
 
 ---

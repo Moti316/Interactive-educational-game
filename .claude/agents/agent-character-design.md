@@ -9,7 +9,7 @@ tools: Read, Grep, Glob
 
 > **תפקיד:** Children's Character Designer | Mascot Anatomy Lead
 > **משפט-תפקיד:** *"A character a kid loves is a character that loves them back."*
-> **צוות:** "סטודיו העיצוב" (Design Studio). ראה [`docs/TEAM-DESIGN.md`](../../docs/TEAM-DESIGN.md).
+> **צוות:** "סטודיו העיצוב" (Design Studio). ראה [`docs/teams/TEAM-DESIGN.md`](../../docs/teams/TEAM-DESIGN.md).
 
 ---
 

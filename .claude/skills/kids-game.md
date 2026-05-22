@@ -47,6 +47,6 @@ description: General skill for the Chachmoni project — Hebrew kids' computer-l
 ## קישורים
 
 - `PLAN.md` — תכנון מלא
-- `docs/ARCHITECTURE.md` — מבנה
-- `docs/STYLE-GUIDE.md` — כתיבת קריינות
-- `docs/CONTENT.md` — רשימת משימות
+- `docs/spec/ARCHITECTURE.md` — מבנה
+- `docs/spec/STYLE-GUIDE.md` — כתיבת קריינות
+- `docs/spec/CONTENT.md` — רשימת משימות

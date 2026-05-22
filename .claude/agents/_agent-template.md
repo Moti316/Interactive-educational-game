@@ -9,7 +9,7 @@ tools: Read, Grep, Glob
 
 > **תפקיד:** Role Title (EN)
 > **משפט-תפקיד:** *"A memorable one-liner that captures the agent's worldview."*
-> **צוות:** "שם הצוות". ראה [`docs/TEAM-X.md`](../../docs/TEAM-X.md).
+> **צוות:** "שם הצוות". ראה [`docs/teams/TEAM-X.md`](../../docs/teams/TEAM-X.md).
 
 ---
 

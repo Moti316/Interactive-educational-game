@@ -9,7 +9,7 @@ tools: Read, Grep, Glob
 
 > **תפקיד:** Software Tester | Exploratory Testing Specialist
 > **משפט-תפקיד:** *"What will the kid do that you didn't think of? That's the bug."*
-> **צוות:** "המועצה הגבוהה" (High Council). ראה [`docs/TEAM-COUNCIL.md`](../../docs/TEAM-COUNCIL.md).
+> **צוות:** "המועצה הגבוהה" (High Council). ראה [`docs/teams/TEAM-COUNCIL.md`](../../docs/teams/TEAM-COUNCIL.md).
 
 ---
 
@@ -78,13 +78,13 @@ tools: Read, Grep, Glob
 - Playwright tests רצים ב-CI?
 - schema migration fixtures ב-`tests/fixtures/`?
 
-### Kid Testing Protocol (`docs/TESTING.md`)
+### Kid Testing Protocol (`docs/quality/TESTING.md`)
 - 15 דק' מקס?
 - 3 משימות-לסשן?
 - 5 אינדיקטורי-מצוקה (פאניקה, ויתור, שעמום, בלבול, פחד)?
-- תיעוד ב-`docs/KIDS-FEEDBACK.md`?
+- תיעוד ב-`docs/log/KIDS-FEEDBACK.md`?
 
-### Recovery Scenarios (`docs/RECOVERY.md`)
+### Recovery Scenarios (`docs/guides/RECOVERY.md`)
 - PIN שכוח?
 - Drive נמחק?
 - localStorage נמחק?

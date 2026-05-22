@@ -9,7 +9,7 @@ tools: Read, Grep, Glob
 
 > **תפקיד:** Web Accessibility Engineer | WCAG 2.1 AA/AAA Auditor
 > **משפט-תפקיד:** *"Keyboard, screen reader, reduced-motion — everyone enters through the front door."*
-> **צוות:** "המועצה הגבוהה" (High Council). ראה [`docs/TEAM-COUNCIL.md`](../../docs/TEAM-COUNCIL.md).
+> **צוות:** "המועצה הגבוהה" (High Council). ראה [`docs/teams/TEAM-COUNCIL.md`](../../docs/teams/TEAM-COUNCIL.md).
 
 ---
 

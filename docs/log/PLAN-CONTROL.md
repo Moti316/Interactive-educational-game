@@ -86,8 +86,8 @@ tags:
 
 **סטטוס פר-פריט:**
 - ✅ **P0-2:** בלוק "מצב הפרויקט" חי ב-CLAUDE.md
-- ✅ **P1-1:** `docs/RISKS.md` — מרשם-סיכונים (7 סיכונים)
-- ✅ **P1-2:** `docs/AGENT-ACTIVITY-LOG.md` — יומן-הפעלות
+- ✅ **P1-1:** `docs/status/RISKS.md` — מרשם-סיכונים (7 סיכונים)
+- ✅ **P1-2:** `docs/log/AGENT-ACTIVITY-LOG.md` — יומן-הפעלות
 - ✅ **P1-3:** תבנית-ADR עשירה (חובה מ-ADR-014)
 - ✅ **P2-1:** מפות-תיאום ב-3 מסמכי-הצוות (במקום 19 עריכות-סוכן — right-sized)
 - ✅ **P2-2:** role חדש `cross-team-auditor` (חבר Compass שלישי)
@@ -114,17 +114,17 @@ tags:
 **טריגר:** ההורה זיהה אי-עקביות בין-לוגו-מסקוט; דרש צוות-עיצוב ייעודי + חשיבה-מחודשת על העיצוב מ-Phase 1 ל-MVP
 **שינוי-עיקרי:**
 - צוות חדש: 7 sub-agents (6 חברים + chair) עם זהות-עומק לכל אחד
-- 8 קבצים חדשים: `docs/TEAM-DESIGN.md` + 7 קבצי `.claude/agents/agent-*.md`
+- 8 קבצים חדשים: `docs/teams/TEAM-DESIGN.md` + 7 קבצי `.claude/agents/agent-*.md`
 - עדכון `CLAUDE.md` — המעבר מ-11 sub-agents ל-18 sub-agents (3 צוותים)
 - סדר-הפעלה חדש: Studio (אסתטיקה) → Compass (DoD) → Council (איכות)
 - ADR-013 בDECISIONS.md
-- הסבב הבא: R-Design-1 (Initial Audit) ייצא דוח ב-`docs/DESIGN-AUDIT-R1.md`
+- הסבב הבא: R-Design-1 (Initial Audit) ייצא דוח ב-`docs/log/DESIGN-AUDIT-R1.md`
 
 ### סעיפים שהושפעו ב-PLAN.md
 - (אין שינוי-יסוד ב-PLAN.md עצמו — Studio הוא תוספת-ארכיטקטונית של ניהול-פרויקט, לא של תכולה. תכולה תיגזר משלב B — Design Audit.)
 
 ### קבצים חדשים
-- `docs/TEAM-DESIGN.md` — Charter + 6 חברים + Chair + Workflow Diagram
+- `docs/teams/TEAM-DESIGN.md` — Charter + 6 חברים + Chair + Workflow Diagram
 - `.claude/agents/agent-brand-identity.md`
 - `.claude/agents/agent-character-design.md`
 - `.claude/agents/agent-color-palette.md`
@@ -135,11 +135,11 @@ tags:
 
 ### קבצים מעודכנים
 - `CLAUDE.md` — סעיף Sub-Agents (3 צוותים)
-- `docs/DECISIONS.md` — ADR-013
-- `docs/TEAM-COUNCIL.md` — cross-ref ל-Design Studio
-- `docs/TEAM-COMPASS.md` — cross-ref ל-Design Studio
-- `docs/PROGRESS.md` — שדה Latest Design Review
-- `docs/CHANGELOG.md` — entry 0.5.0
+- `docs/log/DECISIONS.md` — ADR-013
+- `docs/teams/TEAM-COUNCIL.md` — cross-ref ל-Design Studio
+- `docs/teams/TEAM-COMPASS.md` — cross-ref ל-Design Studio
+- `docs/status/PROGRESS.md` — שדה Latest Design Review
+- `docs/log/CHANGELOG.md` — entry 0.5.0
 
 ### וידוא-עקביות
 - ✅ 7 קבצי agent קיימים תחת `.claude/agents/`
@@ -161,12 +161,12 @@ tags:
 - חיסכון מוערך: ~1 יום ב-ETA ל-MVP
 
 ### סעיפים שהושפעו
-- [x] `docs/DECISIONS.md` — ADR-011 חדש
-- [x] `docs/CLAUDE-DESIGN-BRIEFS.md` — סעיף "שני מסלולי-עבודה" חדש
+- [x] `docs/log/DECISIONS.md` — ADR-011 חדש
+- [x] `docs/spec/CLAUDE-DESIGN-BRIEFS.md` — סעיף "שני מסלולי-עבודה" חדש
 - [x] `PLAN.md §1788` — header עם הפניה ל-ADR-011
-- [x] `docs/ROADMAP.md` — Phase 0.5 DoD ו-Owner מעודכנים, drift log
-- [x] `docs/PROGRESS.md` — סטטוס Brief #2 ✅, Phase 0.5 → 40%
-- [x] `docs/ASSETS.md` — 6 mascot poses delivered
+- [x] `docs/status/ROADMAP.md` — Phase 0.5 DoD ו-Owner מעודכנים, drift log
+- [x] `docs/status/PROGRESS.md` — סטטוס Brief #2 ✅, Phase 0.5 → 40%
+- [x] `docs/spec/ASSETS.md` — 6 mascot poses delivered
 
 ### תוצרים בפועל
 - 6 SVG ב-`assets/mascot/professor-chachmoni-{standing-wave,pointing,celebrating,thinking,encouraging,sleeping}.svg`

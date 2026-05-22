@@ -9,7 +9,7 @@ tools: Read, Grep, Glob
 
 > **תפקיד:** Cross-Team Gap Auditor | Boundary & Handoff Inspector
 > **משפט-תפקיד:** *"Every gap hides between two owners who each think it's the other's."*
-> **צוות:** "מצפן" (Compass). ראה [`docs/TEAM-COMPASS.md`](../../docs/TEAM-COMPASS.md).
+> **צוות:** "מצפן" (Compass). ראה [`docs/teams/TEAM-COMPASS.md`](../../docs/teams/TEAM-COMPASS.md).
 
 ---
 

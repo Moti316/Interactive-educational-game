@@ -12,7 +12,7 @@ tags:
 ### Added
 - `docs/_DASHBOARD.md` — לוח-בקרה: מצב-פרויקט חי + קישורים-חמים + צעד-הבא.
 - `project-map.canvas` — Obsidian Canvas: מפת-פרויקט חזותית (3 צוותים, Phases, מצב).
-- `docs/OBSIDIAN-GUIDE.md` — מדריך-שימוש בעברית להורה.
+- `docs/guides/OBSIDIAN-GUIDE.md` — מדריך-שימוש בעברית להורה.
 - **תגיות:** frontmatter `tags` ל-34 מסמכי `docs/` — טקסונומיה בת 7 קטגוריות
   (`#status #team #log #process #spec #quality #guide`) → מאפשר סינון ב-Obsidian.
 - `docs/_INDEX.md` — קישורים ל-Dashboard / Canvas / Guide.
@@ -38,8 +38,8 @@ tags:
 
 ### Added / Changed — 8/10 items
 - **P0-2:** בלוק "מצב הפרויקט" חי בראש CLAUDE.md (מתעדכן סוף-סשן)
-- **P1-1:** `docs/RISKS.md` — מרשם-סיכונים (7 סיכונים, בעלים+מיטיגציה)
-- **P1-2:** `docs/AGENT-ACTIVITY-LOG.md` — יומן-הפעלות מרוכז
+- **P1-1:** `docs/status/RISKS.md` — מרשם-סיכונים (7 סיכונים, בעלים+מיטיגציה)
+- **P1-2:** `docs/log/AGENT-ACTIVITY-LOG.md` — יומן-הפעלות מרוכז
 - **P1-3:** תבנית-ADR עשירה ב-DECISIONS.md (חובה מ-ADR-014)
 - **P2-1:** מפות-תיאום בין-סוכנים ב-3 מסמכי-הצוות
 - **P2-2:** סוכן חדש `cross-team-auditor` (Compass — 2→3 חברים; 18→19 sub-agents)
@@ -56,7 +56,7 @@ tags:
 ### Added — Design Studio Team
 ההורה זיהה אי-עקביות בין הלוגו (לבנדר, אבסטרקטי) למסקוט (תכלת, illustrated עם כובע). זיהה צורך בצוות-עיצוב ייעודי. ADR-013 + CHG-008 בתיעוד.
 
-- **`docs/TEAM-DESIGN.md`** — מסמך-מכונן חדש (Charter, 7 חברים, Workflow, Escalation, Activation Protocol)
+- **`docs/teams/TEAM-DESIGN.md`** — מסמך-מכונן חדש (Charter, 7 חברים, Workflow, Escalation, Activation Protocol)
 - **7 קבצי agent חדשים ב-`.claude/agents/`:**
   - `agent-brand-identity.md` 🎭 (BrandIdentityArchitect — Saul Bass, Paula Scher, Studio Eitan Bartal השראה)
   - `agent-character-design.md` 🖼️ (CharacterIllustrator — Mary Blair, Mo Willems, Hervé Tullet)
@@ -70,7 +70,7 @@ tags:
 - **ADR-013** בDECISIONS.md — נימוק + אלטרנטיבות-שנשללו
 
 ### Coming Next — Stage B
-- **R-Design-1 (Initial Audit)** — הסטודיו מתכנס לסבב-ראשון לסקור: לוגו, מסקוט, palette, tokens, fonts, mocks. דוח ב-`docs/DESIGN-AUDIT-R1.md`
+- **R-Design-1 (Initial Audit)** — הסטודיו מתכנס לסבב-ראשון לסקור: לוגו, מסקוט, palette, tokens, fonts, mocks. דוח ב-`docs/log/DESIGN-AUDIT-R1.md`
 - בעקבות הדוח: Brief #1.5 (לוגו חדש שמשתמש בדמות-המסקוט)
 
 ## [0.4.2] - 2026-05-19 — Logo RTL Bug Fix + Brief #2 → claude.ai/design canonical
@@ -102,7 +102,7 @@ tags:
 ### Added — ADR-011: Local-First Design Path
 - Claude Code כותב SVG/HTML ישירות במקום הגשר ל-claude.ai
 - Bridge Protocol (PLAN.md §1788) הופך fallback path
-- CHG-007 ב-`docs/PLAN-CONTROL.md`
+- CHG-007 ב-`docs/log/PLAN-CONTROL.md`
 - מסמכי-בקרה מעודכנים: DECISIONS.md, CLAUDE-DESIGN-BRIEFS.md, PLAN.md, ROADMAP.md, PROGRESS.md, ASSETS.md
 
 ### Changed — Phase 0.5 Progress
@@ -119,7 +119,7 @@ tags:
 - תוצאה: 🟢 GO לשליחת Brief #2 המעודכן
 
 ### Added — Briefs Universal Constraints
-- `docs/CLAUDE-DESIGN-BRIEFS.md` — סעיף חדש "Universal Constraints" שחובה לכל brief:
+- `docs/spec/CLAUDE-DESIGN-BRIEFS.md` — סעיף חדש "Universal Constraints" שחובה לכל brief:
   - Security (SecurityAuditor): אסור `<script>`/`<foreignObject>`/event handlers/external xlink:href ב-SVG
   - A11y (AccessibilityInspector): `role="img"` + `aria-label`, contrast pairs table
   - Performance (PerfBudgetEnforcer): SVG ≤8KB, אסור raster ב-SVG, אסור filters כבדים
@@ -144,33 +144,33 @@ tags:
 - `animation-choreography.md`: `prefers-reduced-motion` הורחב — Mascot bounce מבוטל לחלוטין, Hint pulse → outline סטטי, Drive-sync rotation → opacity-pulse
 
 ### Documentation
-- `docs/COUNCIL.md`: Round 3.5 entry מלא (17 patches מתועדים)
-- `docs/DECISIONS.md`: ADR-010 (Universal Constraints כפרוטוקול)
-- `docs/ROADMAP.md`: 2 drift log entries (R3.5 + DoD update)
-- `docs/PROGRESS.md`: Last Council + Last DoD-verified עודכנו
+- `docs/log/COUNCIL.md`: Round 3.5 entry מלא (17 patches מתועדים)
+- `docs/log/DECISIONS.md`: ADR-010 (Universal Constraints כפרוטוקול)
+- `docs/status/ROADMAP.md`: 2 drift log entries (R3.5 + DoD update)
+- `docs/status/PROGRESS.md`: Last Council + Last DoD-verified עודכנו
 
 ## [0.3.0] - 2026-05-18 — Identities Formalized
 
 ### Added — צוות "מצפן" (Compass)
-- `docs/TEAM-COMPASS.md` — מסמך-זהות של צוות הניווט
-- `docs/ROADMAP.md` — תוכנית-עבודה חיה (single source-of-truth תפעולי)
-- `docs/ROADMAP-CONTROL.md` — חוקי שינוי ROADMAP
-- `docs/TASK-COMPLETION-PROTOCOL.md` — מתי משימה "done" + פורמט-דיווח
+- `docs/teams/TEAM-COMPASS.md` — מסמך-זהות של צוות הניווט
+- `docs/status/ROADMAP.md` — תוכנית-עבודה חיה (single source-of-truth תפעולי)
+- `docs/process/ROADMAP-CONTROL.md` — חוקי שינוי ROADMAP
+- `docs/process/TASK-COMPLETION-PROTOCOL.md` — מתי משימה "done" + פורמט-דיווח
 - `.claude/agents/agent-roadmap-keeper.md` — 🗺️ RoadmapKeeper (Lead PM)
 - `.claude/agents/agent-phase-gatekeeper.md` — 🛡️ PhaseGatekeeper (DoD verifier)
 - `.claude/skills/roadmap-tracking.md` — פרוטוקול-מעקב משותף
 
 ### Added — פורמליזציה של "המועצה הגבוהה" (High Council)
-- `docs/TEAM-COUNCIL.md` — מסמך-זהות של המועצה (9 חברים בשמות תפקידיים)
+- `docs/teams/TEAM-COUNCIL.md` — מסמך-זהות של המועצה (9 חברים בשמות תפקידיים)
 - שמות חדשים: SecurityAuditor, ChildUXAdvocate, AccessibilityInspector, HebrewLinguist, PerfBudgetEnforcer, CodeReviewer, IntegrationVerifier, QualityAssurance, CouncilChair
 
 ### Changed
 - 9 קבצי `.claude/agents/agent-*.md` קיבלו שכבת-זהות (שם תפקיד, משפט-תפקיד, השראה, תחומי-אחריות מורחבים, Skills mapping, קווים-אדומים, Triggers)
 - `CLAUDE.md` — רשימת 11 sub-agents + סעיף "הצוותים שלנו" + הוראת תחילת-סשן
-- `docs/PROGRESS.md` — header עם "Next Gate" + "Last DoD-verified"
-- `docs/COUNCIL.md` — header עם קישור ל-TEAM-COUNCIL + שמות חדשים ב-R1/R2/R3
-- `docs/TASKS.md` — קישור-עליון ל-ROADMAP ול-TASK-COMPLETION-PROTOCOL
-- `docs/DECISIONS.md` — ADR-007 (Compass), ADR-008 (Council identities), ADR-009 (completion protocol)
+- `docs/status/PROGRESS.md` — header עם "Next Gate" + "Last DoD-verified"
+- `docs/log/COUNCIL.md` — header עם קישור ל-TEAM-COUNCIL + שמות חדשים ב-R1/R2/R3
+- `docs/status/TASKS.md` — קישור-עליון ל-ROADMAP ול-TASK-COMPLETION-PROTOCOL
+- `docs/log/DECISIONS.md` — ADR-007 (Compass), ADR-008 (Council identities), ADR-009 (completion protocol)
 
 ### Skills Mapping (חדש)
 SecurityAuditor מקבל 9 skills (security-kids + 7 tm-* + security-review + deep-research) להעצמה בפלילי אבטחה / threat modeling.

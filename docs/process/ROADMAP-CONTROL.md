@@ -3,16 +3,16 @@ tags:
   - process
 ---
 
-# ROADMAP-CONTROL — חוקי שינוי `docs/ROADMAP.md`
+# ROADMAP-CONTROL — חוקי שינוי `docs/status/ROADMAP.md`
 
-> מסמך זה מגדיר מי, מתי, ואיך משנה את `docs/ROADMAP.md`.
-> מקביל ל-[`PLAN-CONTROL.md`](./PLAN-CONTROL.md) שמגן על PLAN.md.
+> מסמך זה מגדיר מי, מתי, ואיך משנה את `docs/status/ROADMAP.md`.
+> מקביל ל-[`PLAN-CONTROL.md`](../log/PLAN-CONTROL.md) שמגן על PLAN.md.
 
 ---
 
 ## 1. הקשר
 
-`docs/ROADMAP.md` הוא **view פעיל** של PLAN.md — תוכנית-עבודה חיה שמשמשת לתפעול-יום-יום. PLAN.md הוא תוכנית-העל (קבוע, 237KB, מאושר ע"י מועצה). ROADMAP.md הוא הגרסה התפעולית.
+`docs/status/ROADMAP.md` הוא **view פעיל** של PLAN.md — תוכנית-עבודה חיה שמשמשת לתפעול-יום-יום. PLAN.md הוא תוכנית-העל (קבוע, 237KB, מאושר ע"י מועצה). ROADMAP.md הוא הגרסה התפעולית.
 
 **הסכנה:** אם ROADMAP "מתנהל את עצמו" בלי בקרה — הוא יזחל הרחק מ-PLAN ויאבד אמינות. החוקים כאן מונעים זאת.
 

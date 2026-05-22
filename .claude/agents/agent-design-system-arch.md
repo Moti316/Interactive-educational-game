@@ -9,7 +9,7 @@ tools: Read, Grep, Glob
 
 > **תפקיד:** Token Architecture | Design System Engineer
 > **משפט-תפקיד:** *"If two screens disagree on color, the design system failed."*
-> **צוות:** "סטודיו העיצוב" (Design Studio). ראה [`docs/TEAM-DESIGN.md`](../../docs/TEAM-DESIGN.md).
+> **צוות:** "סטודיו העיצוב" (Design Studio). ראה [`docs/teams/TEAM-DESIGN.md`](../../docs/teams/TEAM-DESIGN.md).
 
 ---
 

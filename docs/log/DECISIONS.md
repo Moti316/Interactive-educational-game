@@ -80,7 +80,7 @@ tags:
 **אלטרנטיבות שנדחו:** AI generator ב-MVP (עלות + תלות-רשת לא מוצדקות לחודשיים הראשונים).
 
 ## ADR-007 | 2026-05-18 | אימוץ `ROADMAP.md` + צוות "מצפן"
-**החלטה:** יצירת `docs/ROADMAP.md` כתוכנית-עבודה חיה (view של PLAN.md), ומקימים צוות "מצפן" (Compass) עם 2 סוכנים חדשים:
+**החלטה:** יצירת `docs/status/ROADMAP.md` כתוכנית-עבודה חיה (view של PLAN.md), ומקימים צוות "מצפן" (Compass) עם 2 סוכנים חדשים:
 - 🗺️ **RoadmapKeeper** (`agent-roadmap-keeper`) — PM, custodian של ROADMAP
 - 🛡️ **PhaseGatekeeper** (`agent-phase-gatekeeper`) — DoD verifier לפני Council
 
@@ -91,21 +91,21 @@ tags:
 ## ADR-008 | 2026-05-18 | פורמליזציה של "המועצה הגבוהה"
 **החלטה:** מתן זהות פורמלית ל-9 חברי-המועצה — שמות תפקידיים באנגלית + משפט-תפקיד + פרופיל-עומק (השראה, אחריות, skills, קווים-אדומים).
 **שמות:** SecurityAuditor, ChildUXAdvocate, AccessibilityInspector, HebrewLinguist, PerfBudgetEnforcer, CodeReviewer, IntegrationVerifier, QualityAssurance, CouncilChair.
-**מסמך נלווה:** `docs/TEAM-COUNCIL.md`.
+**מסמך נלווה:** `docs/teams/TEAM-COUNCIL.md`.
 **נימוק:** דוחות-מועצה היו אנונימיים ("agent-security WARNING"). שמות תפקידיים = קריאות + דיון נעשה לבר-ביצוע ("בקש מ-SecurityAuditor לסקור"). פרופיל-עומק = כל סוכן יודע מה דומיין-הבלעדיות שלו והשראתו.
 **אלטרנטיבות שנשללו:** שמות אישיים בעברית (פחות מתארים את התפקוד); שמות גנריים ("Agent-1"...).
 
 ## ADR-010 | 2026-05-19 | Universal Constraints ב-Briefs
-**החלטה:** כל brief ב-`docs/CLAUDE-DESIGN-BRIEFS.md` חייב לכלול סעיף "Universal Constraints" לפני ה-TASK. הסעיף מגדיר חוקים שמועצה אכפה: Security (SVG XSS prevention), Accessibility (ARIA, contrast pairs), Performance (size budgets), Integration (viewBox, naming), Hebrew (forbidden words).
+**החלטה:** כל brief ב-`docs/spec/CLAUDE-DESIGN-BRIEFS.md` חייב לכלול סעיף "Universal Constraints" לפני ה-TASK. הסעיף מגדיר חוקים שמועצה אכפה: Security (SVG XSS prevention), Accessibility (ARIA, contrast pairs), Performance (size budgets), Integration (viewBox, naming), Hebrew (forbidden words).
 
 **נימוק:** בלי החוקים הללו, claude.ai יצור artifacts שייכשלו בבקרת-המועצה האחורית — בזבוז iteration. הוספת constraints לpre-flight מקצרת לoop "design → review → fix" ל-"review → design ראשון תקין".
 
-**מסמך נלווה:** `docs/COUNCIL.md` Round 3.5 (הסבב שזיהה את הצורך).
+**מסמך נלווה:** `docs/log/COUNCIL.md` Round 3.5 (הסבב שזיהה את הצורך).
 
 **אכיפה:** PhaseGatekeeper בודק שכל artifact שמתקבל ב-Phase 0.5 עומד ב-constraints. אם לא — חזרה ל-claude.ai עם הdelta המסומן.
 
 ## ADR-009 | 2026-05-18 | פרוטוקול אישור-סיום-משימה
-**החלטה:** אימוץ `docs/TASK-COMPLETION-PROTOCOL.md` שמגדיר:
+**החלטה:** אימוץ `docs/process/TASK-COMPLETION-PROTOCOL.md` שמגדיר:
 - 5 סוגי משימות (Phase, Brief, Patch, Sub-task, Setup)
 - מטריצת DoD פר-סוג
 - שרשרת אימות (Verification Chain)
@@ -133,9 +133,9 @@ tags:
 - Briefs שמועילים מ-A/B exploration ויזואלי שונה (claude.ai יכול לתת variations במהירות).
 
 **מסמכים מושפעים:**
-- `docs/CLAUDE-DESIGN-BRIEFS.md` — הוספת "Local-First Path" כברירת-מחדל ל-Mascot/Avatars/HTML mocks.
+- `docs/spec/CLAUDE-DESIGN-BRIEFS.md` — הוספת "Local-First Path" כברירת-מחדל ל-Mascot/Avatars/HTML mocks.
 - `PLAN.md §1788 (Bridge Protocol)` — סימון כ-fallback path במקום primary.
-- `docs/TASK-COMPLETION-PROTOCOL.md` — Brief מסוג "local-svg" מקבל DoD שונה (אין START PASTE/END PASTE).
+- `docs/process/TASK-COMPLETION-PROTOCOL.md` — Brief מסוג "local-svg" מקבל DoD שונה (אין START PASTE/END PASTE).
 
 **אלטרנטיבות שנשללו:**
 - **design skill עם Gemini API** — דורש GEMINI_API_KEY שלא מוגדר; Pro-image-preview היה ייתן raster לא SVG.
@@ -165,7 +165,7 @@ tags:
 - ⚖️ DesignChair (`agent-design-chair`) — synthesis + ADRs
 
 **מסמכים נלווים:**
-- `docs/TEAM-DESIGN.md` (חדש — מסמך-מכונן)
+- `docs/teams/TEAM-DESIGN.md` (חדש — מסמך-מכונן)
 - 7 קבצי `.claude/agents/agent-*.md` (system prompts חדשים)
 - `CLAUDE.md` (עודכן — סעיף Sub-Agents)
 

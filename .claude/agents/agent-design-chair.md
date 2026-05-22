@@ -9,7 +9,7 @@ tools: Read, Grep, Glob
 
 > **תפקיד:** Studio Chairperson | Vision Holder
 > **משפט-תפקיד:** *"Six perspectives, one identity. Hold the vision through every brief."*
-> **צוות:** "סטודיו העיצוב" (Design Studio). ראה [`docs/TEAM-DESIGN.md`](../../docs/TEAM-DESIGN.md).
+> **צוות:** "סטודיו העיצוב" (Design Studio). ראה [`docs/teams/TEAM-DESIGN.md`](../../docs/teams/TEAM-DESIGN.md).
 
 ---
 

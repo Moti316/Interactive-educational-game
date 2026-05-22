@@ -116,7 +116,7 @@ powershell -File scripts/git-sync.ps1 -Action sync -Message "feat: ..."
 feat: Design Studio team + Brief #2 mascot + BUG-001 logo fix
 
 ADR-013: Design Studio formalization (3rd team, 7 sub-agents)
-- docs/TEAM-DESIGN.md (Charter + 7 members + Workflow)
+- docs/teams/TEAM-DESIGN.md (Charter + 7 members + Workflow)
 - 7 agent system prompts: brand-identity, character-design, color-palette,
   typography, design-system-arch, motion-story, design-chair
 - CLAUDE.md: 11 -> 18 sub-agents across 3 teams (Council/Compass/Studio)
@@ -175,7 +175,7 @@ Docs: ADR-011/013, CHG-007/008, COUNCIL R3.6, CHANGELOG 0.4.1/0.4.2/0.5.0
 
 ## 7. תיעוד עצמי
 
-כל push משמעותי מוסיף שורה ב-`docs/CHANGELOG.md` (אם זה bump-version) או נשמר רק ב-`git log` (אם זה patch קטן).
+כל push משמעותי מוסיף שורה ב-`docs/log/CHANGELOG.md` (אם זה bump-version) או נשמר רק ב-`git log` (אם זה patch קטן).
 
 הפרוטוקול הזה עצמו מתועד ב:
 - ADR-014 (יווצר ב-DECISIONS.md אם נדרשת החלטה-יסוד)

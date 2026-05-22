@@ -8,9 +8,9 @@
 
 ## מצב נוכחי
 
-🚧 **Phase 0 — תשתית הוקמה** | תוכנן מלא ב-[PLAN.md](./PLAN.md) | סטטוס: [docs/PROGRESS.md](./docs/PROGRESS.md)
+🚧 **Phase 0 — תשתית הוקמה** | תוכנן מלא ב-[PLAN.md](./PLAN.md) | סטטוס: [docs/status/PROGRESS.md](./docs/status/PROGRESS.md)
 
-הצעד הבא: **שלב 0.5** — מוקאפים מ-Claude Design (5 briefs ב-[docs/CLAUDE-DESIGN-BRIEFS.md](./docs/CLAUDE-DESIGN-BRIEFS.md)).
+הצעד הבא: **שלב 0.5** — מוקאפים מ-Claude Design (5 briefs ב-[docs/spec/CLAUDE-DESIGN-BRIEFS.md](./docs/spec/CLAUDE-DESIGN-BRIEFS.md)).
 
 ---
 
@@ -47,7 +47,7 @@ powershell -File scripts/start-chachmoni.ps1
 
 1. `git clone https://github.com/Moti316/Interactive-educational-game`
 2. פתח את התיקייה ב-Claude Code
-3. Claude יקרא אוטומטית את `CLAUDE.md` ו-`docs/PROGRESS.md`
+3. Claude יקרא אוטומטית את `CLAUDE.md` ו-`docs/status/PROGRESS.md`
 4. המשך מהשלב הנוכחי (ראה PROGRESS.md)
 
 ---
@@ -58,9 +58,9 @@ powershell -File scripts/start-chachmoni.ps1
 |------|--------|
 | [PLAN.md](./PLAN.md) | תכנון מלא: ארכיטקטורה, 50 משימות, סנכרון, AI, הכל (~230KB) |
 | [CLAUDE.md](./CLAUDE.md) | הוראות ל-Claude Code לעבודה בפרויקט הזה |
-| [docs/PROGRESS.md](./docs/PROGRESS.md) | **Master Dashboard** — סטטוס בזמן-אמת |
-| [docs/PARENT-GUIDE.md](./docs/PARENT-GUIDE.md) | מדריך להורה (ידידותי, ללא ז'רגון) |
-| [docs/CLAUDE-DESIGN-BRIEFS.md](./docs/CLAUDE-DESIGN-BRIEFS.md) | 5 בריפים מוכנים-להעתקה ל-Claude Design |
+| [docs/status/PROGRESS.md](./docs/status/PROGRESS.md) | **Master Dashboard** — סטטוס בזמן-אמת |
+| [docs/guides/PARENT-GUIDE.md](./docs/guides/PARENT-GUIDE.md) | מדריך להורה (ידידותי, ללא ז'רגון) |
+| [docs/spec/CLAUDE-DESIGN-BRIEFS.md](./docs/spec/CLAUDE-DESIGN-BRIEFS.md) | 5 בריפים מוכנים-להעתקה ל-Claude Design |
 | [docs/](./docs/) | 22 קבצי-תיעוד נוספים |
 
 ---
@@ -85,4 +85,4 @@ powershell -File scripts/start-chachmoni.ps1
 - **Round 1:** 40+ patches זוהו ויושמו
 - **Round 2:** 3 PASS (Security, Performance, Code-Review) + 5 WARNING + Round-2-final fixes
 
-ראה [docs/COUNCIL.md](./docs/COUNCIL.md).
+ראה [docs/log/COUNCIL.md](./docs/log/COUNCIL.md).

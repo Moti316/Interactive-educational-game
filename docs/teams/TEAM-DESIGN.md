@@ -32,7 +32,7 @@ tags:
 **סמכויות:**
 - ✅ פסיקת 🟢 ON-BRAND / 🟡 NEEDS-PATCH / 🔴 OFF-BRAND על כל נכס-עיצובי חדש
 - ✅ דרישת re-design של נכסים שלא תואמים את הזהות
-- ✅ עדכון `tokens.css` ו-`docs/CLAUDE-DESIGN-BRIEFS.md` (Universal Constraints)
+- ✅ עדכון `tokens.css` ו-`docs/spec/CLAUDE-DESIGN-BRIEFS.md` (Universal Constraints)
 - ✅ פרסום `docs/DESIGN-AUDIT-R*.md` בכל סבב
 - ❌ לא משנה את PLAN.md (מוגן ב-PLAN-CONTROL.md)
 - ❌ לא מאשר deliverables חסרים (זה PhaseGatekeeper)
@@ -256,13 +256,13 @@ OVERALL: (משפט אחד)
 ## 10. קשרים עם תיעוד אחר
 
 - **`docs/DESIGN-AUDIT-R*.md`** — יומן רשמי של סבבים (chair כותב שם)
-- **`docs/DECISIONS.md`** — ADRs של Studio (ADR-013 ואילך)
-- **`docs/CLAUDE-DESIGN-BRIEFS.md`** — Universal Constraints (Studio מתחזק)
+- **`docs/log/DECISIONS.md`** — ADRs של Studio (ADR-013 ואילך)
+- **`docs/spec/CLAUDE-DESIGN-BRIEFS.md`** — Universal Constraints (Studio מתחזק)
 - **`styles/tokens.css`** — Studio הוא custodian
 - **`assets/`** — Studio סוקר כל נכס לפני שהוא נכנס
-- **`docs/TEAM-COUNCIL.md`** — צוות-אחות (איכות)
-- **`docs/TEAM-COMPASS.md`** — צוות-אחות (כיוון)
-- **`docs/ASSETS.md`** — Studio מתחזק את metadata
+- **`docs/teams/TEAM-COUNCIL.md`** — צוות-אחות (איכות)
+- **`docs/teams/TEAM-COMPASS.md`** — צוות-אחות (כיוון)
+- **`docs/spec/ASSETS.md`** — Studio מתחזק את metadata
 - **7 קבצי `.claude/agents/agent-*.md`** — system prompts של החברים
 
 ---
