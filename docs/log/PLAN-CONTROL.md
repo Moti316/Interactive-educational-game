@@ -208,3 +208,29 @@ tags:
 2. PIN → משותף + 3 רמות-איפוס ✅
 3. Cameo → אקראי 50/50 ✅
 4. Solo parent → Cameo עדיין ✅
+
+---
+
+## CHG-009 | 2026-05-22 | ✅ הוטמע (P0-fixes מ-R-Design-1)
+**מהות:** ביצוע 2 ה-P0-fixes שזיהה סבב-העיצוב R-Design-1 — חוסמי Phase 1.
+**טריגר:** R-Design-1 (2026-05-19) נתן 🔴 OFF-BRAND; ההורה אישר ביצוע ב-2026-05-22 — בחר שהלוגו יציג את דמות-המסקוט (Brief #1.5 ייצר 2 גרסאות A/B), ואישר ADR-014.
+
+**שינוי-עיקרי:**
+- **Brief #1.5 — Logo Redux** נכתב ב-`docs/spec/CLAUDE-DESIGN-BRIEFS.md`: brief למסלול-B (claude.ai/design) שמורה לעצב לוגו חדש המאמץ את DNA של המסקוט. 2 גרסאות (A פורטרט-ראש / B מסקוט-מלא), 3 גדלים, מטמיע את ה-SVG של standing-wave כהפניה.
+- **ADR-014 — Palette Extension + Semantic Layer** הוטמע ב-`tokens.css`: 3 primitive shade tokens + שכבת Layer 2 (11 tokens) + תיעוד 3 hex מקודדים-קשיח.
+
+### סעיפים שהושפעו
+- [x] `docs/spec/CLAUDE-DESIGN-BRIEFS.md` — Brief #1.5 חדש + שורה בטבלת-מסלולים
+- [x] `design-mocks/shared/tokens.css` — ADR-014 (additive)
+- [x] `docs/log/DECISIONS.md` — ADR-014 (תבנית-עשירה)
+- [x] `docs/status/{PROGRESS,ROADMAP}.md` + `docs/_DASHBOARD.md` + `CLAUDE.md` — blocker מעודכן
+- [x] `docs/log/CHANGELOG.md` — גרסה 0.6.4
+
+### מצב חוסמים אחרי CHG-009
+- ✅ ADR-014 — הוטמע. כבר לא חוסם Phase 1.
+- 🟡 Brief #1.5 — ה-brief מוכן; ממתין שההורה יריץ אותו ב-claude.ai/design ויחזיר את התוצר לשילוב.
+
+### וידוא-עקביות
+- ✅ tokens.css — שינוי additive בלבד; אף token קיים לא שינה ערך
+- ✅ Brief #1.5 כולל הפניה ל-Universal Constraints + בלוק START/END PASTE
+- ✅ ADR-014 נכתב בתבנית-העשירה (חובה מ-ADR-014 ואילך)

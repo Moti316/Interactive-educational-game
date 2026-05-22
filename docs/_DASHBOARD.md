@@ -13,17 +13,17 @@ tags:
 | שדה | ערך |
 |------|------|
 | **Phase** | 0.5 (מוקאפים) — 40% |
-| **משימה אחרונה** | CHG-010 הושלם 10/10 — P1-4 (קיבוץ docs/) + P0-1 (פיצול PLAN.md) |
-| **🚧 חוסם** | Brief #1.5 (Logo Redux) + ADR-014 — ראה [[DESIGN-AUDIT-R1]] |
+| **משימה אחרונה** | CHG-009 — ADR-014 הוטמע ב-tokens.css + Brief #1.5 נכתב |
+| **🚧 חוסם** | Brief #1.5 — ה-brief מוכן, ממתין להרצת-הורה ב-claude.ai/design |
 | **עדכון אחרון** | 2026-05-22 |
 
 > מקור-אמת מלא: [[PROGRESS]] · בלוק-מצב גם בראש `CLAUDE.md`.
 
 ## 👉 מה הצעד הבא?
 
-**החלטה של ההורה נדרשת** — פתח את `design-mocks/02-decision-board.html` בכרום,
-ובחר: סגנון Brief #1.5 (A/B/C) · ADR-014 (אשר/שנה/דחה) · CHG-009 (מתחילים?).
-ראה הפירוט ב-[[DESIGN-AUDIT-R1]].
+**הרצת Brief #1.5 ע"י ההורה** — פתח `docs/spec/CLAUDE-DESIGN-BRIEFS.md`,
+סעיף "Brief #1.5 — Logo Redux", והרץ אותו ב-claude.ai/design. החזר את התוצר
+ל-Claude Code לשילוב. ADR-014 כבר הוטמע (CHG-009).
 
 ## 🔥 קישורים-חמים
 

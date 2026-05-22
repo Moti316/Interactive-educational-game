@@ -26,6 +26,25 @@
   --color-cream: #FFFCF2;         /* רקע פנימי של כרטיסים */
   --color-text: #2D2A26;          /* טקסט — לא שחור, רך יותר */
 
+  /* ─── גווני-הצללה (ADR-014) — מתעד צבעים שהמסקוט כבר משתמש בהם ─── */
+  --color-sky-dark:     #5BA8C4;  /* הצללת כנפיים של המסקוט — דקורטיבי בלבד */
+  --color-orange-belly: #FFA552;  /* בטן המסקוט (safe orange) */
+  --color-orange-dark:  #E8851A;  /* הצללת מקור/רגליים — דקורטיבי בלבד */
+
+  /* ─── Layer 2 — Semantic (ADR-014) ─── */
+  /* שכבת-משמעות מעל הפלטה. קוד Phase 1 ישתמש בטוקנים האלה, לא ב-primitive ישירות. */
+  --color-text-primary:     var(--color-text);
+  --color-text-emphasis:    var(--color-coral-dark);
+  --color-bg-page:          var(--color-sky);          /* רקע מסך-פתיחה/משחק */
+  --color-bg-card:          var(--color-cream);        /* רקע כרטיסים */
+  --color-bg-card-pure:     #FFFFFF;                   /* כרטיס לבן-טהור */
+  --color-success:          var(--color-mint);
+  --color-reward:           var(--color-sun);
+  --color-character-body:   var(--color-sky);
+  --color-character-belly:  var(--color-orange-belly);
+  --color-character-accent: var(--color-mint);
+  --color-character-shade:  var(--color-sky-dark);
+
   /* ─── High-Contrast Mode (toggle ידני בהגדרות-הורה) ─── */
   --hc-bg: #FFFFFF;
   --hc-text: #000000;
@@ -74,7 +93,7 @@
   --btn-primary-bg: var(--color-sun);
   --btn-primary-text: var(--color-text);
   --btn-primary-shadow: var(--shadow-cta);
-  --btn-primary-hover-bg: #FFCE10;
+  --btn-primary-hover-bg: #FFCE10;  /* TODO (ADR-014): hex מחוץ ל-Layer 1 — גוון כהה של sun */
   --btn-primary-min-height: 96px;
   --btn-primary-padding: 24px 48px;
   --btn-primary-font: 700 var(--font-size-button)/1.2 var(--font-body);
@@ -86,7 +105,7 @@
 
   /* ─── Buttons — Tertiary / Ghost ─── */
   --btn-tertiary-bg: transparent;
-  --btn-tertiary-text: #8E44AD;
+  --btn-tertiary-text: #8E44AD;  /* TODO (ADR-014): hex מחוץ ל-Layer 1 — סגול tertiary */
   --btn-tertiary-hover-bg: rgba(142, 68, 173, 0.08);
 
   /* ─── Buttons — Icon-only ─── */
@@ -98,7 +117,7 @@
   --btn-hover-scale: 1.05;
   --btn-press-scale: 0.95;
   --btn-disabled-opacity: 0.5;
-  --btn-focus-ring: 4px solid #0066CC;  /* תוקן ב-Round 2 — היה #4DA8FF שכמעט נכשל */
+  --btn-focus-ring: 4px solid #0066CC;  /* תוקן ב-Round 2 — היה #4DA8FF שכמעט נכשל. TODO (ADR-014): hex מחוץ ל-Layer 1 */
 
   /* ─── Audio (TTS) ─── */
   --tts-rate: 0.85;     /* תוקן ב-Round 2 — היה 0.75, מחקר הראה ש-0.85 טוב יותר */

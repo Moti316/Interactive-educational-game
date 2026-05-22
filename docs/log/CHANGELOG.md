@@ -7,6 +7,26 @@ tags:
 
 כל השינויים-המשמעותיים בפרויקט.
 
+## [0.6.4] - 2026-05-22 — Brief #1.5 + ADR-014 (R-Design-1 P0-fixes, CHG-009)
+
+### Added
+- **Brief #1.5 — Logo Redux** ב-`docs/spec/CLAUDE-DESIGN-BRIEFS.md`: brief למסלול-B
+  (claude.ai/design) לעיצוב לוגו חדש המאמץ את DNA של המסקוט — פותר את כשל לוגו≠מסקוט
+  שזיהה R-Design-1. 2 גרסאות A/B, 3 גדלים, מטמיע SVG-הפניה של standing-wave.
+
+### Changed — Design Tokens (ADR-014)
+- `tokens.css`: 3 primitive shade tokens חדשים — `--color-sky-dark` (#5BA8C4),
+  `--color-orange-belly` (#FFA552), `--color-orange-dark` (#E8851A) — מתעדים צבעים
+  שהמסקוט כבר השתמש בהם מחוץ לפלטה.
+- `tokens.css`: שכבת **Layer 2 — Semantic** חדשה (11 tokens: `--color-text-primary`,
+  `--color-bg-page`, `--color-character-body` ועוד).
+- `tokens.css`: 3 hex מקודדים-קשיח (#FFCE10/#8E44AD/#0066CC) סומנו ב-`TODO (ADR-014)`.
+- כל השינויים **additive** — אף token קיים לא שינה ערך.
+
+### Notes
+- CHG-009 ב-`docs/log/PLAN-CONTROL.md`. ADR-014 כבר לא חוסם Phase 1.
+- חוסם שנותר: Brief #1.5 ממתין להרצת-הורה ב-claude.ai/design.
+
 ## [0.6.3] - 2026-05-22 — Docs reorganization + PLAN.md split (CHG-010 complete)
 
 ### Changed

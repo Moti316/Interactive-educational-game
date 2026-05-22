@@ -11,9 +11,9 @@
 
 - **Phase נוכחי:** 0.5 (מוקאפים) — 40%
 - **נתיב הפרויקט:** `C:\Users\b0066820\Desktop\Claude project\Interactive-educational-game` (הועבר 2026-05-20).
-- **משימה אחרונה שהושלמה:** CHG-010 הושלם 10/10 — P1-4 (קיבוץ `docs/` ל-7 תת-תיקיות) + P0-1 (פיצול `PLAN.md` ל-8 קבצי `context/`).
-- **המשימה הבאה:** Brief #1.5 (Logo Redux) + ADR-014 — ממתינים להחלטת-הורה. ואז Briefs #3-5.
-- **חוסם:** Brief #1.5 + ADR-014 (ראה `docs/log/DESIGN-AUDIT-R1.md`).
+- **משימה אחרונה שהושלמה:** CHG-009 — ADR-014 הוטמע ב-`tokens.css` (3 primitive shade tokens + Layer 2 semantic); Brief #1.5 (Logo Redux) נכתב ב-`docs/spec/CLAUDE-DESIGN-BRIEFS.md`.
+- **המשימה הבאה:** ההורה מריץ את Brief #1.5 ב-claude.ai/design → שילוב הלוגו ל-`assets/logo/active/`. ואז Briefs #3-5.
+- **חוסם:** Brief #1.5 — ה-brief מוכן, ממתין להרצת-הורה ב-claude.ai/design.
 - **עדכון אחרון:** 2026-05-22.
 
 ## איפה מתחילים בכל סשן

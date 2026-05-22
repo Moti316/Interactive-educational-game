@@ -177,3 +177,20 @@ tags:
 **אכיפה:** כל artifact חדש (לוגו, mascot, avatar, mock-HTML, CSS חדש) חייב לעבור R-Design-N לפני מעבר ל-Council. DesignChair כותב את הדוח ב-`docs/DESIGN-AUDIT-R-N.md`.
 
 **הסבב הבא:** R-Design-1 (Initial Audit) — אחרי אישור-הורה.
+
+## ADR-014 | 2026-05-22 | Palette Extension (Shade Variants) + Semantic Layer
+**סטטוס:** מאושר · **בעלים:** agent-color-palette + agent-design-system-arch (R-Design-1) · אישר: human
+
+**הקשר:** R-Design-1 גילה ש-`design-mocks/shared/tokens.css` — שאמור להיות single-source-of-truth של העיצוב — אינו מלא. המסקוט (שכבר אושר ב-Brief #2) משתמש ב-3 צבעי-hex שאינם מתועדים בקובץ: `#5BA8C4` (הצללת כנפיים), `#FFA552` (בטן), `#E8851A` (הצללת מקור/רגליים). בנוסף, חסרה שכבת-Semantic (Layer 2) — קוד Phase 1 ייאלץ לכתוב `--color-sky` ישירות גם כשהמשמעות היא "רקע-עמוד" או "גוף-דמות". הכוח-המנוגד: שינוי-tokens מסכן רגרסיה ויזואלית במוקאפים הקיימים.
+
+**ההחלטה:** הרחבת `tokens.css` ב-3 חלקים, **additive בלבד** (אף token קיים לא משנה ערך):
+1. 3 primitive tokens חדשים — `--color-sky-dark` (#5BA8C4), `--color-orange-belly` (#FFA552), `--color-orange-dark` (#E8851A) — מתעדים את צבעי-המסקוט.
+2. שכבת-Semantic (Layer 2) — 11 tokens (`--color-text-primary`, `--color-bg-page`, `--color-character-body` וכו') הבנויים מעל ה-primitive. בזכות resolve-at-use-time של CSS vars, הטוקנים הסמנטיים יורשים אוטומטית את ה-override של High-Contrast mode.
+3. תיעוד 3 hex מקודדים-קשיח (`#FFCE10`, `#8E44AD`, `#0066CC`) בהערות `/* TODO (ADR-014) */`.
+נדחה ל-P1/P2: token-ים לרכיבים (`--card-*`, `--input-*`), `--space-xxs/xxl`, `--ease-elastic`, refactor שמות ל-primitive-prefix.
+
+**אכיפה:** `tokens.css` הוא ה-SSoT; `styles/global.css` ב-Phase 1 ייבא ממנו. DesignSystemArchitect ו-ColorPaletteEngineer בודקים ב-R-Design-N הבא שאין hex חדש מחוץ ל-Layer 1. CodeReviewer בודק ב-Phase 1 שהקוד משתמש ב-Layer 2 ולא ב-primitive ישירות.
+
+**השלכות:** חיובי — tokens.css הופך מלא וכן (3 צבעי-המסקוט מתועדים); קוד Phase 1 מקבל אוצר-מילים סמנטי; HC mode עובד דרך הירושה. שלילי — שתי שכבות-naming (primitive + semantic) דורשות משמעת — קל לכתוב `--color-sky` במקום `--color-bg-page` בטעות; נדרשת אכיפת-review.
+
+**אלטרנטיבות שנדחו:** השארת tokens.css כמו-שהוא (משאיר 3 צבעי-מסקוט לא-מתועדים — הפרת SSoT); refactor מלא ל-primitive-prefix naming מיד (`--color-primitive-sky-500`) — refactor גדול מדי, נדחה לסבב מאוחר; הוספת component-tokens עכשיו — אין עדיין רכיבי-UI אמיתיים לגזור מהם.
