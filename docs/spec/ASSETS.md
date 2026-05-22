@@ -40,7 +40,34 @@ tags:
 - **R3.6 Council:** Option B נבחר כקנוני אחרי השוואה ויזואלית (Child-UX וויזואל איכותי משמעותית). Option A (Local-First) מארכב ב-`assets/mascot/_archive-option-a/`.
 - **תצוגה מקדימה:** `design-mocks/01-mascot-preview.html`
 
-## לוגו + פאוויקון — ✅ נוצרו 2026-05-17
+## לוגו + פאוויקון
+
+### Logo Redux — Brief #1.5 — ✅ פעיל (2026-05-23)
+
+**הלוגו הנוכחי של חכמוני.** עוצב מחדש כדי להציג את דמות-המסקוט — פותר את כשל
+"לוגו ≠ מסקוט" שזיהה R-Design-1.
+
+| נכס | קובץ | aria-label | viewBox |
+|-----|------|------------|---------|
+| hero | `assets/logo/active/logo-hero.svg` | לוגו חכמוני עם המסקוט המלא | 0 0 300 80 |
+| medium | `assets/logo/active/logo-medium.svg` | לוגו חכמוני עם המסקוט המלא | 0 0 180 56 |
+| favicon | `assets/logo/active/favicon.svg` | פרופ' חכמוני | 0 0 100 100 |
+| favicon (כפול) | `assets/icons/favicon.svg` | פרופ' חכמוני | 0 0 100 100 |
+
+- **גרסה שנבחרה:** B — מסקוט-מלא (ההורה בחר 2026-05-23). מילים: מלא-אופי · נרטיבי · ילדותי-חמוד.
+- **שתי הגרסאות בארכיון:** `assets/logo/brief-1.5/logo-redux-{A,B}-{hero,medium,favicon}.svg` (A = פורטרט-ראש, לא נבחר).
+- **DNA:** מאמץ את מסקוט פרופ' חכמוני — גוף #6FC3DF, בטן #FFA552, כנפיים/הצללה #5BA8C4, מקור/רגליים #E8851A, כובע אקדמי שחור עם ציצית #C9A0DC ופונפון #6BCB77. צבעים מפלטת-ה-DNA בלבד.
+- **Universal Constraints:** ✅ ללא script/foreignObject/handlers · viewBox + role="img" + aria-label · `<text>` עברי עם direction="rtl" + text-anchor="start" · כל קובץ < 1KB.
+- **מקור:** claude.ai/design (Bridge — Brief #1.5). **רישיון:** Project-generated.
+- **תצוגה מקדימה:** `design-mocks/01-logo-redux-preview.html`
+- **מדיניות:** ADR-015 — הלוגו חייב תמיד להציג את דמות-המסקוט.
+
+---
+
+## לוגו — Brief #1 (2026-05-17) — ⚠️ superseded ע"י Brief #1.5
+
+> נפסל ב-R-Design-1 כ-OFF-BRAND (ינשוף לבנדר ≠ מסקוט תכלת). נשמר לתיעוד בלבד
+> ב-`assets/logo/version-a/` ו-`version-b/`.
 
 ### Version A — "פרופ' חכמוני (ינשוף מסוגנן)"
 - **קבצים:**
@@ -66,18 +93,9 @@ tags:
 - **מקור:** Claude Design (claude.ai) דרך Brief #1
 - **רישיון:** Project-generated
 
-### ✅ בחירה סופית — Version A (2026-05-17)
-ההורה בחר **Version A — פרופ' חכמוני (ינשוף)**. הקבצים הפעילים:
-- `assets/logo/active/logo-hero.svg` (300×80)
-- `assets/logo/active/logo-medium.svg` (180×56)
-- `assets/logo/active/favicon.svg` (48×48)
-- `assets/icons/favicon.svg` (כפול לנוחות)
-
-**Version B נשאר בארכיון** ב-`assets/logo/version-b/` למקרה שנרצה לבדוק/לחזור.
-
-### תצוגה מקדימה
-פתח `design-mocks/01-logo-options.html` בכרום לראות שתי הגרסאות זה-לצד-זה.
-פתח `index.html` בכרום (דרך PowerShell Launcher) לראות את הלוגו הפעיל.
+### בחירת Brief #1 (2026-05-17, היסטורי — בוטל)
+ההורה בחר אז את Version A. **בוטל** — R-Design-1 פסל את הלוגו והוא הוחלף ע"י
+Brief #1.5 (ראה למעלה). `design-mocks/01-logo-options.html` נשאר כתיעוד-Brief-#1.
 
 ## צלילים
 *יוטענו מ-Mixkit / Freesound (CC0)*

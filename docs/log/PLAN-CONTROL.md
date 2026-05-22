@@ -228,7 +228,7 @@ tags:
 
 ### מצב חוסמים אחרי CHG-009
 - ✅ ADR-014 — הוטמע. כבר לא חוסם Phase 1.
-- 🟡 Brief #1.5 — ה-brief מוכן; ממתין שההורה יריץ אותו ב-claude.ai/design ויחזיר את התוצר לשילוב.
+- ✅ Brief #1.5 — נמסר מ-claude.ai/design ושולב 2026-05-23 (Version B נבחר). ראה CHANGELOG 0.6.5 + ADR-015.
 
 ### וידוא-עקביות
 - ✅ tokens.css — שינוי additive בלבד; אף token קיים לא שינה ערך

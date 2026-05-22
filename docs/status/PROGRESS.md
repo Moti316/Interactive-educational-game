@@ -5,7 +5,7 @@ tags:
 
 # חכמוני — Master Progress Dashboard
 
-> **עדכון אחרון:** 2026-05-22 (CHG-009 — ADR-014 הוטמע + Brief #1.5 נכתב) | **מחשב:** HOME-PC | **גרסה:** v0.6.4
+> **עדכון אחרון:** 2026-05-23 (Brief #1.5 נמסר ושולב — לוגו חדש פעיל) | **מחשב:** HOME-PC | **גרסה:** v0.6.5
 > **תוכנית חיה:** [`docs/status/ROADMAP.md`](./ROADMAP.md) (מתוחזק ע"י [RoadmapKeeper](../../.claude/agents/agent-roadmap-keeper.md))
 
 ## 📍 שדות-מהירים
@@ -17,16 +17,16 @@ tags:
 | **Last DoD-verified** | 2026-05-19 (Brief #2 — Mascot 6 poses, Universal Constraints PASS) |
 | **Last Council** | R3.5 (2026-05-19, 🟢 GO with 17 patches) |
 | **Last Design Review** | **R-Design-1** (2026-05-19, 🔴 OFF-BRAND — 2 FAIL + 3 NEEDS-PATCH; Brief #1.5 חוסם Phase 1) |
-| **Last ADR** | ADR-014 (Palette Extension + Semantic Layer) |
+| **Last ADR** | ADR-015 (Logo Character Unification Policy) |
 | **Teams active** | 3 (High Council 9, Compass 3, Design Studio 7 = **19 sub-agents**) |
-| **Active blockers** | Brief #1.5 — ה-brief מוכן, ממתין להרצת-הורה ב-claude.ai/design |
+| **Active blockers** | אין חוסם-Phase-1. נותרו Briefs #3–5 להשלמת Phase 0.5 |
 
 ## 🚦 סטטוס שלבים
 
 | שלב | סטטוס | יום | התקדמות | הערות |
 |-----|--------|-----|----------|--------|
 | **0 — תשתית** | ✅ הושלם | 1 | 100% | 49 קבצים ב-GitHub |
-| **0.5 — מוקאפים** | 🟢 בעבודה | 2 | 40% | Briefs #1 ✅, #2 ✅ (6 poses, 1.6-2.2KB). הבא: #3 Welcome |
+| **0.5 — מוקאפים** | 🟢 בעבודה | 3 | 50% | Briefs #1.5 ✅ (לוגו), #2 ✅ (6 poses). הבא: #3 Welcome |
 | **CHG-005 (חדש)** | 📋 תוכנן | 2 | 0% | Parent Profiles + Fast-Path + 4 ערוצי-נוכחות |
 | 1 — שלד + פרופילים | ⏳ ממתין | — | 0% | יכלול CHG-005 לפי התכנון |
 | 2 — תבנית ראשונה | ⏳ ממתין | — | 0% | |
@@ -40,17 +40,16 @@ tags:
 
 ## 📍 מה הצעד הבא?
 
-> **CHG-009 (2026-05-22):** ADR-014 הוטמע ב-`tokens.css` (3 primitive + Layer 2 semantic). Brief #1.5 (Logo Redux) נכתב ב-`docs/spec/CLAUDE-DESIGN-BRIEFS.md`. ADR-014 כבר לא חוסם Phase 1.
+> **Brief #1.5 הושלם (2026-05-23):** הלוגו עוצב מחדש דרך claude.ai/design, ההורה בחר Version B (מסקוט-מלא), והוא שולב כלוגו הפעיל. שני חוסמי-Phase-1 (Brief #1.5 + ADR-014) נסגרו.
 
-**פעולת-הורה הבאה — הרצת Brief #1.5:**
-1. פתח `docs/spec/CLAUDE-DESIGN-BRIEFS.md` → סעיף "Brief #1.5 — Logo Redux"
-2. הרץ ב-claude.ai/design (מסלול-B) — מקבל 2 גרסאות לוגו (A פורטרט-ראש / B מסקוט-מלא)
-3. החזר את התוצר ל-Claude Code → שילוב ל-`assets/logo/active/` + בחירת A/B
+**רצף-העבודה הבא — השלמת Phase 0.5:**
+1. Brief #3 — Welcome A/B (claude.ai/design)
+2. Brief #4 — 12 אווטארים (DNA-aligned עם המסקוט)
+3. Brief #5 — Task + Celebration (+ motion-spec)
+4. R4 Council Gate (Pre-Phase-1)
+5. Phase 1 — שלד מערכת + פרופילים (יכלול CHG-005)
 
-**רצף-עבודה אחרי Brief #1.5:**
-- Brief #3 (Welcome A/B) · Brief #4 (12 Avatars, DNA-aligned) · Brief #5 (Task + Celebration)
-- R4 Council Gate (Pre-Phase-1)
-- Phase 1 — שלד מערכת + פרופילים (יכלול CHG-005)
+> אופציונלי: R-Design-2 לאימות הלוגו החדש לפני R4.
 
 ## 🆕 CHG-005 — מה התווסף (תכנון בלבד, לא ביצוע)
 

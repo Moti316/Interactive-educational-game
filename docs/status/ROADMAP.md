@@ -15,15 +15,15 @@ tags:
 
 | שדה | ערך |
 |------|------|
-| **Phase נוכחי** | 0.5 (40%) |
+| **Phase נוכחי** | 0.5 (50%) |
 | **Next Gate** | R4 (אחרי השלמת Briefs #3–5) |
 | **ETA ל-MVP** | 13–20 ימי-עבודה מהיום (Local-First מאיץ Briefs ב-~1 יום) |
 | **Last DoD-verified** | 2026-05-19 (Brief #2 — 6 mascot SVGs, 1.6–2.2 KB, Universal Constraints PASS) |
 | **Last RoadmapKeeper refresh** | 2026-05-19 (אחרי Brief #2 + ADR-011) |
-| **Active blockers** | Brief #1.5 — ה-brief מוכן, ממתין להרצת-הורה ב-claude.ai/design |
+| **Active blockers** | אין חוסם-Phase-1; נותרו Briefs #3–5 להשלמת Phase 0.5 |
 | **Recent council** | R3.5 (Plan-Wide, 🟢 GO 17 patches) |
 | **Recent design review** | **R-Design-1** (2026-05-19, 🔴 OFF-BRAND — P0-fixes בוצעו ב-CHG-009) |
-| **Latest ADR** | ADR-014 (Palette Extension + Semantic Layer) |
+| **Latest ADR** | ADR-015 (Logo Character Unification Policy) |
 
 ---
 
@@ -79,10 +79,10 @@ tags:
 ---
 
 ### Phase 0.5 — מוקאפים עיצוביים
-- **סטטוס:** 🟢 40%
+- **סטטוס:** 🟢 50%
 - **Inputs:** `docs/spec/CLAUDE-DESIGN-BRIEFS.md` (5 Briefs + 2 stubs)
 - **Deliverables:**
-  - ✅ Brief #1 — לוגו (Version A נבחר, Bridge ל-claude.ai)
+  - ✅ Brief #1.5 — לוגו Redux (Version B מסקוט-מלא; מחליף את Brief #1 שנפסל ב-R-Design-1)
   - ✅ Brief #2 — Mascot 6 poses (Local-First, ADR-011) → `assets/mascot/professor-chachmoni-{standing-wave,pointing,celebrating,thinking,encouraging,sleeping}.svg`
   - ⏳ Brief #4 — 12 אווטארים → `assets/avatars/avatar-{01..12}-{kind}.svg`
   - ⏳ Brief #3 — Welcome A/B → `design-mocks/02-welcome.html`
@@ -282,6 +282,7 @@ tags:
 | 2026-05-19 | 0.5 | ADR-013 + CHG-008: סטודיו-עיצוב הוקם (7 sub-agents, 18 סה"כ) | אי-עקביות לוגו≠מסקוט חשפה גאפ בצוותים — אין role על אסתטיקה | אין |
 | 2026-05-19 | 0.5 | R-Design-1: 🔴 OFF-BRAND — Brief #1.5 חוסם Phase 1 | 2 FAIL + 3 NEEDS-PATCH; דורש Brief #1.5 + ADR-014 | קל — +30 דק' ההורה + +15 דק' Claude Code |
 | 2026-05-22 | 0.5 | CHG-009: ADR-014 הוטמע ב-tokens.css + Brief #1.5 נכתב | ביצוע P0-fixes של R-Design-1 אחרי אישור-הורה | לא — ETA לא השתנה |
+| 2026-05-23 | 0.5 | Brief #1.5 נמסר ושולב — לוגו חדש (Version B מסקוט-מלא) פעיל; ADR-015 נוסף | claude.ai/design השלים את Brief #1.5; ההורה בחר B | לא — Phase 0.5 → 50% |
 
 ---
 

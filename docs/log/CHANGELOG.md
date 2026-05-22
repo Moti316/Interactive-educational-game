@@ -7,6 +7,23 @@ tags:
 
 כל השינויים-המשמעותיים בפרויקט.
 
+## [0.6.5] - 2026-05-23 — Brief #1.5 delivered: logo redux integrated
+
+### Changed — Logo
+- **Brief #1.5 (Logo Redux)** התקבל מ-claude.ai/design ושולב. הלוגו החדש מציג
+  את דמות-המסקוט פרופ' חכמוני — פותר את כשל לוגו≠מסקוט (R-Design-1 OFF-BRAND).
+- `assets/logo/active/{logo-hero,logo-medium,favicon}.svg` + `assets/icons/favicon.svg`
+  הוחלפו ב-Version B (מסקוט-מלא) — נבחר ע"י ההורה.
+- שתי גרסאות Brief #1.5 (A פורטרט-ראש, B מסקוט-מלא) נשמרו ב-`assets/logo/brief-1.5/`.
+- לוגו Brief #1 (ינשוף לבנדר) — superseded; קבצים היסטוריים ב-`version-a/`, `version-b/`.
+
+### Added
+- `design-mocks/01-logo-redux-preview.html` — תצוגה מקדימה: 2 גרסאות × 3 גדלים × רקע לבן/שמיים.
+- **ADR-015** — Logo Character Unification Policy (הלוגו חייב תמיד להציג את המסקוט).
+
+### Notes
+- Phase 0.5 → 50%. שני חוסמי-Phase-1 (Brief #1.5 + ADR-014) נסגרו.
+
 ## [0.6.4] - 2026-05-22 — Brief #1.5 + ADR-014 (R-Design-1 P0-fixes, CHG-009)
 
 ### Added
