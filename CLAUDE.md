@@ -11,10 +11,10 @@
 
 - **Phase נוכחי:** 0.5 (מוקאפים) — 40%
 - **נתיב הפרויקט:** `C:\Users\b0066820\Desktop\Claude project\Interactive-educational-game` (הועבר 2026-05-20).
-- **משימה אחרונה שהושלמה:** Obsidian "חדר-בקרה" — `docs/_DASHBOARD.md`, `project-map.canvas`, `docs/guides/OBSIDIAN-GUIDE.md`, ותגיות ל-34 מסמכים.
-- **המשימה הבאה:** 2 פריטי-תשתית שנדחו — P1-4 (קיבוץ docs/) ו-P0-1 (פיצול PLAN.md). ואז: Brief #1.5 + Briefs #3-5.
+- **משימה אחרונה שהושלמה:** CHG-010 הושלם 10/10 — P1-4 (קיבוץ `docs/` ל-7 תת-תיקיות) + P0-1 (פיצול `PLAN.md` ל-8 קבצי `context/`).
+- **המשימה הבאה:** Brief #1.5 (Logo Redux) + ADR-014 — ממתינים להחלטת-הורה. ואז Briefs #3-5.
 - **חוסם:** Brief #1.5 + ADR-014 (ראה `docs/log/DESIGN-AUDIT-R1.md`).
-- **עדכון אחרון:** 2026-05-20.
+- **עדכון אחרון:** 2026-05-22.
 
 ## איפה מתחילים בכל סשן
 
@@ -24,7 +24,7 @@
 4. **קרא את `docs/log/ISSUES.md`** — באגים פתוחים.
 5. אם צריך הקשר על הצוותים — `docs/teams/TEAM-COMPASS.md` + `docs/teams/TEAM-COUNCIL.md`.
 6. אם צריך הקשר על תהליך אישור-סיום — `docs/process/TASK-COMPLETION-PROTOCOL.md`.
-7. אם צריך הקשר עמוק יותר — `PLAN.md` (התכנון המלא, ~230KB).
+7. אם צריך הקשר עמוק יותר — `PLAN.md` (אינדקס) → 8 קבצי `context/` (התכנון המלא).
 
 ## עקרונות קוד פר-פרויקט (קריטיים — לא לעבור!)
 
@@ -116,7 +116,7 @@
 | שינוי-תכולה / תהליך | `docs/log/PLAN-CONTROL.md` | CHG-NNN |
 | באג ותיקון | `docs/log/ISSUES.md` | BUG-NNN |
 | סבב-מועצה | `docs/log/COUNCIL.md` | R-N |
-| סבב-סטודיו | `docs/DESIGN-AUDIT-R*.md` | R-Design-N |
+| סבב-סטודיו | `docs/log/DESIGN-AUDIT-R*.md` | R-Design-N |
 | שינוי-נכס | `docs/spec/ASSETS.md` | inline section |
 | Phase / drift | `docs/status/PROGRESS.md` + `ROADMAP.md` | header fields + drift log |
 | Version bump | `docs/log/CHANGELOG.md` | semver entry |
@@ -182,4 +182,4 @@ powershell -File scripts/audit.ps1
 
 ## מקור התכנון
 
-`PLAN.md` הוא המקור-המלא. אחרי 2 סבבי-מועצה ו-~40 patches, התכנון מאושר לביצוע (3 PASS, 5 WARNING ב-Round 2 — כולן non-blocking).
+התכנון המלא מפוצל ל-8 קבצים תחת `context/`; `PLAN.md` הוא אינדקס-ניווט. `context/` הוא מקור-האמת. אחרי 2 סבבי-מועצה ו-~40 patches, התכנון מאושר לביצוע (3 PASS, 5 WARNING ב-Round 2 — כולן non-blocking).

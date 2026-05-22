@@ -7,6 +7,20 @@ tags:
 
 כל השינויים-המשמעותיים בפרויקט.
 
+## [0.6.3] - 2026-05-22 — Docs reorganization + PLAN.md split (CHG-010 complete)
+
+### Changed
+- **P1-4:** 34 מסמכי `docs/` קובצו ל-7 תת-תיקיות לפי הטקסונומיה הקיימת
+  (`status/ log/ process/ spec/ quality/ teams/ guides/`). `_DASHBOARD.md`
+  ו-`_INDEX.md` נשארו בשורש כנקודות-כניסה. כל ההפניות (CLAUDE.md, .claude/,
+  Obsidian canvas, 2 קבצי HTML) עודכנו ואומתו — קישורי `[[wikilink]]` לא הושפעו.
+- **P0-1:** `PLAN.md` (4097 שורות, ~243KB) פוצל ל-8 קבצי `context/`. אומת
+  byte-exact (md5 זהה). `PLAN.md` הפך אינדקס-ניווט.
+
+### Notes
+- CHG-010 הושלם במלואו (10/10) — 2 הפריטים שנדחו בוצעו בסשן-תשתית ממוקד.
+- R-001 (PLAN.md מונוליטי) נסגר ב-`RISKS.md`.
+
 ## [0.6.2] - 2026-05-20 — Obsidian "control room"
 
 ### Added

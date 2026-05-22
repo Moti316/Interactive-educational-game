@@ -5,7 +5,7 @@ tags:
 
 # חכמוני — Master Progress Dashboard
 
-> **עדכון אחרון:** 2026-05-20 (Obsidian "חדר-בקרה" — dashboard, canvas, tags, guide) | **מחשב:** HOME-PC | **גרסה:** v0.4.0 (Local-First Design Path)
+> **עדכון אחרון:** 2026-05-22 (CHG-010 הושלם — docs/ reorg + PLAN.md split) | **מחשב:** HOME-PC | **גרסה:** v0.4.0 (Local-First Design Path)
 > **תוכנית חיה:** [`docs/status/ROADMAP.md`](./ROADMAP.md) (מתוחזק ע"י [RoadmapKeeper](../../.claude/agents/agent-roadmap-keeper.md))
 
 ## 📍 שדות-מהירים
@@ -40,7 +40,7 @@ tags:
 
 ## 📍 מה הצעד הבא?
 
-> **תשתית שנדחתה (לפני Briefs):** P1-4 (קיבוץ `docs/`) + P0-1 (פיצול `PLAN.md`).
+> **תשתית הושלמה (2026-05-22):** P1-4 (קיבוץ `docs/` ל-7 תת-תיקיות) + P0-1 (פיצול `PLAN.md` ל-`context/`). CHG-010 הושלם 10/10.
 
 **אישור-הורה (בסשן הבא — ההורה עזב מחשב 2026-05-20):**
 1. קרא [`docs/log/DESIGN-AUDIT-R1.md`](../log/DESIGN-AUDIT-R1.md) — דוח-סטודיו המלא
