@@ -15,8 +15,37 @@ tags:
 - **תאריך-הוספה:** YYYY-MM-DD
 ```r
 
-## אווטארים (12)
-*ייווצרו דרך Claude Design — Brief #4*
+## אווטארים (12) — ✅ נוצרו 2026-05-23 (Local-First)
+
+**Brief #4** נמסר Local-First. כל 12 ב-`assets/avatars/avatar-{01..12}-*.svg`,
+viewBox 0 0 200 200, ראש חיה חזיתית על עיגול-פסטל ייחודי.
+
+| # | קובץ | חיה | רקע פסטל | aria-label | סטטוס |
+|---|------|-----|-----------|------------|--------|
+| 01 | `avatar-01-rabbit.svg` | ארנב | #F9CBD6 ורוד | אווטאר ארנב | ✅ אושר |
+| 02 | `avatar-02-cat.svg` | חתול | #FFD8B0 כתום | אווטאר חתול | ✅ אושר |
+| 03 | `avatar-03-lion.svg` | אריה | #FFE69A צהוב | אווטאר אריה | 🟡 BUG-002 |
+| 04 | `avatar-04-elephant.svg` | פיל | #C5D4E0 אפור-כחול | אווטאר פיל | 🟡 BUG-002 |
+| 05 | `avatar-05-frog.svg` | צפרדע | #BCE5C3 ירוק | אווטאר צפרדע | ✅ אושר |
+| 06 | `avatar-06-owl.svg` | ינשוף | #D8C5E5 לבנדר | אווטאר ינשוף | 🟡 BUG-002 |
+| 07 | `avatar-07-bear.svg` | דוב | #E8D5B7 חום | אווטאר דוב | ✅ אושר |
+| 08 | `avatar-08-dog.svg` | כלב | #F2E8D5 שמנת | אווטאר כלב | ✅ אושר |
+| 09 | `avatar-09-fish.svg` | דג | #BFE2F0 תכלת | אווטאר דג | 🟡 BUG-002 |
+| 10 | `avatar-10-butterfly.svg` | פרפר | #FFFFFF לבן+נקודות | אווטאר פרפר | ✅ אושר |
+| 11 | `avatar-11-robot.svg` | רובוט | #D0D5DC כסף | אווטאר רובוט | ✅ אושר |
+| 12 | `avatar-12-star.svg` | כוכב | #FFF1B8 צהוב | אווטאר כוכב | ✅ אושר |
+
+- **DNA משותף:** עיניים גדולות עגולות עם נצנוץ-לבן כפול (highlight + sparkle),
+  סומק-לחיים עדין (#FF6B6B opacity .3), חיוך פשוט (Miffy/Pusheen — לא פה פתוח),
+  סגנון flat ללא קווי-מתאר על הגוף.
+- **Universal Constraints:** ✅ כולם — ללא script/foreignObject/handlers,
+  viewBox 0 0 200 200, role="img", aria-label בעברית.
+- **צבעי-הרחבה:** 12 רקעי-פסטל + 5 צבעי-גוף (חום-דוב, חום-ינשוף, אפור-פיל,
+  כסף-רובוט, ורוד-אוזניים). מעוגנים ב-**ADR-016** (קטגוריה מבודדת מהפלטה הראשית).
+- **תצוגה מקדימה:** `design-mocks/04-avatars-preview.html`
+- **BUG-002 (4 ב-status 🟡):** אריה, פיל, ינשוף, דג — איכות מתחת לרף; נדחו
+  ל-Phase 8 ליטוש לאחר 5 איטרציות (Local-First v1-v4 + Brief #4.1 ב-claude.ai/design).
+- **רישיון:** Project-generated (Local-First).
 
 ## דמות-מורה (6 pose-ים) — ✅ נוצרו 2026-05-19
 

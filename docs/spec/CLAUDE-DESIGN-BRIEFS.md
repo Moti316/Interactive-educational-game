@@ -42,7 +42,8 @@ Claude Code כותב את ה-SVG/HTML ישירות מתוך הסשן.
 | #1.5 Logo Redux | **B (Bridge)** | מאמץ DNA של המסקוט — נדרש image-gen עשיר, claude.ai/design |
 | #2 Mascot (6 poses) | **A (Local)** | ✅ בוצע 2026-05-19 — SVG paths פשוטים, עקביות בין-poses קריטית |
 | #3 Welcome A/B | A (Local) | HTML mockup, עדיף שליטה מלאה |
-| #4 Avatars (12) | A (Local) | SVG paths פשוטים, צריך עקביות בין-12 |
+| #4 Avatars (12) | A (Local) — 8/12 בוצעו | 8 הושלמו Local-First; 4 עברו ל-#4.1 |
+| #4.1 Avatars Redux (lion/elephant/owl/fish) | **B (Bridge)** | Local-First הגיע לתקרה — נדרש image-gen של claude.ai/design |
 | #5 Task + Celebration | A (Local) | HTML mockup, עדיף שליטה מלאה |
 | #6 Sound Spec | A (Local) | טבלת-מפרט HTML, לא תמונות |
 | #7 World Map | A (Local) | HTML mockup |
@@ -501,6 +502,123 @@ AVATARS:
 - butterfly: [SVG inline]
 - robot: [SVG inline]
 - star: [SVG inline]
+NOTES: [אופציונלי]
+═══ END PASTE ═══
+```
+
+---
+
+## ═══ Brief #4.1 — Avatars Redux (lion, elephant, owl, fish) ═══
+
+> **רקע:** Brief #4 בוצע Local-First. 8/12 אווטארים אושרו ע"י ההורה; 4 (אריה, פיל,
+> ינשוף, דג) לא עמדו ברף אחרי 2-3 איטרציות. Brief #4.1 משגר את ה-4 ל-claude.ai/design
+> כדי לקבל רמת-image-gen עשירה יותר. 8 ה-Local-First נשארים בשימוש.
+> **נתיב יעד אחרי הקבלה:** `assets/avatars/avatar-{03,04,06,09}-*.svg` — דריסה ישירה.
+
+```
+שלום Claude.
+
+זה brief מפרויקט שאני עובד עליו עם Claude Code. תפקידך: לעצב 4 אווטארי-חיות שיתאימו לסט קיים, ולהחזיר בפורמט מובנה.
+
+═══════════════════════════════════════════════
+UNIVERSAL CONSTRAINTS (חובה — אסור לדלג)
+═══════════════════════════════════════════════
+
+### Security
+- אסור <script> בתוך SVG · אסור <foreignObject> · אסור event handlers (onclick/onload/onerror/onmouseover וכו')
+- אסור xlink:href או href ל-URL חיצוני · אסור inline JavaScript
+
+### Accessibility
+- <svg> חייב role="img" + aria-label="תיאור בעברית"
+- ניגודיות צבעים: ≥4.5:1 לטקסט, ≥3:1 לאיורי-UI
+
+### Performance
+- כל SVG ≤ 8KB · אסור <image> base64 · אסור filter effects כבדים
+- viewBox="0 0 200 200"
+
+### Integration
+- חובה viewBox + xmlns="http://www.w3.org/2000/svg"
+- שמות-קבצים: kebab-case (avatar-NN-kind.svg)
+- SVG חייב לעבוד ב-<img>, inline, ו-background-image
+
+### Hebrew
+- aria-label בעברית
+- אם יש <text> — direction="rtl" + text-anchor="start"
+
+═══════════════════════════════════════════════
+PROJECT CONTEXT
+═══════════════════════════════════════════════
+
+שם המשחק: חכמוני — לימוד מחשב לילדים בני 4-6 שלא קוראים
+דמות מרכזית: פרופ' חכמוני (ינשוף תכלת עם כובע אקדמי) — *לא חלק מ-brief זה*
+סט אווטארים: 12 לבחירת-ילד. 8 כבר אושרו ע"י ההורה. 4 צריך לעצב מחדש דרכך: אריה, פיל, ינשוף, דג.
+
+פלטה רשמית (חובה — אסור צבע מחוץ לפלטה לגוף הדמות):
+  שמיים #6FC3DF · sky-dark #5BA8C4 · שמש #FFD93D
+  אלמוגי #FF6B6B · אלמוגי-כהה #B91C1C · נענע #6BCB77
+  לבנדר #C9A0DC · לבן-רך #FFFCF2 · טקסט #2D2A26
+  orange-belly #FFA552 · orange-dark #E8851A
+
+לרקעי-אווטאר: מותרים צבעי-פסטל ייעודיים (מעבר ל-8 הצבעים הראשיים).
+
+═══════════════════════════════════════════════
+STYLE DNA — חובה לחקות במדויק
+═══════════════════════════════════════════════
+
+הסט הקיים: viewBox 0 0 200 200 · רקע עיגול-מלא בצבע-פסטל ייחודי · ראש החיה במרכז, חזיתי · עיניים גדולות עם נצנוץ-לבן כפול (highlight + sparkle) · סומק-לחיים עדין (#FF6B6B opacity .3) · אף קטן · חיוך פשוט וחם (Miffy/Pusheen — לא פה פתוח, לא שיניים בולטות) · סגנון flat (בלי gradients, בלי קווי-מתאר על הגוף).
+
+להלן 2 אווטארים מהסט שאושרו — חקה את הסגנון בדיוק:
+
+ARNAV (rabbit) — אוזניים-ארוכות:
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="אווטאר ארנב"><circle cx="100" cy="100" r="100" fill="#F9CBD6"/><ellipse cx="78" cy="60" rx="19" ry="40" fill="#FFFCF2" transform="rotate(-12 78 60)"/><ellipse cx="122" cy="60" rx="19" ry="40" fill="#FFFCF2" transform="rotate(12 122 60)"/><ellipse cx="78" cy="62" rx="10" ry="25" fill="#F4A6B8" transform="rotate(-12 78 62)"/><ellipse cx="122" cy="62" rx="10" ry="25" fill="#F4A6B8" transform="rotate(12 122 62)"/><ellipse cx="100" cy="124" rx="58" ry="53" fill="#FFFCF2"/><ellipse cx="62" cy="147" rx="12" ry="8" fill="#FF6B6B" opacity=".3"/><ellipse cx="138" cy="147" rx="12" ry="8" fill="#FF6B6B" opacity=".3"/><circle cx="78" cy="128" r="14" fill="#2D2A26"/><circle cx="122" cy="128" r="14" fill="#2D2A26"/><circle cx="82.5" cy="123" r="5.5" fill="#FFFCF2"/><circle cx="126.5" cy="123" r="5.5" fill="#FFFCF2"/><circle cx="73" cy="132" r="2.4" fill="#FFFCF2" opacity=".85"/><circle cx="117" cy="132" r="2.4" fill="#FFFCF2" opacity=".85"/><path d="M 94 137 Q 100 134.5 106 137 Q 104 143 100 145 Q 96 143 94 137 Z" fill="#FF6B6B"/><path d="M 91 150 Q 100 159 109 150" stroke="#2D2A26" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>
+
+CHATUL (cat) — אוזניים-משולשות:
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="אווטאר חתול"><circle cx="100" cy="100" r="100" fill="#FFD8B0"/><path d="M 56 78 L 72 46 L 88 80 Z" fill="#FFFCF2"/><path d="M 144 78 L 128 46 L 112 80 Z" fill="#FFFCF2"/><path d="M 66 76 L 72 58 L 82 76 Z" fill="#FF6B6B" opacity=".55"/><path d="M 134 76 L 128 58 L 118 76 Z" fill="#FF6B6B" opacity=".55"/><ellipse cx="100" cy="122" rx="57" ry="52" fill="#FFFCF2"/><ellipse cx="62" cy="146" rx="12" ry="8" fill="#FF6B6B" opacity=".3"/><ellipse cx="138" cy="146" rx="12" ry="8" fill="#FF6B6B" opacity=".3"/><circle cx="80" cy="126" r="13" fill="#2D2A26"/><circle cx="120" cy="126" r="13" fill="#2D2A26"/><circle cx="84" cy="121" r="5" fill="#FFFCF2"/><circle cx="124" cy="121" r="5" fill="#FFFCF2"/><circle cx="76" cy="130" r="2.2" fill="#FFFCF2" opacity=".85"/><circle cx="116" cy="130" r="2.2" fill="#FFFCF2" opacity=".85"/><path d="M 96 138 L 104 138 L 100 144 Z" fill="#FF6B6B"/><path d="M 91 149 Q 100 157 109 149" stroke="#2D2A26" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>
+
+═══════════════════════════════════════════════
+TASK
+═══════════════════════════════════════════════
+
+צור 4 אווטארים חדשים בדיוק באותו סגנון של הארנב והחתול למעלה. ניסיונות מקומיים נכשלו ב-4 הספציפיים האלה — דרושה רמת-עיצוב עשירה יותר.
+
+לכל אווטאר:
+- viewBox="0 0 200 200" + role="img" + aria-label בעברית
+- רקע עיגול-מלא בצבע-פסטל ייחודי
+- ראש חזיתית במרכז
+- DNA משותף עם הסט: עיניים גדולות עם נצנוץ, סומק עדין, חיוך פשוט
+- הוסף את הפיצ'ר-זיהוי הייחודי לכל חיה (פירוט למטה)
+
+**03 — אריה (avatar-03-lion)**
+רקע פסטל-צהוב (~#FFE69A). פיצ'ר: רעמה גדולה ופרוותית מסביב לראש — שוליים מרופטים/פאפים, לא עיגול חלק. אוזניים-עגולות קטנות מבצבצות. אף משולש כהה. חיוך.
+
+**04 — פיל (avatar-04-elephant)**
+רקע פסטל-אפור-כחול (~#C5D4E0). פיצ'ר: שתי אוזניים-מניפה ענקיות בצדדים (אופייני לפיל אפריקני) + חדק ארוך שמתפתל ב-curl לקצה (לא ישר!). ראש קטן ביחס לאוזניים.
+
+**06 — ינשוף (avatar-06-owl)**
+רקע פסטל-לבנדר (~#D8C5E5). פיצ'ר: עיניים ענקיות שכמעט נוגעות (זה הסימן-היכר #1 של ינשוף). ציצות-אוזניים מחודדות. מקור קטן בין העיניים. **חשוב:** הינשוף הזה **שונה** מחכמוני המסקוט — צבע גוף **חום** (לא תכלת!), בלי כובע אקדמי.
+
+**09 — דג (avatar-09-fish)**
+רקע פסטל-תכלת (~#BFE2F0). פיצ'ר: דג בבירור. מותר side-view (כמו אמוג'י 🐟) — זנב-מניפה מאחור, סנפיר עליון ותחתון, גילים, עין-אחת קדמית, בועות עיטור. גוף בצבעי-פלטה: sky #6FC3DF + sky-dark #5BA8C4.
+
+═══════════════════════════════════════════════
+HOW TO RESPOND
+═══════════════════════════════════════════════
+
+צור artifact HTML יחיד עם 4 ה-SVG inline בגריד 2×2. תחת כל אחד תווית בעברית.
+רקע artifact: #F4F1EA.
+
+אחרי ה-artifact, בטקסט-הצ'אט, הוסף בדיוק:
+
+═══ START PASTE ═══
+BRIEF: 4.1
+SUBJECT: Avatars Redux (lion, elephant, owl, fish)
+ARTIFACT_HTML:
+[כל ה-HTML]
+AVATAR_SVGS:
+- 03-lion: [SVG inline]
+- 04-elephant: [SVG inline]
+- 06-owl: [SVG inline]
+- 09-fish: [SVG inline]
 NOTES: [אופציונלי]
 ═══ END PASTE ═══
 ```

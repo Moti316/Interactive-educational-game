@@ -230,6 +230,34 @@ tags:
 - ✅ ADR-014 — הוטמע. כבר לא חוסם Phase 1.
 - ✅ Brief #1.5 — נמסר מ-claude.ai/design ושולב 2026-05-23 (Version B נבחר). ראה CHANGELOG 0.6.5 + ADR-015.
 
+---
+
+## CHG-011 | 2026-05-23 | ✅ הוטמע (Brief #4 — 12 avatars delivered Local-First)
+**מהות:** Brief #4 (12 אווטארי-חיות) נמסר Local-First — אומץ ADR-011 בפועל לאווטארים.
+**טריגר:** ההורה אישר Local-First אחרי הצלחת proof (ארנב + pose "מקשיב" של חכמוני).
+
+**שינוי-עיקרי:**
+- 12 SVG אווטאר ב-`assets/avatars/avatar-{01..12}-*.svg` — נכתבו ישירות ע"י Claude Code.
+- 8 אושרו ע"י ההורה (ארנב, חתול, צפרדע, דוב, כלב, פרפר, רובוט, כוכב).
+- 4 (אריה, פיל, ינשוף, דג) — איכות "מקובלת לבינתיים", נדחו ל-Phase 8 (BUG-002).
+- ניסיון Brief #4.1 ב-claude.ai/design ל-4 הקשים — לא שיפר; הוחזר ל-Local-First.
+- `design-mocks/04-avatars-preview.html` — תצוגת 12 לסקירה.
+- `design-mocks/local-svg-proof/` — proof folder עם pose "מקשיב" + iteration history.
+- ADR-016 — Avatar Palette Extension (12 רקעי-פסטל + 5 צבעי-גוף ייעודיים).
+
+### סעיפים שהושפעו
+- [x] `assets/avatars/` — 12 קבצי SVG חדשים
+- [x] `design-mocks/04-avatars-preview.html` + `design-mocks/local-svg-proof/` — חדשים
+- [x] `docs/spec/ASSETS.md` — סעיף אווטארים מלא
+- [x] `docs/spec/CLAUDE-DESIGN-BRIEFS.md` — Brief #4.1 נוסף + טבלת-מסלולים מעודכנת
+- [x] `docs/log/{DECISIONS,ISSUES,CHANGELOG}.md` — ADR-016, BUG-002, 0.6.6
+- [x] `docs/status/{PROGRESS,ROADMAP}.md` + `docs/_DASHBOARD.md` + `CLAUDE.md` — Phase 0.5 → 60%
+
+### וידוא-עקביות
+- ✅ 12 SVGs ב-`assets/avatars/`, naming `avatar-NN-kind.svg`
+- ✅ כל SVG עומד ב-Universal Constraints (אין script/foreignObject/handlers, viewBox 0 0 200 200, role + aria-label בעברית)
+- ✅ צבעי-גוף הדמויות מהפלטה הראשית; צבעי הרחבה (פסטלים + חומים) מתועדים ב-ADR-016
+
 ### וידוא-עקביות
 - ✅ tokens.css — שינוי additive בלבד; אף token קיים לא שינה ערך
 - ✅ Brief #1.5 כולל הפניה ל-Universal Constraints + בלוק START/END PASTE

@@ -7,6 +7,28 @@ tags:
 
 כל השינויים-המשמעותיים בפרויקט.
 
+## [0.6.6] - 2026-05-23 — Brief #4 delivered: 12 avatars Local-First (CHG-011)
+
+### Added
+- **12 אווטארי-חיות** ב-`assets/avatars/avatar-{01..12}-*.svg`: ארנב · חתול · אריה ·
+  פיל · צפרדע · ינשוף · דוב · כלב · דג · פרפר · רובוט · כוכב. שפה ויזואלית אחת
+  עם פרופ' חכמוני (עיניים גדולות, סגנון flat, חיוך פשוט), כל אווטאר על רקע-פסטל ייחודי.
+- **ADR-016** — Avatar Palette Extension (12 רקעי-פסטל + 5 צבעי-גוף ייעודיים,
+  קטגוריה מבודדת מהפלטה הראשית).
+- **BUG-002** ב-ISSUES — 4 אווטארים (אריה/פיל/ינשוף/דג) נדחו ל-Phase 8 לאחר 5
+  איטרציות שלא הגיעו לרף.
+- `design-mocks/04-avatars-preview.html` — תצוגת 12 לסקירת-הורה.
+- `design-mocks/local-svg-proof/` — תיקיית proof עם pose "מקשיב" של חכמוני (Local-First proof).
+- `docs/spec/CLAUDE-DESIGN-BRIEFS.md` — Brief #4.1 (4 redux ב-claude.ai/design) +
+  עדכון טבלת-מסלולים.
+
+### Changed
+- אומץ Local-First כברירת-מחדל ל-Brief #4 (תואם ADR-011). Brief #4.1 (Bridge) ניסיון
+  להחלפת 4 הקשים — לא שיפר; הוחזר ל-Local-First.
+
+### Notes
+- Phase 0.5 → 60%. Brief #3 (Welcome) ו-Brief #5 (Task+Celebration) נותרו לפני R4.
+
 ## [0.6.5] - 2026-05-23 — Brief #1.5 delivered: logo redux integrated
 
 ### Changed — Logo

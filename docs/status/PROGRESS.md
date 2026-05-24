@@ -5,7 +5,7 @@ tags:
 
 # חכמוני — Master Progress Dashboard
 
-> **עדכון אחרון:** 2026-05-23 (Brief #1.5 נמסר ושולב — לוגו חדש פעיל) | **מחשב:** HOME-PC | **גרסה:** v0.6.5
+> **עדכון אחרון:** 2026-05-23 (Brief #4 נמסר — 12 אווטארים Local-First) | **מחשב:** HOME-PC | **גרסה:** v0.6.6
 > **תוכנית חיה:** [`docs/status/ROADMAP.md`](./ROADMAP.md) (מתוחזק ע"י [RoadmapKeeper](../../.claude/agents/agent-roadmap-keeper.md))
 
 ## 📍 שדות-מהירים
@@ -17,7 +17,7 @@ tags:
 | **Last DoD-verified** | 2026-05-19 (Brief #2 — Mascot 6 poses, Universal Constraints PASS) |
 | **Last Council** | R3.5 (2026-05-19, 🟢 GO with 17 patches) |
 | **Last Design Review** | **R-Design-1** (2026-05-19, 🔴 OFF-BRAND — 2 FAIL + 3 NEEDS-PATCH; Brief #1.5 חוסם Phase 1) |
-| **Last ADR** | ADR-015 (Logo Character Unification Policy) |
+| **Last ADR** | ADR-016 (Avatar Palette Extension) |
 | **Teams active** | 3 (High Council 9, Compass 3, Design Studio 7 = **19 sub-agents**) |
 | **Active blockers** | אין חוסם-Phase-1. נותרו Briefs #3–5 להשלמת Phase 0.5 |
 
@@ -26,7 +26,7 @@ tags:
 | שלב | סטטוס | יום | התקדמות | הערות |
 |-----|--------|-----|----------|--------|
 | **0 — תשתית** | ✅ הושלם | 1 | 100% | 49 קבצים ב-GitHub |
-| **0.5 — מוקאפים** | 🟢 בעבודה | 3 | 50% | Briefs #1.5 ✅ (לוגו), #2 ✅ (6 poses). הבא: #3 Welcome |
+| **0.5 — מוקאפים** | 🟢 בעבודה | 4 | 60% | Briefs #1.5 ✅, #2 ✅, #4 ✅ (12 avatars, 4 BUG-002). הבא: #3, #5 |
 | **CHG-005 (חדש)** | 📋 תוכנן | 2 | 0% | Parent Profiles + Fast-Path + 4 ערוצי-נוכחות |
 | 1 — שלד + פרופילים | ⏳ ממתין | — | 0% | יכלול CHG-005 לפי התכנון |
 | 2 — תבנית ראשונה | ⏳ ממתין | — | 0% | |
