@@ -7,6 +7,29 @@ tags:
 
 כל השינויים-המשמעותיים בפרויקט.
 
+## [0.7.1] - 2026-05-23 — Phase 1: profile flow runnable (CHG-013 cont.)
+
+### Added
+- **src/profiles.js** — CRUD לפרופילי-ילד (CHG-005 v1: name + gender + avatar
+  + stars + completedTasks). Active-profile tracking. Parent profiles + PIN
+  + voice יבואו ב-CHG-005 v2.
+- **src/ui/avatar-picker.js** — גריד 12 אווטארים לבחירה, hover-narrates שם.
+- **src/welcome.js** — `renderWelcome` (מסך פתיחה — בחירת פרופיל) +
+  `renderProfileCreate` (טופס יצירה: שם, מגדר, אווטאר). first-run flow.
+- `styles/components.css`: ~140 שורות סטיילים חדשים — welcome screen, create
+  wizard, gender options, avatar picker grid, error shake animation.
+
+### Changed
+- **src/app.js** — state machine מחובר: FIRST_RUN → ProfileCreate → WORLD_MAP
+  (placeholder). WELCOME → ProfileSelect | NewProfile | OpenSettings.
+  Placeholder לעולמות-מפה ו-PIN.
+
+### Status
+- **המשחק רץ** מ-`index.html`: מסך-פתיחה מציג פרופילים קיימים, כפתור "+חדש"
+  מפעיל wizard, יצירת פרופיל ראשון אוטומטית ב-first-run. TTS עברי על hover.
+- Phase 1: ~73% (11/15 קבצים). נשאר: `db.js`, `photo-store.js`, `backup.js`,
+  `ui/photo-uploader.js`.
+
 ## [0.7.0] - 2026-05-23 — Phase 1 begins: foundation skeleton (CHG-013)
 
 ### Added

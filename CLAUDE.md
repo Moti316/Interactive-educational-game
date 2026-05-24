@@ -11,8 +11,8 @@
 
 - **Phase נוכחי:** 1 — שלד + פרופילים (Phase 0.5 נסגר ע"י R4 🟢 GO)
 - **נתיב הפרויקט:** `C:\Users\b0066820\Desktop\Claude project\Interactive-educational-game` (הועבר 2026-05-20).
-- **משימה אחרונה שהושלמה:** Phase 1 שלד-יסוד (8 קבצים): index.html, styles/global+components.css, src/{storage,browser-check,audio,ui/button,app}.js. CHG-013 + CHANGELOG 0.7.0.
-- **המשימה הבאה:** המשך Phase 1 — src/profiles.js (CHG-005), src/db.js (IndexedDB), src/photo-store.js, src/welcome.js, ומסכי-משחק אמיתיים.
+- **משימה אחרונה שהושלמה:** Phase 1 — profile flow רץ (CHG-013 cont.). הוספו: profiles.js, ui/avatar-picker.js, welcome.js + ~140 שורות components.css. app.js מחובר. v0.7.1.
+- **המשימה הבאה:** המשך Phase 1 — db.js (IndexedDB), photo-store.js, backup.js, photo-uploader.js. אז Phase 2 (תבנית-משימה ראשונה).
 - **חוסם:** אין.
 - **עדכון אחרון:** 2026-05-23.
 
