@@ -11,8 +11,8 @@
 
 - **Phase נוכחי:** 1 — שלד + פרופילים (Phase 0.5 נסגר ע"י R4 🟢 GO)
 - **נתיב הפרויקט:** `C:\Users\b0066820\Desktop\Claude project\Interactive-educational-game` (הועבר 2026-05-20).
-- **משימה אחרונה שהושלמה:** R4 Council Gate 🟢 GO 4/4 PASS (אחרי פטץ' חד-קו ל-btn-icon ב-task screen). Phase 0.5 נסגר רשמית.
-- **המשימה הבאה:** Phase 1 — שלד `src/` (app/audio/storage/profiles/photos/welcome/UI) + CHG-005 profiles. מתחיל ב-tokens.css copy → styles/global.css → index.html → app.js.
+- **משימה אחרונה שהושלמה:** Phase 1 שלד-יסוד (8 קבצים): index.html, styles/global+components.css, src/{storage,browser-check,audio,ui/button,app}.js. CHG-013 + CHANGELOG 0.7.0.
+- **המשימה הבאה:** המשך Phase 1 — src/profiles.js (CHG-005), src/db.js (IndexedDB), src/photo-store.js, src/welcome.js, ומסכי-משחק אמיתיים.
 - **חוסם:** אין.
 - **עדכון אחרון:** 2026-05-23.
 

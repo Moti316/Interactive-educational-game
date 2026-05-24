@@ -278,6 +278,43 @@ tags:
 - R4 Council Gate (Pre-Phase-1, lens-based) — סקירה רוחבית של Phase 0.5
 - אם 🟢 GO → Phase 1 (שלד `src/` + פרופילים, יכלול CHG-005)
 
+---
+
+## CHG-013 | 2026-05-23 | 🟢 בעבודה (Phase 1 — שלד-יסוד)
+**מהות:** התחלת Phase 1 — שלד הקוד הראשון של המשחק (foundation).
+**טריגר:** R4 🟢 GO 4/4 PASS — Phase 1 פתוח רשמית.
+
+**שינוי-עיקרי (מנת-יסוד 1/N):**
+- `index.html` — entry point (מחליף את ה-placeholder של Phase 0.5)
+- `styles/global.css` — מייבא את `tokens.css` כ-SSoT, בסיס RTL/פונטים
+- `styles/components.css` — buttons, profile cards, screen layouts
+- `src/storage.js` — localStorage wrapper, `chachmoni:*` prefix
+- `src/browser-check.js` — feature + window-size detection
+- `src/audio.js` — TTS he-IL 0.85 + speakOnHover (600ms delay)
+- `src/ui/button.js` — factory חובה לכל כפתור (textContent only — security)
+- `src/app.js` — state machine 12 מצבים + bootstrap
+
+**נשאר ב-Phase 1:**
+- `src/profiles.js` (CHG-005 — child + parent profiles, gender, PIN PBKDF2)
+- `src/db.js` (IndexedDB — AES-GCM voice + photos)
+- `src/photo-store.js` (magic-bytes validation + canvas → Blob)
+- `src/backup.js` (export/import JSON)
+- `src/ui/photo-uploader.js`, `src/ui/avatar-picker.js`
+- `src/welcome.js` (first-run wizard + Fast-Path)
+- מסכי-משחק אמיתיים (Welcome, Profile-Select, Profile-Create, PIN-Entry, World-Map)
+
+### עקרונות-מפתח שמיושמים
+- **tokens.css = SSoT:** `styles/global.css` מייבא דרך `@import` — קוד משתמש ב-Layer 2 semantic (ADR-014).
+- **textContent חובה:** `ui/button.js` הוא ה-API היחיד לכפתורים. אסור innerHTML עם תוכן-ילד או AI.
+- **Voice-first:** כל label בכפתור מוקרא ב-hover אחרי 600ms (`attachSpeakOnHover`).
+- **min 80×80 לכל כפתור:** מ-R4 patch.
+
+### סטטוס Phase 1
+- שלד יסוד: ✅ (8 קבצים, ~600 שורות)
+- פרופילים + IndexedDB: ⏳ בהמשך
+- מסכי-משחק אמיתיים: ⏳ בהמשך
+- **אומדן:** 8/15 קבצים = ~33% של Phase 1
+
 ### וידוא-עקביות
 - ✅ tokens.css — שינוי additive בלבד; אף token קיים לא שינה ערך
 - ✅ Brief #1.5 כולל הפניה ל-Universal Constraints + בלוק START/END PASTE

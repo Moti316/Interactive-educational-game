@@ -5,7 +5,7 @@ tags:
 
 # חכמוני — Master Progress Dashboard
 
-> **עדכון אחרון:** 2026-05-23 (Briefs #3 + #5 נמסרו — Phase 0.5 הושלם 100%) | **מחשב:** HOME-PC | **גרסה:** v0.6.7
+> **עדכון אחרון:** 2026-05-23 (Phase 1 התחיל — שלד-יסוד 8 קבצים) | **מחשב:** HOME-PC | **גרסה:** v0.7.0
 > **תוכנית חיה:** [`docs/status/ROADMAP.md`](./ROADMAP.md) (מתוחזק ע"י [RoadmapKeeper](../../.claude/agents/agent-roadmap-keeper.md))
 
 ## 📍 שדות-מהירים
@@ -28,7 +28,7 @@ tags:
 | **0 — תשתית** | ✅ הושלם | 1 | 100% | 49 קבצים ב-GitHub |
 | **0.5 — מוקאפים** | ✅ הושלם | 4 | 100% | כל 5 ה-briefs נמסרו (#1.5, #2, #3, #4, #5). ממתין ל-R4 |
 | **CHG-005 (חדש)** | 📋 תוכנן | 2 | 0% | Parent Profiles + Fast-Path + 4 ערוצי-נוכחות |
-| 1 — שלד + פרופילים | ⏳ ממתין | — | 0% | יכלול CHG-005 לפי התכנון |
+| **1 — שלד + פרופילים** | 🟢 בעבודה | 5 | 33% | שלד-יסוד ✅: index/styles/storage/browser/audio/button/app. בהמשך: profiles/db/photo/backup/welcome |
 | 2 — תבנית ראשונה | ⏳ ממתין | — | 0% | |
 | 3 — תבניות עכבר | ⏳ ממתין | — | 0% | |
 | 4 — PowerShell + Drive | ⏳ ממתין | — | 0% | מחכה ל-OAuth setup מההורה |

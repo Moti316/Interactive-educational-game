@@ -1,0 +1,75 @@
+/* חכמוני — global styles
+   Imports design tokens (single source of truth). */
+@import url("../design-mocks/shared/tokens.css");
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: var(--font-body);
+  color: var(--color-text-primary);
+  background: var(--color-bg-page);
+  direction: rtl;
+  line-height: var(--line-height-base);
+  font-size: var(--font-size-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-width: var(--min-window-width);
+  min-height: var(--min-window-height);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  margin: 0;
+}
+
+button { font-family: var(--font-body); }
+
+#app {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+*:focus-visible {
+  outline: var(--btn-focus-ring);
+  outline-offset: 4px;
+}
+
+.noscript-message {
+  padding: 32px;
+  background: var(--color-coral-dark);
+  color: white;
+  text-align: center;
+  font-family: var(--font-heading);
+}
+
+.min-window-warning {
+  position: fixed;
+  inset: 0;
+  background: var(--color-bg-page);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 32px;
+}
+.min-window-warning h2 {
+  font-size: var(--font-size-h2);
+  color: var(--color-coral-dark);
+  margin-bottom: 16px;
+}
+.min-window-warning p {
+  font-size: var(--font-size-large);
+  color: var(--color-text);
+  max-width: 60ch;
+}

@@ -290,6 +290,7 @@ tags:
 | 2026-05-23 | 0.5 | Brief #4 נמסר Local-First — 12 אווטארים; 8 אושרו, 4 BUG-002 ל-Phase 8 | אומץ ADR-011 בפועל לאווטארים; ADR-016 נוסף | לא — Phase 0.5 → 60% |
 | 2026-05-23 | 0.5 | Briefs #3 + #5 נמסרו Local-First — Welcome A/B + Task + Celebration | מצב אוטונומי לכל Phase 0.5; CHG-012 | Phase 0.5 → 100%; מוכן ל-R4 |
 | 2026-05-23 | 0.5→1 | R4 הושלם — 🟢 GO 4/4 PASS (אחרי פטץ' חד-קו: btn-icon 64→80px) | Pre-Phase-1 gate; פותח את Phase 1 | Phase 0.5 נסגר; Phase 1 פתוח |
+| 2026-05-23 | 1 | Phase 1 שלד-יסוד הושלם (CHG-013) — 8 קבצים: index/styles/storage/browser/audio/button/app | תחילת Phase 1 במצב אוטונומי; foundation ראשון | Phase 1 → 33% |
 
 ---
 

@@ -7,6 +7,28 @@ tags:
 
 כל השינויים-המשמעותיים בפרויקט.
 
+## [0.7.0] - 2026-05-23 — Phase 1 begins: foundation skeleton (CHG-013)
+
+### Added
+- **index.html** — production entry (replaces Phase 0.5 placeholder).
+- **styles/global.css** — base styles, imports `tokens.css` as SSoT via
+  `@import url("../design-mocks/shared/tokens.css")`.
+- **styles/components.css** — buttons (primary/secondary/icon/parent-settings),
+  profile cards (220×280), screen layouts. All built from tokens.
+- **src/storage.js** — localStorage wrapper, `chachmoni:*` prefix.
+- **src/browser-check.js** — feature + window-size detection (Hebrew warnings).
+- **src/audio.js** — Hebrew TTS service (he-IL, rate 0.85, pitch 1.1):
+  `speak()`, `stop()`, `attachSpeakOnHover()` with 600ms hover delay.
+- **src/ui/button.js** — button factory (textContent only — no innerHTML),
+  4 variants matching components.css; integrates speakOnHover.
+- **src/app.js** — entry + 12-state state machine + bootstrap.
+
+### Notes
+- Foundation layer only — 8 of 15 Phase 1 files done. Next: CHG-005 profiles
+  (child + parent), IndexedDB (AES-GCM voice + photos), photo store, backup,
+  welcome wizard, real screens.
+- Phase 1: 33% (foundation complete).
+
 ## [0.6.7] - 2026-05-23 — Briefs #3 + #5 delivered → Phase 0.5 complete (CHG-012)
 
 ### Added
