@@ -7,6 +7,35 @@ tags:
 
 כל השינויים-המשמעותיים בפרויקט.
 
+## [0.8.0] - 2026-05-23 — Phase 2 opens: playable game loop end-to-end (CHG-014)
+
+### Added
+- **src/worlds.js** — world data (4 worlds: mouse/keyboard/window/browser) +
+  `renderWorldMap` screen with user info, star count, home button, and 2×2 grid.
+- **src/tasks.js** — task data registry. Phase 2 ships 2 click-targets tasks:
+  `task-mouse-balloons` and `task-mouse-bubbles`.
+- **src/templates/click-targets.js** — generic "click N targets" template.
+  Renders header (stars/listen/home), title, balloons area (positioned by task
+  config), and progress bar that fills as targets are clicked.
+- **src/celebration.js** — celebration screen with mascot, headline,
+  +stars indicator, "next" / "back-to-map" buttons, 17 static confetti.
+- `styles/components.css`: ~170 lines for world-map / task / celebration /
+  balloons / confetti.
+
+### Changed
+- **src/app.js** — wires complete game loop:
+  WELCOME → WORLD_MAP → TASK → CELEBRATION → (next task or WORLD_MAP).
+  On task complete: `profiles.markTaskComplete` + `addStars`.
+
+### Status
+- **The game is playable end-to-end.** Open `index.html` → first-run wizard
+  (or pick profile) → world map (mouse unlocked) → balloons task → pop 5 →
+  celebration → next task (bubbles) → repeat. Stars persist per profile.
+- Phase 1: ~80% (deferred: db.js, photo-store.js, backup.js, photo-uploader.js —
+  needed for parent voice/photos; not blocking gameplay).
+- Phase 2: ~40% (template + 2 tasks + game loop ✓; need more templates +
+  kids testing per CLAUDE.md DoD).
+
 ## [0.7.1] - 2026-05-23 — Phase 1: profile flow runnable (CHG-013 cont.)
 
 ### Added

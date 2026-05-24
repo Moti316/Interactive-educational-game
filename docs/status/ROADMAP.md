@@ -15,7 +15,7 @@ tags:
 
 | שדה | ערך |
 |------|------|
-| **Phase נוכחי** | 1 — שלד + פרופילים (Phase 0.5 נסגר ע"י R4 🟢 GO) |
+| **Phase נוכחי** | 2 — תבנית ראשונה (לולאת-משחק רצה end-to-end) |
 | **Next Gate** | R4 (אחרי השלמת Briefs #3–5) |
 | **ETA ל-MVP** | 13–20 ימי-עבודה מהיום (Local-First מאיץ Briefs ב-~1 יום) |
 | **Last DoD-verified** | 2026-05-19 (Brief #2 — 6 mascot SVGs, 1.6–2.2 KB, Universal Constraints PASS) |
@@ -291,6 +291,8 @@ tags:
 | 2026-05-23 | 0.5 | Briefs #3 + #5 נמסרו Local-First — Welcome A/B + Task + Celebration | מצב אוטונומי לכל Phase 0.5; CHG-012 | Phase 0.5 → 100%; מוכן ל-R4 |
 | 2026-05-23 | 0.5→1 | R4 הושלם — 🟢 GO 4/4 PASS (אחרי פטץ' חד-קו: btn-icon 64→80px) | Pre-Phase-1 gate; פותח את Phase 1 | Phase 0.5 נסגר; Phase 1 פתוח |
 | 2026-05-23 | 1 | Phase 1 שלד-יסוד הושלם (CHG-013) — 8 קבצים: index/styles/storage/browser/audio/button/app | תחילת Phase 1 במצב אוטונומי; foundation ראשון | Phase 1 → 33% |
+| 2026-05-23 | 1 | Phase 1 profile flow — profiles + welcome + avatar-picker (CHG-013 cont.) | המשך אוטונומי; משחק רץ עם first-run | Phase 1 → 73% |
+| 2026-05-23 | 1→2 | Phase 2 פתוח — תבנית click-targets + 2 משימות + game loop (CHG-014) | קפיצה ל-Phase 2 במצב אוטונומי; lid-loop פלייבל | Phase 1 → 80% (functional); Phase 2 → 40% |
 
 ---
 

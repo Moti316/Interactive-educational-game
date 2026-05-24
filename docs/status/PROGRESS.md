@@ -5,14 +5,14 @@ tags:
 
 # חכמוני — Master Progress Dashboard
 
-> **עדכון אחרון:** 2026-05-23 (Phase 1 — פרופילים + welcome flow רץ) | **מחשב:** HOME-PC | **גרסה:** v0.7.1
+> **עדכון אחרון:** 2026-05-23 (Phase 2 — לולאת-משחק שלמה רצה end-to-end) | **מחשב:** HOME-PC | **גרסה:** v0.8.0
 > **תוכנית חיה:** [`docs/status/ROADMAP.md`](./ROADMAP.md) (מתוחזק ע"י [RoadmapKeeper](../../.claude/agents/agent-roadmap-keeper.md))
 
 ## 📍 שדות-מהירים
 
 | שדה | ערך |
 |------|------|
-| **Phase נוכחי** | 1 — שלד + פרופילים |
+| **Phase נוכחי** | 2 — תבנית ראשונה + 2 משימות (לולאת-משחק רצה) |
 | **Next Gate** | R4 (Pre-Phase-1, אחרי השלמת Briefs #3–5) |
 | **Last DoD-verified** | 2026-05-19 (Brief #2 — Mascot 6 poses, Universal Constraints PASS) |
 | **Last Council** | R4 (2026-05-23, 🟢 GO 4/4 PASS, אחרי פטץ' btn-icon) |
@@ -28,8 +28,8 @@ tags:
 | **0 — תשתית** | ✅ הושלם | 1 | 100% | 49 קבצים ב-GitHub |
 | **0.5 — מוקאפים** | ✅ הושלם | 4 | 100% | כל 5 ה-briefs נמסרו (#1.5, #2, #3, #4, #5). ממתין ל-R4 |
 | **CHG-005 (חדש)** | 📋 תוכנן | 2 | 0% | Parent Profiles + Fast-Path + 4 ערוצי-נוכחות |
-| **1 — שלד + פרופילים** | 🟢 בעבודה | 5 | 73% | שלד + profiles + welcome + avatar-picker ✅. נשאר: db/photo-store/backup/photo-uploader |
-| 2 — תבנית ראשונה | ⏳ ממתין | — | 0% | |
+| **1 — שלד + פרופילים** | 🟢 פונקציונלי 80% | 5 | 80% | foundation + profile flow ✅. נדחה: db/photo-store/backup ל-CHG-005 v2 |
+| **2 — תבנית ראשונה** | 🟢 בעבודה | 5 | 40% | click-targets template + 2 משימות + game loop ✅. נשאר: בדיקת-ילדים |
 | 3 — תבניות עכבר | ⏳ ממתין | — | 0% | |
 | 4 — PowerShell + Drive | ⏳ ממתין | — | 0% | מחכה ל-OAuth setup מההורה |
 | 5 — תבניות מקלדת | ⏳ ממתין | — | 0% | |

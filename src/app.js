@@ -1,14 +1,16 @@
-// app.js — entry + state machine bootstrap.
-// Wires welcome.js / profiles.js into the 12-state machine.
-// Placeholder screens for world-map / task / celebration / pin-entry
-// (real implementations in subsequent files / phases).
+// app.js — entry + state machine + screen routing.
+// Phase 2: complete game loop (welcome → world-map → task → celebration → repeat).
 
 import { checkBrowser, showMinWindowWarning, showMissingFeaturesWarning } from './browser-check.js';
 import * as audio from './audio.js';
 import * as profiles from './profiles.js';
 import { createButton } from './ui/button.js';
-import { renderWelcome, renderProfileCreate } from './welcome.js';
 import { getAvatarById } from './ui/avatar-picker.js';
+import { renderWelcome, renderProfileCreate } from './welcome.js';
+import { renderWorldMap, getWorld } from './worlds.js';
+import { renderClickTargets } from './templates/click-targets.js';
+import { renderCelebration } from './celebration.js';
+import { getTask, getNextTask } from './tasks.js';
 
 const STATES = Object.freeze({
   LOADING: 'loading',
@@ -27,7 +29,9 @@ const STATES = Object.freeze({
 const state = {
   current: STATES.LOADING,
   activeProfileId: null,
+  activeWorldId: null,
   activeTaskId: null,
+  lastTaskStars: 0,
 };
 
 let appRoot = null;
@@ -47,6 +51,7 @@ function render() {
     case STATES.LOADING:
       appRoot.append(renderLoading());
       break;
+
     case STATES.FIRST_RUN:
       appRoot.append(renderProfileCreate({
         isFirstRun: true,
@@ -56,6 +61,7 @@ function render() {
         },
       }));
       break;
+
     case STATES.WELCOME:
       appRoot.append(renderWelcome({
         onSelectProfile: (id) => {
@@ -67,6 +73,7 @@ function render() {
         onOpenSettings: () => setState(STATES.PIN_ENTRY),
       }));
       break;
+
     case STATES.PROFILE_CREATE:
       appRoot.append(renderProfileCreate({
         isFirstRun: false,
@@ -77,12 +84,71 @@ function render() {
         onCancel: () => setState(STATES.WELCOME),
       }));
       break;
+
     case STATES.WORLD_MAP:
-      appRoot.append(renderWorldMapPlaceholder());
+      appRoot.append(renderWorldMap({
+        onSelectWorld: (world) => {
+          const active = profiles.getActive();
+          const next = getNextTask(world.id, (active && active.completedTasks) || []);
+          if (next) {
+            state.activeWorldId = world.id;
+            state.activeTaskId = next.id;
+            setState(STATES.TASK);
+          } else {
+            audio.speak('סיימת את כל המשימות בעולם הזה! עוד יבואו בהמשך.');
+          }
+        },
+        onBack: () => setState(STATES.WELCOME),
+      }));
       break;
+
+    case STATES.TASK: {
+      const task = getTask(state.activeTaskId);
+      if (!task) { setState(STATES.WORLD_MAP); break; }
+      let view;
+      switch (task.template) {
+        case 'click-targets':
+          view = renderClickTargets(task, {
+            onComplete: (t) => {
+              const active = profiles.getActive();
+              if (active) {
+                profiles.markTaskComplete(active.id, t.id);
+                profiles.addStars(active.id, t.starsOnComplete || 1);
+              }
+              state.lastTaskStars = t.starsOnComplete || 1;
+              setState(STATES.CELEBRATION);
+            },
+            onExit: () => setState(STATES.WORLD_MAP),
+          });
+          break;
+        default:
+          view = renderTemplateNotImplemented(task);
+      }
+      appRoot.append(view);
+      break;
+    }
+
+    case STATES.CELEBRATION:
+      appRoot.append(renderCelebration({
+        starsEarned: state.lastTaskStars || 1,
+        onNext: () => {
+          const active = profiles.getActive();
+          const next = getNextTask(state.activeWorldId || 'mouse', (active && active.completedTasks) || []);
+          if (next) {
+            state.activeTaskId = next.id;
+            setState(STATES.TASK);
+          } else {
+            setState(STATES.WORLD_MAP);
+          }
+        },
+        onBackToMap: () => setState(STATES.WORLD_MAP),
+      }));
+      break;
+
     case STATES.PIN_ENTRY:
       appRoot.append(renderPinEntryPlaceholder());
       break;
+
     default:
       appRoot.append(renderUnknownStatePlaceholder(state.current));
       break;
@@ -100,31 +166,21 @@ function renderLoading() {
   return wrap;
 }
 
-function renderWorldMapPlaceholder() {
+function renderTemplateNotImplemented(task) {
   const wrap = document.createElement('div');
   wrap.className = 'screen';
   wrap.style.cssText = 'padding:32px; align-items:center; justify-content:center; text-align:center;';
-  const active = profiles.getActive();
-  if (active) {
-    const av = getAvatarById(active.avatarId);
-    const avatarImg = document.createElement('img');
-    avatarImg.src = `assets/avatars/${av.file}`;
-    avatarImg.alt = av.name;
-    avatarImg.style.cssText = 'width:140px; height:140px; margin-bottom:8px;';
-    const greet = document.createElement('h1');
-    greet.style.cssText = 'font-family:var(--font-heading); font-size:var(--font-size-h1); color:var(--color-text-emphasis); margin:0 0 8px;';
-    greet.textContent = `שלום ${active.name}!`;
-    wrap.append(avatarImg, greet);
-    setTimeout(() => audio.speak(`שלום ${active.name}!`), 400);
-  }
+  const h = document.createElement('h1');
+  h.style.cssText = 'font-size:var(--font-size-h1); color:var(--color-text-emphasis);';
+  h.textContent = 'תבנית עוד לא מוכנה';
   const sub = document.createElement('p');
-  sub.style.cssText = 'font-size:var(--font-size-large); color:var(--color-text); margin:8px 0 24px;';
-  sub.textContent = 'מפת העולמות תיבנה ב-Phase 2.';
-  wrap.append(sub);
+  sub.style.cssText = 'font-size:var(--font-size-large); color:var(--color-text); margin:16px 0 24px;';
+  sub.textContent = `תבנית "${task.template}" תיבנה בשלבים הבאים.`;
+  wrap.append(h, sub);
   wrap.append(createButton({
-    label: 'חזרה למסך פתיחה',
+    label: 'חזרה למפה',
     variant: 'secondary',
-    onClick: () => setState(STATES.WELCOME),
+    onClick: () => setState(STATES.WORLD_MAP),
   }));
   return wrap;
 }

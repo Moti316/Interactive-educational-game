@@ -12,9 +12,9 @@ tags:
 
 | שדה | ערך |
 |------|------|
-| **Phase** | 1 — שלד + פרופילים |
-| **משימה אחרונה** | Phase 1 — profile flow רץ: welcome + create + avatar-picker |
-| **🚧 חוסם** | אין — ממשיך עם db/photo-store/backup |
+| **Phase** | 2 — תבנית ראשונה (לולאת-משחק רצה!) |
+| **משימה אחרונה** | Phase 2 — click-targets + 2 משימות + celebration. המשחק פלייבל end-to-end |
+| **🚧 חוסם** | אין — נדרשת **בדיקת-ילדים** (Phase 2 DoD) ועוד תבניות (Phase 3) |
 | **עדכון אחרון** | 2026-05-23 |
 
 > מקור-אמת מלא: [[PROGRESS]] · בלוק-מצב גם בראש `CLAUDE.md`.

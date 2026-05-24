@@ -9,10 +9,10 @@
 > בלוק חי. **מתעדכן בסוף כל סשן** (חוק 3 ב"פרוטוקול ביצוע"). מאפשר לסשן הבא לדעת מאיפה להמשיך.
 > אומץ מפרויקט wall (CHG-010). פירוט מלא תמיד ב-`docs/status/PROGRESS.md`.
 
-- **Phase נוכחי:** 1 — שלד + פרופילים (Phase 0.5 נסגר ע"י R4 🟢 GO)
+- **Phase נוכחי:** 2 — תבנית ראשונה + 2 משימות (לולאת-משחק רצה)
 - **נתיב הפרויקט:** `C:\Users\b0066820\Desktop\Claude project\Interactive-educational-game` (הועבר 2026-05-20).
-- **משימה אחרונה שהושלמה:** Phase 1 — profile flow רץ (CHG-013 cont.). הוספו: profiles.js, ui/avatar-picker.js, welcome.js + ~140 שורות components.css. app.js מחובר. v0.7.1.
-- **המשימה הבאה:** המשך Phase 1 — db.js (IndexedDB), photo-store.js, backup.js, photo-uploader.js. אז Phase 2 (תבנית-משימה ראשונה).
+- **משימה אחרונה שהושלמה:** Phase 2 — לולאת-משחק שלמה: worlds + tasks + click-targets template + celebration (CHG-014). המשחק פלייבל end-to-end. v0.8.0.
+- **המשימה הבאה:** Phase 3 — עוד תבניות עכבר (hover, double-click, right-click, drag-drop) + 8 משימות נוספות. וגם: **בדיקת-ילדים** (Phase 2 DoD, תלוי-הורה).
 - **חוסם:** אין.
 - **עדכון אחרון:** 2026-05-23.
 

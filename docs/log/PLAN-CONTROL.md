@@ -315,6 +315,37 @@ tags:
 - מסכי-משחק אמיתיים: ⏳ בהמשך
 - **אומדן:** 8/15 קבצים = ~33% של Phase 1
 
+---
+
+## CHG-014 | 2026-05-23 | ✅ הוטמע (Phase 2 — תבנית ראשונה + לולאת-משחק רצה)
+**מהות:** המשחק עובד end-to-end. תבנית click-targets פעילה, 2 משימות, מסך-חגיגה.
+**טריגר:** Phase 1 פונקציונלי; ההורה אישר מצב אוטונומי; קופצים ל-Phase 2.
+
+**שינוי-עיקרי:**
+- `src/worlds.js` — נתוני 4 עולמות + `renderWorldMap` (header, star count, 2×2 grid)
+- `src/tasks.js` — מאגר משימות; Phase 2 ב-2 משימות: `task-mouse-balloons` + `task-mouse-bubbles`
+- `src/templates/click-targets.js` — תבנית גנרית "לחץ N מטרות" (בלונים, בועות, וכו')
+- `src/celebration.js` — מסך חגיגה (מסקוט קופץ, +כוכבים, כפתורי-המשך, 17 confetti)
+- `src/app.js` — לולאת המשחק מחוברת: WELCOME → WORLD_MAP → TASK → CELEBRATION → המשך
+- `styles/components.css` — ~170 שורות לסטיילים של world-map/task/balloons/celebration
+
+### מה רץ עכשיו
+- פותח `index.html` → first-run wizard (או בחירת פרופיל) → מפת-עולמות (עולם-עכבר פתוח, השאר נעולים) → משימת בלונים → לחיצה על 5 בלונים → חגיגה → משימה הבאה או חזרה למפה. כוכבים נשמרים פר-פרופיל.
+
+### Phase 1 — סטטוס
+- ✅ שלד יסוד (foundation)
+- ✅ פרופיל flow (welcome + create + avatar picker)
+- 🟡 ~80% (נדחו: db/photo-store/backup/photo-uploader — נחוצים ל-CHG-005 v2; לא חוסמים גיימפליי)
+
+### Phase 2 — סטטוס
+- ✅ click-targets template + 2 משימות + game loop
+- ⏳ נשאר: עוד תבניות עכבר (Phase 3), בדיקת-ילדים (Phase 2 DoD)
+
+### הצעד הבא
+- R5 Council Gate (post-Phase-1, אופציונלי) — לאמת איכות-קוד
+- Phase 3 — תבניות עכבר נוספות (hover, double-click, right-click, drag-drop)
+- Phase 2 DoD — **בדיקת-ילדים** (תלוי-הורה)
+
 ### וידוא-עקביות
 - ✅ tokens.css — שינוי additive בלבד; אף token קיים לא שינה ערך
 - ✅ Brief #1.5 כולל הפניה ל-Universal Constraints + בלוק START/END PASTE
