@@ -41,6 +41,28 @@ export const TASKS = [
     },
     starsOnComplete: 1,
   },
+  {
+    id: 'task-mouse-hover-animals',
+    worldId: 'mouse',
+    template: 'hover-target',
+    title: 'גלה מה מסתתר!',
+    narration: 'העבר את העכבר על הקופסאות כדי לגלות מה בפנים.',
+    config: {
+      reveals: ['🐶', '🐱', '🐰', '🦋', '⭐', '🌈'],
+    },
+    starsOnComplete: 1,
+  },
+  {
+    id: 'task-mouse-hover-objects',
+    worldId: 'mouse',
+    template: 'hover-target',
+    title: 'מה מסתתר בקופסאות?',
+    narration: 'העבר את העכבר על הקופסאות. כל אחת מסתירה משהו אחר.',
+    config: {
+      reveals: ['🎈', '🎁', '🍎', '🌞', '🌸', '🐝'],
+    },
+    starsOnComplete: 1,
+  },
 ];
 
 export function getTask(id) { return TASKS.find(t => t.id === id) || null; }

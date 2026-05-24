@@ -5,7 +5,7 @@ tags:
 
 # חכמוני — Master Progress Dashboard
 
-> **עדכון אחרון:** 2026-05-23 (Phase 2 — לולאת-משחק שלמה רצה end-to-end) | **מחשב:** HOME-PC | **גרסה:** v0.8.0
+> **עדכון אחרון:** 2026-05-23 (Phase 3 התחיל — hover-target template + file:// fix) | **מחשב:** HOME-PC | **גרסה:** v0.8.1
 > **תוכנית חיה:** [`docs/status/ROADMAP.md`](./ROADMAP.md) (מתוחזק ע"י [RoadmapKeeper](../../.claude/agents/agent-roadmap-keeper.md))
 
 ## 📍 שדות-מהירים

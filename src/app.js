@@ -9,6 +9,7 @@ import { getAvatarById } from './ui/avatar-picker.js';
 import { renderWelcome, renderProfileCreate } from './welcome.js';
 import { renderWorldMap, getWorld } from './worlds.js';
 import { renderClickTargets } from './templates/click-targets.js';
+import { renderHoverTarget } from './templates/hover-target.js';
 import { renderCelebration } from './celebration.js';
 import { getTask, getNextTask } from './tasks.js';
 
@@ -106,20 +107,22 @@ function render() {
       const task = getTask(state.activeTaskId);
       if (!task) { setState(STATES.WORLD_MAP); break; }
       let view;
+      const onTaskComplete = (t) => {
+        const active = profiles.getActive();
+        if (active) {
+          profiles.markTaskComplete(active.id, t.id);
+          profiles.addStars(active.id, t.starsOnComplete || 1);
+        }
+        state.lastTaskStars = t.starsOnComplete || 1;
+        setState(STATES.CELEBRATION);
+      };
+      const onTaskExit = () => setState(STATES.WORLD_MAP);
       switch (task.template) {
         case 'click-targets':
-          view = renderClickTargets(task, {
-            onComplete: (t) => {
-              const active = profiles.getActive();
-              if (active) {
-                profiles.markTaskComplete(active.id, t.id);
-                profiles.addStars(active.id, t.starsOnComplete || 1);
-              }
-              state.lastTaskStars = t.starsOnComplete || 1;
-              setState(STATES.CELEBRATION);
-            },
-            onExit: () => setState(STATES.WORLD_MAP),
-          });
+          view = renderClickTargets(task, { onComplete: onTaskComplete, onExit: onTaskExit });
+          break;
+        case 'hover-target':
+          view = renderHoverTarget(task, { onComplete: onTaskComplete, onExit: onTaskExit });
           break;
         default:
           view = renderTemplateNotImplemented(task);

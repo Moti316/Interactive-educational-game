@@ -7,6 +7,32 @@ tags:
 
 כל השינויים-המשמעותיים בפרויקט.
 
+## [0.8.1] - 2026-05-23 — Phase 3 begins: hover-target + file:// fallback
+
+### Fixed
+- **index.html**: detects `location.protocol === 'file:'` and shows a
+  Hebrew helper card pointing to `scripts/start-chachmoni.ps1`. Prevents
+  the silent "blue background, nothing loads" state when the user opens
+  the file directly instead of through the launcher (ES modules require
+  HTTP origin).
+
+### Added
+- **src/templates/hover-target.js** — Phase 3 first template. Mystery
+  boxes flip from "?" to emoji on hover; narrates the emoji name. Touch
+  and keyboard fallbacks included.
+- 2 new tasks: `task-mouse-hover-animals` + `task-mouse-hover-objects`.
+- `styles/components.css`: hover-grid + hover-box flip-fade animation
+  (respects `prefers-reduced-motion`).
+
+### Changed
+- `src/app.js`: switch handles `hover-target` template via shared
+  task-complete / task-exit handlers.
+
+### Notes
+- Phase 3 → ~25% (1/4 templates done). Next: double-click-reveal,
+  right-click-menu, drag-drop-match.
+- **4 tasks playable now**: 2 click-targets (balloons, bubbles) + 2 hover-target.
+
 ## [0.8.0] - 2026-05-23 — Phase 2 opens: playable game loop end-to-end (CHG-014)
 
 ### Added
