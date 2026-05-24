@@ -5,7 +5,7 @@ tags:
 
 # חכמוני — Master Progress Dashboard
 
-> **עדכון אחרון:** 2026-05-23 (Phase 3 התחיל — hover-target template + file:// fix) | **מחשב:** HOME-PC | **גרסה:** v0.8.1
+> **עדכון אחרון:** 2026-05-23 (Phase 3 — 3 תבניות עכבר + 7 משימות פלייבליות) | **מחשב:** HOME-PC | **גרסה:** v0.9.0
 > **תוכנית חיה:** [`docs/status/ROADMAP.md`](./ROADMAP.md) (מתוחזק ע"י [RoadmapKeeper](../../.claude/agents/agent-roadmap-keeper.md))
 
 ## 📍 שדות-מהירים
@@ -30,7 +30,7 @@ tags:
 | **CHG-005 (חדש)** | 📋 תוכנן | 2 | 0% | Parent Profiles + Fast-Path + 4 ערוצי-נוכחות |
 | **1 — שלד + פרופילים** | 🟢 פונקציונלי 80% | 5 | 80% | foundation + profile flow ✅. נדחה: db/photo-store/backup ל-CHG-005 v2 |
 | **2 — תבנית ראשונה** | 🟢 בעבודה | 5 | 40% | click-targets template + 2 משימות + game loop ✅. נשאר: בדיקת-ילדים |
-| 3 — תבניות עכבר | ⏳ ממתין | — | 0% | |
+| **3 — תבניות עכבר** | 🟢 בעבודה | 5 | 75% | hover + double-click + drag-drop ✅ (3/4 templates). right-click נדחה |
 | 4 — PowerShell + Drive | ⏳ ממתין | — | 0% | מחכה ל-OAuth setup מההורה |
 | 5 — תבניות מקלדת | ⏳ ממתין | — | 0% | |
 | 6 — point-and-narrate | ⏳ ממתין | — | 0% | |

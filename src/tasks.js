@@ -63,6 +63,45 @@ export const TASKS = [
     },
     starsOnComplete: 1,
   },
+  {
+    id: 'task-mouse-dblclick-treasures',
+    worldId: 'mouse',
+    template: 'double-click-reveal',
+    title: 'לחץ פעמיים לפתוח את התיבות!',
+    narration: 'לחץ פעמיים על כל תיבה כדי לפתוח אותה.',
+    config: { reveals: ['🐶', '🐱', '🐰', '⭐', '🌈'] },
+    starsOnComplete: 1,
+  },
+  {
+    id: 'task-mouse-dragdrop-animals',
+    worldId: 'mouse',
+    template: 'drag-drop-match',
+    title: 'חבר כל חיה לשם שלה!',
+    narration: 'גרור כל חיה לשם הנכון.',
+    config: {
+      pairs: [
+        { id: 'dog',    icon: '🐶', label: 'כלב' },
+        { id: 'cat',    icon: '🐱', label: 'חתול' },
+        { id: 'rabbit', icon: '🐰', label: 'ארנב' },
+      ],
+    },
+    starsOnComplete: 1,
+  },
+  {
+    id: 'task-mouse-dragdrop-fruits',
+    worldId: 'mouse',
+    template: 'drag-drop-match',
+    title: 'חבר כל פרי לשם שלו!',
+    narration: 'גרור כל פרי לשם הנכון.',
+    config: {
+      pairs: [
+        { id: 'apple',  icon: '🍎', label: 'תפוח' },
+        { id: 'banana', icon: '🍌', label: 'בננה' },
+        { id: 'grapes', icon: '🍇', label: 'ענבים' },
+      ],
+    },
+    starsOnComplete: 1,
+  },
 ];
 
 export function getTask(id) { return TASKS.find(t => t.id === id) || null; }

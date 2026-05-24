@@ -7,6 +7,32 @@ tags:
 
 כל השינויים-המשמעותיים בפרויקט.
 
+## [0.9.0] - 2026-05-23 — Phase 3: 3 of 4 mouse templates done (CHG-015)
+
+### Added
+- **src/templates/double-click-reveal.js** — "double-click to open" template.
+  Forgiving 600ms window (kids 4-6 struggle with the strict native dblclick).
+  Treasure chests flip open to reveal an emoji.
+- **src/templates/drag-drop-match.js** — "drag item to matching slot" template.
+  Pointer-events based (works for both mouse and touch). Wrong drops bounce
+  back with `is-wrong` shake animation. Correct drops snap and lock.
+- 3 new tasks: `task-mouse-dblclick-treasures`, `task-mouse-dragdrop-animals`,
+  `task-mouse-dragdrop-fruits`.
+- `styles/components.css`: dblclick-grid/box + dnd-slots/items/item +
+  shake animation reuse + reduced-motion overrides.
+
+### Changed
+- `src/app.js`: switch handles `double-click-reveal` and `drag-drop-match`.
+
+### Skipped
+- `right-click-menu` template — deferred (right-click + context-menu navigation
+  is a hard gesture for kids 4-6; will revisit in Phase 8 polish if needed).
+
+### Status
+- **Phase 3 → ~75%** (3/4 templates done; right-click deferred).
+- **7 tasks playable**: balloons, bubbles, hover-animals, hover-objects,
+  dblclick-treasures, dragdrop-animals, dragdrop-fruits.
+
 ## [0.8.1] - 2026-05-23 — Phase 3 begins: hover-target + file:// fallback
 
 ### Fixed

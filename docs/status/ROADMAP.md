@@ -15,7 +15,7 @@ tags:
 
 | שדה | ערך |
 |------|------|
-| **Phase נוכחי** | 2 — תבנית ראשונה (לולאת-משחק רצה end-to-end) |
+| **Phase נוכחי** | 3 — תבניות עכבר (3/4 מוכנות; 7 משימות פלייבליות) |
 | **Next Gate** | R4 (אחרי השלמת Briefs #3–5) |
 | **ETA ל-MVP** | 13–20 ימי-עבודה מהיום (Local-First מאיץ Briefs ב-~1 יום) |
 | **Last DoD-verified** | 2026-05-19 (Brief #2 — 6 mascot SVGs, 1.6–2.2 KB, Universal Constraints PASS) |
@@ -293,6 +293,8 @@ tags:
 | 2026-05-23 | 1 | Phase 1 שלד-יסוד הושלם (CHG-013) — 8 קבצים: index/styles/storage/browser/audio/button/app | תחילת Phase 1 במצב אוטונומי; foundation ראשון | Phase 1 → 33% |
 | 2026-05-23 | 1 | Phase 1 profile flow — profiles + welcome + avatar-picker (CHG-013 cont.) | המשך אוטונומי; משחק רץ עם first-run | Phase 1 → 73% |
 | 2026-05-23 | 1→2 | Phase 2 פתוח — תבנית click-targets + 2 משימות + game loop (CHG-014) | קפיצה ל-Phase 2 במצב אוטונומי; lid-loop פלייבל | Phase 1 → 80% (functional); Phase 2 → 40% |
+| 2026-05-23 | 2→3 | תיקון file:// + Phase 3 פתוח — hover-target template + 2 משימות | תיקון silent-blue-screen + המשך תבניות עכבר | Phase 3 → 25% |
+| 2026-05-23 | 3 | Phase 3 — double-click-reveal + drag-drop-match templates + 3 משימות (CHG-015) | 3/4 templates Phase 3 (right-click נדחה — מורכב לבני 4-6) | Phase 3 → 75% |
 
 ---
 

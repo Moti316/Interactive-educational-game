@@ -559,3 +559,110 @@
 @media (prefers-reduced-motion: reduce) {
   .hover-box-front, .hover-box-back { transition: opacity 80ms linear; transform: none !important; }
 }
+
+/* === Double-click reveal template === */
+.dblclick-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 140px);
+  gap: 20px;
+  justify-content: center;
+  align-content: center;
+  flex: 1;
+  margin: 32px auto;
+}
+.dblclick-box {
+  width: 140px;
+  height: 140px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+}
+.dblclick-closed,
+.dblclick-open {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  transition: opacity var(--duration-base) var(--ease-soft),
+              transform var(--duration-base) var(--ease-bounce);
+}
+.dblclick-closed {
+  background: var(--color-sun);
+  font-size: 64px;
+  opacity: 1;
+}
+.dblclick-open {
+  background: var(--color-bg-card-pure);
+  font-size: 72px;
+  opacity: 0;
+  transform: scale(0.5);
+}
+.dblclick-box.is-open .dblclick-closed { opacity: 0; transform: scale(0.5); }
+.dblclick-box.is-open .dblclick-open   { opacity: 1; transform: scale(1); }
+.dblclick-box:not(.is-open):hover { transform: scale(1.05); }
+
+@media (prefers-reduced-motion: reduce) {
+  .dblclick-closed, .dblclick-open { transition: opacity 80ms linear; transform: none !important; }
+}
+
+/* === Drag-drop match template === */
+.dnd-slots, .dnd-items {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin: 24px auto;
+}
+.dnd-slot {
+  width: 140px;
+  height: 100px;
+  border: 3px dashed rgba(45, 42, 38, 0.4);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-large);
+  color: var(--color-text-primary);
+  background: rgba(255, 255, 255, 0.4);
+  transition: background var(--duration-quick) var(--ease-soft),
+              border-color var(--duration-quick) var(--ease-soft);
+}
+.dnd-slot.is-hover {
+  background: var(--color-sun);
+  border-color: var(--color-text-primary);
+  border-style: solid;
+}
+.dnd-slot.is-matched {
+  background: var(--color-mint);
+  border-color: var(--color-text-primary);
+  border-style: solid;
+  color: var(--color-text-primary);
+}
+.dnd-slot.is-wrong {
+  background: #FFD6D6;
+  animation: shake 0.4s var(--ease-soft);
+}
+.dnd-item {
+  width: 100px;
+  height: 100px;
+  background: var(--color-bg-card-pure);
+  border: 3px solid var(--color-text-primary);
+  border-radius: var(--radius-md);
+  cursor: grab;
+  font-size: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--duration-quick) var(--ease-soft);
+  touch-action: none; /* enable pointer-events drag on touch */
+  user-select: none;
+}
+.dnd-item:hover:not(.is-matched):not(.is-dragging) { transform: scale(1.05); }
+.dnd-item.is-dragging { cursor: grabbing; box-shadow: var(--shadow-lg); transform: scale(1.1); }
+.dnd-item.is-matched { opacity: 0; pointer-events: none; }

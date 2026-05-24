@@ -10,6 +10,8 @@ import { renderWelcome, renderProfileCreate } from './welcome.js';
 import { renderWorldMap, getWorld } from './worlds.js';
 import { renderClickTargets } from './templates/click-targets.js';
 import { renderHoverTarget } from './templates/hover-target.js';
+import { renderDoubleClickReveal } from './templates/double-click-reveal.js';
+import { renderDragDropMatch } from './templates/drag-drop-match.js';
 import { renderCelebration } from './celebration.js';
 import { getTask, getNextTask } from './tasks.js';
 
@@ -123,6 +125,12 @@ function render() {
           break;
         case 'hover-target':
           view = renderHoverTarget(task, { onComplete: onTaskComplete, onExit: onTaskExit });
+          break;
+        case 'double-click-reveal':
+          view = renderDoubleClickReveal(task, { onComplete: onTaskComplete, onExit: onTaskExit });
+          break;
+        case 'drag-drop-match':
+          view = renderDragDropMatch(task, { onComplete: onTaskComplete, onExit: onTaskExit });
           break;
         default:
           view = renderTemplateNotImplemented(task);

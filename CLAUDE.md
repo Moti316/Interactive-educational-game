@@ -9,10 +9,10 @@
 > בלוק חי. **מתעדכן בסוף כל סשן** (חוק 3 ב"פרוטוקול ביצוע"). מאפשר לסשן הבא לדעת מאיפה להמשיך.
 > אומץ מפרויקט wall (CHG-010). פירוט מלא תמיד ב-`docs/status/PROGRESS.md`.
 
-- **Phase נוכחי:** 2 — תבנית ראשונה + 2 משימות (לולאת-משחק רצה)
+- **Phase נוכחי:** 3 — תבניות עכבר (3/4: hover + double-click + drag-drop ✓; right-click נדחה)
 - **נתיב הפרויקט:** `C:\Users\b0066820\Desktop\Claude project\Interactive-educational-game` (הועבר 2026-05-20).
-- **משימה אחרונה שהושלמה:** Phase 2 — לולאת-משחק שלמה: worlds + tasks + click-targets template + celebration (CHG-014). המשחק פלייבל end-to-end. v0.8.0.
-- **המשימה הבאה:** Phase 3 — עוד תבניות עכבר (hover, double-click, right-click, drag-drop) + 8 משימות נוספות. וגם: **בדיקת-ילדים** (Phase 2 DoD, תלוי-הורה).
+- **משימה אחרונה שהושלמה:** Phase 3 — 3 תבניות (hover/double-click/drag-drop) + 5 משימות חדשות + file:// fix ב-index.html (CHG-015). 7 משימות פלייבליות. v0.9.0.
+- **המשימה הבאה:** Phase 4 (Drive sync — דורש OAuth setup ממך), או Phase 5 (תבניות מקלדת), או הוספת תוכן (Phase 7). וגם: **בדיקת-ילדים** ל-DoD של Phase 2+3.
 - **חוסם:** אין.
 - **עדכון אחרון:** 2026-05-23.
 
