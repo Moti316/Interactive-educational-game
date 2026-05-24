@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>חכמוני — Welcome A/B (Brief #3)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Varela+Round&display=swap" rel="stylesheet">
+<style>
+  :root{ --sky:#6FC3DF; --sun:#FFD93D; --coral:#FF6B6B; --coral-dark:#B91C1C;
+         --mint:#6BCB77; --lavender:#C9A0DC; --cream:#FFFCF2; --ink:#2D2A26; }
+  *{ box-sizing:border-box; }
+  body{ margin:0; font-family:'Heebo','Varela Round',sans-serif; color:var(--ink);
+        background:#F4F1EA; padding:32px 16px 64px; }
+  .page-head{ max-width:1300px; margin:0 auto 28px; padding:0 16px; }
+  .eyebrow{ display:inline-block; font-size:11px; letter-spacing:.18em;
+            background:var(--ink); color:var(--cream); padding:6px 12px;
+            border-radius:999px; font-weight:700; }
+  h1.title{ font-family:'Varela Round',sans-serif; font-size:32px; margin:14px 0 6px; }
+  p.intro{ color:#5b574e; max-width:64ch; line-height:1.6; font-size:14px; margin:0; }
+
+  .split{ display:grid; grid-template-columns:1fr 1fr; gap:24px; max-width:1300px; margin:32px auto 0; }
+  .version{ background:white; border-radius:18px; overflow:hidden; border:1px solid #e3ddcd;
+            display:flex; flex-direction:column; }
+  .v-label{ background:var(--ink); color:var(--cream); padding:12px 20px;
+            font-family:'Varela Round',sans-serif; font-size:18px; }
+  .screen{ position:relative; aspect-ratio:16/10; overflow:hidden;
+           display:flex; flex-direction:column; }
+
+  /* === Version A — warm === */
+  .screen.a{ background:linear-gradient(180deg, var(--sky) 0%, #B5DDEC 60%, var(--cream) 100%); }
+  .screen.a .cloud{ position:absolute; background:rgba(255,255,255,.7); border-radius:9999px; }
+  .screen.a .cloud.c1{ width:80px; height:24px; top:18%; left:8%; }
+  .screen.a .cloud.c2{ width:60px; height:20px; top:34%; left:22%; }
+  .screen.a .cloud.c3{ width:90px; height:26px; top:24%; right:14%; }
+  .screen.a .sun{ position:absolute; width:50px; height:50px; background:var(--sun);
+                  border-radius:9999px; top:6%; right:5%;
+                  box-shadow:0 0 28px rgba(255,217,61,.6); }
+
+  /* === Version B — minimalist === */
+  .screen.b{ background:var(--cream); }
+  .screen.b .dot{ position:absolute; border-radius:9999px; }
+  .screen.b .dot.d1{ width:60px; height:60px; background:var(--lavender); opacity:.45; top:6%; left:6%; }
+  .screen.b .dot.d2{ width:36px; height:36px; background:var(--mint); opacity:.5; top:14%; right:8%; }
+  .screen.b .dot.d3{ width:50px; height:50px; background:var(--coral); opacity:.32; top:58%; left:8%; }
+  .screen.b .dot.d4{ width:42px; height:42px; background:var(--sky); opacity:.45; top:48%; right:6%; }
+  .screen.b .dot.d5{ width:28px; height:28px; background:var(--sun); opacity:.5; top:78%; left:34%; }
+
+  /* === Title + mascot === */
+  .greeting{ display:flex; align-items:center; justify-content:center; gap:14px;
+             margin:24px auto 12px; }
+  .greeting h2{ font-family:'Varela Round',sans-serif; font-size:38px; margin:0; color:var(--ink); }
+  .greeting img.mascot{ width:72px; height:72px; }
+  .screen.b .greeting img.mascot{ width:56px; height:56px; }
+  .screen.b .greeting h2{ font-size:32px; }
+
+  /* === Profile cards === */
+  .profiles{ display:flex; gap:16px; justify-content:center; padding:8px 16px 28px;
+             margin-top:auto; }
+  .card{ background:white; border-radius:20px; padding:18px 12px 16px;
+         width:130px; box-shadow:0 6px 18px rgba(0,0,0,.10);
+         text-align:center; display:flex; flex-direction:column;
+         align-items:center; gap:10px; cursor:pointer; }
+  .card img.avatar{ width:84px; height:84px; }
+  .card .name{ font-weight:700; font-size:18px; color:var(--ink); font-family:'Varela Round',sans-serif; }
+  .card.new{ background:rgba(255,255,255,.65); border:2px dashed rgba(45,42,38,.3); }
+  .card.new .plus{ width:84px; height:84px; border-radius:9999px;
+                   background:rgba(255,255,255,.7);
+                   display:flex; align-items:center; justify-content:center;
+                   font-size:46px; color:var(--ink); font-weight:300; line-height:1; }
+  .card.new .name{ color:rgba(45,42,38,.7); }
+  .screen.b .card{ box-shadow:0 3px 10px rgba(0,0,0,.07); }
+  .screen.b .card.new{ background:transparent; border-color:rgba(45,42,38,.22); }
+
+  /* === Settings icon (parent) === */
+  .settings{ position:absolute; bottom:14px; left:14px;
+             width:40px; height:40px; opacity:.3;
+             background:rgba(255,255,255,.8); border-radius:9999px;
+             display:flex; align-items:center; justify-content:center;
+             font-size:22px; cursor:pointer; border:none; }
+
+  .v-notes{ padding:14px 20px 18px; font-size:13px; color:#5b574e;
+            border-top:1px solid #f0ebdc; line-height:1.6; }
+  .v-notes b{ color:var(--ink); }
+</style>
+</head>
+<body>
+<div class="page-head">
+  <span class="eyebrow">BRIEF #3 · WELCOME A/B · Local-First</span>
+  <h1 class="title">מסך פתיחה — 2 גרסאות לבחירה</h1>
+  <p class="intro">
+    הילד פותח את המשחק ומגיע למסך הזה: רואה את חכמוני, רואה את הפרופילים, ולוחץ
+    על הפרופיל שלו. <b>גרסה A</b> — "חמה ועשירה" (gradient תכלת + עננים + שמש).
+    <b>גרסה B</b> — "מינימליסטית" (רקע שמנת + נקודות-פסטל).
+  </p>
+</div>
+
+<div class="split">
+  <section class="version">
+    <div class="v-label">גרסה A — חמה ועשירה</div>
+    <div class="screen a">
+      <div class="sun"></div>
+      <div class="cloud c1"></div>
+      <div class="cloud c2"></div>
+      <div class="cloud c3"></div>
+      <div class="greeting">
+        <img class="mascot" src="../assets/mascot/professor-chachmoni-standing-wave.svg" alt="פרופ' חכמוני">
+        <h2>חכמוני</h2>
+      </div>
+      <div class="profiles">
+        <div class="card">
+          <img class="avatar" src="../assets/avatars/avatar-01-rabbit.svg" alt="ארנב">
+          <div class="name">יואב</div>
+        </div>
+        <div class="card">
+          <img class="avatar" src="../assets/avatars/avatar-05-frog.svg" alt="צפרדע">
+          <div class="name">מיה</div>
+        </div>
+        <div class="card new">
+          <div class="plus">+</div>
+          <div class="name">פרופיל חדש</div>
+        </div>
+      </div>
+      <button class="settings" title="הגדרות הורים" aria-label="הגדרות הורים">⚙</button>
+    </div>
+    <div class="v-notes">
+      <b>מאפיינים:</b> gradient תכלת → שמנת, 3 עננים מצוירים בעדינות, שמש בפינה.
+      ינשוף-המסקוט במרכז ל-greeting חם.
+    </div>
+  </section>
+
+  <section class="version">
+    <div class="v-label">גרסה B — מינימליסטית</div>
+    <div class="screen b">
+      <div class="dot d1"></div>
+      <div class="dot d2"></div>
+      <div class="dot d3"></div>
+      <div class="dot d4"></div>
+      <div class="dot d5"></div>
+      <div class="greeting">
+        <img class="mascot" src="../assets/mascot/professor-chachmoni-standing-wave.svg" alt="פרופ' חכמוני">
+        <h2>חכמוני</h2>
+      </div>
+      <div class="profiles">
+        <div class="card">
+          <img class="avatar" src="../assets/avatars/avatar-01-rabbit.svg" alt="ארנב">
+          <div class="name">יואב</div>
+        </div>
+        <div class="card">
+          <img class="avatar" src="../assets/avatars/avatar-05-frog.svg" alt="צפרדע">
+          <div class="name">מיה</div>
+        </div>
+        <div class="card new">
+          <div class="plus">+</div>
+          <div class="name">פרופיל חדש</div>
+        </div>
+      </div>
+      <button class="settings" title="הגדרות הורים" aria-label="הגדרות הורים">⚙</button>
+    </div>
+    <div class="v-notes">
+      <b>מאפיינים:</b> רקע שמנת נקי, 5 עיגולי-פסטל פזורים בלי טקסטורה. ינשוף קטן יותר;
+      הפוקוס נופל על הכרטיסים.
+    </div>
+  </section>
+</div>
+</body>
+</html>

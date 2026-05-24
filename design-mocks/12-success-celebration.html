@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>חכמוני — כל הכבוד! (Brief #5)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Varela+Round&display=swap" rel="stylesheet">
+<style>
+  :root{ --sky:#6FC3DF; --sun:#FFD93D; --coral:#FF6B6B; --coral-dark:#B91C1C;
+         --mint:#6BCB77; --lavender:#C9A0DC; --cream:#FFFCF2; --ink:#2D2A26; }
+  *{ box-sizing:border-box; }
+  body{ margin:0; font-family:'Heebo','Varela Round',sans-serif; color:var(--ink); background:#F4F1EA; padding:24px; }
+  .page-head{ max-width:1100px; margin:0 auto 20px; }
+  .eyebrow{ display:inline-block; font-size:11px; letter-spacing:.18em; background:var(--ink); color:var(--cream); padding:6px 12px; border-radius:999px; font-weight:700; }
+  h1.title{ font-family:'Varela Round',sans-serif; font-size:28px; margin:12px 0 6px; }
+  .intro{ color:#5b574e; max-width:64ch; line-height:1.6; font-size:14px; margin:0; }
+
+  .screen{ max-width:1100px; margin:24px auto 0; aspect-ratio:16/10; position:relative;
+           border-radius:24px; overflow:hidden;
+           background:linear-gradient(180deg, var(--cream) 0%, #FFF6E0 100%);
+           box-shadow:0 12px 32px rgba(0,0,0,.12);
+           display:flex; flex-direction:column; align-items:center; justify-content:center; padding:40px; }
+
+  .confetti{ position:absolute; top:0; left:0; right:0; height:240px; pointer-events:none; }
+  .confetti span{ position:absolute; width:14px; height:14px; }
+  .confetti span.sq{ border-radius:3px; }
+  .confetti span.ci{ border-radius:9999px; }
+  .confetti span.tr{ width:0; height:0; border-left:8px solid transparent;
+                     border-right:8px solid transparent; border-bottom:14px solid currentColor;
+                     background:transparent !important; }
+
+  .mascot-img{ width:200px; height:200px; }
+  .headline{ font-family:'Varela Round',sans-serif; font-size:88px; color:var(--coral-dark);
+             margin:8px 0 4px; line-height:1; }
+  .sub{ font-family:'Varela Round',sans-serif; font-size:44px; color:var(--ink);
+        margin:0 0 36px; display:flex; align-items:center; gap:10px; }
+  .sub .yellow{ color:var(--sun); }
+
+  .buttons{ display:flex; gap:18px; flex-wrap:wrap; justify-content:center; }
+  .btn{ font-family:'Heebo',sans-serif; font-weight:700; font-size:28px;
+        padding:24px 44px; border-radius:9999px; border:none; cursor:pointer;
+        min-height:96px; min-width:240px; }
+  .btn.primary{ background:var(--sun); color:var(--ink);
+                box-shadow:0 8px 24px rgba(255,217,61,.4); }
+  .btn.secondary{ background:var(--cream); color:var(--coral-dark);
+                  border:3px solid var(--coral-dark); }
+
+  .notes{ max-width:1100px; margin:24px auto 0; background:var(--ink); color:var(--cream);
+          border-radius:14px; padding:22px 26px; font-size:14px; line-height:1.7; }
+  .notes b{ color:var(--mint); }
+</style>
+</head>
+<body>
+  <div class="page-head">
+    <span class="eyebrow">BRIEF #5 · CELEBRATION · Local-First</span>
+    <h1 class="title">כל הכבוד! — מסך חגיגה</h1>
+    <p class="intro">אחרי השלמת משימה — חכמוני קופץ בשמחה, +1 כוכב, וכפתורי המשך-משחק.</p>
+  </div>
+
+  <div class="screen">
+    <div class="confetti">
+      <span class="sq" style="background:var(--coral);top:14px;left:8%;"></span>
+      <span class="ci" style="background:var(--sun);top:30px;left:18%;"></span>
+      <span class="sq" style="background:var(--mint);top:8px;left:30%;"></span>
+      <span class="tr" style="color:var(--lavender);top:42px;left:40%;"></span>
+      <span class="ci" style="background:var(--sky);top:18px;left:48%;"></span>
+      <span class="sq" style="background:var(--coral);top:50px;left:56%;"></span>
+      <span class="ci" style="background:var(--sun);top:12px;left:64%;"></span>
+      <span class="tr" style="color:var(--mint);top:36px;left:72%;"></span>
+      <span class="sq" style="background:var(--lavender);top:24px;left:82%;"></span>
+      <span class="ci" style="background:var(--coral);top:8px;left:90%;"></span>
+      <span class="sq" style="background:var(--sun);top:70px;left:14%;"></span>
+      <span class="ci" style="background:var(--mint);top:80px;left:34%;"></span>
+      <span class="tr" style="color:var(--coral);top:90px;left:60%;"></span>
+      <span class="sq" style="background:var(--sky);top:74px;left:78%;"></span>
+      <span class="ci" style="background:var(--lavender);top:100px;left:22%;"></span>
+      <span class="sq" style="background:var(--coral);top:110px;left:52%;"></span>
+      <span class="ci" style="background:var(--sun);top:120px;left:70%;"></span>
+    </div>
+
+    <img class="mascot-img" src="../assets/mascot/professor-chachmoni-celebrating.svg" alt="חכמוני חוגג">
+    <div class="headline">כל הכבוד!</div>
+    <div class="sub"><span class="yellow">+1 ⭐</span><span>כוכב חדש!</span></div>
+    <div class="buttons">
+      <button class="btn primary">למשימה הבאה</button>
+      <button class="btn secondary">חזרה למפה</button>
+    </div>
+  </div>
+
+  <div class="notes">
+    <b>טריגר:</b> משימה הושלמה (5/5). <b>אינטראקציה:</b> 2 כפתורים גדולים — primary
+    (CTA צהוב) להמשך אוטומטי למשימה הבאה, secondary (חזרה למפה) לבחירה אחרת.<br><br>
+    <b>17 confetti</b> סטטיים בחלק העליון (צבעי-פלטה: קוראל/שמש/נענע/לבנדר/תכלת).<br><br>
+    <b>חכמוני קופץ</b> במרכז (pose celebrating). אנימציית bounce-pulse עם
+    <code>ease-bounce</code> תתווסף ב-Phase 8 (תואם prefers-reduced-motion).
+  </div>
+</body>
+</html>

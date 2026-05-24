@@ -9,10 +9,10 @@
 > בלוק חי. **מתעדכן בסוף כל סשן** (חוק 3 ב"פרוטוקול ביצוע"). מאפשר לסשן הבא לדעת מאיפה להמשיך.
 > אומץ מפרויקט wall (CHG-010). פירוט מלא תמיד ב-`docs/status/PROGRESS.md`.
 
-- **Phase נוכחי:** 0.5 (מוקאפים) — 60%
+- **Phase נוכחי:** 0.5 (מוקאפים) — ✅ 100% (מוכן ל-R4)
 - **נתיב הפרויקט:** `C:\Users\b0066820\Desktop\Claude project\Interactive-educational-game` (הועבר 2026-05-20).
-- **משימה אחרונה שהושלמה:** Brief #4 (12 avatars) נמסר Local-First — 8 אושרו, 4 BUG-002. ADR-016 (Avatar Palette Extension) + CHG-011 נוספו.
-- **המשימה הבאה:** Brief #3 (Welcome A/B) → Brief #5 (Task+Celebration) → R4 Gate → Phase 1.
+- **משימה אחרונה שהושלמה:** Briefs #3 + #5 נמסרו Local-First — Welcome A/B + Task + Celebration. Phase 0.5 הושלם 100%. CHG-012 + CHANGELOG 0.6.7.
+- **המשימה הבאה:** R4 Council Gate (Pre-Phase-1) → Phase 1 (שלד `src/` + CHG-005 profiles).
 - **חוסם:** אין.
 - **עדכון אחרון:** 2026-05-23.
 

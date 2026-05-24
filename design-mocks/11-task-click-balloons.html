@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>חכמוני — פוצצו את הבלונים (Brief #5)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Varela+Round&display=swap" rel="stylesheet">
+<style>
+  :root{ --sky:#6FC3DF; --sun:#FFD93D; --coral:#FF6B6B; --coral-dark:#B91C1C;
+         --mint:#6BCB77; --lavender:#C9A0DC; --cream:#FFFCF2; --ink:#2D2A26; }
+  *{ box-sizing:border-box; }
+  body{ margin:0; font-family:'Heebo','Varela Round',sans-serif; color:var(--ink); background:#F4F1EA; padding:24px; }
+  .page-head{ max-width:1100px; margin:0 auto 20px; }
+  .eyebrow{ display:inline-block; font-size:11px; letter-spacing:.18em; background:var(--ink); color:var(--cream); padding:6px 12px; border-radius:999px; font-weight:700; }
+  h1.title{ font-family:'Varela Round',sans-serif; font-size:28px; margin:12px 0 6px; }
+  .intro{ color:#5b574e; max-width:64ch; line-height:1.6; font-size:14px; margin:0; }
+
+  .screen{ max-width:1100px; margin:24px auto 0; aspect-ratio:16/10; position:relative;
+           border-radius:24px; overflow:hidden;
+           background:linear-gradient(180deg, var(--sky) 0%, #B5DDEC 55%, var(--cream) 100%);
+           box-shadow:0 12px 32px rgba(0,0,0,.12); }
+
+  .header{ position:absolute; top:0; left:0; right:0; height:80px; padding:16px 24px;
+           display:flex; align-items:center; justify-content:space-between; }
+  .star-count{ font-family:'Varela Round',sans-serif; font-size:32px; color:var(--ink);
+               display:flex; align-items:center; gap:8px; }
+  .star-count .star{ color:var(--sun); }
+  .btn-icon{ width:64px; height:64px; border-radius:9999px; background:rgba(255,255,255,.85);
+             display:flex; align-items:center; justify-content:center; font-size:28px;
+             cursor:pointer; box-shadow:0 4px 12px rgba(0,0,0,.08); border:none; }
+  .header-buttons{ display:flex; gap:12px; }
+
+  .task-title{ position:absolute; top:104px; left:50%; transform:translateX(-50%);
+               font-family:'Varela Round',sans-serif; font-size:48px; color:var(--ink);
+               white-space:nowrap; text-shadow:0 2px 6px rgba(255,255,255,.4); }
+
+  .balloons{ position:absolute; top:190px; bottom:80px; left:0; right:0; }
+  .balloon{ position:absolute; cursor:pointer; }
+  .balloon .body{ width:80px; height:96px; border-radius:50%; position:relative;
+                  background:currentColor; box-shadow:inset -8px -10px 12px rgba(0,0,0,.12),
+                                                    0 6px 14px rgba(0,0,0,.10); }
+  .balloon .tie{ position:absolute; top:96px; left:50%; transform:translateX(-50%);
+                 width:0; height:0; border-left:6px solid transparent;
+                 border-right:6px solid transparent; border-top:10px solid currentColor; opacity:.7; }
+  .balloon .string{ position:absolute; top:108px; left:50%; width:2px; height:24px;
+                    background:currentColor; opacity:.4; transform:translateX(-50%); }
+  .balloon.b1{ top:6%; left:14%; color:var(--coral); }
+  .balloon.b2{ top:4%; right:24%; color:var(--mint); }
+  .balloon.b3{ top:34%; left:34%; color:var(--sun); }
+  .balloon.b4{ top:28%; right:14%; color:var(--lavender); }
+  .balloon.b5{ top:52%; left:56%; color:var(--coral); }
+
+  .progress{ position:absolute; bottom:0; left:0; right:0; height:60px;
+             display:flex; align-items:center; justify-content:center; gap:18px;
+             background:rgba(255,252,242,.92); }
+  .pstar{ font-size:34px; color:var(--sun); line-height:1; }
+  .pstar.empty{ color:transparent; -webkit-text-stroke:1.6px rgba(45,42,38,.32); }
+
+  .notes{ max-width:1100px; margin:24px auto 0; background:var(--ink); color:var(--cream);
+          border-radius:14px; padding:22px 26px; font-size:14px; line-height:1.7; }
+  .notes b{ color:var(--mint); }
+</style>
+</head>
+<body>
+  <div class="page-head">
+    <span class="eyebrow">BRIEF #5 · TASK SCREEN (BALLOONS) · Local-First</span>
+    <h1 class="title">פוצצו את הבלונים — מסך משימה</h1>
+    <p class="intro">תבנית "click-targets" — חכמוני אומר "פוצצו את הבלונים!", הילד לוחץ עליהם, כל אחד מתפוצץ עם צליל ונעלם. 5 בלונים → מסך חגיגה.</p>
+  </div>
+
+  <div class="screen">
+    <div class="header">
+      <div class="star-count"><span class="star">⭐</span><span>17</span></div>
+      <div class="header-buttons">
+        <button class="btn-icon" title="שמע שוב" aria-label="שמע שוב את ההוראה">🔊</button>
+        <button class="btn-icon" title="חזרה למפה" aria-label="חזרה למפת העולמות">🏠</button>
+      </div>
+    </div>
+    <div class="task-title">פוצצו את הבלונים!</div>
+    <div class="balloons">
+      <div class="balloon b1"><div class="body"></div><div class="tie"></div><div class="string"></div></div>
+      <div class="balloon b2"><div class="body"></div><div class="tie"></div><div class="string"></div></div>
+      <div class="balloon b3"><div class="body"></div><div class="tie"></div><div class="string"></div></div>
+      <div class="balloon b4"><div class="body"></div><div class="tie"></div><div class="string"></div></div>
+      <div class="balloon b5"><div class="body"></div><div class="tie"></div><div class="string"></div></div>
+    </div>
+    <div class="progress">
+      <span class="pstar">★</span>
+      <span class="pstar">★</span>
+      <span class="pstar">★</span>
+      <span class="pstar empty">★</span>
+      <span class="pstar empty">★</span>
+    </div>
+  </div>
+
+  <div class="notes">
+    <b>תבנית-משימה ראשונה</b> (click-targets) — Phase 2. 5 בלונים בצבעי-פלטה, ילד
+    לוחץ → אנימציית-פיצוץ קצרה (Phase 8) + צליל balloon-pop + הבלון נעלם. אחרי 5/5 →
+    מעבר אוטומטי למסך חגיגה.<br><br>
+    <b>שורת-התקדמות תחתונה:</b> 3/5 כוכבים (מלאים בצהוב, ריקים outline). כל פיצוץ ממלא כוכב.<br><br>
+    <b>כפתורי-עזרה:</b> 🔊 הקראה-חוזרת של ההוראה. 🏠 חזרה למפת העולמות (state נשמר).
+  </div>
+</body>
+</html>

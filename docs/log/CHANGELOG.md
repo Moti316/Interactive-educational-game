@@ -7,6 +7,20 @@ tags:
 
 כל השינויים-המשמעותיים בפרויקט.
 
+## [0.6.7] - 2026-05-23 — Briefs #3 + #5 delivered → Phase 0.5 complete (CHG-012)
+
+### Added
+- `design-mocks/02-welcome.html` — Brief #3 Welcome A/B (חמה-עשירה vs מינימליסטית).
+  3 כרטיסי-פרופיל, מסקוט במרכז, כפתור-הגדרות-הורים בפינה.
+- `design-mocks/11-task-click-balloons.html` — Brief #5 task screen (5 בלונים,
+  header עם ⭐+🔊+🏠, שורת-התקדמות 3/5).
+- `design-mocks/12-success-celebration.html` — Brief #5 celebration (חכמוני קופץ,
+  "כל הכבוד!" 88px, +1⭐ 44px, primary/secondary buttons, 17 confetti).
+
+### Notes
+- **Phase 0.5 → 100%.** כל 5 ה-briefs נמסרו Local-First (#1.5, #2, #3, #4, #5).
+- ממתינים ל-R4 (Pre-Phase-1 Council Gate) → Phase 1.
+
 ## [0.6.6] - 2026-05-23 — Brief #4 delivered: 12 avatars Local-First (CHG-011)
 
 ### Added

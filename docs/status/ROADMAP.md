@@ -15,12 +15,12 @@ tags:
 
 | שדה | ערך |
 |------|------|
-| **Phase נוכחי** | 0.5 (60%) |
+| **Phase נוכחי** | 0.5 (100%) — מוכן ל-R4 |
 | **Next Gate** | R4 (אחרי השלמת Briefs #3–5) |
 | **ETA ל-MVP** | 13–20 ימי-עבודה מהיום (Local-First מאיץ Briefs ב-~1 יום) |
 | **Last DoD-verified** | 2026-05-19 (Brief #2 — 6 mascot SVGs, 1.6–2.2 KB, Universal Constraints PASS) |
 | **Last RoadmapKeeper refresh** | 2026-05-19 (אחרי Brief #2 + ADR-011) |
-| **Active blockers** | אין חוסם-Phase-1; נותרו Briefs #3–5 להשלמת Phase 0.5 |
+| **Active blockers** | אין. ממתינים ל-R4 (Pre-Phase-1 Council gate) |
 | **Recent council** | R3.5 (Plan-Wide, 🟢 GO 17 patches) |
 | **Recent design review** | **R-Design-1** (2026-05-19, 🔴 OFF-BRAND — P0-fixes בוצעו ב-CHG-009) |
 | **Latest ADR** | ADR-016 (Avatar Palette Extension) |
@@ -79,11 +79,14 @@ tags:
 ---
 
 ### Phase 0.5 — מוקאפים עיצוביים
-- **סטטוס:** 🟢 50%
+- **סטטוס:** ✅ הושלם 2026-05-23
 - **Inputs:** `docs/spec/CLAUDE-DESIGN-BRIEFS.md` (5 Briefs + 2 stubs)
 - **Deliverables:**
   - ✅ Brief #1.5 — לוגו Redux (Version B מסקוט-מלא; מחליף את Brief #1 שנפסל ב-R-Design-1)
+  - ✅ Brief #2 — Mascot 6 poses (claude.ai/design)
+  - ✅ Brief #3 — Welcome A/B (`design-mocks/02-welcome.html`)
   - ✅ Brief #4 — 12 אווטארי-חיות (Local-First; 8 אושרו, 4 BUG-002 ל-Phase 8)
+  - ✅ Brief #5 — Task + Celebration (`design-mocks/11-task-click-balloons.html` + `12-success-celebration.html`)
   - ✅ Brief #2 — Mascot 6 poses (Local-First, ADR-011) → `assets/mascot/professor-chachmoni-{standing-wave,pointing,celebrating,thinking,encouraging,sleeping}.svg`
   - ⏳ Brief #4 — 12 אווטארים → `assets/avatars/avatar-{01..12}-{kind}.svg`
   - ⏳ Brief #3 — Welcome A/B → `design-mocks/02-welcome.html`
@@ -285,6 +288,7 @@ tags:
 | 2026-05-22 | 0.5 | CHG-009: ADR-014 הוטמע ב-tokens.css + Brief #1.5 נכתב | ביצוע P0-fixes של R-Design-1 אחרי אישור-הורה | לא — ETA לא השתנה |
 | 2026-05-23 | 0.5 | Brief #1.5 נמסר ושולב — לוגו חדש (Version B מסקוט-מלא) פעיל; ADR-015 נוסף | claude.ai/design השלים את Brief #1.5; ההורה בחר B | לא — Phase 0.5 → 50% |
 | 2026-05-23 | 0.5 | Brief #4 נמסר Local-First — 12 אווטארים; 8 אושרו, 4 BUG-002 ל-Phase 8 | אומץ ADR-011 בפועל לאווטארים; ADR-016 נוסף | לא — Phase 0.5 → 60% |
+| 2026-05-23 | 0.5 | Briefs #3 + #5 נמסרו Local-First — Welcome A/B + Task + Celebration | מצב אוטונומי לכל Phase 0.5; CHG-012 | Phase 0.5 → 100%; מוכן ל-R4 |
 
 ---
 

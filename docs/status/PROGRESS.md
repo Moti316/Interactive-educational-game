@@ -5,7 +5,7 @@ tags:
 
 # חכמוני — Master Progress Dashboard
 
-> **עדכון אחרון:** 2026-05-23 (Brief #4 נמסר — 12 אווטארים Local-First) | **מחשב:** HOME-PC | **גרסה:** v0.6.6
+> **עדכון אחרון:** 2026-05-23 (Briefs #3 + #5 נמסרו — Phase 0.5 הושלם 100%) | **מחשב:** HOME-PC | **גרסה:** v0.6.7
 > **תוכנית חיה:** [`docs/status/ROADMAP.md`](./ROADMAP.md) (מתוחזק ע"י [RoadmapKeeper](../../.claude/agents/agent-roadmap-keeper.md))
 
 ## 📍 שדות-מהירים
@@ -19,14 +19,14 @@ tags:
 | **Last Design Review** | **R-Design-1** (2026-05-19, 🔴 OFF-BRAND — 2 FAIL + 3 NEEDS-PATCH; Brief #1.5 חוסם Phase 1) |
 | **Last ADR** | ADR-016 (Avatar Palette Extension) |
 | **Teams active** | 3 (High Council 9, Compass 3, Design Studio 7 = **19 sub-agents**) |
-| **Active blockers** | אין חוסם-Phase-1. נותרו Briefs #3–5 להשלמת Phase 0.5 |
+| **Active blockers** | אין חוסם. ממתינים ל-R4 (Pre-Phase-1 gate) — אזי Phase 1 |
 
 ## 🚦 סטטוס שלבים
 
 | שלב | סטטוס | יום | התקדמות | הערות |
 |-----|--------|-----|----------|--------|
 | **0 — תשתית** | ✅ הושלם | 1 | 100% | 49 קבצים ב-GitHub |
-| **0.5 — מוקאפים** | 🟢 בעבודה | 4 | 60% | Briefs #1.5 ✅, #2 ✅, #4 ✅ (12 avatars, 4 BUG-002). הבא: #3, #5 |
+| **0.5 — מוקאפים** | ✅ הושלם | 4 | 100% | כל 5 ה-briefs נמסרו (#1.5, #2, #3, #4, #5). ממתין ל-R4 |
 | **CHG-005 (חדש)** | 📋 תוכנן | 2 | 0% | Parent Profiles + Fast-Path + 4 ערוצי-נוכחות |
 | 1 — שלד + פרופילים | ⏳ ממתין | — | 0% | יכלול CHG-005 לפי התכנון |
 | 2 — תבנית ראשונה | ⏳ ממתין | — | 0% | |
@@ -40,16 +40,13 @@ tags:
 
 ## 📍 מה הצעד הבא?
 
-> **Brief #1.5 הושלם (2026-05-23):** הלוגו עוצב מחדש דרך claude.ai/design, ההורה בחר Version B (מסקוט-מלא), והוא שולב כלוגו הפעיל. שני חוסמי-Phase-1 (Brief #1.5 + ADR-014) נסגרו.
+> **Phase 0.5 הושלם (2026-05-23):** כל 5 ה-briefs נמסרו Local-First — לוגו (#1.5), מסקוט (#2), 12 אווטארים (#4), Welcome A/B (#3), Task + Celebration (#5).
 
-**רצף-העבודה הבא — השלמת Phase 0.5:**
-1. Brief #3 — Welcome A/B (claude.ai/design)
-2. Brief #4 — 12 אווטארים (DNA-aligned עם המסקוט)
-3. Brief #5 — Task + Celebration (+ motion-spec)
-4. R4 Council Gate (Pre-Phase-1)
-5. Phase 1 — שלד מערכת + פרופילים (יכלול CHG-005)
+**הצעד הבא:**
+1. **R4 Council Gate** (Pre-Phase-1, lens-based) — סקירה רוחבית של Phase 0.5
+2. **Phase 1** — שלד מערכת + פרופילים (יכלול CHG-005: parent profiles + Fast-Path)
 
-> אופציונלי: R-Design-2 לאימות הלוגו החדש לפני R4.
+> מתבצע במצב אוטונומי — ההורה יקבל עדכון רק כשנדרשת פעולה ממנו (בדיקת-ילדים ב-Phase 2, OAuth ב-Phase 4, install-shortcut ב-Phase 9).
 
 ## 🆕 CHG-005 — מה התווסף (תכנון בלבד, לא ביצוע)
 

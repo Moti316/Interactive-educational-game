@@ -258,6 +258,26 @@ tags:
 - ✅ כל SVG עומד ב-Universal Constraints (אין script/foreignObject/handlers, viewBox 0 0 200 200, role + aria-label בעברית)
 - ✅ צבעי-גוף הדמויות מהפלטה הראשית; צבעי הרחבה (פסטלים + חומים) מתועדים ב-ADR-016
 
+---
+
+## CHG-012 | 2026-05-23 | ✅ הוטמע (Briefs #3 + #5 — Welcome + Task + Celebration)
+**מהות:** 2 ה-briefs האחרונים של Phase 0.5 נמסרו Local-First. Phase 0.5 → 100%.
+**טריגר:** ההורה אישר מצב אוטונומי לכל Phase 0.5 + Phase 1; Claude Code מבצע ברצף עד R4.
+
+**שינוי-עיקרי:**
+- `design-mocks/02-welcome.html` — Brief #3 Welcome A/B (חמה-עשירה / מינימליסטית). 3 כרטיסי-פרופיל (יואב/מיה/חדש), מסקוט במרכז, ⚙ הגדרות-הורים.
+- `design-mocks/11-task-click-balloons.html` — Brief #5 task screen (תבנית click-targets, 5 בלונים, header עם ⭐+🔊+🏠, שורת 3/5).
+- `design-mocks/12-success-celebration.html` — Brief #5 celebration (חכמוני קופץ, "כל הכבוד!", +1⭐, primary/secondary buttons, 17 confetti).
+
+### סעיפים שהושפעו
+- [x] 3 design-mocks חדשים
+- [x] CHANGELOG 0.6.7, PROGRESS/ROADMAP/CLAUDE.md/_DASHBOARD/TASKS — Phase 0.5 → 100%
+- [x] חוסם-Phase-1 הוסר; ממתינים ל-R4
+
+### הצעד הבא
+- R4 Council Gate (Pre-Phase-1, lens-based) — סקירה רוחבית של Phase 0.5
+- אם 🟢 GO → Phase 1 (שלד `src/` + פרופילים, יכלול CHG-005)
+
 ### וידוא-עקביות
 - ✅ tokens.css — שינוי additive בלבד; אף token קיים לא שינה ערך
 - ✅ Brief #1.5 כולל הפניה ל-Universal Constraints + בלוק START/END PASTE
