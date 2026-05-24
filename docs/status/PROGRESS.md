@@ -12,10 +12,10 @@ tags:
 
 | שדה | ערך |
 |------|------|
-| **Phase נוכחי** | 0.5 (40%) |
+| **Phase נוכחי** | 1 — שלד + פרופילים |
 | **Next Gate** | R4 (Pre-Phase-1, אחרי השלמת Briefs #3–5) |
 | **Last DoD-verified** | 2026-05-19 (Brief #2 — Mascot 6 poses, Universal Constraints PASS) |
-| **Last Council** | R3.5 (2026-05-19, 🟢 GO with 17 patches) |
+| **Last Council** | R4 (2026-05-23, 🟢 GO 4/4 PASS, אחרי פטץ' btn-icon) |
 | **Last Design Review** | **R-Design-1** (2026-05-19, 🔴 OFF-BRAND — 2 FAIL + 3 NEEDS-PATCH; Brief #1.5 חוסם Phase 1) |
 | **Last ADR** | ADR-016 (Avatar Palette Extension) |
 | **Teams active** | 3 (High Council 9, Compass 3, Design Studio 7 = **19 sub-agents**) |

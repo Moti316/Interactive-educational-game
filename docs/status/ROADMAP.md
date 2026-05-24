@@ -15,13 +15,13 @@ tags:
 
 | שדה | ערך |
 |------|------|
-| **Phase נוכחי** | 0.5 (100%) — מוכן ל-R4 |
+| **Phase נוכחי** | 1 — שלד + פרופילים (Phase 0.5 נסגר ע"י R4 🟢 GO) |
 | **Next Gate** | R4 (אחרי השלמת Briefs #3–5) |
 | **ETA ל-MVP** | 13–20 ימי-עבודה מהיום (Local-First מאיץ Briefs ב-~1 יום) |
 | **Last DoD-verified** | 2026-05-19 (Brief #2 — 6 mascot SVGs, 1.6–2.2 KB, Universal Constraints PASS) |
 | **Last RoadmapKeeper refresh** | 2026-05-19 (אחרי Brief #2 + ADR-011) |
-| **Active blockers** | אין. ממתינים ל-R4 (Pre-Phase-1 Council gate) |
-| **Recent council** | R3.5 (Plan-Wide, 🟢 GO 17 patches) |
+| **Active blockers** | אין. Phase 1 פתוח לכתיבת קוד |
+| **Recent council** | R4 (Pre-Phase-1, 🟢 GO 4/4 PASS) |
 | **Recent design review** | **R-Design-1** (2026-05-19, 🔴 OFF-BRAND — P0-fixes בוצעו ב-CHG-009) |
 | **Latest ADR** | ADR-016 (Avatar Palette Extension) |
 
@@ -289,6 +289,7 @@ tags:
 | 2026-05-23 | 0.5 | Brief #1.5 נמסר ושולב — לוגו חדש (Version B מסקוט-מלא) פעיל; ADR-015 נוסף | claude.ai/design השלים את Brief #1.5; ההורה בחר B | לא — Phase 0.5 → 50% |
 | 2026-05-23 | 0.5 | Brief #4 נמסר Local-First — 12 אווטארים; 8 אושרו, 4 BUG-002 ל-Phase 8 | אומץ ADR-011 בפועל לאווטארים; ADR-016 נוסף | לא — Phase 0.5 → 60% |
 | 2026-05-23 | 0.5 | Briefs #3 + #5 נמסרו Local-First — Welcome A/B + Task + Celebration | מצב אוטונומי לכל Phase 0.5; CHG-012 | Phase 0.5 → 100%; מוכן ל-R4 |
+| 2026-05-23 | 0.5→1 | R4 הושלם — 🟢 GO 4/4 PASS (אחרי פטץ' חד-קו: btn-icon 64→80px) | Pre-Phase-1 gate; פותח את Phase 1 | Phase 0.5 נסגר; Phase 1 פתוח |
 
 ---
 

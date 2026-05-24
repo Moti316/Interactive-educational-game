@@ -241,6 +241,117 @@ tags:
 
 **המלצת-יו"ר Round 3:** 🟢 GO לשלב 1 (לאחר יישום 14 הpatches).
 
+### Round 4 — 2026-05-23 (Pre-Phase-1 Gate, post-Phase-0.5 deliverables)
+
+**מטרה:** סקירה רוחבית של תוצרי Phase 0.5 (5 briefs + assets + mockups) לפני פתיחת Phase 1 (קוד `src/`). שער R4 מקיים את DoD של Phase 0.5 ואת ההיתר לפתוח את Phase 1.
+
+**שיטה:** Lens-based synthesized review — Claude Code סקר את החומרים דרך עדשת 4 ה-R4-members.
+
+**Members (lenses):** AccessibilityInspector, PerfBudgetEnforcer, QualityAssurance, IntegrationVerifier
+**Chair:** CouncilChair
+
+**קבצים שנסקרו:**
+- Logo: `assets/logo/active/{logo-hero,logo-medium,favicon}.svg` + `assets/icons/favicon.svg`
+- Mascot: 6 קבצי `assets/mascot/professor-chachmoni-*.svg`
+- Avatars: 12 קבצי `assets/avatars/avatar-{01..12}-*.svg`
+- Design mocks: `design-mocks/{02-welcome, 11-task-click-balloons, 12-success-celebration, 04-avatars-preview, 01-logo-redux-preview, 01-mascot-preview}.html`
+- Tokens: `design-mocks/shared/tokens.css` (ADR-014 semantic layer + ADR-016 avatar palette)
+
+---
+
+#### ♿ AccessibilityInspector — 🟡 WARNING (קל — פטץ' חד-קו יושם)
+
+**עברו:**
+- כל SVG: `role="img"` + `aria-label` בעברית ✓
+- ניגודיות-טקסט: כל הטקסטים על תוכן בצבעי-פלטה עם זוגות מאומתים מ-`tokens.css` ✓
+- RTL: `dir="rtl"` בכל ה-HTML mocks ✓
+- כפתורי CTA חגיגה: min-height 96px + min-width 240px (מעל הסף לילדים) ✓
+- כרטיסי-פרופיל: 130×180 (מעל 80×80 min) ✓
+- בלוני-משימה: 80×96 (בדיוק על הסף) ✓
+- כפתור-הגדרות-הורים ⚙ ב-Welcome: 40×40 + opacity .3 — תקין (פר-הורה, מכוון להיות "מוסתר" מהילד)
+
+**נמצא — נדרש פטץ':**
+- ❌ header buttons (🔊, 🏠) ב-`11-task-click-balloons.html`: 64×64px — **מתחת ל-80×80 min לידי-בן-4**.
+
+**Patch (יושם 2026-05-23):**
+- `.btn-icon` width/height 64→80px, font-size 28→32px.
+
+**VERDICT (אחרי patch):** ✅ PASS.
+
+#### ⚡ PerfBudgetEnforcer — ✅ PASS
+
+**גדלי-נכסים:**
+- Mascot 6 poses: 1.26–1.93 KB (סה"כ ~10 KB) ✓
+- Logo (4 קבצים): <1 KB כל אחד ✓
+- 12 avatars: 0.8–1.6 KB כל אחד ✓
+- HTML mocks: 3–6 KB כל אחד (CSS inline, ללא filter/raster/data:base64) ✓
+- כולם רחוקים מהתקרה של ≤8KB/קובץ.
+
+**אין:** filter effects כבדים, raster ב-SVG, base64 inline, fonts ב-data:. **viewBox compact:** 0 0 100/200/240 בהתאם ✓
+
+**VERDICT:** ✅ PASS.
+
+#### 🧪 QualityAssurance — ✅ PASS
+
+**תרחישי-רנדור:**
+| תרחיש | סטטוס |
+|--------|--------|
+| Mascot/Logo/Avatar ב-`<img src>` | ✅ |
+| Mascot/Logo/Avatar inline `<svg>` | ✅ |
+| HTML mocks ב-Chrome | ✅ |
+| RTL rendering + Hebrew display | ✅ |
+| Aspect-ratio 16/10 ב-768–1920 viewports | ✅ (responsive flexbox) |
+
+**הערות:**
+- Welcome cards מיועדים ל-220×280 בפרויקט אמיתי; ב-mocks הם 130 ל-side-by-side. **Phase 1** code יישם את הגודל הסופי.
+- 4 אווטארים ב-BUG-002 (אריה/פיל/ינשוף/דג) — איכות מקובלת זמנית, יחזור ב-Phase 8 ליטוש.
+- Brief #4.1 ב-claude.ai/design ל-4 הקשים נוסה ולא שיפר — מתועד.
+
+**VERDICT:** ✅ PASS.
+
+#### 🔗 IntegrationVerifier — ✅ PASS
+
+**Refs validation:**
+- `design-mocks/02-welcome.html` → `../assets/mascot/professor-chachmoni-standing-wave.svg` ✓ + `../assets/avatars/avatar-{01,05}-*.svg` ✓
+- `design-mocks/12-success-celebration.html` → `../assets/mascot/professor-chachmoni-celebrating.svg` ✓
+- naming convention: kebab-case ✓ בכל הקבצים החדשים
+- כל SVG: viewBox + xmlns + role + aria-label ✓
+- `avatar-NN-kind.svg` pattern ✓
+
+**הערה ל-Phase 1:**
+- HTML mocks משכפלים את ערכי tokens.css כ-CSS variables inline (לא טוענים את tokens.css). **מקובל ל-mockups** (self-contained). **קוד Phase 1 חייב** לייבא את `design-mocks/shared/tokens.css` (או להעתיק את הקובץ ל-`styles/tokens.css` ולסנכרן).
+
+**VERDICT:** ✅ PASS.
+
+---
+
+### Chair Synthesis (R4)
+
+| חבר | סטטוס | חומרה |
+|------|--------|--------|
+| AccessibilityInspector | ✅ PASS (אחרי פטץ' חד-קו) | — |
+| PerfBudgetEnforcer | ✅ PASS | — |
+| QualityAssurance | ✅ PASS | — |
+| IntegrationVerifier | ✅ PASS | — |
+
+**Score:** 4/4 PASS (אחרי פטץ' header-icons).
+
+#### המלצת-יו"ר: 🟢 **GO ל-Phase 1**
+
+**הוראות ל-Phase 1:**
+1. ייבא את `design-mocks/shared/tokens.css` ל-`styles/global.css` (או העתק ושמור סינכרון).
+2. השתמש ב-Layer 2 semantic tokens (ADR-014) בקוד: `--color-text-primary`, `--color-bg-page`, וכו'.
+3. אל תשתמש ב-avatar-palette tokens מחוץ ל-`<img>` של אווטאר.
+4. כל כפתור-קליק חייב min 80×80 (לפי AccessibilityInspector).
+5. אכוף `prefers-reduced-motion` בכל אנימציה (R3.5 patch).
+6. כל טקסט-משתמש: `textContent` (לא `innerHTML`) — חוק R1 + SecurityAuditor.
+
+**Roadmap impact:**
+- 2026-05-23 | 0.5 → 1 | R4: 🟢 GO 4/4 PASS אחרי פטץ' header-icons. **Phase 1 פתוח.**
+- ETA ל-MVP: ללא drift.
+
+**ADR צפוי ב-Phase 1:** סביר ש-CHG-005 ידרוש ADR נוסף סביב mechanism של voice recording או recovery flow — יוצר בעת הצורך.
+
 ## Build-Phase Reviews (קוד)
 
 *יתמלאו בסיום כל שלב-בנייה.*

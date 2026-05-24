@@ -9,10 +9,10 @@
 > בלוק חי. **מתעדכן בסוף כל סשן** (חוק 3 ב"פרוטוקול ביצוע"). מאפשר לסשן הבא לדעת מאיפה להמשיך.
 > אומץ מפרויקט wall (CHG-010). פירוט מלא תמיד ב-`docs/status/PROGRESS.md`.
 
-- **Phase נוכחי:** 0.5 (מוקאפים) — ✅ 100% (מוכן ל-R4)
+- **Phase נוכחי:** 1 — שלד + פרופילים (Phase 0.5 נסגר ע"י R4 🟢 GO)
 - **נתיב הפרויקט:** `C:\Users\b0066820\Desktop\Claude project\Interactive-educational-game` (הועבר 2026-05-20).
-- **משימה אחרונה שהושלמה:** Briefs #3 + #5 נמסרו Local-First — Welcome A/B + Task + Celebration. Phase 0.5 הושלם 100%. CHG-012 + CHANGELOG 0.6.7.
-- **המשימה הבאה:** R4 Council Gate (Pre-Phase-1) → Phase 1 (שלד `src/` + CHG-005 profiles).
+- **משימה אחרונה שהושלמה:** R4 Council Gate 🟢 GO 4/4 PASS (אחרי פטץ' חד-קו ל-btn-icon ב-task screen). Phase 0.5 נסגר רשמית.
+- **המשימה הבאה:** Phase 1 — שלד `src/` (app/audio/storage/profiles/photos/welcome/UI) + CHG-005 profiles. מתחיל ב-tokens.css copy → styles/global.css → index.html → app.js.
 - **חוסם:** אין.
 - **עדכון אחרון:** 2026-05-23.
 
