@@ -1,33 +1,43 @@
 // worlds.js — world data + world-map screen.
-// MVP has 4 worlds; only 'mouse' unlocked at start. Others unlock per progress.
+// 4 worlds. Mouse always unlocked. Others unlock when previous world has ≥N completed tasks.
 
 import { createButton } from './ui/button.js';
 import { attachSpeakOnHover, speak } from './audio.js';
 import * as profiles from './profiles.js';
 import { getAvatarById } from './ui/avatar-picker.js';
+import { getProgress } from './tasks.js';
 
 export const WORLDS = [
-  { id: 'mouse',    name: 'עולם העכבר',   emoji: '🖱',  unlocked: true,  color: 'var(--color-sky)' },
-  { id: 'keyboard', name: 'עולם המקלדת',  emoji: '⌨️',  unlocked: false, color: 'var(--color-mint)' },
-  { id: 'window',   name: 'עולם החלון',   emoji: '🪟',  unlocked: false, color: 'var(--color-lavender)' },
-  { id: 'browser',  name: 'עולם הדפדפן',  emoji: '🌐',  unlocked: false, color: 'var(--color-sun)' },
+  { id: 'mouse',    name: 'עולם העכבר',   emoji: '🖱',  prereqCount: 0,  color: 'var(--color-sky)' },
+  { id: 'keyboard', name: 'עולם המקלדת',  emoji: '⌨️',  prereqCount: 3,  prereqWorld: 'mouse',    color: 'var(--color-mint)' },
+  { id: 'window',   name: 'עולם החלון',   emoji: '🪟',  prereqCount: 3,  prereqWorld: 'keyboard', color: 'var(--color-lavender)' },
+  { id: 'browser',  name: 'עולם הדפדפן',  emoji: '🌐',  prereqCount: 2,  prereqWorld: 'window',   color: 'var(--color-sun)' },
 ];
 
 export function getWorld(id) { return WORLDS.find(w => w.id === id) || null; }
 
+export function isUnlocked(worldId, completedIds = []) {
+  const w = getWorld(worldId);
+  if (!w) return false;
+  if (w.prereqCount === 0) return true;
+  const p = getProgress(w.prereqWorld, completedIds);
+  return p.done >= w.prereqCount;
+}
+
 /**
  * Render world-map screen.
- * @param {object} ctx - { onSelectWorld(world), onBack(), onOpenSettings() }
  */
 export function renderWorldMap({ onSelectWorld, onBack } = {}) {
   const wrap = document.createElement('div');
   wrap.className = 'screen screen-world-map';
 
+  const active = profiles.getActive();
+  const completed = (active && active.completedTasks) || [];
+
   // Header
   const header = document.createElement('div');
   header.className = 'screen-header world-header';
 
-  const active = profiles.getActive();
   const userInfo = document.createElement('div');
   userInfo.className = 'user-info';
   if (active) {
@@ -57,9 +67,7 @@ export function renderWorldMap({ onSelectWorld, onBack } = {}) {
   headerRight.append(starCount);
 
   headerRight.append(createButton({
-    label: '🏠',
-    ariaLabel: 'חזרה למסך פתיחה',
-    variant: 'icon',
+    label: '🏠', ariaLabel: 'חזרה למסך פתיחה', variant: 'icon',
     onClick: () => onBack && onBack(),
   }));
 
@@ -77,7 +85,8 @@ export function renderWorldMap({ onSelectWorld, onBack } = {}) {
   const grid = document.createElement('div');
   grid.className = 'world-grid';
   for (const w of WORLDS) {
-    grid.append(createWorldCard(w, onSelectWorld));
+    const unlocked = isUnlocked(w.id, completed);
+    grid.append(createWorldCard(w, unlocked, completed, onSelectWorld));
   }
   wrap.append(grid);
 
@@ -87,17 +96,17 @@ export function renderWorldMap({ onSelectWorld, onBack } = {}) {
   return wrap;
 }
 
-function createWorldCard(world, onSelectWorld) {
+function createWorldCard(world, unlocked, completedIds, onSelectWorld) {
   const card = document.createElement('button');
   card.type = 'button';
   card.className = 'world-card';
-  if (!world.unlocked) card.classList.add('is-locked');
-  card.setAttribute('aria-label', world.name + (world.unlocked ? '' : ' (נעול)'));
+  if (!unlocked) card.classList.add('is-locked');
+  card.setAttribute('aria-label', world.name + (unlocked ? '' : ' (נעול)'));
   card.style.setProperty('--world-color', world.color);
 
   const emoji = document.createElement('div');
   emoji.className = 'world-emoji';
-  emoji.textContent = world.unlocked ? world.emoji : '🔒';
+  emoji.textContent = unlocked ? world.emoji : '🔒';
 
   const name = document.createElement('div');
   name.className = 'world-name';
@@ -105,13 +114,29 @@ function createWorldCard(world, onSelectWorld) {
 
   card.append(emoji, name);
 
-  attachSpeakOnHover(card, world.name + (world.unlocked ? '' : ', נעול'));
+  if (unlocked) {
+    const p = getProgress(world.id, completedIds);
+    const meter = document.createElement('div');
+    meter.className = 'world-progress';
+    const bar = document.createElement('div');
+    bar.className = 'world-progress-bar';
+    bar.style.width = `${p.percent}%`;
+    meter.append(bar);
+    const label = document.createElement('div');
+    label.className = 'world-progress-label';
+    label.textContent = `${p.done}/${p.total}`;
+    card.append(meter, label);
+  }
+
+  let speakText = world.name;
+  if (!unlocked) {
+    const prereq = getWorld(world.prereqWorld);
+    speakText += `, נעול — סיים ${world.prereqCount} משימות ב${prereq ? prereq.name : ''}`;
+  }
+  attachSpeakOnHover(card, speakText);
 
   card.addEventListener('click', () => {
-    if (!world.unlocked) {
-      speak('עולם זה עוד נעול');
-      return;
-    }
+    if (!unlocked) { speak(speakText); return; }
     onSelectWorld && onSelectWorld(world);
   });
   return card;

@@ -12,8 +12,14 @@ import { renderClickTargets } from './templates/click-targets.js';
 import { renderHoverTarget } from './templates/hover-target.js';
 import { renderDoubleClickReveal } from './templates/double-click-reveal.js';
 import { renderDragDropMatch } from './templates/drag-drop-match.js';
+import { renderRightClickMenu } from './templates/right-click-menu.js';
+import { renderKeyPress } from './templates/key-press.js';
+import { renderTypeWord } from './templates/type-word.js';
+import { renderPointAndNarrate } from './templates/point-and-narrate.js';
 import { renderCelebration } from './celebration.js';
 import { getTask, getNextTask } from './tasks.js';
+import { renderSettings } from './settings.js';
+import { renderPinEntry } from './pin-entry.js';
 
 const STATES = Object.freeze({
   LOADING: 'loading',
@@ -132,6 +138,18 @@ function render() {
         case 'drag-drop-match':
           view = renderDragDropMatch(task, { onComplete: onTaskComplete, onExit: onTaskExit });
           break;
+        case 'right-click-menu':
+          view = renderRightClickMenu(task, { onComplete: onTaskComplete, onExit: onTaskExit });
+          break;
+        case 'key-press':
+          view = renderKeyPress(task, { onComplete: onTaskComplete, onExit: onTaskExit });
+          break;
+        case 'type-word':
+          view = renderTypeWord(task, { onComplete: onTaskComplete, onExit: onTaskExit });
+          break;
+        case 'point-and-narrate':
+          view = renderPointAndNarrate(task, { onComplete: onTaskComplete, onExit: onTaskExit });
+          break;
         default:
           view = renderTemplateNotImplemented(task);
       }
@@ -157,7 +175,16 @@ function render() {
       break;
 
     case STATES.PIN_ENTRY:
-      appRoot.append(renderPinEntryPlaceholder());
+      appRoot.append(renderPinEntry({
+        onSuccess: () => setState(STATES.SETTINGS),
+        onCancel: () => setState(STATES.WELCOME),
+      }));
+      break;
+
+    case STATES.SETTINGS:
+      appRoot.append(renderSettings({
+        onBack: () => setState(STATES.WELCOME),
+      }));
       break;
 
     default:
