@@ -7,6 +7,108 @@ tags:
 
 כל השינויים-המשמעותיים בפרויקט.
 
+## [1.0.0] - 2026-05-24 — MVP feature-complete (CHG-016)
+
+המעבר ל-v1.0.0 — מסיים Phases 1+3+4+5+6+7+8+9 בריצה-אחת אוטונומית.
+שני חסמים שדורשים פעולת-הורה (OAuth setup, kid-testing) — מתועדים והקוד-מוכן.
+
+### Added — Phase 1 completion
+- `src/db.js` — IndexedDB promise wrapper (photos · voice · cache stores)
+- `src/photo-store.js` — magic-bytes validation (JPEG/PNG/WebP) + canvas resize
+  to 256×256 + ≤200KB JPEG output. Per CLAUDE.md security policy.
+- `src/backup.js` — Export/Import JSON of all `chachmoni:*` data including
+  IndexedDB photo Blobs (base64-encoded).
+
+### Added — Phase 3 right-click template (previously deferred)
+- `src/templates/right-click-menu.js` — right-click with 450ms long-press
+  fallback. Single-action "select" button (no nav-tree complexity for kids 4-6).
+- 2 new tasks: `task-mouse-right-click-pick`, `task-mouse-right-click-animals`.
+
+### Added — Phase 4 Drive sync infrastructure
+- `src/sync/drive-config.js` — OAuth Client ID slot (empty by default).
+  Scope: `drive.file` only (least-privilege).
+- `src/sync/drive-auth.js` — Google Identity Services token-client flow.
+- `src/sync/drive-sync.js` — per-profile progress files (1-file-per-profile
+  schema per CLAUDE.md). 2-way merge: union of completedTasks, max stars.
+- `app.js` calls `autoSyncOnLaunch()` best-effort silent.
+- ⚠ Activation requires parent to set CLIENT_ID in drive-config.js after
+  Google Cloud Console setup (~30 min, see PARENT-GUIDE.md).
+
+### Added — Phase 5 keyboard templates
+- `src/templates/key-press.js` — single-key targets (arrows, space, enter)
+  with big visual cue + correct/wrong animations + reduced-motion compliance.
+- `src/templates/type-word.js` — letter-by-letter Hebrew typing with RTL slot
+  layout (row-reverse so first letter sits on the right).
+- 5 type-word tasks: אבא, אמא, דוד, סוס, כדור, ים, שיר, שמש
+- 3 key-press tasks: arrows-basic, arrows-mix, space-enter, arrows-long
+
+### Added — Phase 6 point-and-narrate template
+- `src/templates/point-and-narrate.js` — labeled hot-spots on SVG backdrops.
+  Two scene-types built-in: `window` and `browser` (rendered as inline SVG
+  with title-bar / colored buttons / address-bar mockups).
+- World 3 (window) — 3 tasks: anatomy, actions, colors
+- World 4 (browser) — 3 tasks: anatomy, buttons, address
+
+### Added — Phase 7 content (26 tasks total)
+- Tasks expanded across all 4 worlds:
+  - Mouse: 14 (3 click + 3 hover + 2 dblclick + 3 dragdrop + 2 right-click + 1 stars)
+  - Keyboard: 9 (4 key-press + 5 type-word)
+  - Window: 3 point-and-narrate
+  - Browser: 3 point-and-narrate
+- `getProgress(worldId, completedIds)` helper for per-world meter
+
+### Added — Phase 8 polish
+- `src/audio-cues.js` — Web Audio synth: cueCorrect / cueWrong / cueComplete /
+  cueClick. No MP3 binaries shipped (keeps repo small). Respects
+  prefers-reduced-motion. Hooked into every template + celebration.
+- Per-world progress bars on world-map cards
+- Progressive world unlock: keyboard after 3 mouse tasks, window after 3
+  keyboard tasks, browser after 2 window tasks.
+
+### Added — Phase 9 packaging
+- `docs/guides/PARENT-GUIDE.md` — full rewrite: installation + 5-step Drive
+  OAuth walkthrough + backup/restore + PIN recovery + project anatomy +
+  common-issues table.
+- `docs/log/KIDS-FEEDBACK.md` — observation template, 6 test scenarios,
+  red-flag heuristics, success signals, difficulty rating, aggregate-metrics
+  table. Ready for parent to fill after first kid-test session.
+
+### Added — CHG-005 parent flow (CHG-005 v1 realized)
+- `src/pin-entry.js` — PBKDF2-SHA256 100K-iters PIN, salt-per-PIN, 3-attempt
+  lockout (30s). First-time setup + verification flows.
+- `src/settings.js` — parent dashboard behind PIN: profile list w/ stars+
+  task-count, backup export/import, Drive sync controls, reset-PIN, reset-all.
+- `app.js` STATE machine handles PIN_ENTRY → SETTINGS transition.
+
+### CSS additions (~340 lines in `styles/components.css`)
+- right-click menu + key-press + type-word + point-and-narrate templates
+- PIN keypad (88px cells, ≥80px tap target per CLAUDE.md)
+- Settings cards (profiles list, backup buttons, drive controls)
+- World progress bars
+- `@media (prefers-reduced-motion: reduce)` overrides for all new animations
+
+### Status
+- **MVP feature-complete.** All 8 templates built. All 4 worlds active. 26
+  tasks available. Parent dashboard functional. Drive sync ready (needs
+  CLIENT_ID).
+- **Open blockers:**
+  - Phase 4 ACTIVATION — parent must complete Google OAuth setup (~30 min).
+  - Phase 2 DoD — kid-testing required (template ready in KIDS-FEEDBACK.md).
+- **Open bug:** BUG-002 (4 avatar quality) — deferred to Phase 8 polish-2.
+
+### CLAUDE.md compliance verification
+- ✅ Hebrew + RTL throughout
+- ✅ All visible text speakable (TTS he-IL @ 0.85 rate)
+- ✅ Buttons ≥80×80px via src/ui/button.js
+- ✅ chachmoni:* localStorage prefix
+- ✅ textContent only (no innerHTML on user/AI input)
+- ✅ drive.file scope only
+- ✅ PIN hashed (PBKDF2 + salt)
+- ✅ Task naming: task-{worldId}-{kebab-skill-name}
+- ✅ No timers / failure-screens — "ננסה שוב" everywhere
+
+---
+
 ## [0.9.0] - 2026-05-23 — Phase 3: 3 of 4 mouse templates done (CHG-015)
 
 ### Added

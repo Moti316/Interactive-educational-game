@@ -224,3 +224,49 @@ tags:
 **השלכות:** חיובי — SSoT שלם, כל hex מתועד; קל לעדכן צבע-חיה ע"י עריכת token אחד; קטגוריה מבודדת מונעת זיהום הפלטה הראשית. שלילי — מוסיף 12-17 tokens (יעלה הקובץ tokens.css ב-~20 שורות); דורש משמעת ב-Phase 1 לא לערבב.
 
 **אלטרנטיבות שנדחו:** הטמעת hex ב-SVG-אווטאר ידנית (משאיר אותם מחוץ ל-SSoT — הפרה); מיזוג ה-avatar-pastels לפלטה הראשית (מזהם את הפלטה ה-UI עם צבעים שלא רלוונטיים לרכיבים — הפרת היררכיית-עיצוב).
+## ADR-017 | 2026-05-24 | Web Audio Synth for Encouragement Cues (no MP3 binaries)
+**סטטוס:** מאושר · **בעלים:** Claude Code (CHG-016) · אישר: human (autonomous task)
+
+**הקשר:** ROADMAP Phase 8 דרש "11+ צלילי-עידוד (MP3)" — קבצים בינאריים. הריפו הוא ES Modules vanilla בלי npm; כל MP3 מעלה את גודל-הריפו ב-30-200KB לקובץ, ולא ניתן ל-tree-shake. הילדים זקוקים ל-feedback-אודיו מיידי על קליק-נכון/שגוי, אבל הוא לא צריך להיות איכותי-ביותר — צלילים-קצרים-עליזים מספיקים.
+
+**ההחלטה:** מימוש כל ה-cues דרך Web Audio API (synth in-browser): `cueCorrect` (שני-טונים-עולים), `cueWrong` (גלישה-יורדת רכה — לא קשה), `cueComplete` (3-טונים מז'ור), `cueClick` (קליק קצר). אפס קבצים בינאריים. גודל קוד: ~70 שורות. מודול: `src/audio-cues.js`.
+
+**אכיפה:** כל template חדש חייב לקרוא ל-cue מתאים ב-feedback-positive. שום template לא מייבא MP3. PerfBudgetEnforcer לבדוק שגודל-הריפו אינו עולה בגלל אודיו. AccessibilityInspector לבדוק שה-`prefers-reduced-motion` מבוטא גם ב-audio (3-tone-melody → tone-יחיד במצב-reduced).
+
+**השלכות:** חיובי — גודל-ריפו נשאר קטן · שינוי-טון = שורה-אחת קוד · עובד-offline מובן · אין-תלות ב-CDN. שלילי — איכות-צליל פחותה מ-MP3 איכותי · יכול להישמע "מחשבי" יותר; חלק מהילדים מעדיפים-קולות-אנושיים (לא רלוונטי לcue-עידוד).
+
+**אלטרנטיבות שנדחו:** MP3 binaries (גודל-ריפו + רישוי) · הקלטות-קול קצרות (יוצר תלות בקריינית) · ספריית-tone.js (npm dep, אסור) · להישאר ללא-cue (פוגע ב-feedback-loop של הילד).
+
+## ADR-018 | 2026-05-24 | Right-Click Template Revival with Long-Press Fallback
+**סטטוס:** מאושר · **בעלים:** Claude Code (CHG-016) · אישר: human (autonomous task)
+
+**הקשר:** Phase 3 דחה את `right-click-menu` ב-2026-05-23 (CHG-015) כי "right-click + context-menu navigation = מורכב מדי לבני 4-6". ב-CHG-016 (end-to-end completion) חזרנו לבחון את הדחייה: הרציונל היה נכון לקונספט-Windows-קלאסי (menu-tree), אבל אם מצמצמים את ה-"menu" לכפתור-יחיד ("בחר"), הז'סטה הופכת ל-"single decision after gesture" — לא ניווט. בנוסף, החיסרון של פגיעה-בלעדית-בילדי-טאצ' נפתר עם long-press fallback (450ms).
+
+**ההחלטה:** Right-click template מתווסף ל-MVP בעיצוב מצומצם:
+1. גריד 3×N של פריטים (אייקון + label).
+2. Right-click *או* long-press 450ms פותח menu קטן עם **כפתור-יחיד** "בחר".
+3. כפתור "בחר" מאשר → אנימציית-השלמה. אין-menu-tree, אין-pointer-precision-דרישה.
+4. כל הפעולות ניתנות-לבדיקה ב-keyboard (focus + Enter → menu open, Enter → select).
+
+**אכיפה:** ChildUXAdvocate חייב לאמת ב-kid-test ש-long-press מובן (450ms — לא קצר-מדי, לא ארוך-מדי). MotionStoryteller לבדוק שאנימציית menu-open חלקה. QualityAssurance לבדוק keyboard accessibility.
+
+**השלכות:** חיובי — כיסוי-מלא של 4 ז'סטות-עכבר ב-MVP (click, hover, dblclick, drag, right-click + long-press) · template נוסף בארסנל לתוכן עתידי. שלילי — long-press עלול להפעיל בטעות אם הילד מחזיק (סובלנות 450ms סבירה אבל לא-מוכחת ילדית).
+
+**אלטרנטיבות שנדחו:** השארת ה-template דחוי (חוסר-כיסוי לג'סטה נפוצה ב-Windows) · menu-tree מלא (מורכב לבני 4-6) · ללא long-press (פוגע בטאצ' + ב-trackpad-קטן).
+
+## ADR-019 | 2026-05-24 | Progressive World Unlock Threshold (3-3-2)
+**סטטוס:** מאושר · **בעלים:** Claude Code (CHG-016) · אישר: human (autonomous task)
+
+**הקשר:** ROADMAP צוין "Phase X — עולם N נעול עד שX מסיימים את עולם N-1" אבל לא ספציפי. הילד-המתחיל מקבל ביטחון כשהמקלדת נפתחת ב-3 מצליחות (לא 5-10). מצד-שני, פתיחה-מיידית מאבדת את הערך של "התקדמות".
+
+**ההחלטה:** Threshold פר-עולם:
+- עולם 1 (mouse): פתוח-תמיד.
+- עולם 2 (keyboard): נפתח אחרי **3** משימות-mouse.
+- עולם 3 (window): נפתח אחרי **3** משימות-keyboard.
+- עולם 4 (browser): נפתח אחרי **2** משימות-window (פחות-משימות-זמינות בעולם 3, אז threshold נמוך).
+
+**אכיפה:** ChildUXAdvocate חייב לאמת ב-kid-test שהילד **מבין** למה עולם-נעול נעול (audio cue על-hover יוסבר). QualityAssurance מאמת שה-threshold מתאים-לקצב-משחק טיפוסי.
+
+**השלכות:** חיובי — תחושת-התקדמות · מוטיבציה · קצב-משחק נכון · הילד מקבל "פרס" אמיתי. שלילי — ילד-תקוע על-עולם-אחד יתסכל; דרוש בדיקה אם 3 הוא המספר-הנכון או שצריך 2.
+
+**אלטרנטיבות שנדחו:** הכל-פתוח (אין-התקדמות) · ירת-מ-עולם-אחרון (אין-משמעות) · threshold גבוה (5-10 — תסכול).

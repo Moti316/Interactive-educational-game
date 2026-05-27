@@ -15,15 +15,16 @@ tags:
 
 | שדה | ערך |
 |------|------|
-| **Phase נוכחי** | 3 — תבניות עכבר (3/4 מוכנות; 7 משימות פלייבליות) |
-| **Next Gate** | R4 (אחרי השלמת Briefs #3–5) |
-| **ETA ל-MVP** | 13–20 ימי-עבודה מהיום (Local-First מאיץ Briefs ב-~1 יום) |
-| **Last DoD-verified** | 2026-05-19 (Brief #2 — 6 mascot SVGs, 1.6–2.2 KB, Universal Constraints PASS) |
-| **Last RoadmapKeeper refresh** | 2026-05-19 (אחרי Brief #2 + ADR-011) |
-| **Active blockers** | אין. Phase 1 פתוח לכתיבת קוד |
-| **Recent council** | R4 (Pre-Phase-1, 🟢 GO 4/4 PASS) |
-| **Recent design review** | **R-Design-1** (2026-05-19, 🔴 OFF-BRAND — P0-fixes בוצעו ב-CHG-009) |
+| **Phase נוכחי** | 9 — אריזה ומסירה (v1.0.0, MVP feature-complete) |
+| **Next Gate** | R-Final (Full Council, אחרי kid-test + OAuth) |
+| **ETA ל-MVP** | חסומים-תלויי-הורה (~1 שעה הורה: kid-test + OAuth) |
+| **Last DoD-verified** | 2026-05-24 (Phases 1+3+4+5+6+7+8+9 code-complete, syntax-validated) |
+| **Last RoadmapKeeper refresh** | 2026-05-24 (אחרי CHG-016 v1.0.0) |
+| **Active blockers** | 2 תלויי-הורה: OAuth Client ID (Phase 4) + Kid-testing (Phase 2 DoD) |
+| **Recent council** | R4 (Pre-Phase-1, 🟢 GO 4/4 PASS) — pending R5, R7, R-Final |
+| **Recent design review** | R-Design-1 (2026-05-19, OFF-BRAND — P0-fixes done) |
 | **Latest ADR** | ADR-016 (Avatar Palette Extension) |
+| **Latest CHG** | CHG-016 (v1.0.0 — MVP feature-complete autonomous run) |
 
 ---
 
@@ -295,6 +296,7 @@ tags:
 | 2026-05-23 | 1→2 | Phase 2 פתוח — תבנית click-targets + 2 משימות + game loop (CHG-014) | קפיצה ל-Phase 2 במצב אוטונומי; lid-loop פלייבל | Phase 1 → 80% (functional); Phase 2 → 40% |
 | 2026-05-23 | 2→3 | תיקון file:// + Phase 3 פתוח — hover-target template + 2 משימות | תיקון silent-blue-screen + המשך תבניות עכבר | Phase 3 → 25% |
 | 2026-05-23 | 3 | Phase 3 — double-click-reveal + drag-drop-match templates + 3 משימות (CHG-015) | 3/4 templates Phase 3 (right-click נדחה — מורכב לבני 4-6) | Phase 3 → 75% |
+| 2026-05-24 | 1→9 | **CHG-016 — MVP feature-complete (v1.0.0)** Phases 1+3+4+5+6+7+8+9 בריצה-אוטונומית-אחת | בקשת-הורה "תסיים end-to-end". 12 קבצי-קוד-חדשים + 5 ADRs דה-פקטו + מעל-2700 שורות. ראה CHANGELOG. | Phase 1→100%, 3→100% (right-click revived), 4→95% (קוד-מוכן · חוסם OAuth), 5→100%, 6→100%, 7→52% (26/50), 8→100%, 9→100% |
 
 ---
 

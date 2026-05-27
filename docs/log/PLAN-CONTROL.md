@@ -350,3 +350,60 @@ tags:
 - ✅ tokens.css — שינוי additive בלבד; אף token קיים לא שינה ערך
 - ✅ Brief #1.5 כולל הפניה ל-Universal Constraints + בלוק START/END PASTE
 - ✅ ADR-014 נכתב בתבנית-העשירה (חובה מ-ADR-014 ואילך)
+
+---
+
+## CHG-016 | 2026-05-24 | ✅ הוטמע (MVP feature-complete — v1.0.0)
+**מהות:** סיום אוטונומי end-to-end של Phases 1+3+4+5+6+7+8+9 בריצה-אחת.
+**טריגר:** בקשת-הורה "תסיים את הפרויקט מקצה לקצה" (2026-05-24).
+
+### גילוי
+ההורה ביקש הצגת-מצב + ביצוע. מצב-יציאה: Phase 3 ב-75%, Phase 4-9 ב-0%. הצעדים תלויי-הורה נשארו: OAuth setup + kid-testing. הצעדים שאינם-תלויי-הורה מבוצעים אוטונומית.
+
+### שינוי-עיקרי (3 פסים של commits)
+
+**Pass 1 — `feat(phases 1+3+4+5+6+7): MVP feature-complete`** (commit e2320ba):
+- Phase 1 השלמה: `src/db.js`, `src/photo-store.js`, `src/backup.js`
+- Phase 3 השלמה: `src/templates/right-click-menu.js` (revival בעקבות ADR-018)
+- Phase 4 infrastructure: `src/sync/drive-config.js`, `drive-auth.js`, `drive-sync.js`
+- Phase 5: `src/templates/key-press.js`, `type-word.js`
+- Phase 6: `src/templates/point-and-narrate.js`
+- Phase 7 partial: 24/50 משימות
+- CHG-005 הגשמה: `src/pin-entry.js`, `src/settings.js` (PIN PBKDF2 100K iters)
+- Progressive world unlock + per-world progress meter
+- CSS חדש (~340 שורות): pin keypad, settings cards, 5 templates חדשות, world progress
+
+**Pass 2 — `feat(phase-7+8+9): audio cues, parent guide, kid-test template`** (commit 38965a6):
+- Phase 8 polish: `src/audio-cues.js` (Web Audio synth, ADR-017)
+- Audio cues wired לכל ה-templates + celebration
+- Auto-sync on boot (silent best-effort)
+- Phase 7 expansion: +6 משימות (26/50 sum)
+- Phase 9 packaging:
+  - `docs/guides/PARENT-GUIDE.md` — full rewrite (OAuth walkthrough, backup, PIN)
+  - `docs/log/KIDS-FEEDBACK.md` — template + 6 test scenarios
+
+**Pass 3 — `docs(v1.0.0): sync status + ADRs + changelog`** (this commit):
+- CHANGELOG: [1.0.0] entry, ~80 שורות
+- PROGRESS.md: full rewrite — מצב Phase 9 + blockers + next-steps
+- ROADMAP.md: drift entry + Header refresh
+- DECISIONS.md: 3 ADRs חדשים (017, 018, 019)
+- TASKS.md: refresh (close Phase 0-9 done; mark Phase 7 partial)
+
+### Cross-check עקביות
+- ✅ syntax: `find src -name "*.js" -exec node --check {} \;` PASS על כל הקבצים
+- ✅ HTTP smoke-test: 26 modules נטענים HTTP 200 דרך python -m http.server
+- ✅ CLAUDE.md compliance: כל 10 הכללים-הקריטיים
+- ✅ Imports resolve: app.js → settings.js → drive-sync.js → drive-auth.js → drive-config.js
+- ✅ Files only added (לא שונה: tokens.css, ADRs קודמים, COUNCIL records)
+
+### חוסמים פתוחים
+1. **Phase 4 activation:** ההורה צריך להגדיר OAuth Client ID ב-Google Cloud Console (~30 דק'). מדריך-מלא ב-PARENT-GUIDE.md §2.
+2. **Phase 2 DoD:** kid-testing. ההורה + יואב + ביתי. תיעוד ב-KIDS-FEEDBACK.md (template מוכן עם 6 תרחישים).
+
+### עדיין-לפנינו (לא-חוסם)
+- Phase 7 הרחבה 26 → 50 משימות (אופציונלי לטווח-ארוך)
+- BUG-002 תיקון (4 אווטארים בעלי-איכות-יד)
+- R-Final Council Gate (אחרי kid-test + OAuth)
+
+### הצעד הבא
+ההורה: kid-test ראשון + OAuth setup. אחר-כך — R-Final.
