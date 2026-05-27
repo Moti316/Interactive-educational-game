@@ -85,6 +85,8 @@ export function renderRightClickMenu(task, { onComplete, onExit } = {}) {
     item.type = 'button';
     item.className = 'right-click-item';
     item.setAttribute('aria-label', it.label);
+    item.setAttribute('aria-haspopup', 'menu');
+    item.setAttribute('aria-expanded', 'false');
     item.textContent = it.icon;
     attachSpeakOnHover(item, it.label);
 
@@ -103,12 +105,19 @@ export function renderRightClickMenu(task, { onComplete, onExit } = {}) {
       // Hide other open menus
       for (const c of grid.querySelectorAll('.right-click-cell.is-open')) {
         c.classList.remove('is-open');
+        const trigger = c.querySelector('.right-click-item');
+        if (trigger) trigger.setAttribute('aria-expanded', 'false');
       }
       cell.classList.add('is-open');
+      item.setAttribute('aria-expanded', 'true');
       speak('בחר ' + it.label);
+      // Move focus to "choose" button so keyboard users land there
+      const pick = cell.querySelector('.right-click-pick');
+      if (pick) pick.focus();
     }
     function hideMenu() {
       cell.classList.remove('is-open');
+      item.setAttribute('aria-expanded', 'false');
     }
     function choose() {
       if (completed.has(it.id)) { hideMenu(); return; }
@@ -129,6 +138,17 @@ export function renderRightClickMenu(task, { onComplete, onExit } = {}) {
       e.preventDefault();
       if (cell.classList.contains('is-completed')) return;
       showMenu();
+    });
+
+    // Keyboard: Enter / Space opens the menu (R-Final · a11y fix)
+    item.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        if (cell.classList.contains('is-completed')) return;
+        showMenu();
+      } else if (e.key === 'Escape') {
+        hideMenu();
+      }
     });
 
     // Long-press fallback (touch + kids)

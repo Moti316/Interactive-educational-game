@@ -2,7 +2,7 @@
 <html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="חכמוני — משחק לימוד מחשב לילדים בני 4–6">
   <title>חכמוני 🦉</title>
 
@@ -10,7 +10,11 @@
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#FFCE10">
 
-  <!-- Self-hosted fonts (no Google CDN ping) -->
+  <!-- Self-hosted fonts (no Google CDN ping). Preload the two Hebrew subsets. -->
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+        href="assets/fonts/heebo-NGS6v5_NC0k9P9H0TbFzsQ.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+        href="assets/fonts/varelaround-w8gdH283Tvk__Lua32TysjIfp8uP.woff2">
   <link rel="stylesheet" href="assets/fonts/fonts.css">
 
   <link rel="stylesheet" href="styles/global.css">

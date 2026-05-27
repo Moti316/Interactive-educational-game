@@ -148,8 +148,8 @@ function createBackupSection() {
       speak('הייבוא הושלם');
     } catch (err) {
       console.error(err);
-      status.textContent = 'שגיאה: ' + (err.message || 'קובץ לא תקין');
-      speak('הייבוא נכשל');
+      status.textContent = 'משהו השתבש: ' + (err.message || 'קובץ לא תקין');
+      speak('הייבוא לא הצליח, ננסה שוב');
     }
   });
 
@@ -198,8 +198,8 @@ function createDriveSection() {
           status.textContent = 'מסנכרן…';
           try {
             const r = await syncNow();
-            status.textContent = r.ok ? `סונכרן (${r.profiles} פרופילים)` : 'שגיאה';
-          } catch (e) { status.textContent = 'שגיאה: ' + (e.message || ''); }
+            status.textContent = r.ok ? `סונכרן (${r.profiles} פרופילים)` : 'משהו השתבש';
+          } catch (e) { status.textContent = 'משהו השתבש: ' + (e.message || ''); }
         },
       }));
       row.append(createButton({
@@ -228,12 +228,20 @@ function createAdvancedSection() {
   row.className = 'settings-row';
 
   row.append(createButton({
-    label: 'אפס PIN', variant: 'secondary',
-    onClick: () => {
-      const ok = confirm('לאפס PIN? תצטרך להגדיר חדש בכניסה הבאה.');
+    label: 'החלף PIN', variant: 'secondary',
+    onClick: async () => {
+      const ok = confirm('להחליף PIN? יש להזין PIN חדש מיד.');
       if (!ok) return;
+      // Prompt immediately for new 4-digit PIN — closes the window where a
+      // child could pass empty PIN setup after clearPin (R-Final · QA fix).
+      const newPin = prompt('PIN חדש (4 ספרות):');
+      if (!newPin) { speak('בוטל'); return; }
+      if (!/^\d{4}$/.test(newPin)) { alert('PIN חייב להיות 4 ספרות'); return; }
       clearPin();
-      speak('PIN אופס');
+      // setPin is async — re-import + call
+      const mod = await import('./pin-entry.js');
+      await mod.setPin(newPin);
+      speak('PIN הוחלף');
     },
   }));
 

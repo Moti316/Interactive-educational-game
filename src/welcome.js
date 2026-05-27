@@ -136,6 +136,25 @@ export function renderProfileCreate({ onComplete, onCancel, isFirstRun = false }
   nameInput.setAttribute('aria-label', 'הזן את שמך');
   nameInput.placeholder = 'השם שלי…';
   nameWrap.append(nameLabel, nameInput);
+
+  // R-Final UX-Kid · Quick-pick names — for kids who can't yet type. Parent
+  // can still type the real name; this is a fallback to never block setup.
+  const quick = document.createElement('div');
+  quick.className = 'quick-names';
+  for (const qn of ['חבר', 'חברה', 'גיבור']) {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'quick-name';
+    b.textContent = qn;
+    attachSpeakOnHover(b, qn);
+    b.addEventListener('click', () => {
+      nameInput.value = qn;
+      nameInput.focus();
+    });
+    quick.append(b);
+  }
+  nameWrap.append(quick);
+
   wrap.append(nameWrap);
 
   // Gender picker

@@ -279,8 +279,14 @@ async function bootstrap() {
   await audio.init();
 
   // Best-effort silent auto-sync if Drive is configured + signed-in.
-  // Non-blocking: game launches immediately, sync happens in background.
-  autoSyncOnLaunch().catch(() => {});
+  // R-Final perf · deferred to after first paint via requestIdleCallback so
+  // it never blocks startup on slow hardware.
+  const deferSync = () => autoSyncOnLaunch().catch(() => {});
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(deferSync, { timeout: 5000 });
+  } else {
+    setTimeout(deferSync, 2000);
+  }
 
   const list = profiles.listChildren();
   if (list.length === 0) {

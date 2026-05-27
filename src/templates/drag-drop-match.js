@@ -84,6 +84,60 @@ export function renderDragDropMatch(task, { onComplete, onExit } = {}) {
   itemsRow.className = 'dnd-items';
   const shuffled = [...pairs].sort(() => Math.random() - 0.5);
 
+  // R-Final · keyboard-accessible pick-then-place alternative to drag.
+  // Holds the currently keyboard-selected item.
+  let keyboardSelectedItem = null;
+  function setKeyboardSelected(item) {
+    if (keyboardSelectedItem === item) {
+      keyboardSelectedItem.classList.remove('is-keyboard-selected');
+      keyboardSelectedItem = null;
+      return;
+    }
+    if (keyboardSelectedItem) keyboardSelectedItem.classList.remove('is-keyboard-selected');
+    keyboardSelectedItem = item;
+    if (item) {
+      item.classList.add('is-keyboard-selected');
+      speak('עכשיו לחץ על המקום הנכון');
+    }
+  }
+
+  // Wire keyboard drop on slots (added now while slot row is built)
+  for (const slot of slotsRow.children) {
+    slot.setAttribute('role', 'button');
+    slot.setAttribute('tabindex', '0');
+    slot.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      e.preventDefault();
+      if (!keyboardSelectedItem) {
+        speak('בחר קודם פריט');
+        return;
+      }
+      tryMatch(keyboardSelectedItem, slot);
+    });
+  }
+
+  function tryMatch(item, slot) {
+    if (slot.classList.contains('is-matched') || item.classList.contains('is-matched')) return;
+    if (slot.dataset.pairId === item.dataset.pairId) {
+      slot.classList.add('is-matched');
+      item.classList.add('is-matched');
+      matched.add(item.dataset.pairId);
+      cueCorrect();
+      speak('יופי!');
+      const idx = matched.size - 1;
+      if (progressStars[idx]) progressStars[idx].classList.remove('empty');
+      if (keyboardSelectedItem === item) setKeyboardSelected(null);
+      if (matched.size >= total) {
+        setTimeout(() => onComplete && onComplete(task), 700);
+      }
+    } else {
+      slot.classList.add('is-wrong');
+      setTimeout(() => slot.classList.remove('is-wrong'), 500);
+      cueWrong();
+      speak('ננסה שוב');
+    }
+  }
+
   for (const p of shuffled) {
     const item = document.createElement('button');
     item.type = 'button';
@@ -92,6 +146,15 @@ export function renderDragDropMatch(task, { onComplete, onExit } = {}) {
     item.setAttribute('aria-label', p.label);
     item.textContent = p.icon;
     attachSpeakOnHover(item, p.label);
+
+    // R-Final · Enter/Space picks-up; second press cancels
+    item.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        if (item.classList.contains('is-matched')) return;
+        setKeyboardSelected(item);
+      }
+    });
 
     let pointerId = null;
     let originRect = null;

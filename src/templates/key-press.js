@@ -88,9 +88,10 @@ export function renderKeyPress(task, { onComplete, onExit } = {}) {
   }
 
   function arrowSymbol(k) {
-    return { ArrowUp: '↑', ArrowDown: '↓', ArrowLeft: '→', ArrowRight: '←' }[k] || k;
-    // Note: RTL — visual "right" key is the leftward arrow in display, but we keep
-    // semantic key code consistent. Kids will press the matching physical key.
+    // Physical keys have universal glyphs — '→' is printed on the right-arrow
+    // key on every keyboard regardless of OS language. R-Final fix: show the
+    // symbol that matches the physical key, not the RTL-flipped reading.
+    return { ArrowUp: '↑', ArrowDown: '↓', ArrowLeft: '←', ArrowRight: '→' }[k] || k;
   }
 
   const onKey = (ev) => {

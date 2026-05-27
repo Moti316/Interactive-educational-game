@@ -122,7 +122,7 @@ export function renderPinEntry({ onSuccess, onCancel } = {}) {
         speak('PIN נשמר');
         onSuccess && onSuccess();
       } catch (err) {
-        error.textContent = err.message || 'שגיאה';
+        error.textContent = err.message || 'משהו השתבש';
       }
       return;
     }

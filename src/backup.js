@@ -8,6 +8,19 @@ import { get as dbGet, put as dbPut, keys as dbKeys, stores } from './db.js';
 const SCHEMA_VERSION = 1;
 const MIME = 'application/json';
 
+// Keys that must NEVER leave the device (R-Final · BACKUP-LEAK fix).
+// - parentPin: hashed but exporting it weakens the system (offline brute-force on 10K candidates is trivial)
+// - driveToken / driveUserProfile: OAuth bearer with ~1h validity; export = handing over Drive access
+// - pinAttempts / pinLockedUntil: stale lockout state should not travel
+const EXPORT_BLOCKLIST = new Set([
+  'parentPin',
+  'driveToken',
+  'driveUserProfile',
+  'pinAttempts',
+  'pinLockedUntil',
+  'driveSyncMeta',
+]);
+
 async function blobToBase64(blob) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -40,6 +53,7 @@ export async function exportAll() {
     photos: {},
   };
   for (const k of storage.keys()) {
+    if (EXPORT_BLOCKLIST.has(k)) continue;  // secrets stay on-device
     payload.localStorage[k] = storage.get(k);
   }
   for (const id of await dbKeys(stores.PHOTOS)) {
@@ -84,8 +98,16 @@ export async function importAll(json) {
   catch (e) { throw new Error('קובץ לא תקין (JSON שבור)'); }
 
   if (!parsed || typeof parsed !== 'object') throw new Error('קובץ ריק או לא תקין');
-  if (parsed.schema !== SCHEMA_VERSION) {
-    console.warn('[backup] schema mismatch:', parsed.schema, '!=', SCHEMA_VERSION);
+  if (parsed.schema == null) throw new Error('קובץ ישן בלי גרסה — לא ניתן לייבא');
+  if (parsed.schema > SCHEMA_VERSION) {
+    throw new Error(`הקובץ מגרסה חדשה יותר (${parsed.schema}). עדכן את המשחק קודם.`);
+  }
+  if (parsed.schema < SCHEMA_VERSION) {
+    console.warn('[backup] importing older schema:', parsed.schema, 'into', SCHEMA_VERSION);
+  }
+  // R-Final · also defend against importing secrets from a malicious backup
+  if (parsed.localStorage) {
+    for (const blocked of EXPORT_BLOCKLIST) delete parsed.localStorage[blocked];
   }
 
   let lsCount = 0;

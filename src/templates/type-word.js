@@ -68,6 +68,17 @@ export function renderTypeWord(task, { onComplete, onExit } = {}) {
   hint.textContent = 'הקלד: ' + letters[0];
   wrap.append(hint);
 
+  // R-Final UX-Kid fix · Virtual on-screen letter — kids who can't find Hebrew
+  // letters on a QWERTY keyboard can click the big letter on screen. This is
+  // identical-effect to pressing the physical key — failure-free design.
+  const virtualKey = document.createElement('button');
+  virtualKey.type = 'button';
+  virtualKey.className = 'type-word-virtual-key';
+  virtualKey.setAttribute('aria-label', 'לחץ על האות כדי להמשיך');
+  virtualKey.textContent = letters[0];
+  wrap.append(virtualKey);
+  let wrongCount = 0;
+
   const progress = document.createElement('div');
   progress.className = 'task-progress';
   const progressStars = [];
@@ -86,6 +97,7 @@ export function renderTypeWord(task, { onComplete, onExit } = {}) {
     slotEls[idx].classList.add('is-filled');
     if (progressStars[idx]) progressStars[idx].classList.remove('empty');
     idx++;
+    wrongCount = 0;
     if (idx >= total) {
       teardown();
       speak(word);
@@ -94,6 +106,8 @@ export function renderTypeWord(task, { onComplete, onExit } = {}) {
     }
     slotEls[idx].classList.add('is-current');
     hint.textContent = 'הקלד: ' + letters[idx];
+    virtualKey.textContent = letters[idx];
+    virtualKey.classList.remove('is-hint');
   }
 
   const onKey = (ev) => {
@@ -103,9 +117,22 @@ export function renderTypeWord(task, { onComplete, onExit } = {}) {
       cueCorrect();
       speak(expected);
       advance();
+    } else {
+      // R-Final UX-Kid · escalate after 3 wrong: pulse the virtual key
+      wrongCount++;
+      if (wrongCount === 3) {
+        virtualKey.classList.add('is-hint');
+        speak('לחץ על האות שמופיעה כאן');
+      }
     }
-    // Wrong keys: silently ignored (forgiving).
   };
+
+  // Virtual key click → advance (same effect as pressing the physical key).
+  virtualKey.addEventListener('click', () => {
+    cueCorrect();
+    speak(letters[idx]);
+    advance();
+  });
 
   function teardown() { window.removeEventListener('keydown', onKey); }
   window.addEventListener('keydown', onKey);
