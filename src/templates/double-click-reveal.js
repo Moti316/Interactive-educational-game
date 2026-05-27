@@ -4,6 +4,7 @@
 
 import { createButton } from '../ui/button.js';
 import { attachSpeakOnHover, speak } from '../audio.js';
+import { cueCorrect } from '../audio-cues.js';
 import * as profiles from '../profiles.js';
 
 const DBLCLICK_WINDOW_MS = 600;
@@ -86,6 +87,7 @@ export function renderDoubleClickReveal(task, { onComplete, onExit } = {}) {
       if (box.classList.contains('is-open')) return;
       box.classList.add('is-open');
       opened.add(i);
+      cueCorrect();
       speak('יופי!');
       const idx = opened.size - 1;
       if (progressStars[idx]) progressStars[idx].classList.remove('empty');

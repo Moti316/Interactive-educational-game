@@ -7,6 +7,7 @@
 
 import { createButton } from '../ui/button.js';
 import { attachSpeakOnHover, speak } from '../audio.js';
+import { cueCorrect } from '../audio-cues.js';
 import * as profiles from '../profiles.js';
 
 const HOLD_MS = 450;
@@ -114,6 +115,7 @@ export function renderRightClickMenu(task, { onComplete, onExit } = {}) {
       completed.add(it.id);
       cell.classList.add('is-completed');
       hideMenu();
+      cueCorrect();
       speak('יפה!');
       const idx = completed.size - 1;
       if (progressStars[idx]) progressStars[idx].classList.remove('empty');

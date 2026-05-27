@@ -5,6 +5,7 @@
 
 import { createButton } from '../ui/button.js';
 import { attachSpeakOnHover, speak } from '../audio.js';
+import { cueCorrect } from '../audio-cues.js';
 import * as profiles from '../profiles.js';
 
 /**
@@ -92,6 +93,7 @@ export function renderPointAndNarrate(task, { onComplete, onExit } = {}) {
       if (visited.has(part.id)) return;
       visited.add(part.id);
       dot.classList.add('is-visited');
+      cueCorrect();
       speak(part.narration || part.label);
       updateLabel();
       if (visited.size >= total) {

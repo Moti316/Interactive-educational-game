@@ -3,6 +3,7 @@
 
 import { createButton } from '../ui/button.js';
 import { attachSpeakOnHover, speak } from '../audio.js';
+import { cueCorrect, cueWrong } from '../audio-cues.js';
 import * as profiles from '../profiles.js';
 
 const KEY_NAMES = {
@@ -97,6 +98,7 @@ export function renderKeyPress(task, { onComplete, onExit } = {}) {
     if (ev.key === expected) {
       ev.preventDefault();
       keyVisual.classList.add('is-correct');
+      cueCorrect();
       speak('כל הכבוד!');
       if (progressStars[idx]) progressStars[idx].classList.remove('empty');
       idx++;
@@ -111,6 +113,7 @@ export function renderKeyPress(task, { onComplete, onExit } = {}) {
       }, 700);
     } else {
       keyVisual.classList.add('is-wrong');
+      cueWrong();
       setTimeout(() => keyVisual.classList.remove('is-wrong'), 400);
     }
   };

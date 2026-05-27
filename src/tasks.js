@@ -172,6 +172,21 @@ export const TASKS = [
     },
     starsOnComplete: 1,
   },
+  {
+    id: 'task-mouse-right-click-animals',
+    worldId: 'mouse',
+    template: 'right-click-menu',
+    title: 'בחר את החיות',
+    narration: 'לחץ עם הכפתור הימני על כל חיה ובחר.',
+    config: {
+      items: [
+        { id: 'dog',    icon: '🐶', label: 'כלב' },
+        { id: 'cat',    icon: '🐱', label: 'חתול' },
+        { id: 'rabbit', icon: '🐰', label: 'ארנב' },
+      ],
+    },
+    starsOnComplete: 1,
+  },
 
   // ============================================================
   // WORLD: KEYBOARD — key-press + type-word
@@ -252,6 +267,42 @@ export const TASKS = [
     config: { word: 'כדור' },
     starsOnComplete: 1,
   },
+  {
+    id: 'task-keyboard-type-yam',
+    worldId: 'keyboard',
+    template: 'type-word',
+    title: 'הקלד ים',
+    narration: 'הקלד אות אחר אות: ים.',
+    config: { word: 'ים' },
+    starsOnComplete: 1,
+  },
+  {
+    id: 'task-keyboard-type-shir',
+    worldId: 'keyboard',
+    template: 'type-word',
+    title: 'הקלד שיר',
+    narration: 'הקלד אות אחר אות: שיר.',
+    config: { word: 'שיר' },
+    starsOnComplete: 1,
+  },
+  {
+    id: 'task-keyboard-type-shemesh',
+    worldId: 'keyboard',
+    template: 'type-word',
+    title: 'הקלד שמש',
+    narration: 'הקלד אות אחר אות: שמש.',
+    config: { word: 'שמש' },
+    starsOnComplete: 1,
+  },
+  {
+    id: 'task-keyboard-arrows-long',
+    worldId: 'keyboard',
+    template: 'key-press',
+    title: 'חיצים ארוכים',
+    narration: 'נסיים סדרה ארוכה של חיצים.',
+    config: { keys: ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowDown'] },
+    starsOnComplete: 1,
+  },
 
   // ============================================================
   // WORLD: WINDOW — point-and-narrate
@@ -290,6 +341,22 @@ export const TASKS = [
     },
     starsOnComplete: 1,
   },
+  {
+    id: 'task-window-colors',
+    worldId: 'window',
+    template: 'point-and-narrate',
+    title: 'הצבעים של החלון',
+    narration: 'נכיר את שלושת הכפתורים הצבעוניים.',
+    config: {
+      scene: 'window',
+      parts: [
+        { id: 'red', label: 'אדום', pos: { top: '17%', left: '76%' }, color: '#FF6B6B', narration: 'הכפתור האדום סוגר את החלון' },
+        { id: 'yellow', label: 'צהוב', pos: { top: '17%', left: '69%' }, color: '#FFD93D', narration: 'הכפתור הצהוב מזער את החלון' },
+        { id: 'green', label: 'ירוק', pos: { top: '17%', left: '62%' }, color: '#6BCB77', narration: 'הכפתור הירוק מגדיל את החלון' },
+      ],
+    },
+    starsOnComplete: 1,
+  },
 
   // ============================================================
   // WORLD: BROWSER — point-and-narrate
@@ -324,6 +391,21 @@ export const TASKS = [
         { id: 'red', label: 'אדום', pos: { top: '18%', left: '12%' }, color: '#FF6B6B', narration: 'הכפתור האדום — סוגר' },
         { id: 'yellow', label: 'צהוב', pos: { top: '18%', left: '15%' }, color: '#FFD93D', narration: 'הכפתור הצהוב — מזער' },
         { id: 'green', label: 'ירוק', pos: { top: '18%', left: '18%' }, color: '#6BCB77', narration: 'הכפתור הירוק — מגדיל' },
+      ],
+    },
+    starsOnComplete: 1,
+  },
+  {
+    id: 'task-browser-address',
+    worldId: 'browser',
+    template: 'point-and-narrate',
+    title: 'שורת הכתובת',
+    narration: 'נמצא איפה מקלידים את הכתובת.',
+    config: {
+      scene: 'browser',
+      parts: [
+        { id: 'addr', label: 'הכתובת', pos: { top: '18%', left: '55%' }, color: '#6FC3DF', narration: 'כאן מקלידים את כתובת האתר שרוצים לפתוח' },
+        { id: 'site', label: 'האתר', pos: { top: '60%', left: '50%' }, color: '#C9A0DC', narration: 'כאן מופיע התוכן של האתר' },
       ],
     },
     starsOnComplete: 1,

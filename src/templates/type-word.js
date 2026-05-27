@@ -4,6 +4,7 @@
 
 import { createButton } from '../ui/button.js';
 import { attachSpeakOnHover, speak } from '../audio.js';
+import { cueCorrect } from '../audio-cues.js';
 import * as profiles from '../profiles.js';
 
 /**
@@ -99,6 +100,7 @@ export function renderTypeWord(task, { onComplete, onExit } = {}) {
     const expected = letters[idx];
     if (ev.key === expected) {
       ev.preventDefault();
+      cueCorrect();
       speak(expected);
       advance();
     }

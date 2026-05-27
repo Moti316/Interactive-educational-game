@@ -3,6 +3,7 @@
 
 import { createButton } from '../ui/button.js';
 import { attachSpeakOnHover, speak } from '../audio.js';
+import { cueCorrect } from '../audio-cues.js';
 import * as profiles from '../profiles.js';
 
 /**
@@ -99,6 +100,7 @@ export function renderClickTargets(task, { onComplete, onExit } = {}) {
       if (b.classList.contains('is-popped')) return;
       b.classList.add('is-popped');
       popped++;
+      cueCorrect();
       // Fill next progress star
       const stars = progress.querySelectorAll('.pstar');
       if (stars[popped - 1]) stars[popped - 1].classList.remove('empty');

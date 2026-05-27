@@ -20,6 +20,7 @@ import { renderCelebration } from './celebration.js';
 import { getTask, getNextTask } from './tasks.js';
 import { renderSettings } from './settings.js';
 import { renderPinEntry } from './pin-entry.js';
+import { autoSyncOnLaunch } from './sync/drive-sync.js';
 
 const STATES = Object.freeze({
   LOADING: 'loading',
@@ -276,6 +277,10 @@ async function bootstrap() {
   }
 
   await audio.init();
+
+  // Best-effort silent auto-sync if Drive is configured + signed-in.
+  // Non-blocking: game launches immediately, sync happens in background.
+  autoSyncOnLaunch().catch(() => {});
 
   const list = profiles.listChildren();
   if (list.length === 0) {

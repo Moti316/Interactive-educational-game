@@ -3,6 +3,7 @@
 
 import { createButton } from '../ui/button.js';
 import { attachSpeakOnHover, speak } from '../audio.js';
+import { cueCorrect, cueWrong } from '../audio-cues.js';
 import * as profiles from '../profiles.js';
 
 /**
@@ -146,6 +147,7 @@ export function renderDragDropMatch(task, { onComplete, onExit } = {}) {
         target.classList.add('is-matched');
         item.classList.add('is-matched');
         matched.add(p.id);
+        cueCorrect();
         speak('יופי!');
         const idx = matched.size - 1;
         if (progressStars[idx]) progressStars[idx].classList.remove('empty');
@@ -159,6 +161,7 @@ export function renderDragDropMatch(task, { onComplete, onExit } = {}) {
           wrongSlot.classList.add('is-wrong');
           setTimeout(() => wrongSlot.classList.remove('is-wrong'), 500);
         }
+        cueWrong();
         speak('ננסה שוב');
         // Restore inline-flow position
         item.style.position = '';

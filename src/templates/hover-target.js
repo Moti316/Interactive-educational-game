@@ -4,6 +4,7 @@
 
 import { createButton } from '../ui/button.js';
 import { attachSpeakOnHover, speak } from '../audio.js';
+import { cueCorrect } from '../audio-cues.js';
 import * as profiles from '../profiles.js';
 
 const EMOJI_NAMES = {
@@ -104,6 +105,7 @@ export function renderHoverTarget(task, { onComplete, onExit } = {}) {
       if (box.classList.contains('is-revealed')) return;
       box.classList.add('is-revealed');
       discovered.add(i);
+      cueCorrect();
       speak(emojiName(reveals[i]));
       const idx = discovered.size - 1;
       if (progressStars[idx]) progressStars[idx].classList.remove('empty');

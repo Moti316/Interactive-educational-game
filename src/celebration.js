@@ -1,6 +1,7 @@
 // celebration.js — celebration screen after task completion.
 import { createButton } from './ui/button.js';
 import { speak } from './audio.js';
+import { cueComplete } from './audio-cues.js';
 
 const CELEBRATING_MASCOT = 'assets/mascot/professor-chachmoni-celebrating.svg';
 const CONFETTI_COLORS = ['#FF6B6B', '#FFD93D', '#6BCB77', '#C9A0DC', '#6FC3DF'];
@@ -65,6 +66,7 @@ export function renderCelebration({ starsEarned = 1, onNext, onBackToMap } = {})
   }));
   wrap.append(buttons);
 
+  cueComplete();
   setTimeout(() => speak('כל הכבוד!'), 500);
   return wrap;
 }
