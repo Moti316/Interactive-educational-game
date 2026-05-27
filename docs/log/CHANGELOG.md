@@ -7,6 +7,87 @@ tags:
 
 כל השינויים-המשמעותיים בפרויקט.
 
+## [1.1.1] - 2026-05-27 — R-Final patches (CHG-017)
+
+R-Final Council Gate convened (8 members in parallel). All 8 voted WARNING
+(0 FAIL). 17 patches applied across security/a11y/hebrew/ux-kid/perf/code/qa.
+
+### Fixed
+- **Security:** backup.js EXPORT_BLOCKLIST prevents exporting parentPin /
+  driveToken / driveUserProfile / pinAttempts / pinLockedUntil / driveSyncMeta.
+  Same blocklist applied on importAll() defensively.
+- **Security:** backup.js schema mismatch now throws (was: silent continue).
+- **UX-Kid:** type-word.js virtual on-screen letter — click-to-advance
+  fallback for kids who can't find Hebrew letters on QWERTY. After 3 wrong
+  physical keypresses, the virtual key pulses + speaks "לחץ על האות".
+- **UX-Kid:** welcome.js quick-pick names (חבר/חברה/גיבור) — pre-fill for
+  non-typists. Parent still types real name.
+- **A11y:** removed `maximum-scale=1` from viewport meta (WCAG 1.4.4).
+- **A11y:** btn-parent-settings: 40px+opacity 0.3 → 80px+opacity 0.7
+  (touch target + UI contrast compliance).
+- **A11y:** right-click-menu now opens via Enter/Space (was pointer-only).
+  Added aria-haspopup="menu", aria-expanded, Escape closes, focus moves
+  to "בחר" button on open.
+- **A11y:** drag-drop-match keyboard pick-then-place: Enter/Space on item
+  selects, Enter/Space on slot drops. Slots now role="button" tabindex=0.
+- **A11y:** shake animation + create-input.is-error + dnd-slot.is-wrong now
+  included in `@media (prefers-reduced-motion: reduce)` override.
+- **Hebrew:** forbidden word "שגיאה" → "משהו השתבש" in pin-entry.js
+  (aria-live region; TTS reads aloud).
+- **Hebrew:** forbidden word "נכשל" → "לא הצליח, ננסה שוב" in settings.js.
+- **Code Review:** key-press.js arrow display fix — ArrowLeft → ← and
+  ArrowRight → → (matches physical key glyphs universally; was inverted
+  with intentional-but-confusing RTL flip).
+- **Performance:** font preload hints for Hebrew subset woff2 of both fonts.
+- **Performance:** autoSyncOnLaunch deferred via requestIdleCallback
+  (timeout 5s, fallback 2s setTimeout) — never blocks first paint.
+- **Performance:** will-change: transform, opacity on .hotspot-pulse.
+- **QA:** "אפס PIN" → "החלף PIN" — prompts new PIN immediately rather than
+  leaving system PIN-less (closed the empty-PIN-bypass gap).
+
+### Added
+- `src/hebrew.js` — gender-aware imperative helper. `imperative('press')`
+  picks לחץ/לחצי/לחצו based on `profile.gender`. `gendered({boy,girl,neutral})`
+  generic form. Wired for future feedback strings; static task titles
+  still masculine (per-profile rewrite deferred to v1.2).
+
+### Deferred (Tier 3 — non-blocking)
+- Code Review: createButton factory bypass in 6 files (refactor)
+- Integration: Drive multi-tab ETag/If-Match (only matters post-OAuth)
+- QA: 0 automated tests (multi-day work)
+- Performance: lazy-load templates (refactor; ~300ms LCP win available)
+
+### Council reference
+- See `docs/log/COUNCIL.md` "R-Final | 2026-05-27"
+
+---
+
+## [1.1.0] - 2026-05-27 — self-host fonts + Service Worker + PWA + 50 tasks
+
+### Added — Self-hosted fonts (no Google CDN ping at runtime)
+- assets/fonts/fonts.css (171 lines, rewritten from gfonts CSS)
+- 9 woff2 files (~168KB total): Heebo 400/500/700 + Varela Round 400
+- index.html: removed preconnect to fonts.googleapis.com + gstatic
+
+### Added — Service Worker
+- sw.js (~115 lines) — cache-first for same-origin, network-only for
+  OAuth/Drive APIs, cache versioning (CACHE_VERSION = chachmoni-v1.1.0),
+  prune-on-activate, CLEAR_CACHE message handler.
+- Precaches 32 files: app shell + all src/ modules + mascot + fonts.css + icons
+
+### Added — PWA manifest
+- manifest.webmanifest — name, short_name, display=standalone, RTL, lang=he
+- 3 icons: SVG (any/maskable) + PNG 192 + PNG 512
+
+### Added — Real favicons + icons
+- assets/icons/favicon.ico — multi-size ICO rendered from favicon.svg
+- assets/icons/icon-192.png, icon-512.png — for PWA install
+
+### Added — Phase 7 content expansion: 31 → 50 tasks
+- Mouse: 13 → 18, Keyboard: 12 → 16, Window: 3 → 8, Browser: 3 → 8
+
+---
+
 ## [1.0.0] - 2026-05-24 — MVP feature-complete (CHG-016)
 
 המעבר ל-v1.0.0 — מסיים Phases 1+3+4+5+6+7+8+9 בריצה-אחת אוטונומית.

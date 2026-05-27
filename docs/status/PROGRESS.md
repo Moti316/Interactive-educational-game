@@ -5,17 +5,17 @@ tags:
 
 # חכמוני — Master Progress Dashboard
 
-> **עדכון אחרון:** 2026-05-24 (v1.0.0 — MVP feature-complete) | **גרסה:** v1.0.0
+> **עדכון אחרון:** 2026-05-27 (v1.1.1 — R-Final patches מיושמים) | **גרסה:** v1.1.1
 > **תוכנית חיה:** [`docs/status/ROADMAP.md`](./ROADMAP.md)
 
 ## 📍 שדות-מהירים
 
 | שדה | ערך |
 |------|------|
-| **Phase נוכחי** | 9 — אריזה + MVP (feature-complete, ממתין ל-kid-test + OAuth) |
-| **Next Gate** | R-Final (Full Council) — אחרי kid-testing + OAuth |
-| **Last DoD-verified** | 2026-05-23 (Phase 0.5, R4 PASS 4/4) |
-| **Last Council** | R4 (2026-05-23, 🟢 GO 4/4 PASS) |
+| **Phase נוכחי** | 9 — אריזה + MVP (v1.1.1 · 17 R-Final patches מיושמים) |
+| **Next Gate** | Kid-test live (DoD-Phase-2) → live-MVP |
+| **Last DoD-verified** | 2026-05-27 (R-Final, 🟡 GO with patches, 8/8 WARNING) |
+| **Last Council** | **R-Final** (2026-05-27, 🟡 GO 8/8 WARNING, 17 patches applied) |
 | **Last Design Review** | R-Design-1 (2026-05-19) |
 | **Last ADR** | ADR-016 (Avatar Palette Extension) |
 | **Last CHG** | CHG-016 (Phases 1+3+4+5+6+7+8+9 completion · v1.0.0) |

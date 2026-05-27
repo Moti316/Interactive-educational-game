@@ -380,3 +380,60 @@ tags:
 ## Patches
 1. ...
 ```
+
+---
+
+# R-Final | 2026-05-27 | Duration: ~10min (parallel)
+
+## Trigger
+v1.1.0 published (MVP feature-complete + extensions: self-host fonts, SW,
+manifest, 50 tasks). Pre-kid-test quality gate per project process.
+
+## Sub-Agent Results — 8 members in parallel
+
+| Agent | Verdict | Critical | Warnings |
+|-------|---------|----------|----------|
+| 🛡️ Security | WARNING | 1 (BACKUP-LEAK) | 5 |
+| 👶 ChildUX | WARNING | 2 (name typing · letter hunt) | 5 |
+| ♿ A11y | WARNING | 4 (dnd-kbd · btn-tiny · rcm-kbd · viewport) | 10 |
+| 🇮🇱 Hebrew | WARNING | 3 (שגיאה · נכשל · gender gap) | 6 |
+| ⚡ Perf | WARNING | 0 | 7 |
+| 🔍 CodeRev | WARNING | 2 (factory bypass · arrow swap) | 4 |
+| 🔗 Integration | WARNING | 2 (Drive race · import schema) | 5 |
+| 🧪 QA | WARNING | 3 (PIN gap · arrow conf · 0 tests) | many |
+
+## CouncilChair Synthesis
+- **Verdict: 🟡 GO WITH PATCHES** — 0 FAIL · 8 WARNING.
+- 16 critical findings; 13 patched in commit 12a00a1 (Tier 1 + Tier 2).
+- 3 deferred to Tier 3 (no kid-test blocker):
+  - Code Review: createButton factory bypass in 6 places (refactor)
+  - Integration: Drive multi-tab race (only matters once OAuth activated)
+  - QA: no automated tests (multi-day work; manual smoke-test recommended)
+
+## Patches applied (13/16)
+1. backup.js EXPORT_BLOCKLIST (security)
+2. backup.js schema strict throw (integration)
+3. type-word.js virtual key + 3-wrong escalation (ux-kid)
+4. welcome.js quick-pick names (ux-kid)
+5. index.html viewport: removed maximum-scale=1 (a11y)
+6. components.css btn-parent-settings 40→80px, 0.3→0.7 opacity (a11y)
+7. right-click-menu.js Enter/Space + aria-haspopup + Escape (a11y)
+8. drag-drop-match.js keyboard pick-then-place (a11y)
+9. components.css shake animation in reduced-motion (a11y)
+10. pin-entry.js forbidden "שגיאה" → "משהו השתבש" (hebrew)
+11. settings.js forbidden "נכשל" → "לא הצליח, ננסה שוב" (hebrew)
+12. src/hebrew.js new gender-aware helper (hebrew)
+13. key-press.js arrow display fixed: → for ArrowRight, ← for ArrowLeft (code)
+14. index.html font preload hints (perf)
+15. app.js autoSync via requestIdleCallback (perf)
+16. components.css will-change on hotspot-pulse (perf)
+17. settings.js "אפס PIN" → "החלף PIN" with immediate new-PIN (qa)
+
+(Patches #1-17 in commit 12a00a1 — counted 13 in commit msg because some
+merged into single patches; actual scope is 17 changes.)
+
+## Deliverables for next gate
+- Kid-test session(s) with יואב + ביתי
+- KIDS-FEEDBACK.md filled
+- OAuth setup ב-Google Cloud Console (Phase 4 activation)
+- Then: this gate closes ✓ → MVP live
