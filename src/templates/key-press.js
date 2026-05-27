@@ -96,7 +96,12 @@ export function renderKeyPress(task, { onComplete, onExit } = {}) {
 
   const onKey = (ev) => {
     const expected = targetKeys[idx];
-    if (ev.key === expected) {
+    // For arrow keys, use ev.code (physical key, locale-agnostic).
+    // ev.key gets swapped by some Chrome configurations on RTL pages —
+    // pressing physical Right could report 'ArrowLeft'. ev.code never lies.
+    // For non-arrows (Space, Enter), ev.key is correct (' ' / 'Enter').
+    const pressed = expected.startsWith('Arrow') ? ev.code : ev.key;
+    if (pressed === expected) {
       ev.preventDefault();
       keyVisual.classList.add('is-correct');
       cueCorrect();
