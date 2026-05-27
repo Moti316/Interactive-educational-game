@@ -776,7 +776,9 @@
 /* === Type-word template === */
 .type-word-slots {
   display: flex;
-  flex-direction: row-reverse; /* RTL: first letter on the right */
+  /* In RTL context (html dir="rtl"), default flex-direction:row already places
+     the first child on the right. row-reverse here would flip it back to LTR. */
+  flex-direction: row;
   justify-content: center;
   gap: 16px;
   margin: 32px 0;
