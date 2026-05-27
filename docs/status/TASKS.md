@@ -61,9 +61,9 @@ tags:
 - [x] World 3 (window): 3 משימות (anatomy, actions, colors)
 - [x] World 4 (browser): 3 משימות (anatomy, buttons, address)
 
-### Phase 7 — תוכן (26/50 משימות — ~52%)
-- [x] Mouse: 14 משימות (3 click + 3 hover + 2 dblclick + 3 dragdrop + 2 right-click + 1 stars)
-- [x] Keyboard: 9 משימות (4 key-press + 5 type-word)
+### Phase 7 — תוכן (31/50 משימות — ~62%)
+- [x] Mouse: 13 משימות (3 click + 3 hover + 2 dblclick + 3 dragdrop + 2 right-click)
+- [x] Keyboard: 12 משימות (4 key-press + 8 type-word)
 - [x] Window: 3 משימות
 - [x] Browser: 3 משימות
 - [ ] **🔜 Future:** הרחבה ל-50 (lower-priority — לא חוסם MVP)
@@ -111,14 +111,14 @@ tags:
 - **Phase 2-3:** 100% קוד · 95% (חסר kid-test)
 - **Phase 4:** 95% (קוד-מוכן · חסר OAuth activation)
 - **Phase 5-6:** 100%
-- **Phase 7:** 52% (26/50 משימות — Future expansion)
+- **Phase 7:** 62% (31/50 משימות — Future expansion)
 - **Phase 8-9:** 100%
 - **MVP feature-complete:** ~95%
 
 ## 🎯 KPIs
 
-- **קבצי-קוד:** 26 modules (~3300 LOC)
-- **משימות פעילות:** 26 (mouse 14, keyboard 9, window 3, browser 3)
+- **קבצי-קוד:** 28 modules (~3800 LOC)
+- **משימות פעילות:** 31 (mouse 13, keyboard 12, window 3, browser 3)
 - **תבניות:** 8 (click, hover, dblclick, drag, right-click, key-press, type-word, point-narrate)
 - **bugs-caught-by-council:** 40+ (Rounds 1-4)
 - **bugs-open:** 1 (BUG-002, Low)

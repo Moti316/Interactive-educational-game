@@ -49,10 +49,10 @@ tags:
 - World 3 (window) — 3 tasks: anatomy, actions, colors
 - World 4 (browser) — 3 tasks: anatomy, buttons, address
 
-### Added — Phase 7 content (26 tasks total)
+### Added — Phase 7 content (31 tasks total)
 - Tasks expanded across all 4 worlds:
-  - Mouse: 14 (3 click + 3 hover + 2 dblclick + 3 dragdrop + 2 right-click + 1 stars)
-  - Keyboard: 9 (4 key-press + 5 type-word)
+  - Mouse: 13 (3 click + 3 hover + 2 dblclick + 3 dragdrop + 2 right-click)
+  - Keyboard: 12 (4 key-press + 8 type-word)
   - Window: 3 point-and-narrate
   - Browser: 3 point-and-narrate
 - `getProgress(worldId, completedIds)` helper for per-world meter

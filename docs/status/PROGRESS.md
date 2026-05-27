@@ -34,7 +34,7 @@ tags:
 | **4 — Drive Sync** | 🟢 קוד-מוכן | 95% | infrastructure built. ⚠ ממתין ל-OAuth Client ID |
 | **5 — תבניות מקלדת** | ✅ הושלם | 100% | key-press + type-word + 9 משימות |
 | **6 — point-and-narrate** | ✅ הושלם | 100% | template + 6 משימות (חלון + דפדפן) |
-| **7 — תוכן (50 משימות)** | 🟢 לרוב הושלם | 52% | 26/50 משימות. הרחבה לעתיד |
+| **7 — תוכן (50 משימות)** | 🟢 לרוב הושלם | 62% | 31/50 משימות. הרחבה לעתיד |
 | **8 — ליטוש** | ✅ הושלם | 100% | audio cues + progress bars + reduced-motion + auto-sync |
 | **9 — אריזה ומסירה** | ✅ הושלם | 100% | install-shortcut + PARENT-GUIDE + Export/Import UI |
 
