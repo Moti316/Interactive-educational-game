@@ -7,13 +7,24 @@
   <title>חכמוני 🦉</title>
 
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#FFCE10">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Varela+Round&display=swap">
+  <!-- Self-hosted fonts (no Google CDN ping) -->
+  <link rel="stylesheet" href="assets/fonts/fonts.css">
 
   <link rel="stylesheet" href="styles/global.css">
   <link rel="stylesheet" href="styles/components.css">
+
+  <script>
+    // Register Service Worker for offline play (after first load).
+    if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(err =>
+          console.warn('[sw] register failed:', err));
+      });
+    }
+  </script>
 </head>
 <body>
   <noscript>

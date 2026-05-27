@@ -187,6 +187,71 @@ export const TASKS = [
     },
     starsOnComplete: 1,
   },
+  {
+    id: 'task-mouse-click-flowers',
+    worldId: 'mouse',
+    template: 'click-targets',
+    title: 'אסוף פרחים!',
+    narration: 'לחץ על כל הפרחים כדי לקטוף אותם.',
+    config: {
+      count: 6,
+      colors: ['#FF6B6B', '#FFD93D', '#6BCB77', '#C9A0DC', '#FFA552', '#6FC3DF'],
+      positions: [
+        { top: '14%', left: '18%' }, { top: '12%', left: '52%' },
+        { top: '36%', left: '32%' }, { top: '42%', left: '68%' },
+        { top: '60%', left: '24%' }, { top: '64%', left: '58%' },
+      ],
+    },
+    starsOnComplete: 1,
+  },
+  {
+    id: 'task-mouse-hover-emotions',
+    worldId: 'mouse',
+    template: 'hover-target',
+    title: 'מה מרגישים?',
+    narration: 'העבר את העכבר על כל קופסה ושמע איזה רגש מסתתר.',
+    config: { reveals: ['😀', '😢', '😴', '😆', '🤔', '😍'] },
+    starsOnComplete: 1,
+  },
+  {
+    id: 'task-mouse-dragdrop-shapes',
+    worldId: 'mouse',
+    template: 'drag-drop-match',
+    title: 'חבר כל צורה לשם שלה',
+    narration: 'גרור כל צורה לשם הנכון.',
+    config: {
+      pairs: [
+        { id: 'circle', icon: '🟠', label: 'עיגול' },
+        { id: 'square', icon: '🟦', label: 'ריבוע' },
+        { id: 'star',   icon: '⭐', label: 'כוכב' },
+      ],
+    },
+    starsOnComplete: 1,
+  },
+  {
+    id: 'task-mouse-hover-vehicles',
+    worldId: 'mouse',
+    template: 'hover-target',
+    title: 'מה מסתתר? כלי תחבורה',
+    narration: 'העבר את העכבר על הקופסאות. נשמע איזה כלי תחבורה מסתתר.',
+    config: { reveals: ['🚗', '🚌', '🚲', '✈️', '🚢', '🚀'] },
+    starsOnComplete: 1,
+  },
+  {
+    id: 'task-mouse-dragdrop-clothes',
+    worldId: 'mouse',
+    template: 'drag-drop-match',
+    title: 'חבר כל בגד לשם שלו',
+    narration: 'גרור כל בגד לשם הנכון.',
+    config: {
+      pairs: [
+        { id: 'shirt', icon: '👕', label: 'חולצה' },
+        { id: 'pants', icon: '👖', label: 'מכנסיים' },
+        { id: 'hat',   icon: '🎩', label: 'כובע' },
+      ],
+    },
+    starsOnComplete: 1,
+  },
 
   // ============================================================
   // WORLD: KEYBOARD — key-press + type-word
@@ -303,6 +368,42 @@ export const TASKS = [
     config: { keys: ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowDown'] },
     starsOnComplete: 1,
   },
+  {
+    id: 'task-keyboard-type-dag',
+    worldId: 'keyboard',
+    template: 'type-word',
+    title: 'הקלד דג',
+    narration: 'הקלד אות אחר אות: דג.',
+    config: { word: 'דג' },
+    starsOnComplete: 1,
+  },
+  {
+    id: 'task-keyboard-type-par',
+    worldId: 'keyboard',
+    template: 'type-word',
+    title: 'הקלד פרה',
+    narration: 'הקלד אות אחר אות: פרה.',
+    config: { word: 'פרה' },
+    starsOnComplete: 1,
+  },
+  {
+    id: 'task-keyboard-type-bayit',
+    worldId: 'keyboard',
+    template: 'type-word',
+    title: 'הקלד בית',
+    narration: 'הקלד אות אחר אות: בית.',
+    config: { word: 'בית' },
+    starsOnComplete: 1,
+  },
+  {
+    id: 'task-keyboard-type-gan',
+    worldId: 'keyboard',
+    template: 'type-word',
+    title: 'הקלד גן',
+    narration: 'הקלד אות אחר אות: גן.',
+    config: { word: 'גן' },
+    starsOnComplete: 1,
+  },
 
   // ============================================================
   // WORLD: WINDOW — point-and-narrate
@@ -357,6 +458,76 @@ export const TASKS = [
     },
     starsOnComplete: 1,
   },
+  {
+    id: 'task-window-close',
+    worldId: 'window',
+    template: 'point-and-narrate',
+    title: 'איך סוגרים חלון?',
+    narration: 'מצא את הכפתור שסוגר.',
+    config: {
+      scene: 'window',
+      parts: [
+        { id: 'close', label: 'סגור', pos: { top: '17%', left: '76%' }, color: '#FF6B6B', narration: 'הכפתור האדום סוגר את החלון' },
+      ],
+    },
+    starsOnComplete: 1,
+  },
+  {
+    id: 'task-window-minimize',
+    worldId: 'window',
+    template: 'point-and-narrate',
+    title: 'איך מזעירים חלון?',
+    narration: 'מצא את הכפתור שמזעיר.',
+    config: {
+      scene: 'window',
+      parts: [
+        { id: 'mini', label: 'מזער', pos: { top: '17%', left: '69%' }, color: '#FFD93D', narration: 'הכפתור הצהוב מזער את החלון' },
+      ],
+    },
+    starsOnComplete: 1,
+  },
+  {
+    id: 'task-window-maximize',
+    worldId: 'window',
+    template: 'point-and-narrate',
+    title: 'איך מגדילים חלון?',
+    narration: 'מצא את הכפתור שמגדיל.',
+    config: {
+      scene: 'window',
+      parts: [
+        { id: 'max', label: 'הגדל', pos: { top: '17%', left: '62%' }, color: '#6BCB77', narration: 'הכפתור הירוק מגדיל את החלון' },
+      ],
+    },
+    starsOnComplete: 1,
+  },
+  {
+    id: 'task-window-titlebar',
+    worldId: 'window',
+    template: 'point-and-narrate',
+    title: 'איך גוררים חלון?',
+    narration: 'מצא איפה תופסים את החלון.',
+    config: {
+      scene: 'window',
+      parts: [
+        { id: 'tb', label: 'שורת כותרת', pos: { top: '17%', left: '36%' }, color: '#C9A0DC', narration: 'אפשר לתפוס בשורת הכותרת ולגרור את החלון' },
+      ],
+    },
+    starsOnComplete: 1,
+  },
+  {
+    id: 'task-window-content',
+    worldId: 'window',
+    template: 'point-and-narrate',
+    title: 'איפה התוכן?',
+    narration: 'מצא את האזור שמראה את התוכן.',
+    config: {
+      scene: 'window',
+      parts: [
+        { id: 'content', label: 'אזור התוכן', pos: { top: '50%', left: '50%' }, color: '#6FC3DF', narration: 'באזור הזה מופיע התוכן של החלון' },
+      ],
+    },
+    starsOnComplete: 1,
+  },
 
   // ============================================================
   // WORLD: BROWSER — point-and-narrate
@@ -406,6 +577,82 @@ export const TASKS = [
       parts: [
         { id: 'addr', label: 'הכתובת', pos: { top: '18%', left: '55%' }, color: '#6FC3DF', narration: 'כאן מקלידים את כתובת האתר שרוצים לפתוח' },
         { id: 'site', label: 'האתר', pos: { top: '60%', left: '50%' }, color: '#C9A0DC', narration: 'כאן מופיע התוכן של האתר' },
+      ],
+    },
+    starsOnComplete: 1,
+  },
+  {
+    id: 'task-browser-close',
+    worldId: 'browser',
+    template: 'point-and-narrate',
+    title: 'איך סוגרים את הדפדפן?',
+    narration: 'מצא את הכפתור שסוגר.',
+    config: {
+      scene: 'browser',
+      parts: [
+        { id: 'close', label: 'סגור', pos: { top: '18%', left: '12%' }, color: '#FF6B6B', narration: 'הכפתור האדום סוגר את הדפדפן' },
+      ],
+    },
+    starsOnComplete: 1,
+  },
+  {
+    id: 'task-browser-tabs',
+    worldId: 'browser',
+    template: 'point-and-narrate',
+    title: 'כפתורי הצבעים',
+    narration: 'נצביע על שלושת הכפתורים הצבעוניים.',
+    config: {
+      scene: 'browser',
+      parts: [
+        { id: 'red', label: 'אדום', pos: { top: '18%', left: '12%' }, color: '#FF6B6B', narration: 'אדום — סוגר' },
+        { id: 'yellow', label: 'צהוב', pos: { top: '18%', left: '15%' }, color: '#FFD93D', narration: 'צהוב — מזער' },
+        { id: 'green', label: 'ירוק', pos: { top: '18%', left: '18%' }, color: '#6BCB77', narration: 'ירוק — מגדיל' },
+      ],
+    },
+    starsOnComplete: 1,
+  },
+  {
+    id: 'task-browser-typing',
+    worldId: 'browser',
+    template: 'point-and-narrate',
+    title: 'איפה מקלידים?',
+    narration: 'מצא איפה מקלידים את הכתובת.',
+    config: {
+      scene: 'browser',
+      parts: [
+        { id: 'bar', label: 'שורת הכתובת', pos: { top: '18%', left: '55%' }, color: '#6FC3DF', narration: 'כאן מקלידים את כתובת האתר' },
+      ],
+    },
+    starsOnComplete: 1,
+  },
+  {
+    id: 'task-browser-page',
+    worldId: 'browser',
+    template: 'point-and-narrate',
+    title: 'איפה רואים את האתר?',
+    narration: 'מצא איפה מופיע התוכן של האתר.',
+    config: {
+      scene: 'browser',
+      parts: [
+        { id: 'page', label: 'האתר', pos: { top: '60%', left: '50%' }, color: '#C9A0DC', narration: 'באזור הזה מופיע התוכן של האתר שביקרת בו' },
+      ],
+    },
+    starsOnComplete: 1,
+  },
+  {
+    id: 'task-browser-full',
+    worldId: 'browser',
+    template: 'point-and-narrate',
+    title: 'כל הדפדפן',
+    narration: 'נסקור את כל החלקים של הדפדפן.',
+    config: {
+      scene: 'browser',
+      parts: [
+        { id: 'close', label: 'סגור', pos: { top: '18%', left: '12%' }, color: '#FF6B6B', narration: 'סוגרים את הדפדפן' },
+        { id: 'min', label: 'מזער', pos: { top: '18%', left: '15%' }, color: '#FFD93D', narration: 'מזעירים את החלון' },
+        { id: 'max', label: 'הגדל', pos: { top: '18%', left: '18%' }, color: '#6BCB77', narration: 'מגדילים את החלון' },
+        { id: 'addr', label: 'כתובת', pos: { top: '18%', left: '55%' }, color: '#6FC3DF', narration: 'מקלידים כתובת של אתר' },
+        { id: 'cnt', label: 'תוכן', pos: { top: '60%', left: '50%' }, color: '#C9A0DC', narration: 'מציג את התוכן של האתר' },
       ],
     },
     starsOnComplete: 1,
