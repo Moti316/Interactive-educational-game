@@ -5,7 +5,7 @@
 //
 // Bump CACHE_VERSION on each release. Old caches are pruned on activate.
 
-const CACHE_VERSION = 'chachmoni-v1.1.2';
+const CACHE_VERSION = 'chachmoni-v1.1.3';
 const PRECACHE = [
   './',
   './index.html',
@@ -91,23 +91,40 @@ self.addEventListener('fetch', (event) => {
   // Network-only for OAuth/Drive/external APIs
   if (NETWORK_ONLY_PATTERNS.some((p) => p.test(url.href))) return;
 
-  // Cache-first for same-origin assets (incl. avatars, fonts woff2, etc.)
-  if (url.origin === location.origin) {
+  if (url.origin !== location.origin) return;  // external: no interception
+
+  // Code (HTML/CSS/JS/JSON/manifest) → network-first.
+  // Ensures `git pull` + reload shows new code, never stale cache.
+  // Falls back to cache only when offline.
+  const isCode = /\.(html|css|js|mjs|json|webmanifest)$/i.test(url.pathname)
+              || url.pathname === '/' || url.pathname.endsWith('/');
+
+  if (isCode) {
     event.respondWith(
-      caches.match(req).then((cached) => {
-        if (cached) return cached;
-        return fetch(req).then((res) => {
-          // Cache successful same-origin responses opportunistically
-          if (res && res.status === 200 && res.type === 'basic') {
-            const clone = res.clone();
-            caches.open(CACHE_VERSION).then((c) => c.put(req, clone));
-          }
-          return res;
-        }).catch(() => cached);  // already null at this point but guard against stale-while-offline
-      })
+      fetch(req).then((res) => {
+        if (res && res.status === 200 && res.type === 'basic') {
+          const clone = res.clone();
+          caches.open(CACHE_VERSION).then((c) => c.put(req, clone));
+        }
+        return res;
+      }).catch(() => caches.match(req))  // offline fallback
     );
+    return;
   }
-  // External (other origins): default network-first behavior (no SW interception)
+
+  // Assets (fonts, images, audio) → cache-first (immutable, ship-versioned).
+  event.respondWith(
+    caches.match(req).then((cached) => {
+      if (cached) return cached;
+      return fetch(req).then((res) => {
+        if (res && res.status === 200 && res.type === 'basic') {
+          const clone = res.clone();
+          caches.open(CACHE_VERSION).then((c) => c.put(req, clone));
+        }
+        return res;
+      }).catch(() => cached);
+    })
+  );
 });
 
 // Message handler — allow the page to ask SW to clear its cache (post-OAuth-change, etc.)
