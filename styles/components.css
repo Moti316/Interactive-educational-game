@@ -779,6 +779,7 @@
   /* In RTL context (html dir="rtl"), default flex-direction:row already places
      the first child on the right. row-reverse here would flip it back to LTR. */
   flex-direction: row;
+  direction: rtl;  /* explicit — belt-and-suspenders if any parent overrides */
   justify-content: center;
   gap: 16px;
   margin: 32px 0;
