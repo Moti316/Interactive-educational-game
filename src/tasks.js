@@ -31,6 +31,7 @@ export const TASKS = [
     title: 'פוצצו את הבועות!',
     narration: 'פוצצו את הבועות על-ידי לחיצה עליהן.',
     config: {
+      kind: 'bubble',
       count: 5,
       colors: ['#6FC3DF', '#C9A0DC', '#6BCB77', '#FFD93D', '#6FC3DF'],
       positions: [
@@ -48,6 +49,7 @@ export const TASKS = [
     title: 'אסוף כוכבים!',
     narration: 'לחץ על כל הכוכבים כדי לאסוף אותם.',
     config: {
+      kind: 'star',
       count: 6,
       colors: ['#FFD93D', '#FFD93D', '#FFD93D', '#FFD93D', '#FFD93D', '#FFD93D'],
       positions: [
@@ -194,6 +196,7 @@ export const TASKS = [
     title: 'אסוף פרחים!',
     narration: 'לחץ על כל הפרחים כדי לקטוף אותם.',
     config: {
+      kind: 'flower',
       count: 6,
       colors: ['#FF6B6B', '#FFD93D', '#6BCB77', '#C9A0DC', '#FFA552', '#6FC3DF'],
       positions: [

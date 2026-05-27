@@ -5,7 +5,7 @@
 //
 // Bump CACHE_VERSION on each release. Old caches are pruned on activate.
 
-const CACHE_VERSION = 'chachmoni-v1.1.3';
+const CACHE_VERSION = 'chachmoni-v1.1.4';
 const PRECACHE = [
   './',
   './index.html',

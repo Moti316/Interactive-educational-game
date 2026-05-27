@@ -60,8 +60,18 @@ export function renderClickTargets(task, { onComplete, onExit } = {}) {
   wrap.append(title);
 
   // Balloons area
+  // Target kind decides visual + aria-label. Default = balloon for backward compat.
+  const KIND_META = {
+    balloon: { className: 'balloon', label: 'בלון',  emoji: null  },
+    bubble:  { className: 'bubble',  label: 'בועה',  emoji: null  },
+    star:    { className: 'star-target',   label: 'כוכב', emoji: '⭐' },
+    flower:  { className: 'flower-target', label: 'פרח',  emoji: '🌸' },
+  };
+  const kindKey = (cfg.kind && KIND_META[cfg.kind]) ? cfg.kind : 'balloon';
+  const kind = KIND_META[kindKey];
+
   const area = document.createElement('div');
-  area.className = 'balloons-area';
+  area.className = 'targets-area';   // generic name; CSS .balloons-area kept as alias
 
   // Progress
   const progress = document.createElement('div');
@@ -73,7 +83,7 @@ export function renderClickTargets(task, { onComplete, onExit } = {}) {
     progress.append(ps);
   }
 
-  // Create targets (balloons)
+  // Create targets
   for (let i = 0; i < total; i++) {
     const color = (cfg.colors && cfg.colors[i]) || '#FF6B6B';
     const pos = (cfg.positions && cfg.positions[i]) || {
@@ -82,19 +92,28 @@ export function renderClickTargets(task, { onComplete, onExit } = {}) {
     };
     const b = document.createElement('button');
     b.type = 'button';
-    b.className = 'balloon';
-    b.setAttribute('aria-label', 'בלון');
+    b.className = kind.className;
+    b.setAttribute('aria-label', kind.label);
     b.style.top = pos.top;
     b.style.left = pos.left;
     b.style.color = color;
 
-    const body = document.createElement('div');
-    body.className = 'balloon-body';
-    const tie = document.createElement('div');
-    tie.className = 'balloon-tie';
-    const string = document.createElement('div');
-    string.className = 'balloon-string';
-    b.append(body, tie, string);
+    // Balloon = body + tie + string. Bubble = just a body. Emoji-kinds = textContent.
+    if (kind.emoji) {
+      b.textContent = kind.emoji;
+    } else if (kindKey === 'balloon') {
+      const body = document.createElement('div');
+      body.className = 'balloon-body';
+      const tie = document.createElement('div');
+      tie.className = 'balloon-tie';
+      const string = document.createElement('div');
+      string.className = 'balloon-string';
+      b.append(body, tie, string);
+    } else if (kindKey === 'bubble') {
+      const body = document.createElement('div');
+      body.className = 'bubble-body';
+      b.append(body);
+    }
 
     b.addEventListener('click', () => {
       if (b.classList.contains('is-popped')) return;
